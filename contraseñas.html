@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Generador de Contraseñas Seguras | Utilix</title>
+
+<meta name="description" content="Generador de contraseñas seguras online gratis. Creá contraseñas fuertes y aleatorias con letras, números y símbolos.">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+font-family:Arial,sans-serif;
+background:#f5f7fb;
+color:#172033;
+}
+
+header{
+background:#111827;
+color:white;
+padding:22px 20px;
+}
+
+.header-content{
+max-width:900px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{font-size:26px;font-weight:bold}
+.logo span{color:#4f8cff}
+
+nav a{color:#ddd;text-decoration:none}
+
+.container{
+max-width:700px;
+margin:50px auto;
+padding:0 20px;
+}
+
+h1{font-size:36px;margin-bottom:15px}
+
+.description{
+color:#667085;
+margin-bottom:30px;
+line-height:1.6;
+}
+
+.calculator{
+background:white;
+padding:30px;
+border-radius:16px;
+border:1px solid #e6e8ee;
+box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+
+label{
+display:block;
+margin-bottom:8px;
+font-weight:bold;
+}
+
+input[type="number"]{
+width:100%;
+padding:14px;
+margin-bottom:20px;
+border:1px solid #d9dde5;
+border-radius:8px;
+font-size:16px;
+}
+
+.options{
+margin-bottom:20px;
+line-height:2;
+}
+
+.options label{
+font-weight:normal;
+display:block;
+}
+
+button{
+width:100%;
+padding:15px;
+border:none;
+border-radius:8px;
+background:#4f8cff;
+color:white;
+font-size:17px;
+cursor:pointer;
+}
+
+button:hover{background:#3978e8}
+
+.resultado{
+margin-top:25px;
+padding:20px;
+background:#f5f7fb;
+border-radius:10px;
+font-size:18px;
+word-break:break-all;
+text-align:center;
+}
+
+footer{
+margin-top:60px;
+background:#111827;
+color:#aaa;
+text-align:center;
+padding:30px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header-content">
+<div class="logo">Util<span>ix</span></div>
+<nav><a href="index.html">Inicio</a></nav>
+</div>
+</header>
+
+<main class="container">
+
+<h1>Generador de contraseñas</h1>
+
+<p class="description">
+Generá contraseñas aleatorias y seguras utilizando letras, números y símbolos.
+</p>
+
+<div class="calculator">
+
+<label for="longitud">Longitud</label>
+
+<input type="number" id="longitud" value="16" min="4" max="100">
+
+<div class="options">
+
+<label>
+<input type="checkbox" id="mayusculas" checked>
+Mayúsculas
+</label>
+
+<label>
+<input type="checkbox" id="minusculas" checked>
+Minúsculas
+</label>
+
+<label>
+<input type="checkbox" id="numeros" checked>
+Números
+</label>
+
+<label>
+<input type="checkbox" id="simbolos" checked>
+Símbolos
+</label>
+
+</div>
+
+<button onclick="generar()">Generar contraseña</button>
+
+<div class="resultado" id="resultado">
+Tu contraseña aparecerá aquí
+</div>
+
+</div>
+
+</main>
+
+<footer>
+© 2026 Utilix — Herramientas online gratuitas
+</footer>
+
+<script>
+
+function generar(){
+
+const longitud=parseInt(document.getElementById("longitud").value);
+
+const mayusculas=document.getElementById("mayusculas").checked;
+const minusculas=document.getElementById("minusculas").checked;
+const numeros=document.getElementById("numeros").checked;
+const simbolos=document.getElementById("simbolos").checked;
+
+let caracteres="";
+
+if(mayusculas) caracteres+="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+if(minusculas) caracteres+="abcdefghijklmnopqrstuvwxyz";
+if(numeros) caracteres+="0123456789";
+if(simbolos) caracteres+="!@#$%^&*()_+-=[]{}";
+
+if(!caracteres){
+document.getElementById("resultado").textContent=
+"Seleccioná al menos una opción.";
+return;
+}
+
+let contraseña="";
+
+for(let i=0;i<longitud;i++){
+const posicion=Math.floor(Math.random()*caracteres.length);
+contraseña+=caracteres[posicion];
+}
+
+document.getElementById("resultado").textContent=contraseña;
+
+}
+
+</script>
+
+</body>
+</html>
