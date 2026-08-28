@@ -1,0 +1,844 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Herramientas de colores online | Utilix</title>
+
+<meta name="description"
+content="Color picker, conversor HEX RGB HSL, contraste WCAG, gradientes y generadores CSS gratis.">
+
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+body{
+font-family:Arial,sans-serif;
+background:#f5f7fb;
+color:#172033;
+}
+
+header{
+background:#111827;
+color:white;
+padding:22px 20px;
+}
+
+.header-content{
+max-width:1100px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+font-size:26px;
+font-weight:bold;
+}
+
+.logo span{
+color:#4f8cff;
+}
+
+nav a{
+color:#ddd;
+text-decoration:none;
+}
+
+.container{
+max-width:1000px;
+margin:45px auto;
+padding:0 20px 60px;
+}
+
+h1{
+font-size:38px;
+margin-bottom:12px;
+}
+
+.description{
+color:#667085;
+line-height:1.6;
+margin-bottom:30px;
+}
+
+.tools{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+gap:12px;
+margin-bottom:30px;
+}
+
+.tool{
+background:white;
+border:1px solid #e6e8ee;
+border-radius:10px;
+padding:16px;
+cursor:pointer;
+}
+
+.tool:hover{
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.tool.active{
+border:2px solid #4f8cff;
+}
+
+.tool h3{
+font-size:16px;
+}
+
+.tool p{
+font-size:13px;
+color:#667085;
+margin-top:5px;
+}
+
+.panel{
+background:white;
+padding:30px;
+border-radius:16px;
+border:1px solid #e6e8ee;
+box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+
+input{
+width:100%;
+padding:13px;
+border:1px solid #d9dde5;
+border-radius:8px;
+margin-bottom:15px;
+font-size:16px;
+}
+
+input[type=color]{
+height:70px;
+padding:5px;
+}
+
+input[type=range]{
+padding:0;
+}
+
+button{
+width:100%;
+padding:14px;
+border:none;
+border-radius:8px;
+background:#4f8cff;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+.result{
+margin-top:20px;
+padding:20px;
+background:#f5f7fb;
+border-radius:10px;
+line-height:1.8;
+word-break:break-word;
+}
+
+.color-box{
+width:100%;
+height:150px;
+border-radius:10px;
+margin-top:20px;
+border:1px solid #ddd;
+}
+
+.code{
+font-family:monospace;
+background:#111827;
+color:white;
+padding:15px;
+border-radius:8px;
+margin-top:15px;
+white-space:pre-wrap;
+}
+
+footer{
+background:#111827;
+color:#aaa;
+text-align:center;
+padding:30px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="header-content">
+
+<div class="logo">
+Util<span>ix</span>
+</div>
+
+<nav>
+<a href="index.html">Inicio</a>
+</nav>
+
+</div>
+
+</header>
+
+
+<main class="container">
+
+<h1>Herramientas de colores</h1>
+
+<p class="description">
+Conversores de color y herramientas CSS gratuitas para diseñadores y desarrolladores.
+</p>
+
+
+<div class="tools">
+
+<div class="tool active" onclick="seleccionar('picker',this)">
+<h3>🎨 Color Picker</h3>
+<p>Elegir un color</p>
+</div>
+
+<div class="tool" onclick="seleccionar('hexrgb',this)">
+<h3>HEX → RGB</h3>
+<p>Convertir colores</p>
+</div>
+
+<div class="tool" onclick="seleccionar('rgbhex',this)">
+<h3>RGB → HEX</h3>
+<p>Convertir RGB</p>
+</div>
+
+<div class="tool" onclick="seleccionar('hexhsl',this)">
+<h3>HEX → HSL</h3>
+<p>Convertir HEX</p>
+</div>
+
+<div class="tool" onclick="seleccionar('hslhex',this)">
+<h3>HSL → HEX</h3>
+<p>Convertir HSL</p>
+</div>
+
+<div class="tool" onclick="seleccionar('contraste',this)">
+<h3>⚫ Contraste WCAG</h3>
+<p>Comprobar contraste</p>
+</div>
+
+<div class="tool" onclick="seleccionar('complementario',this)">
+<h3>🔄 Complementario</h3>
+<p>Color opuesto</p>
+</div>
+
+<div class="tool" onclick="seleccionar('triadico',this)">
+<h3>🎨 Triádico</h3>
+<p>Crear combinación</p>
+</div>
+
+<div class="tool" onclick="seleccionar('gradiente',this)">
+<h3>🌈 Gradiente CSS</h3>
+<p>Generar CSS</p>
+</div>
+
+<div class="tool" onclick="seleccionar('shadow',this)">
+<h3>🌑 Box Shadow</h3>
+<p>Generar CSS</p>
+</div>
+
+<div class="tool" onclick="seleccionar('radius',this)">
+<h3>⭕ Border Radius</h3>
+<p>Generar CSS</p>
+</div>
+
+<div class="tool" onclick="seleccionar('textshadow',this)">
+<h3>✏️ Text Shadow</h3>
+<p>Generar CSS</p>
+</div>
+
+</div>
+
+
+<div class="panel">
+
+<h2 id="titulo">Color Picker</h2>
+
+<p id="descripcion">
+Elegí un color y obtené sus valores.
+</p>
+
+<div id="formulario"></div>
+
+<div id="resultado" class="result">
+Esperando...
+</div>
+
+</div>
+
+</main>
+
+
+<footer>
+© 2026 Utilix — Herramientas online gratuitas
+</footer>
+
+
+<script>
+
+let herramienta="picker";
+
+const configs={
+
+picker:{
+titulo:"🎨 Color Picker",
+descripcion:"Elegí un color.",
+form:`
+<input type="color" id="color" value="#4f8cff">
+<button onclick="picker()">Analizar color</button>`
+},
+
+hexrgb:{
+titulo:"HEX → RGB",
+descripcion:"Convertí HEX a RGB.",
+form:`
+<input id="hex" placeholder="#4f8cff">
+<button onclick="hexRGB()">Convertir</button>`
+},
+
+rgbhex:{
+titulo:"RGB → HEX",
+descripcion:"Convertí RGB a hexadecimal.",
+form:`
+<input id="r" type="number" min="0" max="255" placeholder="R">
+<input id="g" type="number" min="0" max="255" placeholder="G">
+<input id="b" type="number" min="0" max="255" placeholder="B">
+<button onclick="rgbHEX()">Convertir</button>`
+},
+
+hexhsl:{
+titulo:"HEX → HSL",
+descripcion:"Convertí HEX a HSL.",
+form:`
+<input id="hex" placeholder="#4f8cff">
+<button onclick="hexHSL()">Convertir</button>`
+},
+
+hslhex:{
+titulo:"HSL → HEX",
+descripcion:"Convertí HSL a HEX.",
+form:`
+<input id="h" type="number" placeholder="Hue 0-360">
+<input id="s" type="number" placeholder="Saturation %">
+<input id="l" type="number" placeholder="Lightness %">
+<button onclick="hslHEX()">Convertir</button>`
+},
+
+contraste:{
+titulo:"Contraste WCAG",
+descripcion:"Comprobá el contraste entre dos colores.",
+form:`
+<input type="color" id="c1" value="#000000">
+<input type="color" id="c2" value="#ffffff">
+<button onclick="contraste()">Comprobar</button>`
+},
+
+complementario:{
+titulo:"Color complementario",
+descripcion:"Obtené el color complementario.",
+form:`
+<input type="color" id="color" value="#4f8cff">
+<button onclick="complementario()">Generar</button>`
+},
+
+triadico:{
+titulo:"Colores triádicos",
+descripcion:"Generá una combinación triádica.",
+form:`
+<input type="color" id="color" value="#4f8cff">
+<button onclick="triadico()">Generar</button>`
+},
+
+gradiente:{
+titulo:"Gradiente CSS",
+descripcion:"Generá un gradiente CSS.",
+form:`
+<input type="color" id="c1" value="#4f8cff">
+<input type="color" id="c2" value="#111827">
+<input id="angulo" type="number" value="90" placeholder="Ángulo">
+<button onclick="gradiente()">Generar</button>`
+},
+
+shadow:{
+titulo:"CSS Box Shadow",
+descripcion:"Generá una sombra CSS.",
+form:`
+<input type="range" id="x" min="-30" max="30" value="5">
+<input type="range" id="y" min="-30" max="30" value="5">
+<input type="range" id="blur" min="0" max="50" value="15">
+<input type="color" id="shadowColor" value="#000000">
+<button onclick="shadow()">Generar</button>`
+},
+
+radius:{
+titulo:"CSS Border Radius",
+descripcion:"Generá un border-radius.",
+form:`
+<input type="range" id="radiusValue" min="0" max="100" value="10">
+<button onclick="radius()">Generar</button>`
+},
+
+textshadow:{
+titulo:"CSS Text Shadow",
+descripcion:"Generá una sombra para texto.",
+form:`
+<input type="range" id="tx" min="-20" max="20" value="2">
+<input type="range" id="ty" min="-20" max="20" value="2">
+<input type="range" id="tblur" min="0" max="30" value="5">
+<input type="color" id="tc" value="#000000">
+<button onclick="textshadow()">Generar</button>`
+}
+
+};
+
+
+function seleccionar(nombre,el){
+
+herramienta=nombre;
+
+document.querySelectorAll(".tool")
+.forEach(x=>x.classList.remove("active"));
+
+el.classList.add("active");
+
+document.getElementById("titulo").textContent=
+configs[nombre].titulo;
+
+document.getElementById("descripcion").textContent=
+configs[nombre].descripcion;
+
+document.getElementById("formulario").innerHTML=
+configs[nombre].form;
+
+document.getElementById("resultado").innerHTML=
+"Esperando...";
+
+}
+
+
+function hexRGB(){
+
+const h=
+document.getElementById("hex").value
+.replace("#","");
+
+if(h.length!==6){
+
+mostrar("HEX inválido.");
+
+return;
+
+}
+
+const r=parseInt(h.substring(0,2),16);
+const g=parseInt(h.substring(2,4),16);
+const b=parseInt(h.substring(4,6),16);
+
+mostrar(`RGB(${r}, ${g}, ${b})`);
+
+}
+
+
+function rgbHEX(){
+
+const r=+document.getElementById("r").value;
+const g=+document.getElementById("g").value;
+const b=+document.getElementById("b").value;
+
+if([r,g,b].some(x=>x<0||x>255)){
+
+mostrar("Valores inválidos.");
+
+return;
+
+}
+
+mostrar(
+"#"+
+[r,g,b]
+.map(x=>x.toString(16).padStart(2,"0"))
+.join("")
+.toUpperCase()
+);
+
+}
+
+
+function hexToRGB(hex){
+
+hex=hex.replace("#","");
+
+return{
+r:parseInt(hex.substring(0,2),16),
+g:parseInt(hex.substring(2,4),16),
+b:parseInt(hex.substring(4,6),16)
+};
+
+}
+
+
+function rgbToHSL(r,g,b){
+
+r/=255;
+g/=255;
+b/=255;
+
+const max=Math.max(r,g,b);
+const min=Math.min(r,g,b);
+
+let h=0,s=0;
+const l=(max+min)/2;
+
+if(max!==min){
+
+const d=max-min;
+
+s=l>0.5?
+d/(2-max-min):
+d/(max+min);
+
+switch(max){
+
+case r:
+h=(g-b)/d+(g<b?6:0);
+break;
+
+case g:
+h=(b-r)/d+2;
+break;
+
+case b:
+h=(r-g)/d+4;
+break;
+
+}
+
+h/=6;
+
+}
+
+return[
+Math.round(h*360),
+Math.round(s*100),
+Math.round(l*100)
+];
+
+}
+
+
+function hexHSL(){
+
+const rgb=
+hexToRGB(document.getElementById("hex").value);
+
+const hsl=
+rgbToHSL(rgb.r,rgb.g,rgb.b);
+
+mostrar(
+`hsl(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%)`
+);
+
+}
+
+
+function hslToRGB(h,s,l){
+
+s/=100;
+l/=100;
+
+const c=(1-Math.abs(2*l-1))*s;
+const x=c*(1-Math.abs((h/60)%2-1));
+const m=l-c/2;
+
+let r=0,g=0,b=0;
+
+if(h<60){r=c;g=x}
+else if(h<120){r=x;g=c}
+else if(h<180){g=c;b=x}
+else if(h<240){g=x;b=c}
+else if(h<300){r=x;b=c}
+else{r=c;b=x}
+
+return{
+r:Math.round((r+m)*255),
+g:Math.round((g+m)*255),
+b:Math.round((b+m)*255)
+};
+
+}
+
+
+function hslHEX(){
+
+const rgb=
+hslToRGB(
++h.value,
++s.value,
++l.value
+);
+
+mostrar(
+"#"+
+[rgb.r,rgb.g,rgb.b]
+.map(x=>x.toString(16).padStart(2,"0"))
+.join("")
+.toUpperCase()
+);
+
+}
+
+
+function picker(){
+
+const color=
+document.getElementById("color").value;
+
+const rgb=
+hexToRGB(color);
+
+const hsl=
+rgbToHSL(rgb.r,rgb.g,rgb.b);
+
+mostrar(`
+<div class="color-box"
+style="background:${color}"></div>
+
+<strong>HEX:</strong> ${color}<br>
+<strong>RGB:</strong> rgb(${rgb.r},${rgb.g},${rgb.b})<br>
+<strong>HSL:</strong> hsl(${hsl[0]},${hsl[1]}%,${hsl[2]}%)
+`);
+
+}
+
+
+function luminancia(hex){
+
+const {r,g,b}=
+hexToRGB(hex);
+
+const values=[r,g,b]
+.map(x=>{
+x/=255;
+return x<=.03928?
+x/12.92:
+Math.pow((x+.055)/1.055,2.4);
+});
+
+return .2126*values[0]+
+.7152*values[1]+
+.0722*values[2];
+
+}
+
+
+function contraste(){
+
+const a=
+document.getElementById("c1").value;
+
+const b=
+document.getElementById("c2").value;
+
+const l1=luminancia(a);
+const l2=luminancia(b);
+
+const ratio=
+(Math.max(l1,l2)+.05)/
+(Math.min(l1,l2)+.05);
+
+mostrar(
+`Contraste: <strong>${ratio.toFixed(2)}:1</strong><br><br>
+AA texto normal: ${ratio>=4.5?"✅ Cumple":"❌ No cumple"}<br>
+AAA texto normal: ${ratio>=7?"✅ Cumple":"❌ No cumple"}`
+);
+
+}
+
+
+function complementarHex(hex){
+
+const rgb=hexToRGB(hex);
+
+return[
+255-rgb.r,
+255-rgb.g,
+255-rgb.b
+]
+.map(x=>x.toString(16).padStart(2,"0"))
+.join("");
+
+}
+
+
+function complementario(){
+
+const color=
+document.getElementById("color").value;
+
+const comp=
+"#"+complementarHex(color);
+
+mostrar(`
+<div class="color-box"
+style="background:${comp}"></div>
+
+<strong>Original:</strong> ${color}<br>
+<strong>Complementario:</strong> ${comp}
+`);
+
+}
+
+
+function triadico(){
+
+const color=
+document.getElementById("color").value;
+
+const rgb=
+hexToRGB(color);
+
+const hsl=
+rgbToHSL(rgb.r,rgb.g,rgb.b);
+
+const colors=[];
+
+for(const offset of [0,120,240]){
+
+const h=(hsl[0]+offset)%360;
+
+const c=hslToRGB(
+h,
+hsl[1],
+hsl[2]
+);
+
+colors.push(
+"#"+
+[c.r,c.g,c.b]
+.map(x=>x.toString(16).padStart(2,"0"))
+.join("")
+);
+
+}
+
+mostrar(
+colors.map(c=>
+`<div class="color-box" style="background:${c}"></div>
+<strong>${c}</strong>`
+).join("")
+);
+
+}
+
+
+function gradiente(){
+
+const c1=
+document.getElementById("c1").value;
+
+const c2=
+document.getElementById("c2").value;
+
+const angulo=
+document.getElementById("angulo").value;
+
+const css=
+`background: linear-gradient(${angulo}deg, ${c1}, ${c2});`;
+
+mostrar(`
+<div class="color-box"
+style="${css}">
+</div>
+
+<div class="code">${css}</div>
+`);
+
+}
+
+
+function shadow(){
+
+const x=document.getElementById("x").value;
+const y=document.getElementById("y").value;
+const blur=document.getElementById("blur").value;
+const c=document.getElementById("shadowColor").value;
+
+const css=
+`box-shadow: ${x}px ${y}px ${blur}px ${c};`;
+
+mostrar(`<div class="code">${css}</div>`);
+
+}
+
+
+function radius(){
+
+const value=
+document.getElementById("radiusValue").value;
+
+mostrar(
+`<div class="color-box"
+style="background:#4f8cff;border-radius:${value}px">
+</div>
+
+<div class="code">border-radius: ${value}px;</div>`
+);
+
+}
+
+
+function textshadow(){
+
+const x=document.getElementById("tx").value;
+const y=document.getElementById("ty").value;
+const blur=document.getElementById("tblur").value;
+const c=document.getElementById("tc").value;
+
+mostrar(
+`<div style="
+font-size:40px;
+text-shadow:${x}px ${y}px ${blur}px ${c}">
+Utilix
+</div>
+
+<div class="code">
+text-shadow: ${x}px ${y}px ${blur}px ${c};
+</div>`
+);
+
+}
+
+
+function mostrar(texto){
+
+document.getElementById("resultado").innerHTML=
+texto;
+
+}
+
+</script>
+
+</body>
+</html>
+```
