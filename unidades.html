@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Conversor de Unidades Online | Utilix</title>
+
+<meta name="description" content="Conversor de unidades online gratis. Convertí longitud, peso y temperatura de forma rápida y sencilla.">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+font-family:Arial,sans-serif;
+background:#f5f7fb;
+color:#172033;
+}
+
+header{
+background:#111827;
+color:white;
+padding:22px 20px;
+}
+
+.header-content{
+max-width:900px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{font-size:26px;font-weight:bold}
+.logo span{color:#4f8cff}
+nav a{color:#ddd;text-decoration:none}
+
+.container{
+max-width:700px;
+margin:50px auto;
+padding:0 20px;
+}
+
+h1{font-size:36px;margin-bottom:15px}
+
+.description{
+color:#667085;
+margin-bottom:30px;
+line-height:1.6;
+}
+
+.calculator{
+background:white;
+padding:30px;
+border-radius:16px;
+border:1px solid #e6e8ee;
+box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+
+select,input{
+width:100%;
+padding:14px;
+margin-bottom:15px;
+border:1px solid #d9dde5;
+border-radius:8px;
+font-size:16px;
+}
+
+button{
+width:100%;
+padding:15px;
+border:none;
+border-radius:8px;
+background:#4f8cff;
+color:white;
+font-size:17px;
+cursor:pointer;
+}
+
+.resultado{
+margin-top:25px;
+padding:20px;
+background:#f5f7fb;
+border-radius:10px;
+text-align:center;
+font-size:22px;
+font-weight:bold;
+}
+
+footer{
+margin-top:60px;
+background:#111827;
+color:#aaa;
+text-align:center;
+padding:30px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header-content">
+<div class="logo">Util<span>ix</span></div>
+<nav><a href="index.html">Inicio</a></nav>
+</div>
+</header>
+
+<main class="container">
+
+<h1>Conversor de unidades</h1>
+
+<p class="description">
+Convertí fácilmente kilómetros, metros, kilos, gramos y temperaturas.
+</p>
+
+<div class="calculator">
+
+<label>Tipo de conversión</label>
+
+<select id="tipo" onchange="cambiarUnidades()">
+<option value="longitud">Longitud</option>
+<option value="peso">Peso</option>
+<option value="temperatura">Temperatura</option>
+</select>
+
+<input type="number" id="valor" placeholder="Ingresá un valor">
+
+<label>Desde</label>
+
+<select id="desde"></select>
+
+<label>Hasta</label>
+
+<select id="hasta"></select>
+
+<button onclick="convertir()">Convertir</button>
+
+<div class="resultado" id="resultado">
+Resultado: -
+</div>
+
+</div>
+
+</main>
+
+<footer>
+© 2026 Utilix — Herramientas online gratuitas
+</footer>
+
+<script>
+
+const unidades={
+
+longitud:[
+["Metros","m"],
+["Kilómetros","km"],
+["Centímetros","cm"],
+["Millas","mi"],
+["Pies","ft"]
+],
+
+peso:[
+["Kilogramos","kg"],
+["Gramos","g"],
+["Libras","lb"],
+["Onzas","oz"]
+],
+
+temperatura:[
+["Celsius","C"],
+["Fahrenheit","F"],
+["Kelvin","K"]
+]
+
+};
+
+function cambiarUnidades(){
+
+const tipo=document.getElementById("tipo").value;
+const desde=document.getElementById("desde");
+const hasta=document.getElementById("hasta");
+
+desde.innerHTML="";
+hasta.innerHTML="";
+
+unidades[tipo].forEach(u=>{
+
+desde.innerHTML+=`<option value="${u[1]}">${u[0]}</option>`;
+hasta.innerHTML+=`<option value="${u[1]}">${u[0]}</option>`;
+
+});
+
+}
+
+function convertir(){
+
+const valor=parseFloat(document.getElementById("valor").value);
+const tipo=document.getElementById("tipo").value;
+const desde=document.getElementById("desde").value;
+const hasta=document.getElementById("hasta").value;
+
+if(isNaN(valor)){
+document.getElementById("resultado").textContent="Ingresá un valor.";
+return;
+}
+
+let resultado;
+
+if(tipo==="longitud"){
+
+const metros={
+m:1,
+km:1000,
+cm:0.01,
+mi:1609.344,
+ft:0.3048
+};
+
+resultado=valor*metros[desde]/metros[hasta];
+
+}
+
+if(tipo==="peso"){
+
+const kg={
+kg:1,
+g:0.001,
+lb:0.45359237,
+oz:0.0283495
+};
+
+resultado=valor*kg[desde]/kg[hasta];
+
+}
+
+if(tipo==="temperatura"){
+
+let celsius;
+
+if(desde==="C") celsius=valor;
+if(desde==="F") celsius=(valor-32)*5/9;
+if(desde==="K") celsius=valor-273.15;
+
+if(hasta==="C") resultado=celsius;
+if(hasta==="F") resultado=(celsius*9/5)+32;
+if(hasta==="K") resultado=celsius+273.15;
+
+}
+
+document.getElementById("resultado").textContent=
+"Resultado: "+resultado.toFixed(4);
+
+}
+
+cambiarUnidades();
+
+</script>
+
+</body>
+</html>
