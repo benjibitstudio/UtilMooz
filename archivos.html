@@ -1,15 +1,13 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Convertir Archivos Online Gratis | Utilix</title>
+<title>Convertir archivos online gratis | Utilix</title>
 
 <meta name="description"
-content="Convertí imágenes y archivos online gratis. JPG, PNG, WEBP y PDF. Herramientas rápidas y gratuitas de Utilix.">
+content="Convertí, comprimí y modificá imágenes y archivos PDF online gratis con Utilix.">
 
 <style>
 
@@ -54,65 +52,201 @@ nav a{
 }
 
 .container{
-    max-width:1100px;
-    margin:50px auto;
+    max-width:1000px;
+    margin:45px auto;
     padding:0 20px 60px;
 }
 
 h1{
     font-size:38px;
-    margin-bottom:15px;
+    margin-bottom:12px;
 }
 
 .description{
     color:#667085;
     line-height:1.6;
-    margin-bottom:35px;
-    max-width:700px;
+    margin-bottom:30px;
 }
 
-.section{
-    margin-top:40px;
+.categories{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-bottom:25px;
 }
 
-.section h2{
-    margin-bottom:18px;
+.category{
+    border:1px solid #d9dde5;
+    background:white;
+    padding:11px 18px;
+    border-radius:8px;
+    cursor:pointer;
+    font-size:15px;
+}
+
+.category.active,
+.category:hover{
+    background:#4f8cff;
+    color:white;
+    border-color:#4f8cff;
 }
 
 .tools{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-    gap:18px;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:12px;
+    margin-bottom:30px;
 }
 
 .tool{
     background:white;
-    padding:22px;
-    border-radius:14px;
     border:1px solid #e6e8ee;
-    text-decoration:none;
-    color:inherit;
+    border-radius:10px;
+    padding:15px;
+    cursor:pointer;
     transition:.2s;
 }
 
 .tool:hover{
-    transform:translateY(-3px);
-    box-shadow:0 8px 25px rgba(0,0,0,.08);
+    transform:translateY(-2px);
+    box-shadow:0 5px 15px rgba(0,0,0,.07);
 }
 
-.icon{
-    font-size:32px;
-    margin-bottom:12px;
+.tool.active{
+    border:2px solid #4f8cff;
 }
 
-.tool h3{
+.tool-title{
+    font-weight:bold;
+}
+
+.tool-description{
+    color:#667085;
+    font-size:13px;
+    margin-top:5px;
+}
+
+.panel{
+    background:white;
+    border:1px solid #e6e8ee;
+    border-radius:16px;
+    padding:30px;
+    box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+
+.panel h2{
+    margin-bottom:10px;
+}
+
+.panel-description{
+    color:#667085;
+    margin-bottom:25px;
+    line-height:1.5;
+}
+
+.file-input{
+    width:100%;
+    padding:18px;
+    border:2px dashed #cbd1dc;
+    border-radius:10px;
+    margin-bottom:20px;
+    background:#fafbfc;
+}
+
+.controls{
+    margin-top:20px;
+}
+
+.controls label{
+    display:block;
+    font-weight:bold;
     margin-bottom:8px;
 }
 
-.tool p{
-    color:#667085;
-    font-size:14px;
-    line-height:1.5;
+.controls input,
+.controls select{
+    width:100%;
+    padding:12px;
+    border:1px solid #d9dde5;
+    border-radius:8px;
+    font-size:15px;
+    margin-bottom:15px;
+}
+
+.row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:15px;
+}
+
+button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:8px;
+    background:#4f8cff;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+    margin-top:10px;
+}
+
+button:hover{
+    background:#3978e8;
+}
+
+button.secondary{
+    background:#111827;
+}
+
+button.success{
+    background:#16a34a;
+}
+
+.preview{
+    margin-top:25px;
+    text-align:center;
+}
+
+.preview img{
+    max-width:100%;
+    max-height:400px;
+    border-radius:8px;
+}
+
+.download{
+    display:none;
+    margin-top:20px;
+    padding:15px;
+    background:#16a34a;
+    color:white;
+    text-decoration:none;
+    text-align:center;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+.status{
+    margin-top:20px;
+    padding:15px;
+    background:#f5f7fb;
+    border-radius:8px;
+    text-align:center;
+    color:#4b5563;
+}
+
+.hidden{
+    display:none!important;
+}
+
+.info{
+    margin-top:35px;
+    line-height:1.7;
+    color:#4b5563;
+}
+
+.info h2{
+    margin-bottom:10px;
 }
 
 footer{
@@ -122,7 +256,33 @@ footer{
     padding:30px;
 }
 
+@media(max-width:600px){
+
+    h1{
+        font-size:30px;
+    }
+
+    .panel{
+        padding:20px;
+    }
+
+    .row{
+        grid-template-columns:1fr;
+    }
+
+}
+
 </style>
+
+<!-- PDF-LIB -->
+<script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+
+<!-- PDF.JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.min.mjs"
+        type="module"></script>
+
+<!-- HEIC -->
+<script src="https://cdn.jsdelivr.net/npm/heic2any@0.0.4/dist/heic2any.min.js"></script>
 
 </head>
 
@@ -150,113 +310,180 @@ Util<span>ix</span>
 <h1>Convertir archivos online</h1>
 
 <p class="description">
-Convertí imágenes y documentos de forma rápida y gratuita.
-Tus archivos se procesan directamente en tu navegador cuando es posible.
+Convertí, comprimí y modificá imágenes y documentos PDF de forma gratuita.
 </p>
 
 
-<section class="section">
+<div class="categories">
 
-<h2>🖼️ Convertir imágenes</h2>
+<button class="category active" onclick="mostrarCategoria('imagenes',this)">
+🖼️ Imágenes
+</button>
+
+<button class="category" onclick="mostrarCategoria('pdf',this)">
+📄 PDF
+</button>
+
+</div>
+
+
+<!-- ================= IMAGENES ================= -->
+
+<div id="categoria-imagenes">
 
 <div class="tools">
 
-<a class="tool" href="jpg-a-png.html">
-<div class="icon">🖼️</div>
-<h3>JPG a PNG</h3>
-<p>Convertí imágenes JPG al formato PNG.</p>
-</a>
+<div class="tool active" onclick="seleccionar('jpg-png',this)">
+<div class="tool-title">JPG → PNG</div>
+<div class="tool-description">Convertir JPG a PNG</div>
+</div>
+
+<div class="tool" onclick="seleccionar('png-jpg',this)">
+<div class="tool-title">PNG → JPG</div>
+<div class="tool-description">Convertir PNG a JPG</div>
+</div>
+
+<div class="tool" onclick="seleccionar('jpg-webp',this)">
+<div class="tool-title">JPG → WEBP</div>
+<div class="tool-description">Convertir JPG a WEBP</div>
+</div>
+
+<div class="tool" onclick="seleccionar('webp-jpg',this)">
+<div class="tool-title">WEBP → JPG</div>
+<div class="tool-description">Convertir WEBP a JPG</div>
+</div>
+
+<div class="tool" onclick="seleccionar('png-webp',this)">
+<div class="tool-title">PNG → WEBP</div>
+<div class="tool-description">Convertir PNG a WEBP</div>
+</div>
+
+<div class="tool" onclick="seleccionar('webp-png',this)">
+<div class="tool-title">WEBP → PNG</div>
+<div class="tool-description">Convertir WEBP a PNG</div>
+</div>
+
+<div class="tool" onclick="seleccionar('heic-jpg',this)">
+<div class="tool-title">HEIC → JPG</div>
+<div class="tool-description">Convertir fotos HEIC</div>
+</div>
+
+<div class="tool" onclick="seleccionar('comprimir',this)">
+<div class="tool-title">Comprimir imagen</div>
+<div class="tool-description">Reducir tamaño del archivo</div>
+</div>
+
+<div class="tool" onclick="seleccionar('redimensionar',this)">
+<div class="tool-title">Redimensionar</div>
+<div class="tool-description">Cambiar dimensiones</div>
+</div>
+
+<div class="tool" onclick="seleccionar('recortar',this)">
+<div class="tool-title">Recortar imagen</div>
+<div class="tool-description">Recortar una imagen</div>
+</div>
+
+</div>
+
+</div>
 
 
-<a class="tool" href="png-a-jpg.html">
-<div class="icon">📸</div>
-<h3>PNG a JPG</h3>
-<p>Convertí imágenes PNG a JPG.</p>
-</a>
+<!-- ================= PDF ================= -->
+
+<div id="categoria-pdf" class="hidden">
+
+<div class="tools">
+
+<div class="tool" onclick="seleccionar('jpg-pdf',this)">
+<div class="tool-title">JPG → PDF</div>
+<div class="tool-description">Convertir JPG a PDF</div>
+</div>
+
+<div class="tool" onclick="seleccionar('png-pdf',this)">
+<div class="tool-title">PNG → PDF</div>
+<div class="tool-description">Convertir PNG a PDF</div>
+</div>
+
+<div class="tool" onclick="seleccionar('pdf-jpg',this)">
+<div class="tool-title">PDF → JPG</div>
+<div class="tool-description">Convertir páginas a JPG</div>
+</div>
+
+<div class="tool" onclick="seleccionar('unir-pdf',this)">
+<div class="tool-title">Unir PDF</div>
+<div class="tool-description">Combinar varios PDF</div>
+</div>
+
+<div class="tool" onclick="seleccionar('dividir-pdf',this)">
+<div class="tool-title">Dividir PDF</div>
+<div class="tool-description">Extraer páginas</div>
+</div>
+
+<div class="tool" onclick="seleccionar('rotar-pdf',this)">
+<div class="tool-title">Rotar PDF</div>
+<div class="tool-description">Rotar páginas</div>
+</div>
+
+</div>
+
+</div>
 
 
-<a class="tool" href="webp-a-jpg.html">
-<div class="icon">🌐</div>
-<h3>WEBP a JPG</h3>
-<p>Convertí imágenes WEBP a JPG.</p>
-</a>
+<!-- ================= PANEL ================= -->
+
+<div class="panel">
+
+<h2 id="titulo">
+JPG a PNG
+</h2>
+
+<p class="panel-description" id="descripcion">
+Convertí una imagen JPG a PNG directamente desde tu navegador.
+</p>
 
 
-<a class="tool" href="jpg-a-webp.html">
-<div class="icon">🔄</div>
-<h3>JPG a WEBP</h3>
-<p>Convertí JPG al formato WEBP.</p>
-</a>
+<input
+type="file"
+id="archivo"
+class="file-input"
+>
 
 
-<a class="tool" href="heic-a-jpg.html">
-<div class="icon">📱</div>
-<h3>HEIC a JPG</h3>
-<p>Convertí imágenes HEIC a JPG.</p>
-</a>
+<div id="opciones"></div>
 
 
-<a class="tool" href="comprimir-imagen.html">
-<div class="icon">🗜️</div>
-<h3>Comprimir imagen</h3>
-<p>Reducí el tamaño de tus imágenes.</p>
-</a>
+<button onclick="procesar()">
+Procesar archivo
+</button>
 
 
-<a class="tool" href="redimensionar-imagen.html">
-<div class="icon">📐</div>
-<h3>Redimensionar imagen</h3>
-<p>Cambiá el tamaño de una imagen fácilmente.</p>
+<div class="status" id="status">
+Esperando archivo...
+</div>
+
+
+<div class="preview" id="preview"></div>
+
+
+<a
+id="download"
+class="download">
+⬇ Descargar resultado
 </a>
 
 </div>
 
-</section>
 
+<div class="info">
 
-<section class="section">
+<h2>Convertir archivos online gratis</h2>
 
-<h2>📄 PDF</h2>
-
-<div class="tools">
-
-<a class="tool" href="jpg-a-pdf.html">
-<div class="icon">📄</div>
-<h3>JPG a PDF</h3>
-<p>Convertí imágenes JPG en documentos PDF.</p>
-</a>
-
-
-<a class="tool" href="png-a-pdf.html">
-<div class="icon">📄</div>
-<h3>PNG a PDF</h3>
-<p>Convertí imágenes PNG en PDF.</p>
-</a>
-
-
-<a class="tool" href="pdf-a-jpg.html">
-<div class="icon">📑</div>
-<h3>PDF a JPG</h3>
-<p>Convertí páginas de un PDF en imágenes JPG.</p>
-</a>
-
-
-<a class="tool" href="unir-pdf.html">
-<div class="icon">🔗</div>
-<h3>Unir PDF</h3>
-<p>Uní varios archivos PDF en uno.</p>
-</a>
-
-
-<a class="tool" href="dividir-pdf.html">
-<div class="icon">✂️</div>
-<h3>Dividir PDF</h3>
-<p>Extraé páginas de un archivo PDF.</p>
-</a>
+<p>
+Utilix permite convertir y modificar diferentes tipos de archivos
+directamente desde el navegador. No necesitás instalar programas.
+</p>
 
 </div>
-
-</section>
 
 </main>
 
@@ -265,6 +492,1146 @@ Tus archivos se procesan directamente en tu navegador cuando es posible.
 © 2026 Utilix — Herramientas online gratuitas
 </footer>
 
+
+<script>
+
+let herramienta="jpg-png";
+
+const configuraciones={
+
+"jpg-png":{
+titulo:"JPG a PNG",
+descripcion:"Convertí una imagen JPG a PNG directamente desde tu navegador.",
+accept:"image/jpeg",
+tipo:"imagen",
+extension:"png"
+},
+
+"png-jpg":{
+titulo:"PNG a JPG",
+descripcion:"Convertí una imagen PNG a JPG.",
+accept:"image/png",
+tipo:"imagen",
+extension:"jpg"
+},
+
+"jpg-webp":{
+titulo:"JPG a WEBP",
+descripcion:"Convertí una imagen JPG al formato WEBP.",
+accept:"image/jpeg",
+tipo:"imagen",
+extension:"webp"
+},
+
+"webp-jpg":{
+titulo:"WEBP a JPG",
+descripcion:"Convertí una imagen WEBP a JPG.",
+accept:"image/webp",
+tipo:"imagen",
+extension:"jpg"
+},
+
+"png-webp":{
+titulo:"PNG a WEBP",
+descripcion:"Convertí una imagen PNG a WEBP.",
+accept:"image/png",
+tipo:"imagen",
+extension:"webp"
+},
+
+"webp-png":{
+titulo:"WEBP a PNG",
+descripcion:"Convertí una imagen WEBP a PNG.",
+accept:"image/webp",
+tipo:"imagen",
+extension:"png"
+},
+
+"heic-jpg":{
+titulo:"HEIC a JPG",
+descripcion:"Convertí fotografías HEIC a JPG.",
+accept:".heic,image/heic,image/heif",
+tipo:"heic",
+extension:"jpg"
+},
+
+"comprimir":{
+titulo:"Comprimir imagen",
+descripcion:"Reducí el tamaño de una imagen ajustando su calidad.",
+accept:"image/*",
+tipo:"comprimir",
+extension:"jpg"
+},
+
+"redimensionar":{
+titulo:"Redimensionar imagen",
+descripcion:"Cambiá el ancho y alto de una imagen.",
+accept:"image/*",
+tipo:"redimensionar",
+extension:"png"
+},
+
+"recortar":{
+titulo:"Recortar imagen",
+descripcion:"Recortá una imagen utilizando coordenadas.",
+accept:"image/*",
+tipo:"recortar",
+extension:"png"
+},
+
+"jpg-pdf":{
+titulo:"JPG a PDF",
+descripcion:"Convertí una o varias imágenes JPG en un documento PDF.",
+accept:"image/jpeg",
+tipo:"imagen-pdf",
+extension:"pdf"
+},
+
+"png-pdf":{
+titulo:"PNG a PDF",
+descripcion:"Convertí una o varias imágenes PNG en un documento PDF.",
+accept:"image/png",
+tipo:"imagen-pdf",
+extension:"pdf"
+},
+
+"pdf-jpg":{
+titulo:"PDF a JPG",
+descripcion:"Convertí las páginas de un PDF en imágenes JPG.",
+accept:"application/pdf",
+tipo:"pdf-jpg",
+extension:"jpg"
+},
+
+"unir-pdf":{
+titulo:"Unir PDF",
+descripcion:"Combiná varios archivos PDF en un solo documento.",
+accept:"application/pdf",
+tipo:"unir-pdf",
+extension:"pdf"
+},
+
+"dividir-pdf":{
+titulo:"Dividir PDF",
+descripcion:"Extraé páginas específicas de un archivo PDF.",
+accept:"application/pdf",
+tipo:"dividir-pdf",
+extension:"pdf"
+},
+
+"rotar-pdf":{
+titulo:"Rotar PDF",
+descripcion:"Rotá las páginas de un PDF.",
+accept:"application/pdf",
+tipo:"rotar-pdf",
+extension:"pdf"
+}
+
+};
+
+
+function mostrarCategoria(categoria,boton){
+
+document
+.querySelectorAll(".category")
+.forEach(x=>x.classList.remove("active"));
+
+boton.classList.add("active");
+
+document
+.getElementById("categoria-imagenes")
+.classList.toggle("hidden",categoria!=="imagenes");
+
+document
+.getElementById("categoria-pdf")
+.classList.toggle("hidden",categoria!=="pdf");
+
+}
+
+
+function seleccionar(nombre,elemento){
+
+herramienta=nombre;
+
+document
+.querySelectorAll(".tool")
+.forEach(x=>x.classList.remove("active"));
+
+elemento.classList.add("active");
+
+const config=configuraciones[nombre];
+
+document.getElementById("titulo").textContent=config.titulo;
+
+document.getElementById("descripcion").textContent=config.descripcion;
+
+const archivo=document.getElementById("archivo");
+
+archivo.accept=config.accept;
+
+archivo.multiple=
+nombre==="jpg-pdf" ||
+nombre==="png-pdf" ||
+nombre==="unir-pdf";
+
+document.getElementById("preview").innerHTML="";
+
+document.getElementById("download").style.display="none";
+
+document.getElementById("status").textContent=
+"Esperando archivo...";
+
+crearOpciones();
+
+}
+
+
+function crearOpciones(){
+
+const opciones=document.getElementById("opciones");
+
+opciones.innerHTML="";
+
+if(herramienta==="png-jpg"){
+
+opciones.innerHTML=`
+
+<div class="controls">
+
+<label>Calidad JPG</label>
+
+<input
+type="range"
+id="calidad"
+min="10"
+max="100"
+value="90"
+oninput="valorCalidad.textContent=this.value">
+
+<p>
+Calidad: <span id="valorCalidad">90</span>%
+</p>
+
+</div>`;
+
+}
+
+
+if(
+herramienta==="jpg-webp" ||
+herramienta==="webp-jpg" ||
+herramienta==="png-webp"
+){
+
+opciones.innerHTML=`
+
+<div class="controls">
+
+<label>Calidad</label>
+
+<input
+type="range"
+id="calidad"
+min="10"
+max="100"
+value="90"
+oninput="valorCalidad.textContent=this.value">
+
+<p>
+Calidad: <span id="valorCalidad">90</span>%
+</p>
+
+</div>`;
+
+}
+
+
+if(herramienta==="comprimir"){
+
+opciones.innerHTML=`
+
+<div class="controls">
+
+<label>Calidad</label>
+
+<input
+type="range"
+id="calidad"
+min="10"
+max="100"
+value="70"
+oninput="valorCalidad.textContent=this.value">
+
+<p>
+Calidad: <span id="valorCalidad">70</span>%
+</p>
+
+</div>`;
+
+}
+
+
+if(herramienta==="redimensionar"){
+
+opciones.innerHTML=`
+
+<div class="controls">
+
+<div class="row">
+
+<div>
+<label>Ancho (px)</label>
+<input type="number" id="ancho" placeholder="Ej: 1200">
+</div>
+
+<div>
+<label>Alto (px)</label>
+<input type="number" id="alto" placeholder="Ej: 800">
+</div>
+
+</div>
+
+<label>
+<input type="checkbox" id="proporcion" checked>
+ Mantener proporción
+</label>
+
+</div>`;
+
+}
+
+
+if(herramienta==="recortar"){
+
+opciones.innerHTML=`
+
+<div class="controls">
+
+<div class="row">
+
+<div>
+<label>X</label>
+<input type="number" id="cropX" value="0">
+</div>
+
+<div>
+<label>Y</label>
+<input type="number" id="cropY" value="0">
+</div>
+
+<div>
+<label>Ancho</label>
+<input type="number" id="cropW" placeholder="Ancho">
+</div>
+
+<div>
+<label>Alto</label>
+<input type="number" id="cropH" placeholder="Alto">
+</div>
+
+</div>
+
+</div>`;
+
+}
+
+
+if(herramienta==="dividir-pdf"){
+
+opciones.innerHTML=`
+
+<div class="controls">
+
+<label>Páginas</label>
+
+<input
+type="text"
+id="paginas"
+placeholder="Ejemplo: 1,3,5-7">
+
+</div>`;
+
+}
+
+
+if(herramienta==="rotar-pdf"){
+
+opciones.innerHTML=`
+
+<div class="controls">
+
+<label>Rotación</label>
+
+<select id="rotacion">
+
+<option value="90">90°</option>
+<option value="180">180°</option>
+<option value="270">270°</option>
+
+</select>
+
+</div>`;
+
+}
+
+}
+
+
+async function procesar(){
+
+const archivo=
+document.getElementById("archivo").files;
+
+const status=
+document.getElementById("status");
+
+const preview=
+document.getElementById("preview");
+
+const download=
+document.getElementById("download");
+
+
+if(!archivo.length){
+
+status.textContent=
+"Seleccioná uno o más archivos.";
+
+return;
+
+}
+
+preview.innerHTML="";
+
+download.style.display="none";
+
+status.textContent=
+"Procesando...";
+
+
+try{
+
+switch(herramienta){
+
+case"jpg-png":
+case"png-jpg":
+case"jpg-webp":
+case"webp-jpg":
+case"png-webp":
+case"webp-png":
+case"comprimir":
+await convertirImagen(archivo[0]);
+break;
+
+case"redimensionar":
+await redimensionar(archivo[0]);
+break;
+
+case"recortar":
+await recortar(archivo[0]);
+break;
+
+case"heic-jpg":
+await convertirHEIC(archivo[0]);
+break;
+
+case"jpg-pdf":
+case"png-pdf":
+await imagenesAPDF(archivo);
+break;
+
+case"pdf-jpg":
+await pdfAJPG(archivo[0]);
+break;
+
+case"unir-pdf":
+await unirPDF(archivo);
+break;
+
+case"dividir-pdf":
+await dividirPDF(archivo[0]);
+break;
+
+case"rotar-pdf":
+await rotarPDF(archivo[0]);
+break;
+
+}
+
+status.textContent=
+"Proceso terminado correctamente.";
+
+}catch(error){
+
+console.error(error);
+
+status.textContent=
+"Se produjo un error al procesar el archivo.";
+
+}
+
+}
+
+
+function cargarImagen(file){
+
+return new Promise((resolve,reject)=>{
+
+const reader=new FileReader();
+
+reader.onload=e=>{
+
+const img=new Image();
+
+img.onload=()=>resolve(img);
+
+img.onerror=reject;
+
+img.src=e.target.result;
+
+};
+
+reader.onerror=reject;
+
+reader.readAsDataURL(file);
+
+});
+
+}
+
+
+async function convertirImagen(file){
+
+const img=
+await cargarImagen(file);
+
+const canvas=
+document.createElement("canvas");
+
+canvas.width=img.width;
+canvas.height=img.height;
+
+const ctx=
+canvas.getContext("2d");
+
+if(
+herramienta==="png-jpg" ||
+herramienta==="webp-jpg" ||
+herramienta==="comprimir"
+){
+
+ctx.fillStyle="#ffffff";
+
+ctx.fillRect(
+0,
+0,
+canvas.width,
+canvas.height
+);
+
+}
+
+ctx.drawImage(img,0,0);
+
+let mime="image/png";
+
+if(
+herramienta==="png-jpg" ||
+herramienta==="webp-jpg" ||
+herramienta==="comprimir"
+){
+
+mime="image/jpeg";
+
+}
+
+if(
+herramienta==="jpg-webp" ||
+herramienta==="png-webp"
+){
+
+mime="image/webp";
+
+}
+
+let calidad=1;
+
+const slider=document.getElementById("calidad");
+
+if(slider){
+calidad=parseInt(slider.value)/100;
+}
+
+const resultado=
+canvas.toDataURL(mime,calidad);
+
+mostrarImagen(resultado);
+
+const extension=
+mime==="image/png"?"png":
+mime==="image/webp"?"webp":"jpg";
+
+descargar(
+resultado,
+"utilix-convertido."+extension
+);
+
+}
+
+
+function mostrarImagen(src){
+
+document.getElementById("preview").innerHTML=
+`<img src="${src}" alt="Resultado">`;
+
+}
+
+
+function descargar(data,nombre){
+
+const link=
+document.getElementById("download");
+
+link.href=data;
+
+link.download=nombre;
+
+link.textContent=
+"⬇ Descargar "+nombre;
+
+link.style.display="block";
+
+}
+
+
+async function convertirHEIC(file){
+
+if(typeof heic2any==="undefined"){
+
+throw new Error("HEIC no disponible");
+
+}
+
+const resultado=
+await heic2any({
+blob:file,
+toType:"image/jpeg",
+quality:.9
+});
+
+const blob=
+Array.isArray(resultado)
+?resultado[0]
+:resultado;
+
+const url=
+URL.createObjectURL(blob);
+
+mostrarImagen(url);
+
+descargar(
+url,
+"utilix-convertido.jpg"
+);
+
+}
+
+
+async function redimensionar(file){
+
+const img=
+await cargarImagen(file);
+
+let ancho=
+parseInt(document.getElementById("ancho").value);
+
+let alto=
+parseInt(document.getElementById("alto").value);
+
+if(!ancho && !alto){
+
+ancho=img.width;
+alto=img.height;
+
+}
+
+if(
+document.getElementById("proporcion").checked
+){
+
+if(ancho && !alto){
+
+alto=
+Math.round(
+img.height*(ancho/img.width)
+);
+
+}
+
+else if(alto && !ancho){
+
+ancho=
+Math.round(
+img.width*(alto/img.height)
+);
+
+}
+
+}
+
+const canvas=
+document.createElement("canvas");
+
+canvas.width=ancho;
+canvas.height=alto;
+
+canvas
+.getContext("2d")
+.drawImage(
+img,
+0,
+0,
+ancho,
+alto
+);
+
+const resultado=
+canvas.toDataURL("image/png");
+
+mostrarImagen(resultado);
+
+descargar(
+resultado,
+"utilix-redimensionada.png"
+);
+
+}
+
+
+async function recortar(file){
+
+const img=
+await cargarImagen(file);
+
+let x=
+parseInt(document.getElementById("cropX").value)||0;
+
+let y=
+parseInt(document.getElementById("cropY").value)||0;
+
+let w=
+parseInt(document.getElementById("cropW").value);
+
+let h=
+parseInt(document.getElementById("cropH").value);
+
+if(!w)w=img.width-x;
+
+if(!h)h=img.height-y;
+
+const canvas=
+document.createElement("canvas");
+
+canvas.width=w;
+canvas.height=h;
+
+canvas
+.getContext("2d")
+.drawImage(
+img,
+x,
+y,
+w,
+h,
+0,
+0,
+w,
+h
+);
+
+const resultado=
+canvas.toDataURL("image/png");
+
+mostrarImagen(resultado);
+
+descargar(
+resultado,
+"utilix-recortada.png"
+);
+
+}
+
+
+async function imagenesAPDF(files){
+
+const {PDFDocument}=PDFLib;
+
+const pdfDoc=
+await PDFDocument.create();
+
+for(const file of files){
+
+const bytes=
+await file.arrayBuffer();
+
+let image;
+
+if(file.type==="image/jpeg"){
+
+image=
+await pdfDoc.embedJpg(bytes);
+
+}else{
+
+image=
+await pdfDoc.embedPng(bytes);
+
+}
+
+const page=
+pdfDoc.addPage([
+image.width,
+image.height
+]);
+
+page.drawImage(image,{
+x:0,
+y:0,
+width:image.width,
+height:image.height
+});
+
+}
+
+const pdfBytes=
+await pdfDoc.save();
+
+const blob=
+new Blob(
+[pdfBytes],
+{type:"application/pdf"}
+);
+
+const url=
+URL.createObjectURL(blob);
+
+descargar(
+url,
+"utilix-documento.pdf"
+);
+
+}
+
+
+async function pdfAJPG(file){
+
+const arrayBuffer=
+await file.arrayBuffer();
+
+const pdf=
+await pdfjsLib.getDocument({
+data:arrayBuffer
+}).promise;
+
+const zipImages=[];
+
+for(let i=1;i<=pdf.numPages;i++){
+
+const page=
+await pdf.getPage(i);
+
+const viewport=
+page.getViewport({
+scale:1.5
+});
+
+const canvas=
+document.createElement("canvas");
+
+canvas.width=
+viewport.width;
+
+canvas.height=
+viewport.height;
+
+const ctx=
+canvas.getContext("2d");
+
+await page.render({
+canvasContext:ctx,
+viewport:viewport
+}).promise;
+
+const data=
+canvas.toDataURL(
+"image/jpeg",
+.90
+);
+
+zipImages.push(data);
+
+if(i===1){
+
+mostrarImagen(data);
+
+}
+
+}
+
+if(zipImages.length===1){
+
+descargar(
+zipImages[0],
+"utilix-pagina-1.jpg"
+);
+
+}else{
+
+let html="";
+
+zipImages.forEach((img,i)=>{
+
+html+=
+`<p style="margin-top:15px">
+Página ${i+1}
+</p>
+<img src="${img}"
+style="max-width:100%;margin:10px">
+
+<a href="${img}"
+download="pagina-${i+1}.jpg"
+style="display:block;margin:10px;padding:10px;background:#16a34a;color:white;text-decoration:none;border-radius:6px">
+Descargar página ${i+1}
+</a>`;
+
+});
+
+document.getElementById("preview").innerHTML=html;
+
+}
+
+}
+
+
+async function unirPDF(files){
+
+const {PDFDocument}=PDFLib;
+
+const nuevo=
+await PDFDocument.create();
+
+for(const file of files){
+
+const bytes=
+await file.arrayBuffer();
+
+const pdf=
+await PDFDocument.load(bytes);
+
+const pages=
+await nuevo.copyPages(
+pdf,
+pdf.getPageIndices()
+);
+
+pages.forEach(page=>{
+nuevo.addPage(page);
+});
+
+}
+
+const bytes=
+await nuevo.save();
+
+const blob=
+new Blob(
+[bytes],
+{type:"application/pdf"}
+);
+
+const url=
+URL.createObjectURL(blob);
+
+descargar(
+url,
+"utilix-pdf-unido.pdf"
+);
+
+}
+
+
+function obtenerPaginas(texto,total){
+
+const resultado=
+new Set();
+
+const partes=
+texto.split(",");
+
+for(const parte of partes){
+
+if(parte.includes("-")){
+
+const [inicio,fin]=
+parte.split("-").map(Number);
+
+for(
+let i=inicio;
+i<=fin && i<=total;
+i++
+){
+
+if(i>=1)
+resultado.add(i-1);
+
+}
+
+}else{
+
+const numero=
+parseInt(parte);
+
+if(numero>=1 && numero<=total)
+resultado.add(numero-1);
+
+}
+
+}
+
+return [...resultado].sort(
+(a,b)=>a-b
+);
+
+}
+
+
+async function dividirPDF(file){
+
+const {PDFDocument}=PDFLib;
+
+const bytes=
+await file.arrayBuffer();
+
+const original=
+await PDFDocument.load(bytes);
+
+const texto=
+document.getElementById("paginas").value.trim();
+
+if(!texto){
+
+throw new Error("Faltan páginas");
+
+}
+
+const indices=
+obtenerPaginas(
+texto,
+original.getPageCount()
+);
+
+if(!indices.length){
+
+throw new Error("Páginas inválidas");
+
+}
+
+const nuevo=
+await PDFDocument.create();
+
+const pages=
+await nuevo.copyPages(
+original,
+indices
+);
+
+pages.forEach(page=>{
+nuevo.addPage(page);
+});
+
+const resultado=
+await nuevo.save();
+
+const blob=
+new Blob(
+[resultado],
+{type:"application/pdf"}
+);
+
+const url=
+URL.createObjectURL(blob);
+
+descargar(
+url,
+"utilix-paginas-extraidas.pdf"
+);
+
+}
+
+
+async function rotarPDF(file){
+
+const {PDFDocument,degrees}=PDFLib;
+
+const bytes=
+await file.arrayBuffer();
+
+const pdf=
+await PDFDocument.load(bytes);
+
+const rotacion=
+parseInt(
+document.getElementById("rotacion").value
+);
+
+pdf.getPages().forEach(page=>{
+
+const actual=
+page.getRotation().angle;
+
+page.setRotation(
+degrees(actual+rotacion)
+);
+
+});
+
+const resultado=
+await pdf.save();
+
+const blob=
+new Blob(
+[resultado],
+{type:"application/pdf"}
+);
+
+const url=
+URL.createObjectURL(blob);
+
+descargar(
+url,
+"utilix-pdf-rotado.pdf"
+);
+
+}
+
+
+crearOpciones();
+
+</script>
+
+<!-- PDF.JS MODULE -->
+<script type="module">
+
+import * as pdfjsLibModule from
+"https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.min.mjs";
+
+pdfjsLibModule.GlobalWorkerOptions.workerSrc=
+"https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.worker.min.mjs";
+
+window.pdfjsLib=
+pdfjsLibModule;
+
+</script>
+
 </body>
 </html>
-```
