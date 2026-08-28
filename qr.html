@@ -1,17 +1,23 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>Generador de Código QR Online | Utilix</title>
+<title>Generador QR Online Gratis | Utilix</title>
 
-<meta name="description" content="Generador de códigos QR online gratis. Creá códigos QR para enlaces, textos y otros contenidos rápidamente.">
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<meta name="description"
+content="Generador QR online gratis. Creá códigos QR para URLs, WiFi, WhatsApp, email, teléfono, Bitcoin y más.">
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
 
 body{
 font-family:Arial,sans-serif;
@@ -26,32 +32,45 @@ padding:22px 20px;
 }
 
 .header-content{
-max-width:900px;
+max-width:1000px;
 margin:auto;
 display:flex;
 justify-content:space-between;
 align-items:center;
 }
 
-.logo{font-size:26px;font-weight:bold}
-.logo span{color:#4f8cff}
-nav a{color:#ddd;text-decoration:none}
-
-.container{
-max-width:700px;
-margin:50px auto;
-padding:0 20px;
+.logo{
+font-size:26px;
+font-weight:bold;
 }
 
-h1{font-size:36px;margin-bottom:15px}
+.logo span{
+color:#4f8cff;
+}
+
+nav a{
+color:#ddd;
+text-decoration:none;
+}
+
+.container{
+max-width:800px;
+margin:45px auto;
+padding:0 20px 60px;
+}
+
+h1{
+font-size:38px;
+margin-bottom:12px;
+}
 
 .description{
 color:#667085;
-margin-bottom:30px;
 line-height:1.6;
+margin-bottom:30px;
 }
 
-.calculator{
+.panel{
 background:white;
 padding:30px;
 border-radius:16px;
@@ -59,100 +78,569 @@ border:1px solid #e6e8ee;
 box-shadow:0 5px 20px rgba(0,0,0,.05);
 }
 
-textarea{
+select,input,textarea{
 width:100%;
-height:130px;
-padding:14px;
+padding:13px;
 border:1px solid #d9dde5;
 border-radius:8px;
 font-size:16px;
+margin-bottom:15px;
+}
+
+textarea{
+min-height:100px;
 resize:vertical;
+}
+
+label{
+display:block;
+font-weight:bold;
+margin-bottom:7px;
 }
 
 button{
 width:100%;
 padding:15px;
-margin-top:20px;
-border:none;
+border:0;
 border-radius:8px;
 background:#4f8cff;
 color:white;
-font-size:17px;
+font-size:16px;
 cursor:pointer;
 }
 
+button:hover{
+background:#3978e8;
+}
+
 #qrcode{
-margin:30px auto 0;
 display:flex;
 justify-content:center;
+margin-top:30px;
+}
+
+.download{
+display:none;
+margin-top:20px;
+padding:15px;
+background:#16a34a;
+color:white;
+text-decoration:none;
+text-align:center;
+border-radius:8px;
+font-weight:bold;
 }
 
 footer{
-margin-top:60px;
 background:#111827;
 color:#aaa;
 text-align:center;
 padding:30px;
 }
+
 </style>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+
 </head>
 
 <body>
 
 <header>
+
 <div class="header-content">
-<div class="logo">Util<span>ix</span></div>
-<nav><a href="index.html">Inicio</a></nav>
+
+<div class="logo">
+Util<span>ix</span>
 </div>
+
+<nav>
+<a href="index.html">Inicio</a>
+</nav>
+
+</div>
+
 </header>
+
 
 <main class="container">
 
 <h1>Generador de códigos QR</h1>
 
 <p class="description">
-Creá un código QR gratis para un enlace, texto o cualquier información que quieras compartir.
+Creá códigos QR para enlaces, WiFi, WhatsApp, email, teléfonos,
+ubicaciones, contactos y criptomonedas.
 </p>
 
-<div class="calculator">
 
-<textarea id="texto" placeholder="Pegá aquí un enlace o escribí un texto..."></textarea>
+<div class="panel">
 
-<button onclick="generarQR()">Generar código QR</button>
+<label>Tipo de QR</label>
+
+<select id="tipo" onchange="crearFormulario()">
+
+<option value="url">🌐 URL</option>
+<option value="texto">📝 Texto</option>
+<option value="wifi">📶 WiFi</option>
+<option value="whatsapp">💬 WhatsApp</option>
+<option value="email">📧 Email</option>
+<option value="telefono">📞 Teléfono</option>
+<option value="sms">📱 SMS</option>
+<option value="ubicacion">📍 Ubicación</option>
+<option value="contacto">👤 Contacto</option>
+<option value="evento">📅 Evento</option>
+<option value="bitcoin">₿ Bitcoin</option>
+<option value="ethereum">Ξ Ethereum</option>
+
+</select>
+
+
+<div id="formulario"></div>
+
+
+<button onclick="generar()">
+Generar código QR
+</button>
+
 
 <div id="qrcode"></div>
+
+
+<a id="download"
+class="download">
+⬇ Descargar QR
+</a>
 
 </div>
 
 </main>
 
+
 <footer>
 © 2026 Utilix — Herramientas online gratuitas
 </footer>
 
+
 <script>
 
-function generarQR(){
+function campo(label,id,placeholder="",type="text"){
 
-const texto=document.getElementById("texto").value.trim();
-const contenedor=document.getElementById("qrcode");
+return `
+<label>${label}</label>
+<input
+id="${id}"
+type="${type}"
+placeholder="${placeholder}">
+`;
+
+}
+
+
+function crearFormulario(){
+
+const tipo=
+document.getElementById("tipo").value;
+
+let html="";
+
+switch(tipo){
+
+case"url":
+
+html=
+campo(
+"URL",
+"url",
+"https://ejemplo.com"
+);
+
+break;
+
+
+case"texto":
+
+html=`
+<label>Texto</label>
+<textarea id="texto"
+placeholder="Escribí el texto"></textarea>
+`;
+
+break;
+
+
+case"wifi":
+
+html=
+campo("Nombre WiFi","ssid","MiWiFi")+
+campo("Contraseña","password","Contraseña","password")+
+`
+<label>Seguridad</label>
+<select id="seguridad">
+<option value="WPA">WPA/WPA2</option>
+<option value="WEP">WEP</option>
+<option value="nopass">Sin contraseña</option>
+</select>
+`;
+
+break;
+
+
+case"whatsapp":
+
+html=
+campo(
+"Número con código de país",
+"numero",
+"5491122334455"
+)+
+`
+<label>Mensaje</label>
+<textarea id="mensaje"></textarea>
+`;
+
+break;
+
+
+case"email":
+
+html=
+campo("Email","email","correo@ejemplo.com","email")+
+campo("Asunto","asunto")+
+`
+<label>Mensaje</label>
+<textarea id="mensaje"></textarea>
+`;
+
+break;
+
+
+case"telefono":
+
+html=
+campo(
+"Número de teléfono",
+"numero",
+"+549..."
+);
+
+break;
+
+
+case"sms":
+
+html=
+campo("Número","numero","+549...")+
+campo("Mensaje","mensaje");
+
+break;
+
+
+case"ubicacion":
+
+html=
+campo("Latitud","lat","-27.78")+
+campo("Longitud","lon","-64.26");
+
+break;
+
+
+case"contacto":
+
+html=
+campo("Nombre","nombre")+
+campo("Teléfono","telefono")+
+campo("Email","email")+
+campo("Empresa","empresa")+
+campo("Sitio web","web");
+
+break;
+
+
+case"evento":
+
+html=
+campo("Título","titulo")+
+campo("Lugar","lugar")+
+campo("Fecha inicio","inicio","20260828T120000")+
+campo("Fecha fin","fin","20260828T130000");
+
+break;
+
+
+case"bitcoin":
+
+html=
+campo(
+"Dirección Bitcoin",
+"direccion"
+)+
+campo(
+"Monto BTC (opcional)",
+"monto"
+);
+
+break;
+
+
+case"ethereum":
+
+html=
+campo(
+"Dirección Ethereum",
+"direccion"
+)+
+campo(
+"Monto ETH (opcional)",
+"monto"
+);
+
+break;
+
+}
+
+document.getElementById("formulario").innerHTML=
+html;
+
+}
+
+
+function generar(){
+
+const tipo=
+document.getElementById("tipo").value;
+
+let data="";
+
+
+if(tipo==="url"){
+
+data=
+document.getElementById("url").value;
+
+}
+
+
+if(tipo==="texto"){
+
+data=
+document.getElementById("texto").value;
+
+}
+
+
+if(tipo==="wifi"){
+
+const ssid=
+document.getElementById("ssid").value;
+
+const pass=
+document.getElementById("password").value;
+
+const security=
+document.getElementById("seguridad").value;
+
+data=
+`WIFI:T:${security};S:${escapeQR(ssid)};P:${escapeQR(pass)};;`;
+
+}
+
+
+if(tipo==="whatsapp"){
+
+const numero=
+document.getElementById("numero").value;
+
+const mensaje=
+document.getElementById("mensaje").value;
+
+data=
+"https://wa.me/"+
+numero+
+"?text="+
+encodeURIComponent(mensaje);
+
+}
+
+
+if(tipo==="email"){
+
+const email=
+document.getElementById("email").value;
+
+const asunto=
+document.getElementById("asunto").value;
+
+const mensaje=
+document.getElementById("mensaje").value;
+
+data=
+`mailto:${email}?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(mensaje)}`;
+
+}
+
+
+if(tipo==="telefono"){
+
+data=
+"tel:"+
+document.getElementById("numero").value;
+
+}
+
+
+if(tipo==="sms"){
+
+data=
+"SMSTO:"+
+document.getElementById("numero").value+
+":"+
+document.getElementById("mensaje").value;
+
+}
+
+
+if(tipo==="ubicacion"){
+
+data=
+"geo:"+
+document.getElementById("lat").value+
+","+
+document.getElementById("lon").value;
+
+}
+
+
+if(tipo==="contacto"){
+
+data=
+`BEGIN:VCARD
+VERSION:3.0
+FN:${document.getElementById("nombre").value}
+ORG:${document.getElementById("empresa").value}
+TEL:${document.getElementById("telefono").value}
+EMAIL:${document.getElementById("email").value}
+URL:${document.getElementById("web").value}
+END:VCARD`;
+
+}
+
+
+if(tipo==="evento"){
+
+data=
+`BEGIN:VEVENT
+SUMMARY:${document.getElementById("titulo").value}
+LOCATION:${document.getElementById("lugar").value}
+DTSTART:${document.getElementById("inicio").value}
+DTEND:${document.getElementById("fin").value}
+END:VEVENT`;
+
+}
+
+
+if(tipo==="bitcoin"){
+
+const direccion=
+document.getElementById("direccion").value;
+
+const monto=
+document.getElementById("monto").value;
+
+data=
+"bitcoin:"+direccion;
+
+if(monto){
+
+data+="?amount="+monto;
+
+}
+
+}
+
+
+if(tipo==="ethereum"){
+
+const direccion=
+document.getElementById("direccion").value;
+
+const monto=
+document.getElementById("monto").value;
+
+data=
+"ethereum:"+direccion;
+
+if(monto){
+
+data+="?value="+monto;
+
+}
+
+}
+
+
+if(!data.trim()){
+
+alert("Completá los datos.");
+
+return;
+
+}
+
+
+const contenedor=
+document.getElementById("qrcode");
 
 contenedor.innerHTML="";
 
-if(!texto){
-alert("Ingresá un texto o enlace.");
-return;
+new QRCode(
+contenedor,
+{
+text:data,
+width:300,
+height:300,
+correctLevel:QRCode.CorrectLevel.H
+}
+);
+
+
+setTimeout(()=>{
+
+const canvas=
+contenedor.querySelector("canvas");
+
+if(canvas){
+
+const link=
+document.getElementById("download");
+
+link.href=
+canvas.toDataURL("image/png");
+
+link.download=
+"utilix-qr.png";
+
+link.style.display=
+"block";
+
 }
 
-new QRCode(contenedor,{
-text:texto,
-width:220,
-height:220
-});
+},500);
 
 }
+
+
+function escapeQR(text){
+
+return String(text)
+.replace(/([\\;,:"])/g,"\\$1");
+
+}
+
+
+crearFormulario();
 
 </script>
 
 </body>
 </html>
+```
