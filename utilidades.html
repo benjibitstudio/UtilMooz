@@ -1,0 +1,1051 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Utilidades online gratis | Utilix</title>
+
+<meta name="description"
+content="Generador de contraseñas, UUID, Base64, hashes, timestamps, cronómetro, temporizador y más herramientas online gratis.">
+
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+body{
+font-family:Arial,sans-serif;
+background:#f5f7fb;
+color:#172033;
+}
+
+header{
+background:#111827;
+color:white;
+padding:22px 20px;
+}
+
+.header-content{
+max-width:1000px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+font-size:26px;
+font-weight:bold;
+}
+
+.logo span{
+color:#4f8cff;
+}
+
+nav a{
+color:#ddd;
+text-decoration:none;
+}
+
+.container{
+max-width:1000px;
+margin:45px auto;
+padding:0 20px 60px;
+}
+
+h1{
+font-size:38px;
+margin-bottom:12px;
+}
+
+.description{
+color:#667085;
+line-height:1.6;
+margin-bottom:30px;
+}
+
+.tools{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+gap:12px;
+margin-bottom:30px;
+}
+
+.tool{
+background:white;
+border:1px solid #e6e8ee;
+border-radius:10px;
+padding:16px;
+cursor:pointer;
+}
+
+.tool:hover{
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.tool.active{
+border:2px solid #4f8cff;
+}
+
+.tool h3{
+font-size:16px;
+}
+
+.tool p{
+font-size:13px;
+color:#667085;
+margin-top:5px;
+}
+
+.panel{
+background:white;
+padding:30px;
+border-radius:16px;
+border:1px solid #e6e8ee;
+box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+
+input,textarea,select{
+width:100%;
+padding:13px;
+border:1px solid #d9dde5;
+border-radius:8px;
+font-size:16px;
+margin-bottom:15px;
+}
+
+textarea{
+min-height:120px;
+resize:vertical;
+}
+
+label{
+display:block;
+font-weight:bold;
+margin-bottom:7px;
+}
+
+button{
+width:100%;
+padding:15px;
+border:none;
+border-radius:8px;
+background:#4f8cff;
+color:white;
+font-size:16px;
+cursor:pointer;
+margin-top:5px;
+}
+
+button:hover{
+background:#3978e8;
+}
+
+.result{
+margin-top:20px;
+padding:20px;
+background:#f5f7fb;
+border-radius:10px;
+line-height:1.7;
+word-break:break-word;
+}
+
+.timer{
+font-size:50px;
+text-align:center;
+font-weight:bold;
+margin:25px 0;
+}
+
+.row{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+}
+
+footer{
+background:#111827;
+color:#aaa;
+text-align:center;
+padding:30px;
+}
+
+@media(max-width:600px){
+
+h1{
+font-size:30px;
+}
+
+.panel{
+padding:20px;
+}
+
+.row{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="header-content">
+
+<div class="logo">
+Util<span>ix</span>
+</div>
+
+<nav>
+<a href="index.html">Inicio</a>
+</nav>
+
+</div>
+
+</header>
+
+
+<main class="container">
+
+<h1>Utilidades rápidas</h1>
+
+<p class="description">
+Herramientas pequeñas y prácticas para resolver tareas rápidamente.
+</p>
+
+
+<div class="tools">
+
+<div class="tool active" onclick="seleccionar('password',this)">
+<h3>🔐 Contraseña</h3>
+<p>Generar contraseña segura</p>
+</div>
+
+<div class="tool" onclick="seleccionar('uuid',this)">
+<h3>🆔 UUID</h3>
+<p>Generar UUID</p>
+</div>
+
+<div class="tool" onclick="seleccionar('pin',this)">
+<h3>🔢 PIN</h3>
+<p>Generar PIN</p>
+</div>
+
+<div class="tool" onclick="seleccionar('random',this)">
+<h3>🎲 Número aleatorio</h3>
+<p>Generar números</p>
+</div>
+
+<div class="tool" onclick="seleccionar('base64e',this)">
+<h3>🔤 Base64 Encode</h3>
+<p>Codificar texto</p>
+</div>
+
+<div class="tool" onclick="seleccionar('base64d',this)">
+<h3>🔤 Base64 Decode</h3>
+<p>Decodificar texto</p>
+</div>
+
+<div class="tool" onclick="seleccionar('urlencode',this)">
+<h3>🔗 URL Encode</h3>
+<p>Codificar URL</p>
+</div>
+
+<div class="tool" onclick="seleccionar('urldecode',this)">
+<h3>🔗 URL Decode</h3>
+<p>Decodificar URL</p>
+</div>
+
+<div class="tool" onclick="seleccionar('sha256',this)">
+<h3>🔐 SHA-256</h3>
+<p>Generar hash</p>
+</div>
+
+<div class="tool" onclick="seleccionar('timestamp',this)">
+<h3>⏱️ Unix Timestamp</h3>
+<p>Timestamp actual</p>
+</div>
+
+<div class="tool" onclick="seleccionar('fecha',this)">
+<h3>📅 Timestamp → Fecha</h3>
+<p>Convertir timestamp</p>
+</div>
+
+<div class="tool" onclick="seleccionar('cronometro',this)">
+<h3>⏱️ Cronómetro</h3>
+<p>Medir tiempo</p>
+</div>
+
+<div class="tool" onclick="seleccionar('temporizador',this)">
+<h3>⏰ Temporizador</h3>
+<p>Cuenta regresiva</p>
+</div>
+
+<div class="tool" onclick="seleccionar('pomodoro',this)">
+<h3>🍅 Pomodoro</h3>
+<p>Temporizador Pomodoro</p>
+</div>
+
+<div class="tool" onclick="seleccionar('diadelano',this)">
+<h3>📅 Día del año</h3>
+<p>Consultar día</p>
+</div>
+
+<div class="tool" onclick="seleccionar('semana',this)">
+<h3>📆 Número de semana</h3>
+<p>Semana del año</p>
+</div>
+
+</div>
+
+
+<div class="panel">
+
+<h2 id="titulo">Generador de contraseña</h2>
+
+<p id="descripcion">
+Generá una contraseña aleatoria segura.
+</p>
+
+<div id="formulario"></div>
+
+<div id="resultado" class="result">
+Esperando...
+</div>
+
+</div>
+
+</main>
+
+
+<footer>
+© 2026 Utilix — Herramientas online gratuitas
+</footer>
+
+
+<script>
+
+let herramienta="password";
+
+const configs={
+
+password:{
+titulo:"🔐 Generador de contraseñas",
+descripcion:"Generá una contraseña aleatoria.",
+form:`
+<label>Longitud</label>
+<input type="number" id="longitud" value="16" min="4" max="100">
+
+<label>
+<input type="checkbox" id="mayus" checked>
+ Mayúsculas
+</label>
+
+<label>
+<input type="checkbox" id="minus" checked>
+ Minúsculas
+</label>
+
+<label>
+<input type="checkbox" id="numeros" checked>
+ Números
+</label>
+
+<label>
+<input type="checkbox" id="simbolos" checked>
+ Símbolos
+</label>
+
+<button onclick="password()">Generar</button>`
+},
+
+uuid:{
+titulo:"🆔 Generador UUID",
+descripcion:"Generá un UUID v4.",
+form:`<button onclick="uuid()">Generar UUID</button>`
+},
+
+pin:{
+titulo:"🔢 Generador de PIN",
+descripcion:"Generá un PIN aleatorio.",
+form:`
+<label>Longitud</label>
+<input id="pinLength" type="number" value="6" min="4" max="20">
+<button onclick="pin()">Generar PIN</button>`
+},
+
+random:{
+titulo:"🎲 Número aleatorio",
+descripcion:"Generá un número aleatorio dentro de un rango.",
+form:`
+<input id="min" type="number" value="1" placeholder="Mínimo">
+<input id="max" type="number" value="100" placeholder="Máximo">
+<button onclick="random()">Generar</button>`
+},
+
+base64e:{
+titulo:"Base64 Encoder",
+descripcion:"Codificá texto en Base64.",
+form:`
+<textarea id="texto" placeholder="Texto"></textarea>
+<button onclick="base64Encode()">Codificar</button>`
+},
+
+base64d:{
+titulo:"Base64 Decoder",
+descripcion:"Decodificá Base64.",
+form:`
+<textarea id="texto" placeholder="Base64"></textarea>
+<button onclick="base64Decode()">Decodificar</button>`
+},
+
+urlencode:{
+titulo:"URL Encoder",
+descripcion:"Codificá texto para una URL.",
+form:`
+<textarea id="texto"></textarea>
+<button onclick="urlEncode()">Codificar</button>`
+},
+
+urldecode:{
+titulo:"URL Decoder",
+descripcion:"Decodificá texto de una URL.",
+form:`
+<textarea id="texto"></textarea>
+<button onclick="urlDecode()">Decodificar</button>`
+},
+
+sha256:{
+titulo:"SHA-256",
+descripcion:"Generá un hash SHA-256.",
+form:`
+<textarea id="texto"></textarea>
+<button onclick="sha256()">Generar hash</button>`
+},
+
+timestamp:{
+titulo:"Unix Timestamp",
+descripcion:"Obtené el timestamp Unix actual.",
+form:`
+<button onclick="timestamp()">Obtener timestamp</button>`
+},
+
+fecha:{
+titulo:"Timestamp → Fecha",
+descripcion:"Convertí un timestamp Unix.",
+form:`
+<input id="ts" type="number" placeholder="Ejemplo: 1756400000">
+<button onclick="timestampFecha()">Convertir</button>`
+},
+
+cronometro:{
+titulo:"⏱️ Cronómetro",
+descripcion:"Cronómetro online.",
+form:`
+<div class="timer" id="timer">00:00:00</div>
+
+<div class="row">
+
+<button onclick="iniciarCronometro()">Iniciar</button>
+
+<button onclick="detenerCronometro()">Detener</button>
+
+</div>
+
+<button onclick="resetCronometro()">Reiniciar</button>`
+},
+
+temporizador:{
+titulo:"⏰ Temporizador",
+descripcion:"Cuenta regresiva.",
+form:`
+<input id="minutos" type="number" value="5" min="0">
+<input id="segundos" type="number" value="0" min="0" max="59">
+
+<div class="timer" id="timer">05:00</div>
+
+<button onclick="iniciarTemporizador()">Iniciar</button>
+<button onclick="detenerTemporizador()">Detener</button>
+<button onclick="resetTemporizador()">Reiniciar</button>`
+},
+
+pomodoro:{
+titulo:"🍅 Pomodoro",
+descripcion:"Temporizador Pomodoro de 25 minutos.",
+form:`
+<div class="timer" id="timer">25:00</div>
+
+<button onclick="iniciarPomodoro()">Iniciar</button>
+<button onclick="detenerPomodoro()">Detener</button>
+<button onclick="resetPomodoro()">Reiniciar</button>`
+},
+
+diadelano:{
+titulo:"📅 Día del año",
+descripcion:"Consultá qué día del año es.",
+form:`<button onclick="diaDelAno()">Consultar</button>`
+},
+
+semana:{
+titulo:"📆 Número de semana",
+descripcion:"Consultá el número de semana.",
+form:`<button onclick="numeroSemana()">Consultar</button>`
+}
+
+};
+
+
+function seleccionar(nombre,el){
+
+herramienta=nombre;
+
+document.querySelectorAll(".tool")
+.forEach(x=>x.classList.remove("active"));
+
+el.classList.add("active");
+
+document.getElementById("titulo").textContent=
+configs[nombre].titulo;
+
+document.getElementById("descripcion").textContent=
+configs[nombre].descripcion;
+
+document.getElementById("formulario").innerHTML=
+configs[nombre].form;
+
+document.getElementById("resultado").innerHTML=
+"Esperando...";
+
+}
+
+
+function password(){
+
+const longitud=
+parseInt(document.getElementById("longitud").value);
+
+let chars="";
+
+if(document.getElementById("mayus").checked)
+chars+="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+if(document.getElementById("minus").checked)
+chars+="abcdefghijklmnopqrstuvwxyz";
+
+if(document.getElementById("numeros").checked)
+chars+="0123456789";
+
+if(document.getElementById("simbolos").checked)
+chars+="!@#$%^&*()_+-=[]{}";
+
+if(!chars){
+
+mostrar("Seleccioná al menos un tipo.");
+
+return;
+
+}
+
+let result="";
+
+const array=
+new Uint32Array(longitud);
+
+crypto.getRandomValues(array);
+
+for(let i=0;i<longitud;i++){
+
+result+=
+chars[array[i]%chars.length];
+
+}
+
+mostrar("<strong>"+result+"</strong>");
+
+}
+
+
+function uuid(){
+
+if(crypto.randomUUID){
+
+mostrar(crypto.randomUUID());
+
+return;
+
+}
+
+mostrar(
+"xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx"
+.replace(/[xy]/g,function(c){
+
+const r=Math.random()*16|0;
+const v=c==="x"?r:(r&3|8);
+
+return v.toString(16);
+
+})
+);
+
+}
+
+
+function pin(){
+
+const length=
+parseInt(document.getElementById("pinLength").value);
+
+const array=
+new Uint32Array(length);
+
+crypto.getRandomValues(array);
+
+let result="";
+
+for(let i=0;i<length;i++){
+
+result+=
+array[i]%10;
+
+}
+
+mostrar(result);
+
+}
+
+
+function random(){
+
+const min=
+Number(document.getElementById("min").value);
+
+const max=
+Number(document.getElementById("max").value);
+
+if(max<min){
+
+mostrar("Rango inválido.");
+
+return;
+
+}
+
+const result=
+Math.floor(
+Math.random()*(max-min+1)
+)+min;
+
+mostrar(result);
+
+}
+
+
+function base64Encode(){
+
+const text=
+document.getElementById("texto").value;
+
+mostrar(
+btoa(
+unescape(
+encodeURIComponent(text)
+)
+)
+);
+
+}
+
+
+function base64Decode(){
+
+try{
+
+const text=
+document.getElementById("texto").value;
+
+mostrar(
+decodeURIComponent(
+escape(
+atob(text)
+)
+)
+);
+
+}catch{
+
+mostrar("Base64 inválido.");
+
+}
+
+}
+
+
+function urlEncode(){
+
+mostrar(
+encodeURIComponent(
+document.getElementById("texto").value
+)
+);
+
+}
+
+
+function urlDecode(){
+
+try{
+
+mostrar(
+decodeURIComponent(
+document.getElementById("texto").value
+)
+);
+
+}catch{
+
+mostrar("Texto inválido.");
+
+}
+
+}
+
+
+async function sha256(){
+
+const text=
+document.getElementById("texto").value;
+
+const data=
+new TextEncoder().encode(text);
+
+const hash=
+await crypto.subtle.digest(
+"SHA-256",
+data
+);
+
+const hex=
+Array.from(
+new Uint8Array(hash)
+)
+.map(
+b=>b.toString(16).padStart(2,"0")
+)
+.join("");
+
+mostrar(hex);
+
+}
+
+
+function timestamp(){
+
+mostrar(
+Math.floor(Date.now()/1000)
+);
+
+}
+
+
+function timestampFecha(){
+
+const ts=
+Number(document.getElementById("ts").value);
+
+if(!Number.isFinite(ts)){
+
+mostrar("Timestamp inválido.");
+
+return;
+
+}
+
+mostrar(
+new Date(ts*1000).toLocaleString()
+);
+
+}
+
+
+let cronometroInterval;
+let cronometroInicio=0;
+let cronometroTiempo=0;
+
+
+function iniciarCronometro(){
+
+if(cronometroInterval)return;
+
+cronometroInicio=
+Date.now()-cronometroTiempo;
+
+cronometroInterval=
+setInterval(()=>{
+
+cronometroTiempo=
+Date.now()-cronometroInicio;
+
+mostrarTiempo(
+Math.floor(cronometroTiempo/1000)
+);
+
+},100);
+
+}
+
+
+function detenerCronometro(){
+
+clearInterval(cronometroInterval);
+
+cronometroInterval=null;
+
+}
+
+
+function resetCronometro(){
+
+detenerCronometro();
+
+cronometroTiempo=0;
+
+const timer=
+document.getElementById("timer");
+
+if(timer)
+timer.textContent="00:00:00";
+
+}
+
+
+function mostrarTiempo(seg){
+
+const h=
+Math.floor(seg/3600);
+
+const m=
+Math.floor((seg%3600)/60);
+
+const s=
+seg%60;
+
+document.getElementById("timer").textContent=
+String(h).padStart(2,"0")+":"+
+String(m).padStart(2,"0")+":"+
+String(s).padStart(2,"0");
+
+}
+
+
+let temporizadorInterval;
+let temporizadorSegundos=0;
+
+
+function iniciarTemporizador(){
+
+if(temporizadorInterval)return;
+
+if(temporizadorSegundos<=0){
+
+temporizadorSegundos=
+parseInt(document.getElementById("minutos").value)*60+
+parseInt(document.getElementById("segundos").value);
+
+}
+
+temporizadorInterval=
+setInterval(()=>{
+
+temporizadorSegundos--;
+
+mostrarCuenta(temporizadorSegundos);
+
+if(temporizadorSegundos<=0){
+
+detenerTemporizador();
+
+alert("⏰ Tiempo terminado.");
+
+}
+
+},1000);
+
+}
+
+
+function detenerTemporizador(){
+
+clearInterval(temporizadorInterval);
+
+temporizadorInterval=null;
+
+}
+
+
+function resetTemporizador(){
+
+detenerTemporizador();
+
+temporizadorSegundos=
+parseInt(document.getElementById("minutos").value)*60+
+parseInt(document.getElementById("segundos").value);
+
+mostrarCuenta(temporizadorSegundos);
+
+}
+
+
+function mostrarCuenta(seg){
+
+const m=
+Math.floor(seg/60);
+
+const s=
+seg%60;
+
+const timer=
+document.getElementById("timer");
+
+if(timer){
+
+timer.textContent=
+String(m).padStart(2,"0")+":"+
+String(s).padStart(2,"0");
+
+}
+
+}
+
+
+let pomodoroInterval;
+let pomodoroSegundos=1500;
+
+
+function iniciarPomodoro(){
+
+if(pomodoroInterval)return;
+
+pomodoroInterval=
+setInterval(()=>{
+
+pomodoroSegundos--;
+
+mostrarCuenta(pomodoroSegundos);
+
+if(pomodoroSegundos<=0){
+
+detenerPomodoro();
+
+alert("🍅 Pomodoro terminado.");
+
+}
+
+},1000);
+
+}
+
+
+function detenerPomodoro(){
+
+clearInterval(pomodoroInterval);
+
+pomodoroInterval=null;
+
+}
+
+
+function resetPomodoro(){
+
+detenerPomodoro();
+
+pomodoroSegundos=1500;
+
+mostrarCuenta(pomodoroSegundos);
+
+}
+
+
+function diaDelAno(){
+
+const ahora=
+new Date();
+
+const inicio=
+new Date(
+ahora.getFullYear(),
+0,
+0
+);
+
+const diferencia=
+ahora-inicio;
+
+const dia=
+Math.floor(
+diferencia/(1000*60*60*24)
+);
+
+mostrar(
+"Hoy es el día <strong>"+dia+
+"</strong> del año."
+);
+
+}
+
+
+function numeroSemana(){
+
+const fecha=
+new Date();
+
+const jueves=
+new Date(fecha);
+
+jueves.setDate(
+fecha.getDate()+
+(4-(fecha.getDay()||7))
+);
+
+const inicio=
+new Date(
+jueves.getFullYear(),
+0,
+1
+);
+
+const semana=
+Math.ceil(
+(((jueves-inicio)/86400000)+1)/7
+);
+
+mostrar(
+"Semana <strong>"+semana+
+"</strong> del año."
+);
+
+}
+
+
+function mostrar(texto){
+
+document.getElementById("resultado").innerHTML=
+texto;
+
+}
+
+
+</script>
+
+</body>
+</html>
+```
