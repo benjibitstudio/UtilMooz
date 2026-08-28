@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Calculadora de Porcentaje Online | Utilix</title>
+
+    <meta name="description"
+          content="Calculadora de porcentaje online gratis. Calculá porcentajes de forma rápida y sencilla.">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f7fb;
+            color: #172033;
+        }
+
+        header {
+            background: #111827;
+            color: white;
+            padding: 22px 20px;
+        }
+
+        .header-content {
+            max-width: 900px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #4f8cff;
+        }
+
+        nav a {
+            color: #ddd;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 0 20px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .description {
+            color: #667085;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .calculator {
+            background: white;
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid #e6e8ee;
+            box-shadow: 0 5px 20px rgba(0,0,0,.05);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 20px;
+            border: 1px solid #d9dde5;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            background: #4f8cff;
+            color: white;
+            font-size: 17px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #3978e8;
+        }
+
+        .resultado {
+            margin-top: 25px;
+            padding: 20px;
+            background: #f5f7fb;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .info {
+            margin-top: 35px;
+            line-height: 1.7;
+            color: #4b5563;
+        }
+
+        footer {
+            margin-top: 60px;
+            background: #111827;
+            color: #aaa;
+            text-align: center;
+            padding: 30px;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 30px;
+            }
+
+            .calculator {
+                padding: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-content">
+
+        <div class="logo">
+            Util<span>ix</span>
+        </div>
+
+        <nav>
+            <a href="index.html">Inicio</a>
+        </nav>
+
+    </div>
+</header>
+
+<main class="container">
+
+    <h1>Calculadora de porcentaje</h1>
+
+    <p class="description">
+        Calculá fácilmente un porcentaje de cualquier número
+        utilizando esta calculadora online gratuita.
+    </p>
+
+    <div class="calculator">
+
+        <label for="porcentaje">
+            Porcentaje
+        </label>
+
+        <input
+            type="number"
+            id="porcentaje"
+            placeholder="Ejemplo: 20"
+        >
+
+        <label for="numero">
+            Número
+        </label>
+
+        <input
+            type="number"
+            id="numero"
+            placeholder="Ejemplo: 500"
+        >
+
+        <button onclick="calcular()">
+            Calcular porcentaje
+        </button>
+
+        <div class="resultado" id="resultado">
+            Resultado: -
+        </div>
+
+    </div>
+
+    <div class="info">
+
+        <h2>¿Cómo calcular un porcentaje?</h2>
+
+        <p>
+            Para calcular un porcentaje, multiplicá el número
+            por el porcentaje y dividilo por 100.
+        </p>
+
+        <p>
+            Por ejemplo, el 20% de 500 es:
+        </p>
+
+        <p>
+            500 × 20 ÷ 100 = 100
+        </p>
+
+    </div>
+
+</main>
+
+<footer>
+    © 2026 Utilix — Herramientas online gratuitas
+</footer>
+
+<script>
+
+function calcular() {
+
+    const porcentaje =
+        parseFloat(document.getElementById("porcentaje").value);
+
+    const numero =
+        parseFloat(document.getElementById("numero").value);
+
+    const resultado =
+        document.getElementById("resultado");
+
+    if (isNaN(porcentaje) || isNaN(numero)) {
+
+        resultado.textContent =
+            "Ingresá ambos valores.";
+
+        return;
+    }
+
+    const calculo =
+        (porcentaje * numero) / 100;
+
+    resultado.textContent =
+        "Resultado: " + calculo;
+
+}
+
+</script>
+
+</body>
+</html>
