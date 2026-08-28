@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contador de Palabras Online | Utilix</title>
+
+<meta name="description" content="Contador de palabras y caracteres online gratis. Contá palabras, caracteres, líneas y espacios de cualquier texto.">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+font-family:Arial,sans-serif;
+background:#f5f7fb;
+color:#172033;
+}
+
+header{
+background:#111827;
+color:white;
+padding:22px 20px;
+}
+
+.header-content{
+max-width:900px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{font-size:26px;font-weight:bold}
+.logo span{color:#4f8cff}
+nav a{color:#ddd;text-decoration:none}
+
+.container{
+max-width:700px;
+margin:50px auto;
+padding:0 20px;
+}
+
+h1{font-size:36px;margin-bottom:15px}
+
+.description{
+color:#667085;
+margin-bottom:30px;
+line-height:1.6;
+}
+
+.calculator{
+background:white;
+padding:30px;
+border-radius:16px;
+border:1px solid #e6e8ee;
+box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+
+textarea{
+width:100%;
+height:250px;
+padding:14px;
+border:1px solid #d9dde5;
+border-radius:8px;
+font-size:16px;
+resize:vertical;
+}
+
+.stats{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:10px;
+margin-top:20px;
+}
+
+.stat{
+background:#f5f7fb;
+padding:15px;
+text-align:center;
+border-radius:8px;
+}
+
+.stat strong{
+display:block;
+font-size:22px;
+margin-bottom:5px;
+}
+
+.stat span{
+font-size:13px;
+color:#667085;
+}
+
+footer{
+margin-top:60px;
+background:#111827;
+color:#aaa;
+text-align:center;
+padding:30px;
+}
+
+@media(max-width:600px){
+.stats{grid-template-columns:1fr}
+h1{font-size:30px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header-content">
+<div class="logo">Util<span>ix</span></div>
+<nav><a href="index.html">Inicio</a></nav>
+</div>
+</header>
+
+<main class="container">
+
+<h1>Contador de palabras</h1>
+
+<p class="description">
+Contá palabras, caracteres, espacios y líneas de cualquier texto.
+</p>
+
+<div class="calculator">
+
+<textarea id="texto" placeholder="Escribí o pegá tu texto aquí..." oninput="contar()"></textarea>
+
+<div class="stats">
+
+<div class="stat">
+<strong id="palabras">0</strong>
+<span>Palabras</span>
+</div>
+
+<div class="stat">
+<strong id="caracteres">0</strong>
+<span>Caracteres</span>
+</div>
+
+<div class="stat">
+<strong id="lineas">0</strong>
+<span>Líneas</span>
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+<footer>
+© 2026 Utilix — Herramientas online gratuitas
+</footer>
+
+<script>
+
+function contar(){
+
+const texto=document.getElementById("texto").value;
+
+const palabras=texto.trim()
+? texto.trim().split(/\s+/).length
+: 0;
+
+const caracteres=texto.length;
+
+const lineas=texto
+? texto.split(/\r?\n/).length
+: 0;
+
+document.getElementById("palabras").textContent=palabras;
+document.getElementById("caracteres").textContent=caracteres;
+document.getElementById("lineas").textContent=lineas;
+
+}
+
+</script>
+
+</body>
+</html>
