@@ -1,0 +1,821 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Herramientas de red online | Utilix</title>
+
+<meta name="description"
+content="Herramientas de red online gratis: IP, subnet calculator, CIDR, DNS lookup, MX, SPF, DMARC y más.">
+
+<style>
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+body{
+font-family:Arial,sans-serif;
+background:#f5f7fb;
+color:#172033;
+}
+
+header{
+background:#111827;
+color:white;
+padding:22px 20px;
+}
+
+.header-content{
+max-width:1100px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+font-size:26px;
+font-weight:bold;
+}
+
+.logo span{
+color:#4f8cff;
+}
+
+nav a{
+color:#ddd;
+text-decoration:none;
+}
+
+.container{
+max-width:1000px;
+margin:45px auto;
+padding:0 20px 60px;
+}
+
+h1{
+font-size:38px;
+margin-bottom:12px;
+}
+
+.description{
+color:#667085;
+line-height:1.6;
+margin-bottom:30px;
+}
+
+.tools{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+gap:12px;
+margin-bottom:30px;
+}
+
+.tool{
+background:white;
+border:1px solid #e6e8ee;
+border-radius:10px;
+padding:16px;
+cursor:pointer;
+transition:.2s;
+}
+
+.tool:hover{
+transform:translateY(-2px);
+box-shadow:0 5px 15px rgba(0,0,0,.07);
+}
+
+.tool.active{
+border:2px solid #4f8cff;
+}
+
+.tool h3{
+font-size:16px;
+}
+
+.tool p{
+font-size:13px;
+color:#667085;
+margin-top:5px;
+}
+
+.panel{
+background:white;
+border:1px solid #e6e8ee;
+border-radius:16px;
+padding:30px;
+box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+
+.panel h2{
+margin-bottom:10px;
+}
+
+.panel-description{
+color:#667085;
+line-height:1.5;
+margin-bottom:20px;
+}
+
+input,select{
+width:100%;
+padding:13px;
+border:1px solid #d9dde5;
+border-radius:8px;
+font-size:15px;
+margin-bottom:15px;
+}
+
+button{
+width:100%;
+padding:14px;
+border:0;
+border-radius:8px;
+background:#4f8cff;
+color:white;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#3978e8;
+}
+
+.result{
+margin-top:20px;
+padding:20px;
+background:#f5f7fb;
+border-radius:10px;
+line-height:1.8;
+word-break:break-word;
+}
+
+footer{
+background:#111827;
+color:#aaa;
+text-align:center;
+padding:30px;
+}
+
+@media(max-width:600px){
+
+h1{
+font-size:30px;
+}
+
+.panel{
+padding:20px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="header-content">
+
+<div class="logo">
+Util<span>ix</span>
+</div>
+
+<nav>
+<a href="index.html">Inicio</a>
+</nav>
+
+</div>
+
+</header>
+
+
+<main class="container">
+
+<h1>Herramientas de red</h1>
+
+<p class="description">
+Utilidades gratuitas para trabajar con direcciones IP,
+DNS, subredes, URLs y conexiones de red.
+</p>
+
+
+<div class="tools">
+
+<div class="tool active" onclick="seleccionar('miip',this)">
+<h3>🌐 Mi IP</h3>
+<p>Consultar IP pública</p>
+</div>
+
+<div class="tool" onclick="seleccionar('ipdecimal',this)">
+<h3>🔢 IPv4 → Decimal</h3>
+<p>Convertir dirección IP</p>
+</div>
+
+<div class="tool" onclick="seleccionar('decimalip',this)">
+<h3>🔢 Decimal → IPv4</h3>
+<p>Convertir decimal a IP</p>
+</div>
+
+<div class="tool" onclick="seleccionar('ipbinario',this)">
+<h3>💻 IPv4 → Binario</h3>
+<p>Convertir IP a binario</p>
+</div>
+
+<div class="tool" onclick="seleccionar('subnet',this)">
+<h3>🧮 Subnet Calculator</h3>
+<p>Calcular una subred</p>
+</div>
+
+<div class="tool" onclick="seleccionar('cidr',this)">
+<h3>📐 CIDR Calculator</h3>
+<p>Calcular información CIDR</p>
+</div>
+
+<div class="tool" onclick="seleccionar('dns',this)">
+<h3>🔎 DNS Lookup</h3>
+<p>Consultar registros DNS</p>
+</div>
+
+<div class="tool" onclick="seleccionar('mx',this)">
+<h3>📧 MX Lookup</h3>
+<p>Consultar servidores de correo</p>
+</div>
+
+<div class="tool" onclick="seleccionar('spf',this)">
+<h3>🛡️ SPF Lookup</h3>
+<p>Consultar registro SPF</p>
+</div>
+
+<div class="tool" onclick="seleccionar('dmarc',this)">
+<h3>🔐 DMARC Lookup</h3>
+<p>Consultar DMARC</p>
+</div>
+
+<div class="tool" onclick="seleccionar('url',this)">
+<h3>🔗 URL Parser</h3>
+<p>Analizar una URL</p>
+</div>
+
+<div class="tool" onclick="seleccionar('status',this)">
+<h3>📡 HTTP Status</h3>
+<p>Consultar código HTTP</p>
+</div>
+
+<div class="tool" onclick="seleccionar('useragent',this)">
+<h3>🖥️ User-Agent</h3>
+<p>Ver información del navegador</p>
+</div>
+
+</div>
+
+
+<div class="panel">
+
+<h2 id="titulo">Mi IP</h2>
+
+<p class="panel-description" id="descripcion">
+Consultá tu dirección IP pública.
+</p>
+
+<div id="formulario"></div>
+
+<div class="result" id="resultado">
+Esperando consulta...
+</div>
+
+</div>
+
+</main>
+
+
+<footer>
+© 2026 Utilix — Herramientas online gratuitas
+</footer>
+
+
+<script>
+
+let herramienta="miip";
+
+const configuraciones={
+
+miip:{
+titulo:"🌐 Mi IP",
+descripcion:"Consultá tu dirección IP pública.",
+form:`<button onclick="miIP()">Consultar mi IP</button>`
+},
+
+ipdecimal:{
+titulo:"IPv4 → Decimal",
+descripcion:"Convertí una dirección IPv4 a decimal.",
+form:`<input id="ip" placeholder="Ejemplo: 192.168.1.1">
+<button onclick="ipDecimal()">Convertir</button>`
+},
+
+decimalip:{
+titulo:"Decimal → IPv4",
+descripcion:"Convertí un número decimal a una dirección IPv4.",
+form:`<input id="decimal" type="number" placeholder="Ejemplo: 3232235777">
+<button onclick="decimalIP()">Convertir</button>`
+},
+
+ipbinario:{
+titulo:"IPv4 → Binario",
+descripcion:"Convertí una IPv4 a representación binaria.",
+form:`<input id="ip" placeholder="Ejemplo: 192.168.1.1">
+<button onclick="ipBinario()">Convertir</button>`
+},
+
+subnet:{
+titulo:"Subnet Calculator",
+descripcion:"Calculá red, broadcast y hosts disponibles.",
+form:`
+<input id="ip" placeholder="IP: 192.168.1.10">
+<input id="cidr" type="number" min="0" max="32" placeholder="CIDR: 24">
+<button onclick="subnet()">Calcular</button>`
+},
+
+cidr:{
+titulo:"CIDR Calculator",
+descripcion:"Calculá información de una red CIDR.",
+form:`
+<input id="ip" placeholder="Ejemplo: 192.168.1.0">
+<input id="cidr" type="number" min="0" max="32" placeholder="Prefijo: 24">
+<button onclick="subnet()">Calcular</button>`
+},
+
+dns:{
+titulo:"DNS Lookup",
+descripcion:"Consultá registros DNS de un dominio.",
+form:`
+<input id="dominio" placeholder="ejemplo.com">
+<select id="tipo">
+<option value="A">A</option>
+<option value="AAAA">AAAA</option>
+<option value="CNAME">CNAME</option>
+<option value="TXT">TXT</option>
+<option value="NS">NS</option>
+<option value="MX">MX</option>
+</select>
+<button onclick="dnsLookup()">Consultar DNS</button>`
+},
+
+mx:{
+titulo:"MX Lookup",
+descripcion:"Consultá los servidores de correo de un dominio.",
+form:`
+<input id="dominio" placeholder="ejemplo.com">
+<button onclick="consultaDNS('MX')">Consultar MX</button>`
+},
+
+spf:{
+titulo:"SPF Lookup",
+descripcion:"Consultá el registro SPF de un dominio.",
+form:`
+<input id="dominio" placeholder="ejemplo.com">
+<button onclick="consultaDNS('TXT')">Consultar SPF</button>`
+},
+
+dmarc:{
+titulo:"DMARC Lookup",
+descripcion:"Consultá el registro DMARC.",
+form:`
+<input id="dominio" placeholder="ejemplo.com">
+<button onclick="dmarcLookup()">Consultar DMARC</button>`
+},
+
+url:{
+titulo:"URL Parser",
+descripcion:"Analizá las partes de una URL.",
+form:`
+<input id="url" placeholder="https://ejemplo.com/pagina?test=1">
+<button onclick="parseURL()">Analizar URL</button>`
+},
+
+status:{
+titulo:"HTTP Status Checker",
+descripcion:"Consultá el estado HTTP de una URL.",
+form:`
+<input id="url" placeholder="https://ejemplo.com">
+<button onclick="httpStatus()">Consultar</button>`
+},
+
+useragent:{
+titulo:"User-Agent",
+descripcion:"Información del navegador que estás utilizando.",
+form:`
+<button onclick="userAgent()">Mostrar información</button>`
+}
+
+};
+
+
+function seleccionar(nombre,elemento){
+
+herramienta=nombre;
+
+document
+.querySelectorAll(".tool")
+.forEach(x=>x.classList.remove("active"));
+
+elemento.classList.add("active");
+
+document.getElementById("titulo").textContent=
+configuraciones[nombre].titulo;
+
+document.getElementById("descripcion").textContent=
+configuraciones[nombre].descripcion;
+
+document.getElementById("formulario").innerHTML=
+configuraciones[nombre].form;
+
+document.getElementById("resultado").innerHTML=
+"Esperando consulta...";
+
+}
+
+
+async function miIP(){
+
+const r=
+await fetch("https://api.ipify.org?format=json");
+
+const data=
+await r.json();
+
+mostrar(
+"<strong>Tu IP pública:</strong><br>"+
+data.ip
+);
+
+}
+
+
+function validarIP(ip){
+
+const partes=ip.split(".");
+
+return partes.length===4 &&
+partes.every(
+x=>Number.isInteger(+x) &&
++x>=0 &&
++x<=255
+);
+
+}
+
+
+function ipDecimal(){
+
+const ip=
+document.getElementById("ip").value.trim();
+
+if(!validarIP(ip)){
+
+mostrar("IPv4 inválida.");
+
+return;
+
+}
+
+const partes=
+ip.split(".").map(Number);
+
+const numero=
+(((partes[0]*256+partes[1])*256+partes[2])*256+partes[3]);
+
+mostrar(numero);
+
+}
+
+
+function decimalIP(){
+
+const n=
+Number(document.getElementById("decimal").value);
+
+if(!Number.isInteger(n)||n<0||n>4294967295){
+
+mostrar("Número inválido.");
+
+return;
+
+}
+
+const ip=[
+(n>>>24)&255,
+(n>>>16)&255,
+(n>>>8)&255,
+n&255
+].join(".");
+
+mostrar(ip);
+
+}
+
+
+function ipBinario(){
+
+const ip=
+document.getElementById("ip").value.trim();
+
+if(!validarIP(ip)){
+
+mostrar("IPv4 inválida.");
+
+return;
+
+}
+
+mostrar(
+ip.split(".")
+.map(x=>Number(x).toString(2).padStart(8,"0"))
+.join(" . ")
+);
+
+}
+
+
+function ipToInt(ip){
+
+return ip.split(".")
+.reduce(
+(a,b)=>(a<<8)+Number(b),
+0
+)>>>0;
+
+}
+
+
+function intToIP(n){
+
+return[
+n>>>24,
+(n>>>16)&255,
+(n>>>8)&255,
+n&255
+].join(".");
+
+}
+
+
+function subnet(){
+
+const ip=
+document.getElementById("ip").value.trim();
+
+const cidr=
+Number(document.getElementById("cidr").value);
+
+if(!validarIP(ip)||cidr<0||cidr>32){
+
+mostrar("Datos inválidos.");
+
+return;
+
+}
+
+const ipInt=
+ipToInt(ip);
+
+const mask=
+cidr===0?0:
+(0xffffffff << (32-cidr))>>>0;
+
+const network=
+ipInt & mask;
+
+const broadcast=
+(network | (~mask>>>0))>>>0;
+
+const total=
+Math.pow(2,32-cidr);
+
+const hosts=
+cidr>=31?total:Math.max(total-2,0);
+
+mostrar(`
+
+<strong>Red:</strong> ${intToIP(network)}<br>
+
+<strong>Máscara:</strong> ${intToIP(mask)}<br>
+
+<strong>Broadcast:</strong> ${intToIP(broadcast)}<br>
+
+<strong>Total de direcciones:</strong> ${total}<br>
+
+<strong>Hosts utilizables:</strong> ${hosts}<br>
+
+<strong>CIDR:</strong> /${cidr}
+
+`);
+
+}
+
+
+async function dnsLookup(){
+
+const dominio=
+document.getElementById("dominio").value.trim();
+
+const tipo=
+document.getElementById("tipo").value;
+
+await consultaDNS(tipo,dominio);
+
+}
+
+
+async function consultaDNS(tipo,dominioParam){
+
+const dominio=
+dominioParam ||
+document.getElementById("dominio").value.trim();
+
+if(!dominio){
+
+mostrar("Ingresá un dominio.");
+
+return;
+
+}
+
+try{
+
+const url=
+"https://cloudflare-dns.com/dns-query?name="+
+encodeURIComponent(dominio)+
+"&type="+tipo;
+
+const response=
+await fetch(url,{
+headers:{
+"Accept":"application/dns-json"
+}
+});
+
+const data=
+await response.json();
+
+if(!data.Answer){
+
+mostrar("No se encontraron registros.");
+
+return;
+
+}
+
+mostrar(
+data.Answer
+.map(x=>escapeHTML(x.data))
+.join("<br>")
+);
+
+}catch(e){
+
+mostrar("No se pudo realizar la consulta DNS.");
+
+}
+
+}
+
+
+async function dmarcLookup(){
+
+const dominio=
+document.getElementById("dominio").value.trim();
+
+await consultaDNS(
+"TXT",
+"_dmarc."+dominio
+);
+
+}
+
+
+function parseURL(){
+
+try{
+
+const u=
+new URL(document.getElementById("url").value);
+
+let params="";
+
+u.searchParams.forEach(
+(v,k)=>{
+params+=
+`${escapeHTML(k)} = ${escapeHTML(v)}<br>`;
+}
+);
+
+mostrar(`
+
+<strong>Protocolo:</strong> ${u.protocol}<br>
+
+<strong>Host:</strong> ${u.host}<br>
+
+<strong>Hostname:</strong> ${u.hostname}<br>
+
+<strong>Puerto:</strong> ${u.port||"Predeterminado"}<br>
+
+<strong>Ruta:</strong> ${u.pathname}<br>
+
+<strong>Query:</strong> ${u.search||"Ninguno"}<br>
+
+<strong>Fragmento:</strong> ${u.hash||"Ninguno"}<br>
+
+<strong>Parámetros:</strong><br>
+${params||"Ninguno"}
+
+`);
+
+}catch{
+
+mostrar("URL inválida.");
+
+}
+
+}
+
+
+async function httpStatus(){
+
+const url=
+document.getElementById("url").value.trim();
+
+try{
+
+const response=
+await fetch(url,{
+method:"HEAD",
+mode:"cors"
+});
+
+mostrar(`
+<strong>Status:</strong> ${response.status}<br>
+<strong>Estado:</strong> ${response.statusText}
+`);
+
+}catch{
+
+mostrar(
+"No fue posible consultar esta URL desde el navegador. El servidor puede bloquear solicitudes externas (CORS)."
+);
+
+}
+
+}
+
+
+function userAgent(){
+
+mostrar(
+"<strong>User-Agent:</strong><br>"+
+escapeHTML(navigator.userAgent)+
+"<br><br>"+
+"<strong>Navegador:</strong> "+
+escapeHTML(navigator.appName)+
+"<br><strong>Plataforma:</strong> "+
+escapeHTML(navigator.platform)+
+"<br><strong>Idioma:</strong> "+
+escapeHTML(navigator.language)
+);
+
+}
+
+
+function escapeHTML(text){
+
+return String(text)
+.replaceAll("&","&amp;")
+.replaceAll("<","&lt;")
+.replaceAll(">","&gt;")
+.replaceAll('"',"&quot;")
+.replaceAll("'","&#039;");
+
+}
+
+
+function mostrar(texto){
+
+document.getElementById("resultado").innerHTML=
+texto;
+
+}
+
+
+</script>
+
+</body>
+</html>
+```
