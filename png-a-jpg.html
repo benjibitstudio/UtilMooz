@@ -1,0 +1,296 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PNG a JPG Online Gratis | Utilix</title>
+
+<meta name="description"
+content="Convertí PNG a JPG online gratis. Convertidor de imágenes rápido y sencillo.">
+
+<style>
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+font-family:Arial,sans-serif;
+background:#f5f7fb;
+color:#172033;
+}
+
+header{
+background:#111827;
+color:white;
+padding:22px 20px;
+}
+
+.header-content{
+max-width:900px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+font-size:26px;
+font-weight:bold;
+}
+
+.logo span{
+color:#4f8cff;
+}
+
+nav a{
+color:#ddd;
+text-decoration:none;
+}
+
+.container{
+max-width:700px;
+margin:50px auto;
+padding:0 20px;
+}
+
+h1{
+font-size:36px;
+margin-bottom:15px;
+}
+
+.description{
+color:#667085;
+line-height:1.6;
+margin-bottom:30px;
+}
+
+.converter{
+background:white;
+padding:30px;
+border-radius:16px;
+border:1px solid #e6e8ee;
+box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+
+input[type=file]{
+width:100%;
+padding:15px;
+border:1px dashed #cbd1dc;
+border-radius:8px;
+margin-bottom:20px;
+}
+
+label{
+display:block;
+font-weight:bold;
+margin-bottom:8px;
+}
+
+input[type=range]{
+width:100%;
+margin-bottom:20px;
+}
+
+button{
+width:100%;
+padding:15px;
+border:none;
+border-radius:8px;
+background:#4f8cff;
+color:white;
+font-size:17px;
+cursor:pointer;
+}
+
+.preview{
+margin-top:25px;
+text-align:center;
+}
+
+.preview img{
+max-width:100%;
+max-height:350px;
+border-radius:8px;
+}
+
+.download{
+display:none;
+margin-top:20px;
+background:#16a34a;
+padding:15px;
+border-radius:8px;
+color:white;
+text-decoration:none;
+font-weight:bold;
+text-align:center;
+}
+
+footer{
+margin-top:60px;
+background:#111827;
+color:#aaa;
+text-align:center;
+padding:30px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="header-content">
+
+<div class="logo">
+Util<span>ix</span>
+</div>
+
+<nav>
+<a href="index.html">Inicio</a>
+</nav>
+
+</div>
+
+</header>
+
+
+<main class="container">
+
+<h1>Convertir PNG a JPG</h1>
+
+<p class="description">
+Convertí imágenes PNG a JPG directamente desde tu navegador.
+</p>
+
+
+<div class="converter">
+
+<input
+type="file"
+id="archivo"
+accept="image/png"
+>
+
+
+<label for="calidad">
+Calidad JPG: <span id="valor">90</span>%
+</label>
+
+<input
+type="range"
+id="calidad"
+min="10"
+max="100"
+value="90"
+oninput="document.getElementById('valor').textContent=this.value"
+>
+
+
+<button onclick="convertir()">
+Convertir a JPG
+</button>
+
+
+<div class="preview" id="preview"></div>
+
+
+<a
+id="descargar"
+class="download"
+download="imagen-convertida.jpg">
+⬇ Descargar JPG
+</a>
+
+</div>
+
+</main>
+
+
+<footer>
+© 2026 Utilix — Herramientas online gratuitas
+</footer>
+
+
+<script>
+
+function convertir(){
+
+const archivo=
+document.getElementById("archivo").files[0];
+
+const calidad=
+parseInt(document.getElementById("calidad").value)/100;
+
+const preview=
+document.getElementById("preview");
+
+const descargar=
+document.getElementById("descargar");
+
+
+if(!archivo){
+
+preview.innerHTML=
+"<p>Seleccioná una imagen PNG.</p>";
+
+return;
+
+}
+
+
+const reader=
+new FileReader();
+
+reader.onload=function(e){
+
+const img=
+new Image();
+
+img.onload=function(){
+
+const canvas=
+document.createElement("canvas");
+
+canvas.width=img.width;
+canvas.height=img.height;
+
+const ctx=
+canvas.getContext("2d");
+
+ctx.fillStyle="#ffffff";
+ctx.fillRect(0,0,canvas.width,canvas.height);
+
+ctx.drawImage(img,0,0);
+
+
+const jpg=
+canvas.toDataURL("image/jpeg",calidad);
+
+
+preview.innerHTML=
+'<img src="'+jpg+'" alt="Imagen JPG">';
+
+descargar.href=jpg;
+
+descargar.style.display="block";
+
+};
+
+img.src=e.target.result;
+
+};
+
+reader.readAsDataURL(archivo);
+
+}
+
+</script>
+
+</body>
+</html>
+```
