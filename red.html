@@ -1,6 +1,6 @@
-```html
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 
 <meta charset="UTF-8">
@@ -10,6 +10,11 @@
 
 <meta name="description"
 content="Herramientas de red online gratis: IP, subnet calculator, CIDR, DNS lookup, MX, SPF, DMARC y más.">
+
+<!-- =========================
+     ADSTERRA - POPUNDER
+     Pegá aquí el código exacto de tu Popunder
+========================= -->
 
 <style>
 
@@ -70,6 +75,22 @@ line-height:1.6;
 margin-bottom:30px;
 }
 
+/* ANUNCIO SUPERIOR */
+
+.ad-top{
+margin:0 auto 25px;
+text-align:center;
+min-height:60px;
+}
+
+/* ANUNCIO NATIVO */
+
+.ad-native{
+margin:25px auto;
+text-align:center;
+min-height:100px;
+}
+
 .tools{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
@@ -123,7 +144,8 @@ line-height:1.5;
 margin-bottom:20px;
 }
 
-input,select{
+input,
+select{
 width:100%;
 padding:13px;
 border:1px solid #d9dde5;
@@ -154,6 +176,14 @@ background:#f5f7fb;
 border-radius:10px;
 line-height:1.8;
 word-break:break-word;
+}
+
+/* ANUNCIO INFERIOR */
+
+.ad-bottom{
+margin:30px auto;
+text-align:center;
+min-height:60px;
 }
 
 footer{
@@ -206,6 +236,15 @@ Util<span>ix</span>
 Utilidades gratuitas para trabajar con direcciones IP,
 DNS, subredes, URLs y conexiones de red.
 </p>
+
+
+<!-- =========================
+     ADSTERRA NATIVE BANNER
+     Pegá aquí tu código Native Banner
+========================= -->
+
+<div class="ad-native">
+</div>
 
 
 <div class="tools">
@@ -294,12 +333,29 @@ Esperando consulta...
 
 </div>
 
+
+<!-- =========================
+     ADSTERRA BANNER 468x60
+========================= -->
+
+<div class="ad-bottom">
+</div>
+
+
 </main>
 
 
 <footer>
+
 © 2026 Utilix — Herramientas online gratuitas
+
 </footer>
+
+
+<!-- =========================
+     ADSTERRA SOCIAL BAR
+     Pegá aquí tu código Social Bar
+========================= -->
 
 
 <script>
@@ -446,6 +502,8 @@ document.getElementById("resultado").innerHTML=
 
 async function miIP(){
 
+try{
+
 const r=
 await fetch("https://api.ipify.org?format=json");
 
@@ -454,8 +512,14 @@ await r.json();
 
 mostrar(
 "<strong>Tu IP pública:</strong><br>"+
-data.ip
+escapeHTML(data.ip)
 );
+
+}catch{
+
+mostrar("No se pudo obtener tu IP.");
+
+}
 
 }
 
@@ -512,10 +576,10 @@ return;
 }
 
 const ip=[
-(n>>>24)&255,
-(n>>>16)&255,
-(n>>>8)&255,
-n&255
+Math.floor(n/16777216)%256,
+Math.floor(n/65536)%256,
+Math.floor(n/256)%256,
+n%256
 ].join(".");
 
 mostrar(ip);
@@ -549,9 +613,9 @@ function ipToInt(ip){
 
 return ip.split(".")
 .reduce(
-(a,b)=>(a<<8)+Number(b),
+(a,b)=>(a*256)+Number(b),
 0
-)>>>0;
+);
 
 }
 
@@ -559,10 +623,10 @@ return ip.split(".")
 function intToIP(n){
 
 return[
-n>>>24,
-(n>>>16)&255,
-(n>>>8)&255,
-n&255
+Math.floor(n/16777216)%256,
+Math.floor(n/65536)%256,
+Math.floor(n/256)%256,
+n%256
 ].join(".");
 
 }
@@ -588,11 +652,12 @@ const ipInt=
 ipToInt(ip);
 
 const mask=
-cidr===0?0:
-(0xffffffff << (32-cidr))>>>0;
+cidr===0
+?0
+:(4294967295 << (32-cidr))>>>0;
 
 const network=
-ipInt & mask;
+(ipInt & mask)>>>0;
 
 const broadcast=
 (network | (~mask>>>0))>>>0;
@@ -601,7 +666,9 @@ const total=
 Math.pow(2,32-cidr);
 
 const hosts=
-cidr>=31?total:Math.max(total-2,0);
+cidr>=31
+?total
+:Math.max(total-2,0);
 
 mostrar(`
 
@@ -694,6 +761,14 @@ async function dmarcLookup(){
 const dominio=
 document.getElementById("dominio").value.trim();
 
+if(!dominio){
+
+mostrar("Ingresá un dominio.");
+
+return;
+
+}
+
 await consultaDNS(
 "TXT",
 "_dmarc."+dominio
@@ -720,19 +795,19 @@ params+=
 
 mostrar(`
 
-<strong>Protocolo:</strong> ${u.protocol}<br>
+<strong>Protocolo:</strong> ${escapeHTML(u.protocol)}<br>
 
-<strong>Host:</strong> ${u.host}<br>
+<strong>Host:</strong> ${escapeHTML(u.host)}<br>
 
-<strong>Hostname:</strong> ${u.hostname}<br>
+<strong>Hostname:</strong> ${escapeHTML(u.hostname)}<br>
 
-<strong>Puerto:</strong> ${u.port||"Predeterminado"}<br>
+<strong>Puerto:</strong> ${escapeHTML(u.port||"Predeterminado")}<br>
 
-<strong>Ruta:</strong> ${u.pathname}<br>
+<strong>Ruta:</strong> ${escapeHTML(u.pathname)}<br>
 
-<strong>Query:</strong> ${u.search||"Ninguno"}<br>
+<strong>Query:</strong> ${escapeHTML(u.search||"Ninguno")}<br>
 
-<strong>Fragmento:</strong> ${u.hash||"Ninguno"}<br>
+<strong>Fragmento:</strong> ${escapeHTML(u.hash||"Ninguno")}<br>
 
 <strong>Parámetros:</strong><br>
 ${params||"Ninguno"}
@@ -763,7 +838,7 @@ mode:"cors"
 
 mostrar(`
 <strong>Status:</strong> ${response.status}<br>
-<strong>Estado:</strong> ${response.statusText}
+<strong>Estado:</strong> ${escapeHTML(response.statusText)}
 `);
 
 }catch{
@@ -814,8 +889,12 @@ texto;
 }
 
 
+seleccionar(
+"miip",
+document.querySelector(".tool.active")
+);
+
 </script>
 
 </body>
 </html>
-```
