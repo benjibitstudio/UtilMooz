@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Calculadora de Criptomonedas Online | Utilix</title>
+
+<meta name="description" content="Calculadora de criptomonedas online. Convertí Bitcoin, Ethereum y otras criptomonedas a dólares y otras monedas.">
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+font-family:Arial,sans-serif;
+background:#f5f7fb;
+color:#172033;
+}
+
+header{
+background:#111827;
+color:white;
+padding:22px 20px;
+}
+
+.header-content{
+max-width:900px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{font-size:26px;font-weight:bold}
+.logo span{color:#4f8cff}
+nav a{color:#ddd;text-decoration:none}
+
+.container{
+max-width:700px;
+margin:50px auto;
+padding:0 20px;
+}
+
+h1{font-size:36px;margin-bottom:15px}
+
+.description{
+color:#667085;
+margin-bottom:30px;
+line-height:1.6;
+}
+
+.calculator{
+background:white;
+padding:30px;
+border-radius:16px;
+border:1px solid #e6e8ee;
+box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+
+label{
+display:block;
+margin-bottom:8px;
+font-weight:bold;
+}
+
+input,select{
+width:100%;
+padding:14px;
+margin-bottom:20px;
+border:1px solid #d9dde5;
+border-radius:8px;
+font-size:16px;
+}
+
+button{
+width:100%;
+padding:15px;
+border:none;
+border-radius:8px;
+background:#4f8cff;
+color:white;
+font-size:17px;
+cursor:pointer;
+}
+
+.resultado{
+margin-top:25px;
+padding:20px;
+background:#f5f7fb;
+border-radius:10px;
+text-align:center;
+font-size:20px;
+font-weight:bold;
+line-height:1.6;
+}
+
+footer{
+margin-top:60px;
+background:#111827;
+color:#aaa;
+text-align:center;
+padding:30px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header-content">
+<div class="logo">Util<span>ix</span></div>
+<nav><a href="index.html">Inicio</a></nav>
+</div>
+</header>
+
+<main class="container">
+
+<h1>Calculadora de criptomonedas</h1>
+
+<p class="description">
+Calculá el valor aproximado de tus criptomonedas utilizando precios actuales.
+</p>
+
+<div class="calculator">
+
+<label>Cantidad</label>
+
+<input type="number" id="cantidad" placeholder="Ejemplo: 0.5">
+
+<label>Criptomoneda</label>
+
+<select id="crypto">
+<option value="bitcoin">Bitcoin (BTC)</option>
+<option value="ethereum">Ethereum (ETH)</option>
+<option value="tether">Tether (USDT)</option>
+<option value="binancecoin">BNB</option>
+<option value="solana">Solana (SOL)</option>
+</select>
+
+<label>Moneda</label>
+
+<select id="moneda">
+<option value="usd">Dólares (USD)</option>
+<option value="eur">Euros (EUR)</option>
+<option value="ars">Pesos argentinos (ARS)</option>
+</select>
+
+<button onclick="calcularCrypto()">
+Calcular
+</button>
+
+<div class="resultado" id="resultado">
+Resultado: -
+</div>
+
+</div>
+
+</main>
+
+<footer>
+© 2026 Utilix — Herramientas online gratuitas
+</footer>
+
+<script>
+
+async function calcularCrypto(){
+
+const cantidad=parseFloat(document.getElementById("cantidad").value);
+const crypto=document.getElementById("crypto").value;
+const moneda=document.getElementById("moneda").value;
+const resultado=document.getElementById("resultado");
+
+if(isNaN(cantidad)||cantidad<0){
+resultado.textContent="Ingresá una cantidad válida.";
+return;
+}
+
+resultado.textContent="Consultando precio...";
+
+try{
+
+const respuesta=await fetch(
+"https://api.coingecko.com/api/v3/simple/price?ids="+
+crypto+
+"&vs_currencies="+
+moneda
+);
+
+if(!respuesta.ok) throw new Error();
+
+const datos=await respuesta.json();
+
+const precio=datos[crypto][moneda];
+const total=cantidad*precio;
+
+resultado.innerHTML=
+cantidad+" "+crypto.toUpperCase()+
+" ≈ "+total.toLocaleString("es-AR",{
+maximumFractionDigits:2
+})+" "+moneda.toUpperCase();
+
+}catch(error){
+
+resultado.textContent=
+"No se pudo obtener el precio. Intentá nuevamente.";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
