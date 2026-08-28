@@ -1,267 +1,411 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Utilix - Herramientas online gratuitas</title>
+```
+<title>Utilix - Herramientas online gratuitas</title>
 
-    <meta name="description"
-          content="Herramientas online gratuitas: calculadoras, conversores, generadores y utilidades.">
+<meta name="description"
+      content="Utilix ofrece herramientas online gratuitas: calculadoras, conversores, generadores, herramientas de texto, archivos y mucho más.">
 
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
 
-        body {
-            font-family: Arial, sans-serif;
-            background: #f5f7fb;
-            color: #172033;
-        }
+    body {
+        font-family: Arial, sans-serif;
+        background: #f5f7fb;
+        color: #172033;
+    }
 
-        header {
-            background: #111827;
-            color: white;
-            padding: 22px 20px;
-        }
+    header {
+        background: #111827;
+        color: white;
+        padding: 22px 20px;
+    }
 
-        .header-content {
-            max-width: 1100px;
-            margin: auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    .header-content {
+        max-width: 1100px;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 
-        .logo {
-            font-size: 26px;
-            font-weight: bold;
-        }
+    .logo {
+        font-size: 26px;
+        font-weight: bold;
+    }
 
-        .logo span {
-            color: #4f8cff;
-        }
+    .logo span {
+        color: #4f8cff;
+    }
 
-        nav a {
-            color: #ddd;
-            text-decoration: none;
-            margin-left: 20px;
-        }
+    nav a {
+        color: #ddd;
+        text-decoration: none;
+        margin-left: 20px;
+    }
 
-        .hero {
-            max-width: 1100px;
-            margin: 50px auto 35px;
-            padding: 0 20px;
-        }
+    nav a:hover {
+        color: white;
+    }
+
+    .hero {
+        max-width: 1100px;
+        margin: 50px auto 35px;
+        padding: 0 20px;
+    }
+
+    .hero h1 {
+        font-size: 42px;
+        margin-bottom: 15px;
+    }
+
+    .hero p {
+        color: #667085;
+        font-size: 18px;
+        max-width: 700px;
+        line-height: 1.6;
+    }
+
+    .search {
+        max-width: 1100px;
+        margin: 0 auto 35px;
+        padding: 0 20px;
+    }
+
+    .search input {
+        width: 100%;
+        padding: 16px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        font-size: 16px;
+        outline: none;
+    }
+
+    .search input:focus {
+        border-color: #4f8cff;
+    }
+
+    .container {
+        max-width: 1100px;
+        margin: auto;
+        padding: 0 20px 60px;
+    }
+
+    .section-title {
+        margin: 30px 0 15px;
+        font-size: 25px;
+    }
+
+    .tools {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+        gap: 18px;
+    }
+
+    .tool {
+        background: white;
+        padding: 22px;
+        border-radius: 14px;
+        border: 1px solid #e6e8ee;
+        text-decoration: none;
+        color: inherit;
+        transition: .2s;
+    }
+
+    .tool:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0,0,0,.08);
+    }
+
+    .icon {
+        font-size: 30px;
+        margin-bottom: 12px;
+    }
+
+    .tool h3 {
+        margin-bottom: 8px;
+    }
+
+    .tool p {
+        color: #667085;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    footer {
+        background: #111827;
+        color: #aaa;
+        text-align: center;
+        padding: 30px;
+    }
+
+    @media (max-width: 600px) {
 
         .hero h1 {
-            font-size: 42px;
-            margin-bottom: 15px;
+            font-size: 32px;
         }
 
-        .hero p {
-            color: #667085;
-            font-size: 18px;
-            max-width: 650px;
-        }
-
-        .search {
-            max-width: 1100px;
-            margin: 0 auto 35px;
-            padding: 0 20px;
-        }
-
-        .search input {
-            width: 100%;
-            padding: 16px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            font-size: 16px;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: auto;
-            padding: 0 20px 60px;
-        }
-
-        .section-title {
-            margin: 30px 0 15px;
-            font-size: 25px;
+        nav {
+            display: none;
         }
 
         .tools {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-            gap: 18px;
+            grid-template-columns: 1fr;
         }
+    }
+</style>
+```
 
-        .tool {
-            background: white;
-            padding: 22px;
-            border-radius: 14px;
-            border: 1px solid #e6e8ee;
-            text-decoration: none;
-            color: inherit;
-            transition: .2s;
-        }
-
-        .tool:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0,0,0,.08);
-        }
-
-        .icon {
-            font-size: 30px;
-            margin-bottom: 12px;
-        }
-
-        .tool h3 {
-            margin-bottom: 8px;
-        }
-
-        .tool p {
-            color: #667085;
-            font-size: 14px;
-            line-height: 1.5;
-        }
-
-        footer {
-            background: #111827;
-            color: #aaa;
-            text-align: center;
-            padding: 30px;
-        }
-
-        @media (max-width: 600px) {
-            .hero h1 {
-                font-size: 32px;
-            }
-
-            nav {
-                display: none;
-            }
-        }
-    </style>
 </head>
 
 <body>
 
 <header>
     <div class="header-content">
-        <div class="logo">Util<span>ix</span></div>
 
-        <nav>
-            <a href="#">Inicio</a>
-            <a href="#herramientas">Herramientas</a>
-        </nav>
+```
+    <div class="logo">
+        Util<span>ix</span>
     </div>
+
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="#herramientas">Herramientas</a>
+    </nav>
+
+</div>
+```
+
 </header>
 
 <section class="hero">
-    <h1>Herramientas online gratuitas</h1>
 
-    <p>
-        Calculadoras, conversores, generadores y herramientas útiles.
-        Rápidas, sencillas y gratuitas.
-    </p>
+```
+<h1>Herramientas online gratuitas</h1>
+
+<p>
+    Calculadoras, conversores, generadores y herramientas útiles.
+    Rápidas, sencillas y gratuitas, directamente desde tu navegador.
+</p>
+```
+
 </section>
 
 <div class="search">
-    <input
-        type="text"
-        id="search"
-        placeholder="🔎 Buscar una herramienta..."
-        onkeyup="buscarHerramientas()">
+
+```
+<input
+    type="text"
+    id="search"
+    placeholder="🔎 Buscar una herramienta..."
+    onkeyup="buscarHerramientas()">
+```
+
 </div>
 
 <main class="container" id="herramientas">
 
-    <h2 class="section-title">🔥 Herramientas populares</h2>
+```
+<h2 class="section-title">
+    🔥 Herramientas populares
+</h2>
 
-    <div class="tools">
 
-        <a class="tool" href="porcentaje.html">
-            <div class="icon">🔢</div>
-            <h3>Calculadora de porcentaje</h3>
-            <p>Calculá porcentajes de forma rápida y sencilla.</p>
-        </a>
+<div class="tools">
 
-        <a class="tool" href="edad.html">
-            <div class="icon">🎂</div>
-            <h3>Calculadora de edad</h3>
-            <p>Descubrí exactamente cuántos años, meses y días tenés.</p>
-        </a>
 
-        <a class="tool" href="contraseñas.html">
-            <div class="icon">🔐</div>
-            <h3>Generador de contraseñas</h3>
-            <p>Generá contraseñas seguras de forma instantánea.</p>
-        </a>
+    <!-- PORCENTAJE -->
 
-        <a class="tool" href="qr.html">
-            <div class="icon">📱</div>
-            <h3>Generador QR</h3>
-            <p>Creá códigos QR rápidamente.</p>
-        </a>
+    <a class="tool" href="porcentaje.html">
 
-        <a class="tool" href="contador.html">
-            <div class="icon">📝</div>
-            <h3>Contador de palabras</h3>
-            <p>Contá palabras, caracteres y líneas de cualquier texto.</p>
-        </a>
+        <div class="icon">🔢</div>
 
-        <a class="tool" href="unidades.html">
-            <div class="icon">🔄</div>
-            <h3>Conversor de unidades</h3>
-            <p>Convertí kilómetros, metros, kilos, libras y mucho más.</p>
-        </a>
+        <h3>
+            Calculadora de porcentaje
+        </h3>
 
-        <a class="tool" href="crypto.html">
-            <div class="icon">₿</div>
-            <h3>Calculadora crypto</h3>
-            <p>Herramientas para Bitcoin y otras criptomonedas.</p>
-        </a>
+        <p>
+            Calculá porcentajes de forma rápida y sencilla.
+        </p>
 
-        <a class="tool" href="cronometro.html">
-            <div class="icon">⏱️</div>
-            <h3>Cronómetro</h3>
-            <p>Un cronómetro sencillo directamente en tu navegador.</p>
-        </a>
+    </a>
 
-    </div>
+
+    <!-- EDAD -->
+
+    <a class="tool" href="edad.html">
+
+        <div class="icon">🎂</div>
+
+        <h3>
+            Calculadora de edad
+        </h3>
+
+        <p>
+            Descubrí exactamente cuántos años, meses y días tenés.
+        </p>
+
+    </a>
+
+
+    <!-- CONTRASEÑAS -->
+
+    <a class="tool" href="contraseñas.html">
+
+        <div class="icon">🔐</div>
+
+        <h3>
+            Generador de contraseñas
+        </h3>
+
+        <p>
+            Generá contraseñas seguras de forma instantánea.
+        </p>
+
+    </a>
+
+
+    <!-- QR -->
+
+    <a class="tool" href="qr.html">
+
+        <div class="icon">📱</div>
+
+        <h3>
+            Generador QR
+        </h3>
+
+        <p>
+            Creá códigos QR rápidamente desde cualquier dispositivo.
+        </p>
+
+    </a>
+
+
+    <!-- CONTADOR -->
+
+    <a class="tool" href="contador.html">
+
+        <div class="icon">📝</div>
+
+        <h3>
+            Contador de palabras
+        </h3>
+
+        <p>
+            Contá palabras, caracteres y líneas de cualquier texto.
+        </p>
+
+    </a>
+
+
+    <!-- UNIDADES -->
+
+    <a class="tool" href="unidades.html">
+
+        <div class="icon">🔄</div>
+
+        <h3>
+            Conversor de unidades
+        </h3>
+
+        <p>
+            Convertí kilómetros, metros, kilos, libras y mucho más.
+        </p>
+
+    </a>
+
+
+    <!-- CRONÓMETRO -->
+
+    <a class="tool" href="cronometro.html">
+
+        <div class="icon">⏱️</div>
+
+        <h3>
+            Cronómetro
+        </h3>
+
+        <p>
+            Un cronómetro sencillo directamente en tu navegador.
+        </p>
+
+    </a>
+
+
+    <!-- ARCHIVOS -->
+
+    <a class="tool" href="archivos.html">
+
+        <div class="icon">📁</div>
+
+        <h3>
+            Herramientas de archivos
+        </h3>
+
+        <p>
+            Trabajá con archivos directamente desde tu navegador.
+        </p>
+
+    </a>
+
+
+</div>
+```
 
 </main>
 
 <footer>
-    © 2026 Utilix — Herramientas online gratuitas
+
+```
+© 2026 Utilix — Herramientas online gratuitas
+```
+
 </footer>
 
 <script>
+
 function buscarHerramientas() {
 
-    const texto = document
+    const texto =
+        document
         .getElementById("search")
         .value
-        .toLowerCase();
+        .toLowerCase()
+        .trim();
 
-    const herramientas = document.querySelectorAll(".tool");
+    const herramientas =
+        document.querySelectorAll(".tool");
+
 
     herramientas.forEach(function(herramienta) {
 
-        const contenido = herramienta.innerText.toLowerCase();
+        const contenido =
+            herramienta.innerText.toLowerCase();
 
         if (contenido.includes(texto)) {
+
             herramienta.style.display = "";
+
         } else {
+
             herramienta.style.display = "none";
+
         }
 
     });
+
 }
+
 </script>
 
 </body>
