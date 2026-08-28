@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Generador de Código QR Online | Utilix</title>
+
+<meta name="description" content="Generador de códigos QR online gratis. Creá códigos QR para enlaces, textos y otros contenidos rápidamente.">
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+font-family:Arial,sans-serif;
+background:#f5f7fb;
+color:#172033;
+}
+
+header{
+background:#111827;
+color:white;
+padding:22px 20px;
+}
+
+.header-content{
+max-width:900px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{font-size:26px;font-weight:bold}
+.logo span{color:#4f8cff}
+nav a{color:#ddd;text-decoration:none}
+
+.container{
+max-width:700px;
+margin:50px auto;
+padding:0 20px;
+}
+
+h1{font-size:36px;margin-bottom:15px}
+
+.description{
+color:#667085;
+margin-bottom:30px;
+line-height:1.6;
+}
+
+.calculator{
+background:white;
+padding:30px;
+border-radius:16px;
+border:1px solid #e6e8ee;
+box-shadow:0 5px 20px rgba(0,0,0,.05);
+}
+
+textarea{
+width:100%;
+height:130px;
+padding:14px;
+border:1px solid #d9dde5;
+border-radius:8px;
+font-size:16px;
+resize:vertical;
+}
+
+button{
+width:100%;
+padding:15px;
+margin-top:20px;
+border:none;
+border-radius:8px;
+background:#4f8cff;
+color:white;
+font-size:17px;
+cursor:pointer;
+}
+
+#qrcode{
+margin:30px auto 0;
+display:flex;
+justify-content:center;
+}
+
+footer{
+margin-top:60px;
+background:#111827;
+color:#aaa;
+text-align:center;
+padding:30px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="header-content">
+<div class="logo">Util<span>ix</span></div>
+<nav><a href="index.html">Inicio</a></nav>
+</div>
+</header>
+
+<main class="container">
+
+<h1>Generador de códigos QR</h1>
+
+<p class="description">
+Creá un código QR gratis para un enlace, texto o cualquier información que quieras compartir.
+</p>
+
+<div class="calculator">
+
+<textarea id="texto" placeholder="Pegá aquí un enlace o escribí un texto..."></textarea>
+
+<button onclick="generarQR()">Generar código QR</button>
+
+<div id="qrcode"></div>
+
+</div>
+
+</main>
+
+<footer>
+© 2026 Utilix — Herramientas online gratuitas
+</footer>
+
+<script>
+
+function generarQR(){
+
+const texto=document.getElementById("texto").value.trim();
+const contenedor=document.getElementById("qrcode");
+
+contenedor.innerHTML="";
+
+if(!texto){
+alert("Ingresá un texto o enlace.");
+return;
+}
+
+new QRCode(contenedor,{
+text:texto,
+width:220,
+height:220
+});
+
+}
+
+</script>
+
+</body>
+</html>
