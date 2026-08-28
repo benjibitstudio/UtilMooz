@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,209 +7,716 @@
 
 <title>Calculadora de Criptomonedas Online | Utilix</title>
 
-<meta name="description" content="Calculadora de criptomonedas online. Convertí Bitcoin, Ethereum y otras criptomonedas a dólares y otras monedas.">
+<meta name="description"
+content="Calculadora de criptomonedas online gratis. Convertí Bitcoin, Ethereum, Solana, XRP y miles de criptomonedas a dólares, euros, pesos argentinos y otras monedas.">
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
 
 body{
-font-family:Arial,sans-serif;
-background:#f5f7fb;
-color:#172033;
+    font-family:Arial,sans-serif;
+    background:#f5f7fb;
+    color:#172033;
 }
 
 header{
-background:#111827;
-color:white;
-padding:22px 20px;
+    background:#111827;
+    color:white;
+    padding:22px 20px;
 }
 
 .header-content{
-max-width:900px;
-margin:auto;
-display:flex;
-justify-content:space-between;
-align-items:center;
+    max-width:900px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
-.logo{font-size:26px;font-weight:bold}
-.logo span{color:#4f8cff}
-nav a{color:#ddd;text-decoration:none}
+.logo{
+    font-size:26px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#4f8cff;
+}
+
+nav a{
+    color:#ddd;
+    text-decoration:none;
+}
 
 .container{
-max-width:700px;
-margin:50px auto;
-padding:0 20px;
+    max-width:750px;
+    margin:50px auto;
+    padding:0 20px;
 }
 
-h1{font-size:36px;margin-bottom:15px}
+h1{
+    font-size:36px;
+    margin-bottom:15px;
+}
 
 .description{
-color:#667085;
-margin-bottom:30px;
-line-height:1.6;
+    color:#667085;
+    margin-bottom:30px;
+    line-height:1.6;
 }
 
 .calculator{
-background:white;
-padding:30px;
-border-radius:16px;
-border:1px solid #e6e8ee;
-box-shadow:0 5px 20px rgba(0,0,0,.05);
+    background:white;
+    padding:30px;
+    border-radius:16px;
+    border:1px solid #e6e8ee;
+    box-shadow:0 5px 20px rgba(0,0,0,.05);
 }
 
 label{
-display:block;
-margin-bottom:8px;
-font-weight:bold;
+    display:block;
+    margin-bottom:8px;
+    font-weight:bold;
 }
 
-input,select{
-width:100%;
-padding:14px;
-margin-bottom:20px;
-border:1px solid #d9dde5;
-border-radius:8px;
-font-size:16px;
+input,
+select{
+    width:100%;
+    padding:14px;
+    margin-bottom:20px;
+    border:1px solid #d9dde5;
+    border-radius:8px;
+    font-size:16px;
+}
+
+.search-box{
+    position:relative;
+}
+
+#busqueda{
+    margin-bottom:5px;
+}
+
+.coin-list{
+    max-height:260px;
+    overflow-y:auto;
+    border:1px solid #ddd;
+    border-radius:8px;
+    display:none;
+    background:white;
+    margin-bottom:20px;
+}
+
+.coin{
+    padding:12px 14px;
+    cursor:pointer;
+    border-bottom:1px solid #eee;
+}
+
+.coin:hover{
+    background:#f5f7fb;
+}
+
+.coin strong{
+    display:block;
+}
+
+.coin small{
+    color:#667085;
+}
+
+.selected{
+    background:#eef4ff;
+    border:1px solid #4f8cff;
+    padding:12px;
+    border-radius:8px;
+    margin-bottom:20px;
+    display:none;
 }
 
 button{
-width:100%;
-padding:15px;
-border:none;
-border-radius:8px;
-background:#4f8cff;
-color:white;
-font-size:17px;
-cursor:pointer;
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:8px;
+    background:#4f8cff;
+    color:white;
+    font-size:17px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#3978e8;
+}
+
+button:disabled{
+    opacity:.6;
+    cursor:not-allowed;
 }
 
 .resultado{
-margin-top:25px;
-padding:20px;
-background:#f5f7fb;
-border-radius:10px;
-text-align:center;
-font-size:20px;
-font-weight:bold;
-line-height:1.6;
+    margin-top:25px;
+    padding:20px;
+    background:#f5f7fb;
+    border-radius:10px;
+    text-align:center;
+    font-size:20px;
+    font-weight:bold;
+    line-height:1.7;
+}
+
+.estado{
+    margin-top:10px;
+    text-align:center;
+    color:#667085;
+    font-size:14px;
+}
+
+.info{
+    margin-top:35px;
+    line-height:1.7;
+    color:#4b5563;
+}
+
+.info h2{
+    margin-bottom:10px;
+}
+
+.info p{
+    margin-bottom:12px;
 }
 
 footer{
-margin-top:60px;
-background:#111827;
-color:#aaa;
-text-align:center;
-padding:30px;
+    margin-top:60px;
+    background:#111827;
+    color:#aaa;
+    text-align:center;
+    padding:30px;
 }
+
+@media(max-width:600px){
+
+    h1{
+        font-size:30px;
+    }
+
+    .calculator{
+        padding:22px;
+    }
+
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
+
 <div class="header-content">
-<div class="logo">Util<span>ix</span></div>
-<nav><a href="index.html">Inicio</a></nav>
+
+<div class="logo">
+Util<span>ix</span>
 </div>
+
+<nav>
+<a href="index.html">Inicio</a>
+</nav>
+
+</div>
+
 </header>
+
 
 <main class="container">
 
 <h1>Calculadora de criptomonedas</h1>
 
 <p class="description">
-Calculá el valor aproximado de tus criptomonedas utilizando precios actuales.
+Convertí criptomonedas a dólares, euros, pesos argentinos y otras monedas.
+Buscá entre miles de criptomonedas disponibles.
 </p>
+
 
 <div class="calculator">
 
-<label>Cantidad</label>
+<label for="cantidad">
+Cantidad
+</label>
 
-<input type="number" id="cantidad" placeholder="Ejemplo: 0.5">
+<input
+    type="number"
+    id="cantidad"
+    placeholder="Ejemplo: 0.5"
+    min="0"
+    step="any"
+>
 
-<label>Criptomoneda</label>
 
-<select id="crypto">
-<option value="bitcoin">Bitcoin (BTC)</option>
-<option value="ethereum">Ethereum (ETH)</option>
-<option value="tether">Tether (USDT)</option>
-<option value="binancecoin">BNB</option>
-<option value="solana">Solana (SOL)</option>
-</select>
+<label>
+Criptomoneda
+</label>
 
-<label>Moneda</label>
+<div class="search-box">
+
+<input
+    type="text"
+    id="busqueda"
+    placeholder="🔎 Buscar Bitcoin, Ethereum, PEPE..."
+    autocomplete="off"
+>
+
+<div
+    id="coinList"
+    class="coin-list">
+</div>
+
+</div>
+
+
+<div
+    id="selectedCoin"
+    class="selected">
+</div>
+
+
+<label for="moneda">
+Convertir a
+</label>
 
 <select id="moneda">
-<option value="usd">Dólares (USD)</option>
-<option value="eur">Euros (EUR)</option>
-<option value="ars">Pesos argentinos (ARS)</option>
+
+<option value="usd">
+Dólares estadounidenses (USD)
+</option>
+
+<option value="eur">
+Euros (EUR)
+</option>
+
+<option value="ars">
+Pesos argentinos (ARS)
+</option>
+
+<option value="brl">
+Reales brasileños (BRL)
+</option>
+
+<option value="mxn">
+Pesos mexicanos (MXN)
+</option>
+
+<option value="clp">
+Pesos chilenos (CLP)
+</option>
+
+<option value="gbp">
+Libras esterlinas (GBP)
+</option>
+
+<option value="cad">
+Dólares canadienses (CAD)
+</option>
+
+<option value="aud">
+Dólares australianos (AUD)
+</option>
+
+<option value="jpy">
+Yenes japoneses (JPY)
+</option>
+
 </select>
 
-<button onclick="calcularCrypto()">
-Calcular
+
+<button
+    id="calcularBtn"
+    onclick="calcularCrypto()"
+    disabled>
+    Seleccioná una criptomoneda
 </button>
 
-<div class="resultado" id="resultado">
+
+<div
+    class="resultado"
+    id="resultado">
 Resultado: -
 </div>
+
+
+<div
+    class="estado"
+    id="estado">
+Cargando lista de criptomonedas...
+</div>
+
+</div>
+
+
+<div class="info">
+
+<h2>Calculadora de criptomonedas online</h2>
+
+<p>
+Utilizá esta herramienta para conocer el valor aproximado de una
+criptomoneda en diferentes monedas internacionales.
+</p>
+
+<p>
+Podés buscar Bitcoin, Ethereum, Solana, XRP, Dogecoin, Cardano,
+Shiba Inu, Pepe y muchas otras criptomonedas.
+</p>
+
+<p>
+Los precios son obtenidos mediante datos de mercado de CoinGecko
+y pueden cambiar constantemente.
+</p>
 
 </div>
 
 </main>
 
+
 <footer>
 © 2026 Utilix — Herramientas online gratuitas
 </footer>
 
+
 <script>
+
+let monedas = [];
+let monedaSeleccionada = null;
+
+
+/* =========================
+   CARGAR TODAS LAS MONEDAS
+========================= */
+
+async function cargarMonedas(){
+
+    const estado =
+        document.getElementById("estado");
+
+    try{
+
+        const respuesta = await fetch(
+            "https://api.coingecko.com/api/v3/coins/list"
+        );
+
+        if(!respuesta.ok){
+            throw new Error("Error API");
+        }
+
+        monedas = await respuesta.json();
+
+        estado.textContent =
+            monedas.length.toLocaleString("es-AR") +
+            " criptomonedas disponibles para buscar.";
+
+    }catch(error){
+
+        estado.textContent =
+            "No se pudo cargar la lista. Recargá la página.";
+
+    }
+
+}
+
+
+/* =========================
+   BUSCADOR
+========================= */
+
+const busqueda =
+    document.getElementById("busqueda");
+
+const coinList =
+    document.getElementById("coinList");
+
+
+busqueda.addEventListener("input", function(){
+
+    const texto =
+        this.value.trim().toLowerCase();
+
+    coinList.innerHTML = "";
+
+    if(texto.length < 2){
+
+        coinList.style.display = "none";
+
+        return;
+
+    }
+
+
+    const resultados = monedas
+        .filter(moneda => {
+
+            return (
+                moneda.name.toLowerCase().includes(texto) ||
+                moneda.symbol.toLowerCase().includes(texto) ||
+                moneda.id.toLowerCase().includes(texto)
+            );
+
+        })
+        .slice(0,50);
+
+
+    if(resultados.length === 0){
+
+        coinList.innerHTML =
+            '<div class="coin">No se encontraron criptomonedas.</div>';
+
+        coinList.style.display = "block";
+
+        return;
+
+    }
+
+
+    resultados.forEach(moneda => {
+
+        const elemento =
+            document.createElement("div");
+
+        elemento.className = "coin";
+
+        elemento.innerHTML =
+            "<strong>" +
+            escapeHTML(moneda.name) +
+            "</strong>" +
+
+            "<small>" +
+            escapeHTML(moneda.symbol.toUpperCase()) +
+            "</small>";
+
+
+        elemento.onclick = function(){
+
+            seleccionarMoneda(moneda);
+
+        };
+
+
+        coinList.appendChild(elemento);
+
+    });
+
+
+    coinList.style.display = "block";
+
+});
+
+
+/* =========================
+   SELECCIONAR MONEDA
+========================= */
+
+function seleccionarMoneda(moneda){
+
+    monedaSeleccionada = moneda;
+
+    busqueda.value =
+        moneda.name +
+        " (" +
+        moneda.symbol.toUpperCase() +
+        ")";
+
+
+    coinList.style.display = "none";
+
+
+    const selected =
+        document.getElementById("selectedCoin");
+
+    selected.innerHTML =
+        "✓ <strong>" +
+        escapeHTML(moneda.name) +
+        "</strong> (" +
+        escapeHTML(moneda.symbol.toUpperCase()) +
+        ")";
+
+
+    selected.style.display = "block";
+
+
+    document.getElementById("calcularBtn").disabled = false;
+
+    document.getElementById("calcularBtn").textContent =
+        "Calcular valor";
+
+}
+
+
+/* =========================
+   CALCULAR PRECIO
+========================= */
 
 async function calcularCrypto(){
 
-const cantidad=parseFloat(document.getElementById("cantidad").value);
-const crypto=document.getElementById("crypto").value;
-const moneda=document.getElementById("moneda").value;
-const resultado=document.getElementById("resultado");
+    const cantidad =
+        parseFloat(
+            document.getElementById("cantidad").value
+        );
 
-if(isNaN(cantidad)||cantidad<0){
-resultado.textContent="Ingresá una cantidad válida.";
-return;
+    const moneda =
+        document.getElementById("moneda").value;
+
+    const resultado =
+        document.getElementById("resultado");
+
+    if(!monedaSeleccionada){
+
+        resultado.textContent =
+            "Seleccioná una criptomoneda.";
+
+        return;
+
+    }
+
+
+    if(isNaN(cantidad) || cantidad < 0){
+
+        resultado.textContent =
+            "Ingresá una cantidad válida.";
+
+        return;
+
+    }
+
+
+    resultado.textContent =
+        "Consultando precio...";
+
+
+    try{
+
+        const url =
+            "https://api.coingecko.com/api/v3/simple/price" +
+            "?ids=" +
+            encodeURIComponent(monedaSeleccionada.id) +
+            "&vs_currencies=" +
+            encodeURIComponent(moneda);
+
+
+        const respuesta =
+            await fetch(url);
+
+
+        if(!respuesta.ok){
+
+            throw new Error("Error precio");
+
+        }
+
+
+        const datos =
+            await respuesta.json();
+
+
+        if(
+            !datos[monedaSeleccionada.id] ||
+            datos[monedaSeleccionada.id][moneda] === undefined
+        ){
+
+            throw new Error("Precio no disponible");
+
+        }
+
+
+        const precio =
+            datos[monedaSeleccionada.id][moneda];
+
+
+        const total =
+            cantidad * precio;
+
+
+        const simbolo =
+            moneda.toUpperCase();
+
+
+        resultado.innerHTML =
+
+            formatNumber(cantidad) +
+            " " +
+            monedaSeleccionada.symbol.toUpperCase() +
+
+            " ≈ " +
+
+            formatMoney(total) +
+
+            " " +
+            simbolo;
+
+
+    }catch(error){
+
+        resultado.textContent =
+            "No se pudo obtener el precio. Intentá nuevamente.";
+
+    }
+
 }
 
-resultado.textContent="Consultando precio...";
 
-try{
+/* =========================
+   FORMATO NÚMEROS
+========================= */
 
-const respuesta=await fetch(
-"https://api.coingecko.com/api/v3/simple/price?ids="+
-crypto+
-"&vs_currencies="+
-moneda
-);
+function formatNumber(numero){
 
-if(!respuesta.ok) throw new Error();
-
-const datos=await respuesta.json();
-
-const precio=datos[crypto][moneda];
-const total=cantidad*precio;
-
-resultado.innerHTML=
-cantidad+" "+crypto.toUpperCase()+
-" ≈ "+total.toLocaleString("es-AR",{
-maximumFractionDigits:2
-})+" "+moneda.toUpperCase();
-
-}catch(error){
-
-resultado.textContent=
-"No se pudo obtener el precio. Intentá nuevamente.";
+    return new Intl.NumberFormat(
+        "es-AR",
+        {
+            maximumFractionDigits:12
+        }
+    ).format(numero);
 
 }
 
+
+function formatMoney(numero){
+
+    return new Intl.NumberFormat(
+        "es-AR",
+        {
+            maximumFractionDigits:2
+        }
+    ).format(numero);
+
 }
+
+
+/* =========================
+   SEGURIDAD HTML
+========================= */
+
+function escapeHTML(texto){
+
+    const div =
+        document.createElement("div");
+
+    div.textContent = texto;
+
+    return div.innerHTML;
+
+}
+
+
+/* =========================
+   INICIAR
+========================= */
+
+cargarMonedas();
 
 </script>
 
 </body>
 </html>
+```
