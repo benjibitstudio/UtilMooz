@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Calculadora de Edad Online | Utilix</title>
 
-<meta name="description" content="Calculadora de edad online gratis. Calculá tu edad exacta en años, meses y días de forma rápida y sencilla.">
+<meta name="description"
+content="Calculadora de edad online gratis. Calculá tu edad exacta en años, meses y días de forma rápida y sencilla.">
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
 
 body{
 font-family:Arial,sans-serif;
@@ -36,7 +43,9 @@ font-size:26px;
 font-weight:bold;
 }
 
-.logo span{color:#4f8cff}
+.logo span{
+color:#4f8cff;
+}
 
 nav a{
 color:#ddd;
@@ -46,7 +55,7 @@ text-decoration:none;
 .container{
 max-width:700px;
 margin:50px auto;
-padding:0 20px;
+padding:0 20px 60px;
 }
 
 h1{
@@ -59,6 +68,43 @@ color:#667085;
 margin-bottom:30px;
 line-height:1.6;
 }
+
+/* =========================
+   ANUNCIOS
+========================= */
+
+.ad-container{
+width:100%;
+min-height:90px;
+margin:25px 0;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+}
+
+.ad-label{
+font-size:11px;
+color:#98a2b3;
+text-align:center;
+margin-bottom:5px;
+}
+
+/*
+   PEGÁ AQUÍ EL CÓDIGO DE TU ANUNCIO
+*/
+
+.ad-box{
+width:100%;
+min-height:90px;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+/* =========================
+   CALCULADORA
+========================= */
 
 .calculator{
 background:white;
@@ -94,7 +140,9 @@ font-size:17px;
 cursor:pointer;
 }
 
-button:hover{background:#3978e8}
+button:hover{
+background:#3978e8;
+}
 
 .resultado{
 margin-top:25px;
@@ -113,7 +161,17 @@ line-height:1.7;
 color:#4b5563;
 }
 
-.info h2{margin-bottom:10px}
+.info h2{
+margin-bottom:10px;
+}
+
+.info p{
+margin-bottom:12px;
+}
+
+/* =========================
+   FOOTER
+========================= */
 
 footer{
 margin-top:60px;
@@ -122,104 +180,312 @@ color:#aaa;
 text-align:center;
 padding:30px;
 }
+
+/* =========================
+   MOVIL
+========================= */
+
+@media(max-width:600px){
+
+h1{
+font-size:30px;
+}
+
+.calculator{
+padding:22px;
+}
+
+.ad-container{
+min-height:70px;
+}
+
+}
+
 </style>
+
 </head>
 
 <body>
 
 <header>
+
 <div class="header-content">
-<div class="logo">Util<span>ix</span></div>
-<nav><a href="index.html">Inicio</a></nav>
+
+<div class="logo">
+Util<span>ix</span>
 </div>
+
+<nav>
+<a href="index.html">Inicio</a>
+</nav>
+
+</div>
+
 </header>
+
 
 <main class="container">
 
 <h1>Calculadora de edad</h1>
 
 <p class="description">
-Calculá tu edad exacta en años, meses y días utilizando nuestra calculadora de edad online gratuita.
+Calculá tu edad exacta en años, meses y días utilizando nuestra
+calculadora de edad online gratuita.
 </p>
+
+
+<!-- =========================
+     ANUNCIO 1
+     DEBAJO DE LA DESCRIPCIÓN
+========================= -->
+
+<div class="ad-container">
+
+<div style="width:100%;">
+
+<div class="ad-label">
+PUBLICIDAD
+</div>
+
+<div class="ad-box">
+
+<!-- PEGAR AQUÍ EL SCRIPT DEL ANUNCIO -->
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+     CALCULADORA
+========================= -->
 
 <div class="calculator">
 
-<label for="fecha">Fecha de nacimiento</label>
+<label for="fecha">
+Fecha de nacimiento
+</label>
 
-<input type="date" id="fecha">
+<input
+type="date"
+id="fecha"
+>
 
-<button onclick="calcularEdad()">Calcular edad</button>
+<button onclick="calcularEdad()">
+Calcular edad
+</button>
 
-<div class="resultado" id="resultado">
+<div
+class="resultado"
+id="resultado">
+
 Resultado: -
+
 </div>
 
 </div>
+
+
+<!-- =========================
+     ANUNCIO 2
+     DEBAJO DE LA CALCULADORA
+========================= -->
+
+<div class="ad-container">
+
+<div style="width:100%;">
+
+<div class="ad-label">
+PUBLICIDAD
+</div>
+
+<div class="ad-box">
+
+<!-- PEGAR AQUÍ EL SCRIPT DEL ANUNCIO -->
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =========================
+     INFORMACIÓN SEO
+========================= -->
 
 <div class="info">
 
 <h2>¿Cómo calcular la edad?</h2>
 
 <p>
-Ingresá tu fecha de nacimiento y la calculadora determinará automáticamente
-cuántos años, meses y días tenés.
+Ingresá tu fecha de nacimiento y la calculadora determinará
+automáticamente cuántos años, meses y días tenés.
 </p>
+
+<p>
+Esta calculadora de edad funciona directamente desde tu navegador
+y no requiere instalar ningún programa.
+</p>
+
+<h2>Calculadora de edad exacta</h2>
+
+<p>
+Podés utilizar esta herramienta para calcular tu edad exacta
+a partir de tu fecha de nacimiento.
+</p>
+
+</div>
+
+
+<!-- =========================
+     ANUNCIO 3
+     ANTES DEL FOOTER
+========================= -->
+
+<div class="ad-container">
+
+<div style="width:100%;">
+
+<div class="ad-label">
+PUBLICIDAD
+</div>
+
+<div class="ad-box">
+
+<!-- PEGAR AQUÍ EL SCRIPT DEL ANUNCIO -->
+
+</div>
+
+</div>
 
 </div>
 
 </main>
 
+
 <footer>
+
 © 2026 Utilix — Herramientas online gratuitas
+
 </footer>
+
 
 <script>
 
+/* =========================
+   CALCULADORA DE EDAD
+========================= */
+
 function calcularEdad(){
 
-const fecha=document.getElementById("fecha").value;
-const resultado=document.getElementById("resultado");
+const fecha=
+document.getElementById("fecha").value;
+
+const resultado=
+document.getElementById("resultado");
+
 
 if(!fecha){
-resultado.textContent="Seleccioná tu fecha de nacimiento.";
+
+resultado.textContent=
+"Seleccioná tu fecha de nacimiento.";
+
 return;
+
 }
 
-const nacimiento=new Date(fecha+"T00:00:00");
-const hoy=new Date();
+
+const nacimiento=
+new Date(fecha+"T00:00:00");
+
+const hoy=
+new Date();
+
 
 if(nacimiento>hoy){
-resultado.textContent="La fecha no puede ser futura.";
+
+resultado.textContent=
+"La fecha no puede ser futura.";
+
 return;
+
 }
 
-let años=hoy.getFullYear()-nacimiento.getFullYear();
-let meses=hoy.getMonth()-nacimiento.getMonth();
-let dias=hoy.getDate()-nacimiento.getDate();
+
+let años=
+hoy.getFullYear()-
+nacimiento.getFullYear();
+
+let meses=
+hoy.getMonth()-
+nacimiento.getMonth();
+
+let dias=
+hoy.getDate()-
+nacimiento.getDate();
+
 
 if(dias<0){
+
 meses--;
-const diasMesAnterior=new Date(
+
+const diasMesAnterior=
+new Date(
 hoy.getFullYear(),
 hoy.getMonth(),
 0
 ).getDate();
 
 dias+=diasMesAnterior;
+
 }
+
 
 if(meses<0){
+
 años--;
+
 meses+=12;
+
 }
 
+
 resultado.innerHTML=
-"Tenés <strong>"+años+
-" años, "+meses+
-" meses y "+dias+
+"Tenés <strong>"+
+años+
+" años, "+
+meses+
+" meses y "+
+dias+
 " días</strong>.";
 
 }
+
+
+/* =========================
+   ESTABLECER FECHA MÁXIMA
+========================= */
+
+const fechaInput=
+document.getElementById("fecha");
+
+const hoy=
+new Date();
+
+const año=
+hoy.getFullYear();
+
+const mes=
+String(hoy.getMonth()+1).padStart(2,"0");
+
+const dia=
+String(hoy.getDate()).padStart(2,"0");
+
+fechaInput.max=
+año+"-"+mes+"-"+dia;
 
 </script>
 
