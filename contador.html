@@ -2,7 +2,6 @@
 
 <html lang="es">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -11,12 +10,11 @@
 <meta name="description"
 content="Contador de palabras y caracteres online gratis. Contá palabras, caracteres, líneas y espacios de cualquier texto.">
 
-<!-- ================= ADSTERRA POPUNDER ================= -->
+<!-- ADSTERRA POPUNDER -->
 
 <script src="https://pl31074088.profitableratecpmnetwork.com/b3/e1/f2/b3e1f2f8b30c35d54a787cfe893ac42b.js"></script>
 
 <style>
-
 *{
 box-sizing:border-box;
 margin:0;
@@ -123,8 +121,6 @@ font-size:13px;
 color:#667085;
 }
 
-/* ================= ANUNCIOS ================= */
-
 .ad-native{
 margin:30px 0;
 text-align:center;
@@ -136,8 +132,6 @@ margin:30px auto;
 text-align:center;
 overflow:hidden;
 }
-
-/* ================= INFO ================= */
 
 .info{
 margin-top:35px;
@@ -173,7 +167,6 @@ padding:20px;
 }
 
 }
-
 </style>
 
 </head>
@@ -181,7 +174,6 @@ padding:20px;
 <body>
 
 <header>
-
 <div class="header-content">
 
 <div class="logo">
@@ -193,7 +185,6 @@ Util<span>Mooz</span>
 </nav>
 
 </div>
-
 </header>
 
 <main class="container">
@@ -209,8 +200,7 @@ Contá palabras, caracteres, espacios y líneas de cualquier texto.
 <textarea
 id="texto"
 placeholder="Escribí o pegá tu texto aquí..."
-oninput="contar()">
-</textarea>
+oninput="contar()"></textarea>
 
 <div class="stats">
 
@@ -233,7 +223,7 @@ oninput="contar()">
 
 </div>
 
-<!-- ================= ADSTERRA NATIVE ================= -->
+<!-- ADSTERRA NATIVE -->
 
 <div class="ad-native">
 
@@ -247,26 +237,18 @@ src="https://pl31074091.profitableratecpmnetwork.com/0121748aaaf83f5b10d651ea8ce
 
 </div>
 
-<!-- ================= ADSTERRA BANNER 468x60 ================= -->
+<!-- ADSTERRA BANNER 468x60 -->
 
 <div class="ad-banner">
 
 <script>
-
 atOptions = {
-
 'key' : '56c8323b8c9bd2913adcf628996d2229',
-
 'format' : 'iframe',
-
 'height' : 60,
-
 'width' : 468,
-
 'params' : {}
-
 };
-
 </script>
 
 <script src="https://www.highrevenueformat.com/56c8323b8c9bd2913adcf628996d2229/invoke.js"></script>
@@ -289,12 +271,10 @@ se realiza de forma rápida y sencilla.
 </main>
 
 <footer>
-
 © 2026 UtilMooz — Herramientas online gratuitas
-
 </footer>
 
-<!-- ================= ADSTERRA SOCIAL BAR ================= -->
+<!-- ADSTERRA SOCIAL BAR -->
 
 <script src="https://pl31074089.profitableratecpmnetwork.com/b9/80/b1/b980b1630aa36c566498dbf6055d89ea.js"></script>
 
@@ -302,41 +282,37 @@ se realiza de forma rápida y sencilla.
 
 function contar(){
 
-const texto=
+const texto =
 document.getElementById("texto").value;
-
 
 /* PALABRAS */
 
-const palabras=
+const palabras =
 texto.trim()
 ? texto.trim().split(/\s+/).length
 : 0;
 
-
 /* CARACTERES */
 
-const caracteres=
+const caracteres =
 texto.length;
-
 
 /* LÍNEAS */
 
-const lineas=
+const lineas =
 texto
 ? texto.split(/\r?\n/).length
 : 0;
 
-
 /* ACTUALIZAR */
 
-document.getElementById("palabras").textContent=
+document.getElementById("palabras").textContent =
 palabras;
 
-document.getElementById("caracteres").textContent=
+document.getElementById("caracteres").textContent =
 caracteres;
 
-document.getElementById("lineas").textContent=
+document.getElementById("lineas").textContent =
 lineas;
 
 }
