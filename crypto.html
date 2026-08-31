@@ -5,7 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculadora de Criptomonedas Online | Utilix</title>
+<title>Calculadora de Criptomonedas Online | UtilMooz</title>
 
 <meta name="description"
 content="Calculadora de criptomonedas online gratis. Convertí Bitcoin, Ethereum, Solana, XRP y miles de criptomonedas a dólares, euros, pesos argentinos y otras monedas.">
@@ -190,10 +190,6 @@ button:disabled{
     margin-bottom:12px;
 }
 
-/* =========================
-   ANUNCIOS
-========================= */
-
 .ad-container{
     width:100%;
     max-width:100%;
@@ -243,10 +239,6 @@ footer{
 
 </style>
 
-<!-- =========================
-     ADSTERRA POPUNDER
-========================= -->
-
 <script src="https://pl31074088.profitableratecpmnetwork.com/b3/e1/f2/b3e1f2f8b30c35d54a787cfe893ac42b.js"></script>
 
 </head>
@@ -258,7 +250,7 @@ footer{
 <div class="header-content">
 
 <div class="logo">
-Util<span>ix</span>
+Util<span>Mooz</span>
 </div>
 
 <nav>
@@ -368,9 +360,9 @@ Yenes japoneses (JPY)
 </select>
 
 <button
- id="calcularBtn"
- onclick="calcularCrypto()"
- disabled>
+id="calcularBtn"
+onclick="calcularCrypto()"
+disabled>
 Seleccioná una criptomoneda </button>
 
 <div
@@ -386,10 +378,6 @@ Cargando lista de criptomonedas...
 </div>
 
 </div>
-
-<!-- =========================
-     NATIVE BANNER
-========================= -->
 
 <div class="ad-container">
 
@@ -427,10 +415,6 @@ y pueden cambiar constantemente.
 
 </div>
 
-<!-- =========================
-     BANNER 468x60
-========================= -->
-
 <div class="ad-container">
 
 <div class="ad-label">
@@ -458,12 +442,8 @@ atOptions = {
 </main>
 
 <footer>
-© 2026 Utilix — Herramientas online gratuitas
+© 2026 UtilMooz — Herramientas online gratuitas
 </footer>
-
-<!-- =========================
-     ADSTERRA SOCIAL BAR
-========================= -->
 
 <script src="https://pl31074089.profitableratecpmnetwork.com/b9/80/b1/b980b1630aa36c566498dbf6055d89ea.js"></script>
 
@@ -471,11 +451,6 @@ atOptions = {
 
 let monedas = [];
 let monedaSeleccionada = null;
-
-
-/* =========================
-   CARGAR TODAS LAS MONEDAS
-========================= */
 
 async function cargarMonedas(){
 
@@ -507,17 +482,11 @@ async function cargarMonedas(){
 
 }
 
-
-/* =========================
-   BUSCADOR
-========================= */
-
 const busqueda =
     document.getElementById("busqueda");
 
 const coinList =
     document.getElementById("coinList");
-
 
 busqueda.addEventListener("input", function(){
 
@@ -534,7 +503,6 @@ busqueda.addEventListener("input", function(){
 
     }
 
-
     const resultados = monedas
         .filter(moneda => {
 
@@ -547,7 +515,6 @@ busqueda.addEventListener("input", function(){
         })
         .slice(0,50);
 
-
     if(resultados.length === 0){
 
         coinList.innerHTML =
@@ -558,7 +525,6 @@ busqueda.addEventListener("input", function(){
         return;
 
     }
-
 
     resultados.forEach(moneda => {
 
@@ -576,27 +542,19 @@ busqueda.addEventListener("input", function(){
             escapeHTML(moneda.symbol.toUpperCase()) +
             "</small>";
 
-
         elemento.onclick = function(){
 
             seleccionarMoneda(moneda);
 
         };
 
-
         coinList.appendChild(elemento);
 
     });
 
-
     coinList.style.display = "block";
 
 });
-
-
-/* =========================
-   SELECCIONAR MONEDA
-========================= */
 
 function seleccionarMoneda(moneda){
 
@@ -608,9 +566,7 @@ function seleccionarMoneda(moneda){
         moneda.symbol.toUpperCase() +
         ")";
 
-
     coinList.style.display = "none";
-
 
     const selected =
         document.getElementById("selectedCoin");
@@ -622,9 +578,7 @@ function seleccionarMoneda(moneda){
         escapeHTML(moneda.symbol.toUpperCase()) +
         ")";
 
-
     selected.style.display = "block";
-
 
     document.getElementById("calcularBtn").disabled = false;
 
@@ -632,11 +586,6 @@ function seleccionarMoneda(moneda){
         "Calcular valor";
 
 }
-
-
-/* =========================
-   CALCULAR PRECIO
-========================= */
 
 async function calcularCrypto(){
 
@@ -660,7 +609,6 @@ async function calcularCrypto(){
 
     }
 
-
     if(isNaN(cantidad) || cantidad < 0){
 
         resultado.textContent =
@@ -670,10 +618,8 @@ async function calcularCrypto(){
 
     }
 
-
     resultado.textContent =
         "Consultando precio...";
-
 
     try{
 
@@ -684,10 +630,8 @@ async function calcularCrypto(){
             "&vs_currencies=" +
             encodeURIComponent(moneda);
 
-
         const respuesta =
             await fetch(url);
-
 
         if(!respuesta.ok){
 
@@ -695,10 +639,8 @@ async function calcularCrypto(){
 
         }
 
-
         const datos =
             await respuesta.json();
-
 
         if(
             !datos[monedaSeleccionada.id] ||
@@ -709,18 +651,14 @@ async function calcularCrypto(){
 
         }
 
-
         const precio =
             datos[monedaSeleccionada.id][moneda];
-
 
         const total =
             cantidad * precio;
 
-
         const simbolo =
             moneda.toUpperCase();
-
 
         resultado.innerHTML =
 
@@ -735,7 +673,6 @@ async function calcularCrypto(){
             " " +
             simbolo;
 
-
     }catch(error){
 
         resultado.textContent =
@@ -744,11 +681,6 @@ async function calcularCrypto(){
     }
 
 }
-
-
-/* =========================
-   FORMATO NÚMEROS
-========================= */
 
 function formatNumber(numero){
 
@@ -761,7 +693,6 @@ function formatNumber(numero){
 
 }
 
-
 function formatMoney(numero){
 
     return new Intl.NumberFormat(
@@ -773,11 +704,6 @@ function formatMoney(numero){
 
 }
 
-
-/* =========================
-   SEGURIDAD HTML
-========================= */
-
 function escapeHTML(texto){
 
     const div =
@@ -788,11 +714,6 @@ function escapeHTML(texto){
     return div.innerHTML;
 
 }
-
-
-/* =========================
-   INICIAR
-========================= */
 
 cargarMonedas();
 
