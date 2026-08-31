@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Utilidades Online Gratis | Utilmooz</title>
+<title>Conversor de Unidades Online | Utilmooz</title>
 
 <meta name="description"
-content="Utilidades online gratis: generador de contraseñas, UUID, PIN, números aleatorios, Base64, URL Encode, SHA-256, timestamps, cronómetro, temporizador, Pomodoro y más.">
+content="Conversor de unidades online gratis. Convertí longitud, peso y temperatura de forma rápida y sencilla con Utilmooz.">
 
 <meta name="keywords"
-content="utilidades online, herramientas online, generador contraseña, UUID, PIN, Base64, SHA256, timestamp, cronómetro, temporizador, Pomodoro">
+content="conversor de unidades, conversor online, convertir metros, kilómetros, kilos, gramos, temperatura">
 
 <!-- ============================= -->
 <!-- ADSTERRA POPUNDER -->
@@ -40,7 +41,7 @@ padding:22px 20px;
 }
 
 .header-content{
-max-width:1000px;
+max-width:900px;
 margin:auto;
 display:flex;
 justify-content:space-between;
@@ -66,25 +67,26 @@ color:white;
 }
 
 .container{
-max-width:1000px;
-margin:45px auto;
+max-width:700px;
+margin:50px auto;
 padding:0 20px 60px;
 }
 
 h1{
-font-size:38px;
-margin-bottom:12px;
+font-size:36px;
+margin-bottom:15px;
 }
 
 .description{
 color:#667085;
-line-height:1.6;
 margin-bottom:30px;
+line-height:1.6;
 }
 
-/* ============================= */
-/* PUBLICIDAD */
-/* ============================= */
+
+/* =========================
+   ANUNCIOS
+========================= */
 
 .ad-box{
 width:100%;
@@ -103,61 +105,19 @@ min-height:100px;
 min-height:60px;
 }
 
-.smartlink-box{
+.ad-label{
+font-size:11px;
+color:#98a2b3;
 text-align:center;
-margin:20px 0;
+margin-bottom:5px;
 }
 
-.smartlink-box a{
-display:inline-block;
-background:#4f8cff;
-color:white;
-padding:12px 22px;
-border-radius:8px;
-text-decoration:none;
-font-weight:bold;
-}
 
-.smartlink-box a:hover{
-background:#3978e8;
-}
+/* =========================
+   CALCULADORA
+========================= */
 
-.tools{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
-gap:12px;
-margin-bottom:30px;
-}
-
-.tool{
-background:white;
-border:1px solid #e6e8ee;
-border-radius:10px;
-padding:16px;
-cursor:pointer;
-transition:.2s;
-}
-
-.tool:hover{
-transform:translateY(-2px);
-box-shadow:0 5px 15px rgba(0,0,0,.08);
-}
-
-.tool.active{
-border:2px solid #4f8cff;
-}
-
-.tool h3{
-font-size:16px;
-}
-
-.tool p{
-font-size:13px;
-color:#667085;
-margin-top:5px;
-}
-
-.panel{
+.calculator{
 background:white;
 padding:30px;
 border-radius:16px;
@@ -165,48 +125,20 @@ border:1px solid #e6e8ee;
 box-shadow:0 5px 20px rgba(0,0,0,.05);
 }
 
-.panel h2{
-margin-bottom:10px;
+label{
+display:block;
+margin-bottom:8px;
+font-weight:bold;
 }
 
-#descripcion{
-color:#667085;
-line-height:1.6;
-margin-bottom:20px;
-}
-
-input,
-textarea,
-select{
+select,
+input{
 width:100%;
-padding:13px;
+padding:14px;
+margin-bottom:15px;
 border:1px solid #d9dde5;
 border-radius:8px;
 font-size:16px;
-margin-bottom:15px;
-font-family:Arial,sans-serif;
-}
-
-textarea{
-min-height:120px;
-resize:vertical;
-}
-
-label{
-display:block;
-font-weight:bold;
-margin-bottom:7px;
-}
-
-.checkbox{
-font-weight:normal;
-display:block;
-margin-bottom:10px;
-}
-
-.checkbox input{
-width:auto;
-margin:0 7px 0 0;
 }
 
 button{
@@ -216,63 +148,63 @@ border:none;
 border-radius:8px;
 background:#4f8cff;
 color:white;
-font-size:16px;
+font-size:17px;
 cursor:pointer;
-margin-top:5px;
 }
 
 button:hover{
 background:#3978e8;
 }
 
-.result{
-margin-top:20px;
+.resultado{
+margin-top:25px;
 padding:20px;
 background:#f5f7fb;
 border-radius:10px;
-line-height:1.7;
-word-break:break-word;
-}
-
-.result strong{
-font-size:18px;
-}
-
-.timer{
-font-size:50px;
 text-align:center;
+font-size:22px;
 font-weight:bold;
-margin:25px 0;
-font-variant-numeric:tabular-nums;
+line-height:1.7;
 }
 
-.row{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:12px;
-}
+
+/* =========================
+   INFORMACIÓN SEO
+========================= */
 
 .info{
 margin-top:35px;
-color:#4b5563;
 line-height:1.7;
+color:#4b5563;
 }
 
 .info h2{
-color:#172033;
 margin-bottom:10px;
+margin-top:25px;
+color:#172033;
 }
 
 .info p{
 margin-bottom:12px;
 }
 
+
+/* =========================
+   FOOTER
+========================= */
+
 footer{
+margin-top:60px;
 background:#111827;
 color:#aaa;
 text-align:center;
 padding:30px;
 }
+
+
+/* =========================
+   MOVIL
+========================= */
 
 @media(max-width:600px){
 
@@ -280,21 +212,13 @@ h1{
 font-size:30px;
 }
 
-.panel{
-padding:20px;
+.calculator{
+padding:22px;
 }
 
-.row{
-grid-template-columns:1fr;
-}
-
-.timer{
-font-size:40px;
-}
-
-/* Ocultar banner 468 en pantallas muy pequeñas */
 .ad-banner iframe{
 max-width:100%;
+height:auto;
 }
 
 }
@@ -303,7 +227,9 @@ max-width:100%;
 
 </head>
 
+
 <body>
+
 
 <header>
 
@@ -324,11 +250,12 @@ Util<span>mooz</span>
 
 <main class="container">
 
-<h1>Utilidades online gratis</h1>
+
+<h1>Conversor de unidades</h1>
 
 <p class="description">
-Herramientas pequeñas y prácticas para resolver tareas rápidamente.
-Generá contraseñas, UUID, códigos, hashes, timestamps y mucho más.
+Convertí fácilmente kilómetros, metros, kilos, gramos y temperaturas
+con este conversor de unidades online gratuito.
 </p>
 
 
@@ -337,6 +264,12 @@ Generá contraseñas, UUID, códigos, hashes, timestamps y mucho más.
 <!-- ============================= -->
 
 <div class="ad-box ad-banner">
+
+<div style="width:100%;">
+
+<div class="ad-label">
+PUBLICIDAD
+</div>
 
 <script>
 atOptions = {
@@ -352,105 +285,73 @@ atOptions = {
 
 </div>
 
+</div>
+
 
 <!-- ============================= -->
-<!-- SMARTLINK -->
+<!-- CALCULADORA -->
 <!-- ============================= -->
 
-<div class="smartlink-box">
+<div class="calculator">
 
-<a
-href="https://www.profitableratecpmnetwork.com/uv4iyjhq?key=e5099959029cda4c3de26a19d7907be0"
-target="_blank"
-rel="noopener noreferrer">
+<label>
+Tipo de conversión
+</label>
 
-🔗 Ver recurso recomendado
+<select
+id="tipo"
+onchange="cambiarUnidades()"
+>
 
-</a>
+<option value="longitud">
+Longitud
+</option>
 
-</div>
+<option value="peso">
+Peso
+</option>
+
+<option value="temperatura">
+Temperatura
+</option>
+
+</select>
 
 
-<div class="tools">
+<input
+type="number"
+id="valor"
+placeholder="Ingresá un valor"
+step="any"
+>
 
-<div class="tool active" onclick="seleccionar('password',this)">
-<h3>🔐 Contraseña</h3>
-<p>Generar contraseña segura</p>
-</div>
 
-<div class="tool" onclick="seleccionar('uuid',this)">
-<h3>🆔 UUID</h3>
-<p>Generar UUID</p>
-</div>
+<label>
+Desde
+</label>
 
-<div class="tool" onclick="seleccionar('pin',this)">
-<h3>🔢 PIN</h3>
-<p>Generar PIN aleatorio</p>
-</div>
+<select id="desde"></select>
 
-<div class="tool" onclick="seleccionar('random',this)">
-<h3>🎲 Número aleatorio</h3>
-<p>Generar números</p>
-</div>
 
-<div class="tool" onclick="seleccionar('base64e',this)">
-<h3>🔤 Base64 Encode</h3>
-<p>Codificar texto</p>
-</div>
+<label>
+Hasta
+</label>
 
-<div class="tool" onclick="seleccionar('base64d',this)">
-<h3>🔤 Base64 Decode</h3>
-<p>Decodificar texto</p>
-</div>
+<select id="hasta"></select>
 
-<div class="tool" onclick="seleccionar('urlencode',this)">
-<h3>🔗 URL Encode</h3>
-<p>Codificar URL</p>
-</div>
 
-<div class="tool" onclick="seleccionar('urldecode',this)">
-<h3>🔗 URL Decode</h3>
-<p>Decodificar URL</p>
-</div>
+<button onclick="convertir()">
+Convertir
+</button>
 
-<div class="tool" onclick="seleccionar('sha256',this)">
-<h3>🔐 SHA-256</h3>
-<p>Generar hash</p>
-</div>
 
-<div class="tool" onclick="seleccionar('timestamp',this)">
-<h3>⏱️ Unix Timestamp</h3>
-<p>Timestamp actual</p>
-</div>
+<div
+class="resultado"
+id="resultado"
+>
 
-<div class="tool" onclick="seleccionar('fecha',this)">
-<h3>📅 Timestamp → Fecha</h3>
-<p>Convertir timestamp</p>
-</div>
+Resultado: -
 
-<div class="tool" onclick="seleccionar('cronometro',this)">
-<h3>⏱️ Cronómetro</h3>
-<p>Medir tiempo</p>
-</div>
-
-<div class="tool" onclick="seleccionar('temporizador',this)">
-<h3>⏰ Temporizador</h3>
-<p>Cuenta regresiva</p>
-</div>
-
-<div class="tool" onclick="seleccionar('pomodoro',this)">
-<h3>🍅 Pomodoro</h3>
-<p>Temporizador Pomodoro</p>
-</div>
-
-<div class="tool" onclick="seleccionar('diadelano',this)">
-<h3>📅 Día del año</h3>
-<p>Consultar día</p>
-</div>
-
-<div class="tool" onclick="seleccionar('semana',this)">
-<h3>📆 Número de semana</h3>
-<p>Semana del año</p>
 </div>
 
 </div>
@@ -462,6 +363,12 @@ rel="noopener noreferrer">
 
 <div class="ad-box ad-native">
 
+<div style="width:100%;">
+
+<div class="ad-label">
+PUBLICIDAD
+</div>
+
 <script async="async"
 data-cfasync="false"
 src="https://pl31074091.profitableratecpmnetwork.com/0121748aaaf83f5b10d651ea8ce56b39/invoke.js">
@@ -469,23 +376,6 @@ src="https://pl31074091.profitableratecpmnetwork.com/0121748aaaf83f5b10d651ea8ce
 
 <div id="container-0121748aaaf83f5b10d651ea8ce56b39"></div>
 
-</div>
-
-
-<div class="panel">
-
-<h2 id="titulo">
-🔐 Generador de contraseñas
-</h2>
-
-<p id="descripcion">
-Generá una contraseña aleatoria segura.
-</p>
-
-<div id="formulario"></div>
-
-<div id="resultado" class="result">
-Esperando...
 </div>
 
 </div>
@@ -496,6 +386,12 @@ Esperando...
 <!-- ============================= -->
 
 <div class="ad-box ad-banner">
+
+<div style="width:100%;">
+
+<div class="ad-label">
+PUBLICIDAD
+</div>
 
 <script>
 atOptions = {
@@ -511,29 +407,61 @@ atOptions = {
 
 </div>
 
+</div>
+
+
+<!-- ============================= -->
+<!-- INFORMACIÓN SEO -->
+<!-- ============================= -->
 
 <div class="info">
 
-<h2>Utilidades online gratuitas</h2>
+<h2>Conversor de unidades online</h2>
 
 <p>
-Utilizá las herramientas de Utilmooz para realizar tareas rápidas
-directamente desde tu navegador, sin instalar programas.
+Utilizá esta herramienta para convertir diferentes unidades
+de longitud, peso y temperatura de forma rápida y sencilla.
 </p>
 
 <p>
-Podés generar contraseñas seguras, UUID, PIN, números aleatorios,
-codificar texto en Base64, calcular hashes SHA-256 y trabajar con
-timestamps y URLs.
+Podés convertir kilómetros a metros, metros a centímetros,
+kilogramos a gramos, libras a kilogramos y diferentes
+unidades de temperatura.
+</p>
+
+
+<h2>Conversor de longitud</h2>
+
+<p>
+Convertí metros, kilómetros, centímetros, millas y pies
+utilizando nuestra calculadora online.
+</p>
+
+
+<h2>Conversor de peso</h2>
+
+<p>
+Convertí fácilmente kilogramos, gramos, libras y onzas.
+</p>
+
+
+<h2>Conversor de temperatura</h2>
+
+<p>
+Convertí entre Celsius, Fahrenheit y Kelvin de manera
+rápida y gratuita.
 </p>
 
 </div>
+
 
 </main>
 
 
 <footer>
+
 © 2026 Utilmooz — Herramientas online gratuitas
+
 </footer>
 
 
@@ -546,1213 +474,202 @@ timestamps y URLs.
 
 <script>
 
-let herramienta="password";
 
-let cronometroInterval=null;
-let cronometroInicio=0;
-let cronometroTiempo=0;
+const unidades={
 
-let temporizadorInterval=null;
-let temporizadorSegundos=0;
+longitud:[
 
-let pomodoroInterval=null;
-let pomodoroSegundos=1500;
+["Metros","m"],
+["Kilómetros","km"],
+["Centímetros","cm"],
+["Millas","mi"],
+["Pies","ft"]
 
+],
 
-const configs={
+peso:[
 
-password:{
-titulo:"🔐 Generador de contraseñas",
-descripcion:"Generá una contraseña aleatoria segura.",
-form:`
+["Kilogramos","kg"],
+["Gramos","g"],
+["Libras","lb"],
+["Onzas","oz"]
 
-<label for="longitud">
-Longitud
-</label>
+],
 
-<input
-type="number"
-id="longitud"
-value="16"
-min="4"
-max="100"
->
+temperatura:[
 
-<label class="checkbox">
-<input type="checkbox" id="mayus" checked>
-Mayúsculas
-</label>
+["Celsius","C"],
+["Fahrenheit","F"],
+["Kelvin","K"]
 
-<label class="checkbox">
-<input type="checkbox" id="minus" checked>
-Minúsculas
-</label>
-
-<label class="checkbox">
-<input type="checkbox" id="numeros" checked>
-Números
-</label>
-
-<label class="checkbox">
-<input type="checkbox" id="simbolos" checked>
-Símbolos
-</label>
-
-<button onclick="password()">
-Generar contraseña
-</button>
-
-},
-
-uuid:{
-titulo:"🆔 Generador UUID",
-descripcion:"Generá un UUID v4 aleatorio.",
-form:`
-
-<button onclick="uuid()">
-Generar UUID
-</button>
-
-},
-
-pin:{
-titulo:"🔢 Generador de PIN",
-descripcion:"Generá un PIN aleatorio.",
-form:`
-
-<label for="pinLength">
-Longitud del PIN
-</label>
-
-<input
-id="pinLength"
-type="number"
-value="6"
-min="4"
-max="20"
->
-
-<button onclick="pin()">
-Generar PIN
-</button>
-
-},
-
-random:{
-titulo:"🎲 Número aleatorio",
-descripcion:"Generá un número aleatorio dentro de un rango.",
-form:`
-
-<label for="min">
-Mínimo
-</label>
-
-<input
-id="min"
-type="number"
-value="1"
->
-
-<label for="max">
-Máximo
-</label>
-
-<input
-id="max"
-type="number"
-value="100"
->
-
-<button onclick="random()">
-Generar número
-</button>
-
-},
-
-base64e:{
-titulo:"🔤 Base64 Encoder",
-descripcion:"Codificá texto en Base64.",
-form:`
-
-<label for="texto">
-Texto
-</label>
-
-<textarea
-id="texto"
-placeholder="Escribí el texto que querés codificar..."
-></textarea>
-
-<button onclick="base64Encode()">
-Codificar
-</button>
-
-},
-
-base64d:{
-titulo:"🔤 Base64 Decoder",
-descripcion:"Decodificá texto Base64.",
-form:`
-
-<label for="texto">
-Base64
-</label>
-
-<textarea
-id="texto"
-placeholder="Pegá aquí el texto Base64..."
-></textarea>
-
-<button onclick="base64Decode()">
-Decodificar
-</button>
-
-},
-
-urlencode:{
-titulo:"🔗 URL Encoder",
-descripcion:"Codificá texto para utilizarlo dentro de una URL.",
-form:`
-
-<label for="texto">
-Texto
-</label>
-
-<textarea
-id="texto"
-placeholder="Texto para codificar..."
-></textarea>
-
-<button onclick="urlEncode()">
-Codificar URL
-</button>
-
-},
-
-urldecode:{
-titulo:"🔗 URL Decoder",
-descripcion:"Decodificá texto codificado para una URL.",
-form:`
-
-<label for="texto">
-Texto codificado
-</label>
-
-<textarea
-id="texto"
-placeholder="Texto URL encoded..."
-></textarea>
-
-<button onclick="urlDecode()">
-Decodificar URL
-</button>
-
-},
-
-sha256:{
-titulo:"🔐 SHA-256",
-descripcion:"Generá el hash SHA-256 de cualquier texto.",
-form:`
-
-<label for="texto">
-Texto
-</label>
-
-<textarea
-id="texto"
-placeholder="Escribí el texto..."
-></textarea>
-
-<button onclick="sha256()">
-Generar SHA-256
-</button>
-
-},
-
-timestamp:{
-titulo:"⏱️ Unix Timestamp",
-descripcion:"Obtené el timestamp Unix actual.",
-form:`
-
-<button onclick="timestamp()">
-Obtener timestamp actual
-</button>
-
-},
-
-fecha:{
-titulo:"📅 Timestamp → Fecha",
-descripcion:"Convertí un timestamp Unix a fecha y hora.",
-form:`
-
-<label for="ts">
-Timestamp
-</label>
-
-<input
-id="ts"
-type="number"
-placeholder="Ejemplo: 1756400000"
->
-
-<button onclick="timestampFecha()">
-Convertir
-</button>
-
-},
-
-cronometro:{
-titulo:"⏱️ Cronómetro",
-descripcion:"Medí el tiempo transcurrido.",
-form:`
-
-<div class="timer" id="timer">
-00:00:00
-</div>
-
-<div class="row">
-
-<button onclick="iniciarCronometro()">
-Iniciar
-</button>
-
-<button onclick="detenerCronometro()">
-Detener
-</button>
-
-</div>
-
-<button onclick="resetCronometro()">
-Reiniciar
-</button>
-
-},
-
-temporizador:{
-titulo:"⏰ Temporizador",
-descripcion:"Configurá una cuenta regresiva.",
-form:`
-
-<label for="minutos">
-Minutos
-</label>
-
-<input
-id="minutos"
-type="number"
-value="5"
-min="0"
->
-
-<label for="segundos">
-Segundos
-</label>
-
-<input
-id="segundos"
-type="number"
-value="0"
-min="0"
-max="59"
->
-
-<div class="timer" id="timer">
-05:00
-</div>
-
-<button onclick="iniciarTemporizador()">
-Iniciar
-</button>
-
-<button onclick="detenerTemporizador()">
-Detener
-</button>
-
-<button onclick="resetTemporizador()">
-Reiniciar
-</button>
-
-},
-
-pomodoro:{
-titulo:"🍅 Pomodoro",
-descripcion:"Temporizador Pomodoro de 25 minutos.",
-form:`
-
-<div class="timer" id="timer">
-25:00
-</div>
-
-<button onclick="iniciarPomodoro()">
-Iniciar Pomodoro
-</button>
-
-<button onclick="detenerPomodoro()">
-Detener
-</button>
-
-<button onclick="resetPomodoro()">
-Reiniciar
-</button>
-
-},
-
-diadelano:{
-titulo:"📅 Día del año",
-descripcion:"Consultá qué día del año es hoy.",
-form:`
-
-<button onclick="diaDelAno()">
-Consultar día del año
-</button>
-
-`
-},
-
-semana:{
-titulo:"📆 Número de semana",
-descripcion:"Consultá el número de semana actual.",
-form:`
-
-<button onclick="numeroSemana()">
-Consultar semana
-</button>
-
-`
-}
+]
 
 };
 
 
-function seleccionar(nombre,el){
+function cambiarUnidades(){
 
-detenerCronometro();
-detenerTemporizador();
-detenerPomodoro();
+const tipo=
+document.getElementById("tipo").value;
 
-herramienta=nombre;
+const desde=
+document.getElementById("desde");
 
-document
-.querySelectorAll(".tool")
-.forEach(x=>{
-x.classList.remove("active");
+const hasta=
+document.getElementById("hasta");
+
+desde.innerHTML="";
+hasta.innerHTML="";
+
+
+unidades[tipo].forEach(u=>{
+
+desde.innerHTML+=
+`<option value="${u[1]}">${u[0]}</option>`;
+
+hasta.innerHTML+=
+`<option value="${u[1]}">${u[0]}</option>`;
+
 });
 
-el.classList.add("active");
-
-document.getElementById("titulo").textContent=
-configs[nombre].titulo;
-
-document.getElementById("descripcion").textContent=
-configs[nombre].descripcion;
-
-document.getElementById("formulario").innerHTML=
-configs[nombre].form;
-
-document.getElementById("resultado").innerHTML=
-"Esperando...";
-
 }
 
 
-function password(){
+function convertir(){
 
-let longitud=
-parseInt(
-document.getElementById("longitud").value
+const valor=
+parseFloat(
+document.getElementById("valor").value
 );
 
-if(
-isNaN(longitud) ||
-longitud<4 ||
-longitud>100
-){
+const tipo=
+document.getElementById("tipo").value;
 
-mostrar("La longitud debe estar entre 4 y 100.");
+const desde=
+document.getElementById("desde").value;
+
+const hasta=
+document.getElementById("hasta").value;
+
+const resultadoElemento=
+document.getElementById("resultado");
+
+
+if(isNaN(valor)){
+
+resultadoElemento.textContent=
+"Ingresá un valor.";
 
 return;
 
 }
 
-let chars="";
 
-if(document.getElementById("mayus").checked)
-chars+="ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+let resultado;
 
-if(document.getElementById("minus").checked)
-chars+="abcdefghijklmnopqrstuvwxyz";
 
-if(document.getElementById("numeros").checked)
-chars+="0123456789";
+/* =========================
+   LONGITUD
+========================= */
 
-if(document.getElementById("simbolos").checked)
-chars+="!@#$%^&*()_+-=[]{}";
+if(tipo==="longitud"){
 
-if(!chars){
+const metros={
 
-mostrar("Seleccioná al menos un tipo de carácter.");
+m:1,
+km:1000,
+cm:0.01,
+mi:1609.344,
+ft:0.3048
 
-return;
+};
 
-}
-
-let result="";
-
-const array=
-new Uint32Array(longitud);
-
-crypto.getRandomValues(array);
-
-for(let i=0;i<longitud;i++){
-
-result+=
-chars[array[i]%chars.length];
-
-}
-
-mostrar(
-"<strong>"+escapeHTML(result)+"</strong>"
-);
+resultado=
+valor*
+metros[desde]/
+metros[hasta];
 
 }
 
 
-function uuid(){
+/* =========================
+   PESO
+========================= */
 
-if(crypto.randomUUID){
+if(tipo==="peso"){
 
-mostrar(
-"<strong>"+
-crypto.randomUUID()+
-"</strong>"
-);
+const kg={
 
-return;
+kg:1,
+g:0.001,
+lb:0.45359237,
+oz:0.0283495
 
-}
+};
 
-const array=
-new Uint8Array(16);
-
-crypto.getRandomValues(array);
-
-array[6]=
-(array[6]&0x0f)|0x40;
-
-array[8]=
-(array[8]&0x3f)|0x80;
-
-const hex=
-Array.from(array)
-.map(b=>b.toString(16).padStart(2,"0"));
-
-const resultado=
-hex.slice(0,4).join("")+
-"-"+
-hex.slice(4,6).join("")+
-"-"+
-hex.slice(6,8).join("")+
-"-"+
-hex.slice(8,10).join("")+
-"-"+
-hex.slice(10,16).join("");
-
-mostrar(
-"<strong>"+resultado+"</strong>"
-);
+resultado=
+valor*
+kg[desde]/
+kg[hasta];
 
 }
 
 
-function pin(){
+/* =========================
+   TEMPERATURA
+========================= */
 
-let length=
-parseInt(
-document.getElementById("pinLength").value
-);
+if(tipo==="temperatura"){
 
-if(
-isNaN(length) ||
-length<4 ||
-length>20
-){
+let celsius;
 
-mostrar("La longitud debe estar entre 4 y 20.");
 
-return;
+if(desde==="C")
+celsius=valor;
 
-}
+if(desde==="F")
+celsius=(valor-32)*5/9;
 
-const array=
-new Uint32Array(length);
+if(desde==="K")
+celsius=valor-273.15;
 
-crypto.getRandomValues(array);
 
-let result="";
+if(hasta==="C")
+resultado=celsius;
 
-for(let i=0;i<length;i++){
+if(hasta==="F")
+resultado=
+(celsius*9/5)+32;
 
-result+=
-array[i]%10;
-
-}
-
-mostrar(
-"<strong>"+result+"</strong>"
-);
+if(hasta==="K")
+resultado=
+celsius+273.15;
 
 }
 
 
-function random(){
-
-const min=
-Number(
-document.getElementById("min").value
-);
-
-const max=
-Number(
-document.getElementById("max").value
-);
-
-if(
-!Number.isFinite(min) ||
-!Number.isFinite(max)
-){
-
-mostrar("Ingresá valores válidos.");
-
-return;
-
-}
-
-if(max<min){
-
-mostrar("El máximo debe ser mayor o igual al mínimo.");
-
-return;
-
-}
-
-if(
-!Number.isSafeInteger(min) ||
-!Number.isSafeInteger(max)
-){
-
-mostrar(
-"Usá números enteros dentro del rango seguro de JavaScript."
-);
-
-return;
-
-}
-
-const result=
-Math.floor(
-Math.random()*(max-min+1)
-)+min;
-
-mostrar(
-"<strong>"+result+"</strong>"
-);
-
-}
-
-
-function base64Encode(){
-
-const text=
-document.getElementById("texto").value;
-
-try{
-
-const bytes=
-new TextEncoder().encode(text);
-
-let binary="";
-
-bytes.forEach(
-byte=>{
-binary+=String.fromCharCode(byte);
+resultadoElemento.textContent=
+"Resultado: "+
+resultado.toLocaleString(
+"es-AR",
+{
+maximumFractionDigits:10
 }
 );
 
-const encoded=
-btoa(binary);
-
-mostrar(
-"<strong>"+
-escapeHTML(encoded)+
-"</strong>"
-);
-
-}catch{
-
-mostrar("No se pudo codificar el texto.");
-
-}
-
 }
 
 
-function base64Decode(){
-
-const text=
-document.getElementById("texto").value.trim();
-
-try{
-
-const binary=
-atob(text);
-
-const bytes=
-Uint8Array.from(
-binary,
-char=>char.charCodeAt(0)
-);
-
-const decoded=
-new TextDecoder().decode(bytes);
-
-mostrar(
-"<strong>"+
-escapeHTML(decoded)+
-"</strong>"
-);
-
-}catch{
-
-mostrar("Base64 inválido.");
-
-}
-
-}
-
-
-function urlEncode(){
-
-const text=
-document.getElementById("texto").value;
-
-mostrar(
-"<strong>"+
-escapeHTML(
-encodeURIComponent(text)
-)+
-"</strong>"
-);
-
-}
-
-
-function urlDecode(){
-
-try{
-
-const text=
-document.getElementById("texto").value;
-
-mostrar(
-"<strong>"+
-escapeHTML(
-decodeURIComponent(text)
-)+
-"</strong>"
-);
-
-}catch{
-
-mostrar("Texto URL inválido.");
-
-}
-
-}
-
-
-async function sha256(){
-
-const text=
-document.getElementById("texto").value;
-
-try{
-
-const data=
-new TextEncoder().encode(text);
-
-const hash=
-await crypto.subtle.digest(
-"SHA-256",
-data
-);
-
-const hex=
-Array.from(
-new Uint8Array(hash)
-)
-.map(
-b=>b.toString(16).padStart(2,"0")
-)
-.join("");
-
-mostrar(
-"<strong>"+
-hex+
-"</strong>"
-);
-
-}catch{
-
-mostrar(
-"No se pudo generar el hash."
-);
-
-}
-
-}
-
-
-function timestamp(){
-
-const ts=
-Math.floor(Date.now()/1000);
-
-mostrar(
-"<strong>"+ts+"</strong>"
-);
-
-}
-
-
-function timestampFecha(){
-
-const ts=
-Number(
-document.getElementById("ts").value
-);
-
-if(
-!Number.isFinite(ts)
-){
-
-mostrar("Timestamp inválido.");
-
-return;
-
-}
-
-const fecha=
-new Date(ts*1000);
-
-if(
-isNaN(fecha.getTime())
-){
-
-mostrar("Timestamp inválido.");
-
-return;
-
-}
-
-mostrar(
-"<strong>"+
-escapeHTML(
-fecha.toLocaleString("es-AR")
-)+
-"</strong><br><br>"+
-"ISO: "+
-escapeHTML(
-fecha.toISOString()
-)
-);
-
-}
-
-
-function iniciarCronometro(){
-
-if(cronometroInterval)
-return;
-
-cronometroInicio=
-Date.now()-cronometroTiempo;
-
-cronometroInterval=
-setInterval(()=>{
-
-cronometroTiempo=
-Date.now()-cronometroInicio;
-
-mostrarTiempo(
-Math.floor(
-cronometroTiempo/1000
-)
-);
-
-},100);
-
-}
-
-
-function detenerCronometro(){
-
-if(cronometroInterval){
-
-clearInterval(
-cronometroInterval
-);
-
-cronometroInterval=null;
-
-}
-
-}
-
-
-function resetCronometro(){
-
-detenerCronometro();
-
-cronometroTiempo=0;
-
-const timer=
-document.getElementById("timer");
-
-if(timer){
-
-timer.textContent=
-"00:00:00";
-
-}
-
-}
-
-
-function mostrarTiempo(seg){
-
-const timer=
-document.getElementById("timer");
-
-if(!timer)
-return;
-
-const h=
-Math.floor(seg/3600);
-
-const m=
-Math.floor(
-(seg%3600)/60
-);
-
-const s=
-seg%60;
-
-timer.textContent=
-String(h).padStart(2,"0")+
-":"+
-String(m).padStart(2,"0")+
-":"+
-String(s).padStart(2,"0");
-
-}
-
-
-function iniciarTemporizador(){
-
-if(temporizadorInterval)
-return;
-
-if(temporizadorSegundos<=0){
-
-const minutos=
-parseInt(
-document.getElementById("minutos").value
-)||0;
-
-const segundos=
-parseInt(
-document.getElementById("segundos").value
-)||0;
-
-if(
-minutos<0 ||
-segundos<0 ||
-segundos>59
-){
-
-mostrar(
-"Configurá un tiempo válido."
-);
-
-return;
-
-}
-
-temporizadorSegundos=
-minutos*60+segundos;
-
-}
-
-if(temporizadorSegundos<=0){
-
-mostrar(
-"El temporizador debe tener más de 0 segundos."
-);
-
-return;
-
-}
-
-temporizadorInterval=
-setInterval(()=>{
-
-temporizadorSegundos--;
-
-mostrarCuenta(
-temporizadorSegundos
-);
-
-if(
-temporizadorSegundos<=0
-){
-
-detenerTemporizador();
-
-alert(
-"⏰ Tiempo terminado."
-);
-
-}
-
-},1000);
-
-}
-
-
-function detenerTemporizador(){
-
-if(temporizadorInterval){
-
-clearInterval(
-temporizadorInterval
-);
-
-temporizadorInterval=null;
-
-}
-
-}
-
-
-function resetTemporizador(){
-
-detenerTemporizador();
-
-const minutos=
-parseInt(
-document.getElementById("minutos").value
-)||0;
-
-const segundos=
-parseInt(
-document.getElementById("segundos").value
-)||0;
-
-temporizadorSegundos=
-Math.max(
-0,
-minutos*60+segundos
-);
-
-mostrarCuenta(
-temporizadorSegundos
-);
-
-}
-
-
-function mostrarCuenta(seg){
-
-const timer=
-document.getElementById("timer");
-
-if(!timer)
-return;
-
-const minutos=
-Math.floor(seg/60);
-
-const segundos=
-seg%60;
-
-timer.textContent=
-String(minutos).padStart(2,"0")+
-":"+
-String(segundos).padStart(2,"0");
-
-}
-
-
-function iniciarPomodoro(){
-
-if(pomodoroInterval)
-return;
-
-if(pomodoroSegundos<=0)
-pomodoroSegundos=1500;
-
-pomodoroInterval=
-setInterval(()=>{
-
-pomodoroSegundos--;
-
-mostrarCuenta(
-pomodoroSegundos
-);
-
-if(
-pomodoroSegundos<=0
-){
-
-detenerPomodoro();
-
-alert(
-"🍅 Pomodoro terminado."
-);
-
-}
-
-},1000);
-
-}
-
-
-function detenerPomodoro(){
-
-if(pomodoroInterval){
-
-clearInterval(
-pomodoroInterval
-);
-
-pomodoroInterval=null;
-
-}
-
-}
-
-
-function resetPomodoro(){
-
-detenerPomodoro();
-
-pomodoroSegundos=1500;
-
-mostrarCuenta(
-pomodoroSegundos
-);
-
-}
-
-
-function diaDelAno(){
-
-const ahora=
-new Date();
-
-const inicio=
-new Date(
-ahora.getFullYear(),
-0,
-0
-);
-
-const diferencia=
-ahora-inicio;
-
-const dia=
-Math.floor(
-diferencia/
-(1000*60*60*24)
-);
-
-mostrar(
-"Hoy es el día <strong>"+
-dia+
-"</strong> del año."
-);
-
-}
-
-
-function numeroSemana(){
-
-const fecha=
-new Date();
-
-const dia=
-fecha.getDay()||7;
-
-const jueves=
-new Date(fecha);
-
-jueves.setDate(
-fecha.getDate()+
-(4-dia)
-);
-
-const inicio=
-new Date(
-jueves.getFullYear(),
-0,
-1
-);
-
-const semana=
-Math.ceil(
-(
-(
-jueves-inicio
-)/86400000+1
-)/7
-);
-
-mostrar(
-"Estamos en la semana <strong>"+
-semana+
-"</strong> del año."
-);
-
-}
-
-
-function escapeHTML(text){
-
-return String(text)
-.replaceAll("&","&amp;")
-.replaceAll("<","&lt;")
-.replaceAll(">","&gt;")
-.replaceAll('"',"&quot;")
-.replaceAll("'","&#039;");
-
-}
-
-
-function mostrar(texto){
-
-document.getElementById("resultado").innerHTML=
-texto;
-
-}
-
-
-seleccionar(
-"password",
-document.querySelector(".tool")
-);
+/* =========================
+   INICIAR
+========================= */
+
+cambiarUnidades();
 
 </script>
 
+
 </body>
+
 </html>
 
