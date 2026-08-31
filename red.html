@@ -6,15 +6,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Herramientas de red online | Utilix</title>
+<title>Herramientas de red online | Utilmooz</title>
 
 <meta name="description"
-content="Herramientas de red online gratis: IP, subnet calculator, CIDR, DNS lookup, MX, SPF, DMARC y más.">
-
-<!-- =========================
-     ADSTERRA - POPUNDER
-     Pegá aquí el código exacto de tu Popunder
-========================= -->
+content="Herramientas de red online gratis: IP, subnet calculator, CIDR, DNS lookup, MX, SPF, DMARC y más. Utilmooz ofrece herramientas online gratuitas.">
 
 <style>
 
@@ -75,7 +70,9 @@ line-height:1.6;
 margin-bottom:30px;
 }
 
-/* ANUNCIO SUPERIOR */
+/* =========================
+   ANUNCIO SUPERIOR
+========================= */
 
 .ad-top{
 margin:0 auto 25px;
@@ -83,13 +80,19 @@ text-align:center;
 min-height:60px;
 }
 
-/* ANUNCIO NATIVO */
+/* =========================
+   ANUNCIO NATIVO
+========================= */
 
 .ad-native{
 margin:25px auto;
 text-align:center;
 min-height:100px;
 }
+
+/* =========================
+   HERRAMIENTAS
+========================= */
 
 .tools{
 display:grid;
@@ -125,6 +128,10 @@ font-size:13px;
 color:#667085;
 margin-top:5px;
 }
+
+/* =========================
+   PANEL
+========================= */
 
 .panel{
 background:white;
@@ -178,13 +185,19 @@ line-height:1.8;
 word-break:break-word;
 }
 
-/* ANUNCIO INFERIOR */
+/* =========================
+   ANUNCIO INFERIOR
+========================= */
 
 .ad-bottom{
 margin:30px auto;
 text-align:center;
 min-height:60px;
 }
+
+/* =========================
+   FOOTER
+========================= */
 
 footer{
 background:#111827;
@@ -216,7 +229,7 @@ padding:20px;
 <div class="header-content">
 
 <div class="logo">
-Util<span>ix</span>
+Util<span>mooz</span>
 </div>
 
 <nav>
@@ -239,13 +252,19 @@ DNS, subredes, URLs y conexiones de red.
 
 
 <!-- =========================
-     ADSTERRA NATIVE BANNER
-     Pegá aquí tu código Native Banner
+     ANUNCIO NATIVO
 ========================= -->
 
 <div class="ad-native">
+
+<!-- PEGÁ AQUÍ TU CÓDIGO DE ADS -->
+
 </div>
 
+
+<!-- =========================
+     HERRAMIENTAS
+========================= -->
 
 <div class="tools">
 
@@ -317,6 +336,10 @@ DNS, subredes, URLs y conexiones de red.
 </div>
 
 
+<!-- =========================
+     PANEL
+========================= -->
+
 <div class="panel">
 
 <h2 id="titulo">Mi IP</h2>
@@ -335,10 +358,13 @@ Esperando consulta...
 
 
 <!-- =========================
-     ADSTERRA BANNER 468x60
+     ANUNCIO INFERIOR
 ========================= -->
 
 <div class="ad-bottom">
+
+<!-- PEGÁ AQUÍ TU CÓDIGO DE ADS -->
+
 </div>
 
 
@@ -347,15 +373,9 @@ Esperando consulta...
 
 <footer>
 
-© 2026 Utilix — Herramientas online gratuitas
+© 2026 Utilmooz — Herramientas online gratuitas
 
 </footer>
-
-
-<!-- =========================
-     ADSTERRA SOCIAL BAR
-     Pegá aquí tu código Social Bar
-========================= -->
 
 
 <script>
@@ -373,21 +393,24 @@ form:`<button onclick="miIP()">Consultar mi IP</button>`
 ipdecimal:{
 titulo:"IPv4 → Decimal",
 descripcion:"Convertí una dirección IPv4 a decimal.",
-form:`<input id="ip" placeholder="Ejemplo: 192.168.1.1">
+form:`
+<input id="ip" placeholder="Ejemplo: 192.168.1.1">
 <button onclick="ipDecimal()">Convertir</button>`
 },
 
 decimalip:{
 titulo:"Decimal → IPv4",
 descripcion:"Convertí un número decimal a una dirección IPv4.",
-form:`<input id="decimal" type="number" placeholder="Ejemplo: 3232235777">
+form:`
+<input id="decimal" type="number" placeholder="Ejemplo: 3232235777">
 <button onclick="decimalIP()">Convertir</button>`
 },
 
 ipbinario:{
 titulo:"IPv4 → Binario",
 descripcion:"Convertí una IPv4 a representación binaria.",
-form:`<input id="ip" placeholder="Ejemplo: 192.168.1.1">
+form:`
+<input id="ip" placeholder="Ejemplo: 192.168.1.1">
 <button onclick="ipBinario()">Convertir</button>`
 },
 
@@ -414,14 +437,18 @@ titulo:"DNS Lookup",
 descripcion:"Consultá registros DNS de un dominio.",
 form:`
 <input id="dominio" placeholder="ejemplo.com">
+
 <select id="tipo">
+
 <option value="A">A</option>
 <option value="AAAA">AAAA</option>
 <option value="CNAME">CNAME</option>
 <option value="TXT">TXT</option>
 <option value="NS">NS</option>
 <option value="MX">MX</option>
+
 </select>
+
 <button onclick="dnsLookup()">Consultar DNS</button>`
 },
 
@@ -438,7 +465,7 @@ titulo:"SPF Lookup",
 descripcion:"Consultá el registro SPF de un dominio.",
 form:`
 <input id="dominio" placeholder="ejemplo.com">
-<button onclick="consultaDNS('TXT')">Consultar SPF</button>`
+<button onclick="consultaSPF()">Consultar SPF</button>`
 },
 
 dmarc:{
@@ -576,10 +603,12 @@ return;
 }
 
 const ip=[
+
 Math.floor(n/16777216)%256,
 Math.floor(n/65536)%256,
 Math.floor(n/256)%256,
 n%256
+
 ].join(".");
 
 mostrar(ip);
@@ -601,9 +630,15 @@ return;
 }
 
 mostrar(
+
 ip.split(".")
-.map(x=>Number(x).toString(2).padStart(8,"0"))
+.map(x=>
+Number(x)
+.toString(2)
+.padStart(8,"0")
+)
 .join(" . ")
+
 );
 
 }
@@ -623,10 +658,12 @@ return ip.split(".")
 function intToIP(n){
 
 return[
+
 Math.floor(n/16777216)%256,
 Math.floor(n/65536)%256,
 Math.floor(n/256)%256,
 n%256
+
 ].join(".");
 
 }
@@ -742,14 +779,82 @@ return;
 }
 
 mostrar(
+
 data.Answer
 .map(x=>escapeHTML(x.data))
 .join("<br>")
+
 );
 
-}catch(e){
+}catch{
 
 mostrar("No se pudo realizar la consulta DNS.");
+
+}
+
+}
+
+
+async function consultaSPF(){
+
+const dominio=
+document.getElementById("dominio").value.trim();
+
+if(!dominio){
+
+mostrar("Ingresá un dominio.");
+
+return;
+
+}
+
+try{
+
+const url=
+"https://cloudflare-dns.com/dns-query?name="+
+encodeURIComponent(dominio)+
+"&type=TXT";
+
+const response=
+await fetch(url,{
+headers:{
+"Accept":"application/dns-json"
+}
+});
+
+const data=
+await response.json();
+
+if(!data.Answer){
+
+mostrar("No se encontró un registro SPF.");
+
+return;
+
+}
+
+const registros=
+data.Answer
+.map(x=>x.data)
+.filter(x=>x.toLowerCase().includes("v=spf1"));
+
+if(!registros.length){
+
+mostrar("No se encontró un registro SPF.");
+
+return;
+
+}
+
+mostrar(
+registros
+.map(x=>escapeHTML(x))
+.join("<br>")
+);
+
+}catch{
+
+mostrar("No se pudo consultar el registro SPF.");
 
 }
 
@@ -782,34 +887,46 @@ function parseURL(){
 try{
 
 const u=
-new URL(document.getElementById("url").value);
+new URL(
+document.getElementById("url").value
+);
 
 let params="";
 
 u.searchParams.forEach(
 (v,k)=>{
+
 params+=
 `${escapeHTML(k)} = ${escapeHTML(v)}<br>`;
+
 }
 );
 
 mostrar(`
 
-<strong>Protocolo:</strong> ${escapeHTML(u.protocol)}<br>
+<strong>Protocolo:</strong>
+${escapeHTML(u.protocol)}<br>
 
-<strong>Host:</strong> ${escapeHTML(u.host)}<br>
+<strong>Host:</strong>
+${escapeHTML(u.host)}<br>
 
-<strong>Hostname:</strong> ${escapeHTML(u.hostname)}<br>
+<strong>Hostname:</strong>
+${escapeHTML(u.hostname)}<br>
 
-<strong>Puerto:</strong> ${escapeHTML(u.port||"Predeterminado")}<br>
+<strong>Puerto:</strong>
+${escapeHTML(u.port||"Predeterminado")}<br>
 
-<strong>Ruta:</strong> ${escapeHTML(u.pathname)}<br>
+<strong>Ruta:</strong>
+${escapeHTML(u.pathname)}<br>
 
-<strong>Query:</strong> ${escapeHTML(u.search||"Ninguno")}<br>
+<strong>Query:</strong>
+${escapeHTML(u.search||"Ninguno")}<br>
 
-<strong>Fragmento:</strong> ${escapeHTML(u.hash||"Ninguno")}<br>
+<strong>Fragmento:</strong>
+${escapeHTML(u.hash||"Ninguno")}<br>
 
 <strong>Parámetros:</strong><br>
+
 ${params||"Ninguno"}
 
 `);
@@ -831,14 +948,22 @@ document.getElementById("url").value.trim();
 try{
 
 const response=
-await fetch(url,{
+await fetch(
+url,
+{
 method:"HEAD",
 mode:"cors"
-});
+}
+);
 
 mostrar(`
-<strong>Status:</strong> ${response.status}<br>
-<strong>Estado:</strong> ${escapeHTML(response.statusText)}
+
+<strong>Status:</strong>
+${response.status}<br>
+
+<strong>Estado:</strong>
+${escapeHTML(response.statusText)}
+
 `);
 
 }catch{
@@ -855,15 +980,21 @@ mostrar(
 function userAgent(){
 
 mostrar(
+
 "<strong>User-Agent:</strong><br>"+
 escapeHTML(navigator.userAgent)+
+
 "<br><br>"+
+
 "<strong>Navegador:</strong> "+
 escapeHTML(navigator.appName)+
+
 "<br><strong>Plataforma:</strong> "+
 escapeHTML(navigator.platform)+
+
 "<br><strong>Idioma:</strong> "+
 escapeHTML(navigator.language)
+
 );
 
 }
@@ -872,6 +1003,7 @@ escapeHTML(navigator.language)
 function escapeHTML(text){
 
 return String(text)
+
 .replaceAll("&","&amp;")
 .replaceAll("<","&lt;")
 .replaceAll(">","&gt;")
