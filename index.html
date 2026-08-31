@@ -1,21 +1,24 @@
 <!DOCTYPE html>
-
 <html lang="es">
 
 <head>
 
 <meta charset="UTF-8">
 
-<meta name="google-site-verification" content="adQU8fNEWR7JYxVSY1G0HPv-V5ukhllJrMnWhWsC0ss">
+<meta name="google-site-verification"
+content="adQU8fNEWR7YxVSY1G0HPv-V5ukhllJrMnWhWsC0ss">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
 
 <title>UtilMooz - Herramientas online gratuitas</title>
 
 <meta name="description"
-content="UtilMooz: herramientas online gratuitas para convertir, calcular, generar, analizar y trabajar con archivos, texto, colores, criptomonedas y mucho más.">
+content="UtilMooz reúne herramientas online gratuitas para convertir, calcular, generar y trabajar con texto, archivos, colores, criptomonedas y mucho más.">
 
-<meta name="robots" content="index, follow">
+<meta name="robots"
+content="index, follow">
+
 
 <!-- =========================
      ADSTERRA POPUNDER
@@ -23,7 +26,12 @@ content="UtilMooz: herramientas online gratuitas para convertir, calcular, gener
 
 <script src="https://pl31074088.profitableratecpmnetwork.com/b3/e1/f2/b3e1f2f8b30c35d54a787cfe893ac42b.js"></script>
 
+
 <style>
+
+/* =====================================================
+   RESET
+===================================================== */
 
 *{
     box-sizing:border-box;
@@ -37,94 +45,255 @@ html{
 
 body{
     font-family:Arial,Helvetica,sans-serif;
-    background:#ffffff;
+    background:#f5f5f5;
     color:#202124;
     line-height:1.5;
 }
 
-/* =========================
+
+/* =====================================================
    HEADER
-========================= */
+===================================================== */
 
 header{
     background:#ffffff;
-    border-bottom:1px solid #e5e7eb;
-    padding:18px 20px;
+    border-bottom:1px solid #dddddd;
+    height:76px;
+    display:flex;
+    align-items:center;
     position:sticky;
     top:0;
     z-index:1000;
 }
 
-.header-content{
-    max-width:1180px;
+.header-inner{
+    width:100%;
+    max-width:1280px;
     margin:auto;
+    height:100%;
     display:flex;
     align-items:center;
-    justify-content:space-between;
+}
+
+
+/* LOGO */
+
+.logo-area{
+    width:270px;
+    height:100%;
+    display:flex;
+    align-items:center;
+    padding:0 20px;
+    border-right:1px solid #e1e1e1;
 }
 
 .logo{
-    font-size:28px;
-    font-weight:700;
-    color:#202124;
-    letter-spacing:-1px;
+    font-size:27px;
+    font-weight:800;
+    letter-spacing:-1.5px;
+    color:#555;
+    text-decoration:none;
 }
 
-.logo span{
-    color:#4f8cff;
+.logo .green{
+    color:#318b32;
 }
 
-nav{
+.logo .black{
+    color:#555;
+}
+
+
+/* MENU */
+
+.main-menu{
+    height:100%;
     display:flex;
     align-items:center;
-    gap:28px;
+    margin-left:0;
 }
 
-nav a{
-    color:#4b5563;
+.main-menu a{
+    height:100%;
+    display:flex;
+    align-items:center;
+    gap:9px;
+    padding:0 24px;
+    border-right:1px solid #e5e5e5;
+    color:#222;
     text-decoration:none;
     font-size:15px;
     font-weight:500;
 }
 
-nav a:hover{
-    color:#4f8cff;
+.main-menu a:hover{
+    background:#f7f7f7;
 }
 
-/* =========================
+.menu-icon{
+    font-size:18px;
+}
+
+
+/* HEADER RIGHT */
+
+.header-right{
+    margin-left:auto;
+    height:100%;
+    display:flex;
+    align-items:center;
+}
+
+.header-link{
+    height:100%;
+    padding:0 18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-left:1px solid #e5e5e5;
+    color:#333;
+    text-decoration:none;
+    font-size:14px;
+}
+
+.header-link:hover{
+    background:#f7f7f7;
+}
+
+.header-button{
+    margin-left:10px;
+    margin-right:10px;
+    padding:11px 20px;
+    border:2px solid #1769e0;
+    border-radius:5px;
+    color:#1769e0;
+    text-decoration:none;
+    font-weight:bold;
+    font-size:14px;
+}
+
+.header-button.primary{
+    background:#1769e0;
+    color:white;
+}
+
+
+/* =====================================================
    HERO
-========================= */
+===================================================== */
 
 .hero{
-    max-width:900px;
-    margin:65px auto 30px;
-    padding:0 20px;
-    text-align:center;
+    background:
+    linear-gradient(
+        90deg,
+        #286d20 0%,
+        #337d27 50%,
+        #3c8b2e 100%
+    );
+
+    color:white;
+    min-height:260px;
+    position:relative;
+    overflow:hidden;
+}
+
+
+/* decoración */
+
+.hero::after{
+    content:"";
+    position:absolute;
+    right:-80px;
+    top:-120px;
+    width:600px;
+    height:500px;
+
+    background:
+    repeating-linear-gradient(
+        45deg,
+        rgba(255,255,255,.045) 0,
+        rgba(255,255,255,.045) 2px,
+        transparent 2px,
+        transparent 50px
+    );
+
+    transform:rotate(-10deg);
+    pointer-events:none;
+}
+
+
+.hero-inner{
+    max-width:1200px;
+    min-height:260px;
+    margin:auto;
+    padding:45px 25px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    position:relative;
+    z-index:2;
+}
+
+
+.hero-text{
+    max-width:610px;
 }
 
 .hero h1{
     font-size:44px;
     line-height:1.15;
-    letter-spacing:-1.5px;
     margin-bottom:18px;
-    color:#202124;
+    font-weight:700;
 }
 
 .hero p{
-    max-width:720px;
-    margin:auto;
-    color:#6b7280;
-    font-size:17px;
-    line-height:1.7;
+    font-size:18px;
+    line-height:1.65;
+    color:#ffffff;
 }
 
-/* =========================
-   SEARCH
-========================= */
 
-.search{
-    max-width:760px;
-    margin:35px auto 35px;
+/* HERO SELECTOR */
+
+.hero-tool{
+    width:470px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:27px;
+    font-weight:bold;
+}
+
+.hero-select{
+    background:white;
+    color:#333;
+    border-radius:5px;
+    min-width:125px;
+    height:48px;
+    padding:0 18px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    font-size:16px;
+    font-weight:normal;
+    box-shadow:0 2px 5px rgba(0,0,0,.15);
+}
+
+.hero-select span{
+    font-size:18px;
+    color:#555;
+}
+
+
+/* =====================================================
+   BUSCADOR
+===================================================== */
+
+.search-area{
+    max-width:1100px;
+    margin:30px auto 10px;
     padding:0 20px;
 }
 
@@ -134,38 +303,36 @@ nav a:hover{
 
 .search-icon{
     position:absolute;
-    left:17px;
+    left:18px;
     top:50%;
     transform:translateY(-50%);
     font-size:18px;
-    color:#9ca3af;
-    pointer-events:none;
+    color:#777;
 }
 
-.search input{
+.search-input{
     width:100%;
-    height:56px;
+    height:52px;
     padding:0 20px 0 48px;
-    border:1px solid #d9dde5;
-    border-radius:10px;
+    background:white;
+    border:1px solid #ccc;
+    border-radius:5px;
     font-size:16px;
     outline:none;
-    background:#ffffff;
-    box-shadow:0 2px 8px rgba(0,0,0,.04);
 }
 
-.search input:focus{
-    border-color:#4f8cff;
-    box-shadow:0 0 0 3px rgba(79,140,255,.10);
+.search-input:focus{
+    border-color:#328532;
 }
 
-/* =========================
+
+/* =====================================================
    PUBLICIDAD
-========================= */
+===================================================== */
 
 .ad-container{
     max-width:1100px;
-    margin:25px auto 35px;
+    margin:20px auto;
     padding:0 20px;
     text-align:center;
     overflow:hidden;
@@ -173,176 +340,214 @@ nav a:hover{
 
 .ad-label{
     font-size:10px;
-    color:#9ca3af;
+    color:#999;
     margin-bottom:7px;
     letter-spacing:.5px;
 }
 
-/* =========================
-   CONTENEDOR
-========================= */
 
-.container{
-    max-width:1180px;
-    margin:auto;
-    padding:0 20px 70px;
+/* =====================================================
+   CONTENIDO
+===================================================== */
+
+.content{
+    max-width:1200px;
+    margin:0 auto;
+    padding:25px 20px 70px;
 }
 
-/* =========================
-   CATEGORIAS
-========================= */
 
-.category{
-    margin-top:48px;
+/* =====================================================
+   TITULO DE SECCION
+===================================================== */
+
+.section-heading{
+    margin:30px 0 20px;
 }
 
-.category:first-child{
-    margin-top:15px;
+.section-heading h2{
+    font-size:25px;
+    font-weight:600;
+    color:#222;
 }
 
-.category-header{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    margin-bottom:18px;
-}
 
-.section-title{
-    font-size:24px;
-    font-weight:700;
-    color:#202124;
-}
+/* =====================================================
+   GRID
+===================================================== */
 
-.section-line{
-    flex:1;
-    height:1px;
-    background:#e5e7eb;
-    margin-left:20px;
-}
-
-/* =========================
-   HERRAMIENTAS
-========================= */
-
-.tools{
+.tools-grid{
     display:grid;
-    grid-template-columns:
-    repeat(auto-fill,minmax(250px,1fr));
-    gap:14px;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
 }
 
-.tool{
+
+/* =====================================================
+   TARJETAS
+===================================================== */
+
+.tool-card{
+    min-height:150px;
+    background:white;
+
+    border:1px solid #d8d8d8;
+    border-left:5px solid #369238;
+
+    border-radius:8px;
+
+    padding:20px;
+
     display:flex;
     align-items:flex-start;
-    gap:15px;
-    min-height:125px;
-    background:#ffffff;
-    padding:20px;
-    border:1px solid #e3e6eb;
-    border-radius:10px;
+
     text-decoration:none;
     color:inherit;
-    transition:.18s ease;
+
+    transition:
+        box-shadow .2s ease,
+        transform .2s ease,
+        border-color .2s ease;
 }
 
-.tool:hover{
-    border-color:#b9c8e5;
-    box-shadow:0 5px 18px rgba(0,0,0,.07);
+.tool-card:hover{
     transform:translateY(-2px);
+    border-color:#369238;
+    box-shadow:0 5px 18px rgba(0,0,0,.10);
 }
 
-.icon{
-    width:48px;
-    height:48px;
-    min-width:48px;
+
+/* ICONO */
+
+.tool-icon{
+    width:62px;
+    min-width:62px;
+    height:62px;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    background:#f1f5ff;
-    border-radius:10px;
-    font-size:24px;
+
+    color:#328532;
+
+    font-size:38px;
+
+    margin-right:18px;
 }
+
+
+/* CONTENIDO */
 
 .tool-content{
     flex:1;
 }
 
-.tool h3{
-    margin-bottom:5px;
-    font-size:16px;
+.tool-content h3{
+    font-size:20px;
+    font-weight:500;
+    margin-bottom:3px;
     color:#202124;
 }
 
-.tool p{
-    color:#6b7280;
-    font-size:13px;
-    line-height:1.55;
+.tool-content p{
+    color:#737373;
+    font-size:15px;
+    line-height:1.45;
+    margin-bottom:14px;
 }
 
-/* =========================
-   DESTACADAS
-========================= */
 
-.featured{
-    background:#f8faff;
-    border:1px solid #e1e8f8;
-    border-radius:12px;
-    padding:24px;
-    margin-top:20px;
+/* SELECTOR DE TARJETA */
+
+.tool-select{
+    width:100%;
+    height:38px;
+
+    border:1px solid #cfcfcf;
+    background:#fff;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 10px;
+
+    color:#222;
+    font-size:14px;
 }
 
-.featured-title{
-    font-size:18px;
-    margin-bottom:18px;
-    color:#202124;
+.tool-select span{
+    color:#555;
+    font-size:14px;
 }
 
-/* =========================
-   SIN RESULTADOS
-========================= */
 
-#sinResultados{
-    display:none;
-    text-align:center;
-    background:#f8fafc;
-    border:1px solid #e5e7eb;
-    border-radius:10px;
-    padding:30px;
-    color:#6b7280;
-    margin-top:30px;
+/* FLECHA */
+
+.card-arrow{
+    margin-left:10px;
+    font-size:25px;
+    color:#999;
+    align-self:center;
 }
 
-/* =========================
+
+/* =====================================================
+   BANNER INTERNO
+===================================================== */
+
+.middle-ad{
+    margin:35px 0;
+}
+
+
+/* =====================================================
    INFO SEO
-========================= */
+===================================================== */
 
 .info{
-    max-width:900px;
+    max-width:950px;
     margin:60px auto 0;
-    padding-top:40px;
-    border-top:1px solid #e5e7eb;
-    color:#5f6368;
-    line-height:1.7;
+    padding:35px 0 0;
+    border-top:1px solid #ddd;
 }
 
 .info h2{
-    color:#202124;
-    margin-bottom:14px;
-    font-size:24px;
+    font-size:26px;
+    margin-bottom:15px;
+    color:#222;
 }
 
 .info p{
+    color:#666;
     margin-bottom:15px;
+    line-height:1.7;
 }
 
-/* =========================
+
+/* =====================================================
+   SIN RESULTADOS
+===================================================== */
+
+#sinResultados{
+    display:none;
+    background:white;
+    border:1px solid #ddd;
+    padding:35px;
+    text-align:center;
+    color:#777;
+    margin-top:30px;
+    border-radius:7px;
+}
+
+
+/* =====================================================
    FOOTER
-========================= */
+===================================================== */
 
 footer{
-    background:#f8f9fa;
-    border-top:1px solid #e5e7eb;
-    color:#6b7280;
+    background:#222;
+    color:#aaa;
     text-align:center;
     padding:35px 20px;
 }
@@ -352,26 +557,64 @@ footer p{
     font-size:13px;
 }
 
-/* =========================
-   MOBILE
-========================= */
 
-@media(max-width:700px){
+/* =====================================================
+   TABLET
+===================================================== */
 
-    header{
-        position:static;
+@media(max-width:900px){
+
+    .logo-area{
+        width:auto;
+        border-right:none;
     }
 
-    .header-content{
-        justify-content:center;
-    }
-
-    nav{
+    .main-menu{
         display:none;
     }
 
+    .header-right{
+        display:none;
+    }
+
+    .hero-inner{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:30px;
+    }
+
+    .hero-tool{
+        width:100%;
+    }
+
+    .tools-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:600px){
+
+    header{
+        height:65px;
+        position:static;
+    }
+
+    .logo{
+        font-size:24px;
+    }
+
     .hero{
-        margin-top:45px;
+        min-height:auto;
+    }
+
+    .hero-inner{
+        padding:35px 20px;
     }
 
     .hero h1{
@@ -379,44 +622,70 @@ footer p{
     }
 
     .hero p{
-        font-size:15px;
+        font-size:16px;
     }
 
-    .tools{
-        grid-template-columns:1fr;
+    .hero-tool{
+        font-size:22px;
+        flex-wrap:wrap;
     }
 
-    .section-title{
-        font-size:21px;
+    .hero-select{
+        min-width:110px;
     }
 
-    .section-line{
-        display:none;
+    .search-area{
+        padding:0 14px;
     }
 
-    .tool{
-        min-height:auto;
-    }
-
-}
-
-/* =========================
-   EXTRA SMALL
-========================= */
-
-@media(max-width:400px){
-
-    .container{
+    .content{
         padding-left:14px;
         padding-right:14px;
     }
 
-    .hero{
-        padding:0 14px;
+    .section-heading h2{
+        font-size:22px;
     }
 
-    .search{
-        padding:0 14px;
+    .tool-card{
+        padding:16px;
+    }
+
+    .tool-icon{
+        width:48px;
+        min-width:48px;
+        height:48px;
+        font-size:30px;
+        margin-right:12px;
+    }
+
+    .tool-content h3{
+        font-size:18px;
+    }
+
+    .tool-content p{
+        font-size:14px;
+    }
+
+    .card-arrow{
+        display:none;
+    }
+
+}
+
+
+/* =====================================================
+   EXTRA SMALL
+===================================================== */
+
+@media(max-width:400px){
+
+    .tool-card{
+        flex-direction:column;
+    }
+
+    .tool-icon{
+        margin-bottom:8px;
     }
 
 }
@@ -425,59 +694,118 @@ footer p{
 
 </head>
 
+
 <body>
 
-<!-- =========================
+
+<!-- =====================================================
      HEADER
-========================= -->
+===================================================== -->
 
 <header>
 
-<div class="header-content">
+<div class="header-inner">
 
-<div class="logo">
-Util<span>Mooz</span>
+
+<div class="logo-area">
+
+<a href="./" class="logo">
+<span class="black">Util</span><span class="green">Mooz</span>
+</a>
+
 </div>
 
-<nav>
+
+<nav class="main-menu">
 
 <a href="./">
+<span class="menu-icon">⌂</span>
 Inicio
 </a>
 
 <a href="#herramientas">
-Herramientas
+<span class="menu-icon">▦</span>
+Todas las herramientas
 </a>
 
 </nav>
+
+
+<div class="header-right">
+
+<a href="#info" class="header-link">
+Ayuda
+</a>
+
+<a href="#herramientas" class="header-link">
+Herramientas
+</a>
+
+<a href="#herramientas" class="header-button">
+Explorar
+</a>
+
+</div>
+
 
 </div>
 
 </header>
 
-<!-- =========================
+
+
+<!-- =====================================================
      HERO
-========================= -->
+===================================================== -->
 
 <section class="hero">
+
+<div class="hero-inner">
+
+
+<div class="hero-text">
 
 <h1>
 Herramientas online gratuitas
 </h1>
 
 <p>
-Convertí, calculá, generá y analizá todo desde un solo lugar.
-UtilMooz reúne herramientas online rápidas, sencillas y gratuitas
-que funcionan directamente desde tu navegador.
+Convertí, calculá, generá y trabajá con diferentes tipos
+de información directamente desde tu navegador.
 </p>
+
+</div>
+
+
+<div class="hero-tool">
+
+<span>
+Utilizar
+</span>
+
+<div class="hero-select">
+Todas
+<span>⌄</span>
+</div>
+
+<span>
+herramientas
+</span>
+
+</div>
+
+
+</div>
 
 </section>
 
-<!-- =========================
-     BUSCADOR
-========================= -->
 
-<div class="search">
+
+<!-- =====================================================
+     BUSCADOR
+===================================================== -->
+
+<div class="search-area">
 
 <div class="search-box">
 
@@ -486,6 +814,7 @@ que funcionan directamente desde tu navegador.
 </div>
 
 <input
+class="search-input"
 type="text"
 id="search"
 placeholder="Buscar una herramienta..."
@@ -496,9 +825,11 @@ oninput="buscarHerramientas()">
 
 </div>
 
-<!-- =========================
+
+
+<!-- =====================================================
      ADSTERRA NATIVE
-========================= -->
+===================================================== -->
 
 <div class="ad-container">
 
@@ -516,36 +847,40 @@ src="https://pl31074091.profitableratecpmnetwork.com/0121748aaaf83f5b10d651ea8ce
 
 </div>
 
-<!-- =========================
-     HERRAMIENTAS
-========================= -->
 
-<main
-class="container"
-id="herramientas">
 
-<!-- =========================
-     CALCULADORAS
-========================= -->
+<!-- =====================================================
+     CONTENIDO
+===================================================== -->
 
-<section class="category">
+<main class="content" id="herramientas">
 
-<div class="category-header">
 
-<h2 class="section-title">
-🔢 Calculadoras
+
+<!-- =====================================================
+     HERRAMIENTAS PRINCIPALES
+===================================================== -->
+
+<div class="section-heading">
+
+<h2>
+Herramientas online
 </h2>
-
-<div class="section-line"></div>
 
 </div>
 
-<div class="tools">
 
-<a class="tool" href="porcentaje.html">
+<div class="tools-grid">
 
-<div class="icon">
-🔢
+
+
+<!-- PORCENTAJE -->
+
+<a class="tool-card"
+href="porcentaje.html">
+
+<div class="tool-icon">
+%
 </div>
 
 <div class="tool-content">
@@ -556,16 +891,30 @@ Calculadora de porcentaje
 
 <p>
 Calculá porcentajes, aumentos, descuentos y diferencias
-de forma rápida.
+de forma rápida y sencilla.
 </p>
 
+<div class="tool-select">
+Abrir calculadora
+<span>›</span>
+</div>
+
+</div>
+
+<div class="card-arrow">
+›
 </div>
 
 </a>
 
-<a class="tool" href="edad.html">
 
-<div class="icon">
+
+<!-- EDAD -->
+
+<a class="tool-card"
+href="edad.html">
+
+<div class="tool-icon">
 🎂
 </div>
 
@@ -576,38 +925,30 @@ Calculadora de edad
 </h3>
 
 <p>
-Calculá exactamente años, meses y días entre dos fechas.
+Calculá años, meses y días entre dos fechas.
 </p>
 
+<div class="tool-select">
+Abrir calculadora
+<span>›</span>
+</div>
+
+</div>
+
+<div class="card-arrow">
+›
 </div>
 
 </a>
 
-</div>
 
-</section>
 
-<!-- =========================
-     GENERADORES
-========================= -->
+<!-- PASSWORD -->
 
-<section class="category">
+<a class="tool-card"
+href="password.html">
 
-<div class="category-header">
-
-<h2 class="section-title">
-⚙️ Generadores
-</h2>
-
-<div class="section-line"></div>
-
-</div>
-
-<div class="tools">
-
-<a class="tool" href="password.html">
-
-<div class="icon">
+<div class="tool-icon">
 🔐
 </div>
 
@@ -618,58 +959,66 @@ Generador de contraseñas
 </h3>
 
 <p>
-Generá contraseñas seguras y aleatorias para tus cuentas.
+Generá contraseñas seguras y aleatorias
+para proteger tus cuentas.
 </p>
 
+<div class="tool-select">
+Generar contraseña
+<span>›</span>
+</div>
+
+</div>
+
+<div class="card-arrow">
+›
 </div>
 
 </a>
 
-<a class="tool" href="qr.html">
 
-<div class="icon">
-📱
+
+<!-- QR -->
+
+<a class="tool-card"
+href="qr.html">
+
+<div class="tool-icon">
+▦
 </div>
 
 <div class="tool-content">
 
 <h3>
-Generador QR
+Generador de códigos QR
 </h3>
 
 <p>
-Creá códigos QR para URLs, WiFi, WhatsApp y más.
+Creá códigos QR para URLs, WiFi, WhatsApp,
+email y otros contenidos.
 </p>
 
+<div class="tool-select">
+Crear código QR
+<span>›</span>
+</div>
+
+</div>
+
+<div class="card-arrow">
+›
 </div>
 
 </a>
 
-</div>
 
-</section>
 
-<!-- =========================
-     TEXTO
-========================= -->
+<!-- CONTADOR -->
 
-<section class="category">
+<a class="tool-card"
+href="contador.html">
 
-<div class="category-header">
-
-<h2 class="section-title">
-📝 Texto
-</h2>
-
-<div class="section-line"></div>
-
-</div>
-
-<div class="tools">
-
-<a class="tool" href="contador.html">
-
-<div class="icon">
+<div class="tool-icon">
 📝
 </div>
 
@@ -680,38 +1029,31 @@ Contador de palabras
 </h3>
 
 <p>
-Contá palabras, caracteres y líneas de cualquier texto.
+Contá palabras, caracteres y líneas
+de cualquier texto.
 </p>
 
+<div class="tool-select">
+Contar texto
+<span>›</span>
+</div>
+
+</div>
+
+<div class="card-arrow">
+›
 </div>
 
 </a>
 
-</div>
 
-</section>
 
-<!-- =========================
-     CONVERSORES
-========================= -->
+<!-- UNIDADES -->
 
-<section class="category">
+<a class="tool-card"
+href="unidades.html">
 
-<div class="category-header">
-
-<h2 class="section-title">
-🔄 Conversores
-</h2>
-
-<div class="section-line"></div>
-
-</div>
-
-<div class="tools">
-
-<a class="tool" href="unidades.html">
-
-<div class="icon">
+<div class="tool-icon">
 📏
 </div>
 
@@ -722,39 +1064,31 @@ Conversor de unidades
 </h3>
 
 <p>
-Convertí kilómetros, metros, centímetros, kilos, libras
-y otras unidades.
+Convertí longitud, peso y temperatura
+de forma sencilla.
 </p>
 
+<div class="tool-select">
+Seleccionar conversión...
+<span>⌄</span>
+</div>
+
+</div>
+
+<div class="card-arrow">
+›
 </div>
 
 </a>
 
-</div>
 
-</section>
 
-<!-- =========================
-     COLORES
-========================= -->
+<!-- COLORES -->
 
-<section class="category">
+<a class="tool-card"
+href="colores.html">
 
-<div class="category-header">
-
-<h2 class="section-title">
-🎨 Colores y CSS
-</h2>
-
-<div class="section-line"></div>
-
-</div>
-
-<div class="tools">
-
-<a class="tool" href="colores.html">
-
-<div class="icon">
+<div class="tool-icon">
 🎨
 </div>
 
@@ -765,39 +1099,32 @@ Herramientas de colores
 </h3>
 
 <p>
-HEX, RGB, HSL, contraste WCAG y herramientas para CSS.
+HEX, RGB, HSL, contraste WCAG y
+herramientas para CSS.
 </p>
 
+<div class="tool-select">
+Abrir herramientas
+<span>›</span>
+</div>
+
+</div>
+
+<div class="card-arrow">
+›
 </div>
 
 </a>
 
-</div>
 
-</section>
 
-<!-- =========================
-     TIEMPO
-========================= -->
+<!-- CRONOMETRO -->
 
-<section class="category">
+<a class="tool-card"
+href="cronometro.html">
 
-<div class="category-header">
-
-<h2 class="section-title">
-⏱️ Tiempo y productividad
-</h2>
-
-<div class="section-line"></div>
-
-</div>
-
-<div class="tools">
-
-<a class="tool" href="cronometro.html">
-
-<div class="icon">
-⏱️
+<div class="tool-icon">
+⏱
 </div>
 
 <div class="tool-content">
@@ -807,18 +1134,32 @@ Cronómetro online
 </h3>
 
 <p>
-Medí el tiempo y registrá vueltas directamente desde
-tu navegador.
+Medí el tiempo y registrá vueltas
+directamente desde tu navegador.
 </p>
 
+<div class="tool-select">
+Iniciar cronómetro
+<span>›</span>
+</div>
+
+</div>
+
+<div class="card-arrow">
+›
 </div>
 
 </a>
 
-<a class="tool" href="utilidades.html">
 
-<div class="icon">
-🛠️
+
+<!-- UTILIDADES -->
+
+<a class="tool-card"
+href="utilidades.html">
+
+<div class="tool-icon">
+⚙
 </div>
 
 <div class="tool-content">
@@ -828,39 +1169,31 @@ Utilidades rápidas
 </h3>
 
 <p>
-UUID, PIN, Base64, SHA-256, timestamps, Pomodoro
-y mucho más.
+UUID, PIN, Base64, SHA-256, timestamps,
+Pomodoro y mucho más.
 </p>
 
+<div class="tool-select">
+Ver utilidades
+<span>›</span>
+</div>
+
+</div>
+
+<div class="card-arrow">
+›
 </div>
 
 </a>
 
-</div>
 
-</section>
 
-<!-- =========================
-     RED
-========================= -->
+<!-- RED -->
 
-<section class="category">
+<a class="tool-card"
+href="red.html">
 
-<div class="category-header">
-
-<h2 class="section-title">
-🌐 Herramientas de red
-</h2>
-
-<div class="section-line"></div>
-
-</div>
-
-<div class="tools">
-
-<a class="tool" href="red.html">
-
-<div class="icon">
+<div class="tool-icon">
 🌐
 </div>
 
@@ -871,39 +1204,31 @@ Herramientas de red
 </h3>
 
 <p>
-IP, IPv4, subnet, CIDR, DNS, MX, SPF, DMARC,
-URL y HTTP.
+IP, IPv4, subnet, CIDR, DNS, MX,
+SPF, DMARC, URL y HTTP.
 </p>
 
+<div class="tool-select">
+Abrir herramientas
+<span>›</span>
+</div>
+
+</div>
+
+<div class="card-arrow">
+›
 </div>
 
 </a>
 
-</div>
 
-</section>
 
-<!-- =========================
-     CRIPTOMONEDAS
-========================= -->
+<!-- CRYPTO -->
 
-<section class="category">
+<a class="tool-card"
+href="crypto.html">
 
-<div class="category-header">
-
-<h2 class="section-title">
-₿ Criptomonedas
-</h2>
-
-<div class="section-line"></div>
-
-</div>
-
-<div class="tools">
-
-<a class="tool" href="crypto.html">
-
-<div class="icon">
+<div class="tool-icon">
 ₿
 </div>
 
@@ -914,39 +1239,31 @@ Calculadora de criptomonedas
 </h3>
 
 <p>
-Convertí Bitcoin, Ethereum, Solana, XRP y otras
-criptomonedas.
+Convertí Bitcoin, Ethereum, Solana,
+XRP y otras criptomonedas.
 </p>
 
+<div class="tool-select">
+Abrir calculadora
+<span>›</span>
+</div>
+
+</div>
+
+<div class="card-arrow">
+›
 </div>
 
 </a>
 
-</div>
 
-</section>
 
-<!-- =========================
-     ARCHIVOS
-========================= -->
+<!-- ARCHIVOS -->
 
-<section class="category">
+<a class="tool-card"
+href="archivos.html">
 
-<div class="category-header">
-
-<h2 class="section-title">
-📁 Archivos
-</h2>
-
-<div class="section-line"></div>
-
-</div>
-
-<div class="tools">
-
-<a class="tool" href="archivos.html">
-
-<div class="icon">
+<div class="tool-icon">
 📁
 </div>
 
@@ -957,23 +1274,33 @@ Herramientas de archivos
 </h3>
 
 <p>
-Trabajá con archivos directamente desde tu navegador
-sin instalar programas.
+Trabajá con archivos directamente
+desde tu navegador.
 </p>
 
+<div class="tool-select">
+Abrir herramientas
+<span>›</span>
+</div>
+
+</div>
+
+<div class="card-arrow">
+›
 </div>
 
 </a>
 
+
 </div>
 
-</section>
 
-<!-- =========================
-     ADSTERRA BANNER
-========================= -->
 
-<div class="ad-container">
+<!-- =====================================================
+     SEGUNDO ANUNCIO
+===================================================== -->
+
+<div class="ad-container middle-ad">
 
 <div class="ad-label">
 PUBLICIDAD
@@ -997,9 +1324,11 @@ src="https://www.highrevenueformat.com/56c8323b8c9bd2913adcf628996d2229/invoke.j
 
 </div>
 
-<!-- =========================
+
+
+<!-- =====================================================
      SIN RESULTADOS
-========================= -->
+===================================================== -->
 
 <div id="sinResultados">
 
@@ -1007,35 +1336,46 @@ No encontramos ninguna herramienta con ese nombre.
 
 </div>
 
-<!-- =========================
-     INFORMACIÓN
-========================= -->
 
-<div class="info">
+
+<!-- =====================================================
+     INFORMACION SEO
+===================================================== -->
+
+<section class="info" id="info">
 
 <h2>
 Herramientas online gratuitas
 </h2>
 
 <p>
-UtilMooz reúne diferentes herramientas gratuitas para realizar
-tareas habituales directamente desde el navegador, sin necesidad
-de instalar programas.
+UtilMooz reúne herramientas online gratuitas para realizar
+tareas habituales directamente desde el navegador, sin
+necesidad de instalar programas.
 </p>
 
 <p>
 Encontrá calculadoras, conversores, generadores, herramientas
-de texto, colores, red, criptomonedas, archivos y utilidades
-para diferentes necesidades.
+de texto, colores, red, criptomonedas, archivos y diferentes
+utilidades en un solo lugar.
 </p>
 
-</div>
+<p>
+Todas las herramientas están diseñadas para ser rápidas,
+sencillas y fáciles de utilizar desde computadoras,
+tablets y teléfonos móviles.
+</p>
+
+</section>
+
 
 </main>
 
-<!-- =========================
+
+
+<!-- =====================================================
      FOOTER
-========================= -->
+===================================================== -->
 
 <footer>
 
@@ -1049,17 +1389,21 @@ Todas las herramientas funcionan directamente desde tu navegador.
 
 </footer>
 
-<!-- =========================
+
+
+<!-- =====================================================
      ADSTERRA SOCIAL BAR
-========================= -->
+===================================================== -->
 
 <script
 src="https://pl31074089.profitableratecpmnetwork.com/b9/80/b1/b980b1630aa36c566498dbf6055d89ea.js">
 </script>
 
-<!-- =========================
+
+
+<!-- =====================================================
      BUSCADOR
-========================= -->
+===================================================== -->
 
 <script>
 
@@ -1072,11 +1416,10 @@ function buscarHerramientas(){
         .toLowerCase()
         .trim();
 
-    const herramientas =
-        document.querySelectorAll(".tool");
 
-    const categorias =
-        document.querySelectorAll(".category");
+    const herramientas =
+        document.querySelectorAll(".tool-card");
+
 
     let encontrados = 0;
 
@@ -1085,6 +1428,7 @@ function buscarHerramientas(){
 
         const contenido =
             herramienta.innerText.toLowerCase();
+
 
         if(contenido.includes(texto)){
 
@@ -1095,34 +1439,6 @@ function buscarHerramientas(){
         }else{
 
             herramienta.style.display = "none";
-
-        }
-
-    });
-
-
-    categorias.forEach(function(categoria){
-
-        const herramientasCategoria =
-            categoria.querySelectorAll(".tool");
-
-        let visibles = 0;
-
-        herramientasCategoria.forEach(function(tool){
-
-            if(tool.style.display !== "none"){
-                visibles++;
-            }
-
-        });
-
-        if(visibles === 0){
-
-            categoria.style.display = "none";
-
-        }else{
-
-            categoria.style.display = "";
 
         }
 
@@ -1147,5 +1463,7 @@ function buscarHerramientas(){
 
 </script>
 
+
 </body>
+
 </html>
