@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-
 <html lang="es">
+
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Generador QR Online Gratis | Utilmooz</title>
+<title>Generador QR Online Gratis | UtilMooz</title>
 
 <meta name="description"
 content="Generador QR online gratis. Creá códigos QR para URLs, WiFi, WhatsApp, email, teléfono, Bitcoin y más.">
@@ -16,6 +16,12 @@ content="Generador QR online gratis. Creá códigos QR para URLs, WiFi, WhatsApp
 ========================= -->
 
 <script src="https://pl31074088.profitableratecpmnetwork.com/b3/e1/f2/b3e1f2f8b30c35d54a787cfe893ac42b.js"></script>
+
+<!-- =========================
+     LIBRERÍA QR
+========================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 
 <style>
 
@@ -59,6 +65,10 @@ color:#ddd;
 text-decoration:none;
 }
 
+nav a:hover{
+color:white;
+}
+
 .container{
 max-width:800px;
 margin:45px auto;
@@ -69,9 +79,7 @@ padding:0 20px 60px;
    ANUNCIOS
 ========================= */
 
-.ad-container,
-.ad-middle,
-.ad-bottom{
+.ad-container{
 width:100%;
 min-height:90px;
 margin:25px auto;
@@ -79,13 +87,21 @@ display:flex;
 justify-content:center;
 align-items:center;
 overflow:hidden;
+text-align:center;
 }
 
 .ad-label{
 font-size:11px;
 color:#98a2b3;
-text-align:center;
 margin-bottom:7px;
+}
+
+.ad-box{
+width:100%;
+min-height:90px;
+display:flex;
+justify-content:center;
+align-items:center;
 }
 
 /* =========================
@@ -115,6 +131,12 @@ border:1px solid #e6e8ee;
 box-shadow:0 5px 20px rgba(0,0,0,.05);
 }
 
+label{
+display:block;
+font-weight:bold;
+margin-bottom:7px;
+}
+
 select,
 input,
 textarea{
@@ -124,17 +146,19 @@ border:1px solid #d9dde5;
 border-radius:8px;
 font-size:16px;
 margin-bottom:15px;
+font-family:Arial,sans-serif;
 }
 
 textarea{
-min-height:100px;
+min-height:110px;
 resize:vertical;
 }
 
-label{
-display:block;
-font-weight:bold;
-margin-bottom:7px;
+select:focus,
+input:focus,
+textarea:focus{
+outline:none;
+border-color:#4f8cff;
 }
 
 button{
@@ -159,8 +183,10 @@ background:#3978e8;
 #qrcode{
 display:flex;
 justify-content:center;
+align-items:center;
 margin-top:30px;
 padding:20px;
+min-height:20px;
 }
 
 #qrcode canvas,
@@ -183,6 +209,31 @@ font-weight:bold;
 
 .download:hover{
 background:#15803d;
+}
+
+/* =========================
+   MENSAJE
+========================= */
+
+.mensaje{
+margin-top:15px;
+padding:12px;
+border-radius:8px;
+text-align:center;
+font-size:14px;
+display:none;
+}
+
+.mensaje.error{
+display:block;
+background:#fee2e2;
+color:#b91c1c;
+}
+
+.mensaje.exito{
+display:block;
+background:#dcfce7;
+color:#15803d;
 }
 
 /* =========================
@@ -230,21 +281,13 @@ font-size:30px;
 padding:22px;
 }
 
-.ad-container,
-.ad-middle,
-.ad-bottom{
+.ad-container{
 min-height:70px;
 }
 
 }
 
 </style>
-
-<!-- =========================
-     LIBRERÍA QR
-========================= -->
-
-<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 
 </head>
 
@@ -255,7 +298,7 @@ min-height:70px;
 <div class="header-content">
 
 <div class="logo">
-Util<span>mooz</span>
+Util<span>Mooz</span>
 </div>
 
 <nav>
@@ -269,7 +312,7 @@ Util<span>mooz</span>
 <main class="container">
 
 <!-- =========================
-     ANUNCIO SUPERIOR
+     ANUNCIO 1
 ========================= -->
 
 <div class="ad-container">
@@ -280,7 +323,7 @@ Util<span>mooz</span>
 PUBLICIDAD
 </div>
 
-<div>
+<div class="ad-box">
 
 <script async="async"
 data-cfasync="false"
@@ -295,16 +338,26 @@ src="https://pl31074091.profitableratecpmnetwork.com/0121748aaaf83f5b10d651ea8ce
 
 </div>
 
+<!-- =========================
+     TITULO
+========================= -->
+
 <h1>Generador de códigos QR</h1>
 
 <p class="description">
-Creá códigos QR para enlaces, WiFi, WhatsApp, email, teléfonos,
-ubicaciones, contactos y criptomonedas.
+Creá códigos QR gratis para enlaces, WiFi, WhatsApp, email,
+teléfonos, ubicaciones, contactos, eventos y criptomonedas.
 </p>
+
+<!-- =========================
+     GENERADOR
+========================= -->
 
 <div class="panel">
 
-<label>Tipo de QR</label>
+<label for="tipo">
+Tipo de QR
+</label>
 
 <select id="tipo" onchange="crearFormulario()">
 
@@ -329,19 +382,21 @@ ubicaciones, contactos y criptomonedas.
 Generar código QR
 </button>
 
+<div id="mensaje" class="mensaje"></div>
+
 <div id="qrcode"></div>
 
 <a id="download" class="download">
-⬇ Descargar QR
+⬇ Descargar código QR
 </a>
 
 </div>
 
 <!-- =========================
-     ANUNCIO MEDIO
+     ANUNCIO 2
 ========================= -->
 
-<div class="ad-middle">
+<div class="ad-container">
 
 <div style="width:100%;">
 
@@ -349,9 +404,10 @@ Generar código QR
 PUBLICIDAD
 </div>
 
-<div>
+<div class="ad-box">
 
 <script>
+
 atOptions = {
 'key' : '56c8323b8c9bd2913adcf628996d2229',
 'format' : 'iframe',
@@ -359,6 +415,7 @@ atOptions = {
 'width' : 468,
 'params' : {}
 };
+
 </script>
 
 <script src="https://www.highrevenueformat.com/56c8323b8c9bd2913adcf628996d2229/invoke.js"></script>
@@ -368,6 +425,10 @@ atOptions = {
 </div>
 
 </div>
+
+<!-- =========================
+     INFORMACIÓN
+========================= -->
 
 <div class="info">
 
@@ -392,18 +453,26 @@ Una vez creado, podés descargarlo como imagen PNG.
 <h2>¿Qué tipos de códigos QR podés crear?</h2>
 
 <p>
-Utilmooz permite generar códigos QR para URLs, textos, redes WiFi,
-WhatsApp, email, llamadas telefónicas, SMS, ubicaciones,
-contactos, eventos, Bitcoin y Ethereum.
+UtilMooz permite generar códigos QR para URLs, textos,
+redes WiFi, WhatsApp, email, llamadas telefónicas, SMS,
+ubicaciones, contactos, eventos, Bitcoin y Ethereum.
+</p>
+
+<h2>¿Cómo crear un código QR?</h2>
+
+<p>
+Seleccioná el tipo de código QR que querés crear, completá
+los datos solicitados y presioná el botón "Generar código QR".
+El código aparecerá automáticamente en la pantalla.
 </p>
 
 </div>
 
 <!-- =========================
-     ANUNCIO INFERIOR
+     ANUNCIO 3
 ========================= -->
 
-<div class="ad-bottom">
+<div class="ad-container">
 
 <div style="width:100%;">
 
@@ -411,7 +480,7 @@ contactos, eventos, Bitcoin y Ethereum.
 PUBLICIDAD
 </div>
 
-<div>
+<div class="ad-box">
 
 <script async="async"
 data-cfasync="false"
@@ -429,7 +498,9 @@ src="https://pl31074091.profitableratecpmnetwork.com/0121748aaaf83f5b10d651ea8ce
 </main>
 
 <footer>
-© 2026 Utilmooz — Herramientas online gratuitas
+
+© 2026 UtilMooz — Herramientas online gratuitas
+
 </footer>
 
 <!-- =========================
@@ -440,32 +511,42 @@ src="https://pl31074091.profitableratecpmnetwork.com/0121748aaaf83f5b10d651ea8ce
 
 <script>
 
-/* =========================
-   FORMULARIOS
-========================= */
+/* =====================================================
+   CREAR CAMPO
+===================================================== */
 
 function campo(label,id,placeholder="",type="text"){
 
 return `
-<label>${label}</label>
+<label for="${id}">
+${label}
+</label>
 
 <input
 id="${id}"
 type="${type}"
-placeholder="${placeholder}">
+placeholder="${placeholder}"
+autocomplete="off">
 `;
 
 }
 
+
+/* =====================================================
+   CREAR FORMULARIO
+===================================================== */
 
 function crearFormulario(){
 
 const tipo =
 document.getElementById("tipo").value;
 
-let html = "";
+let html="";
+
 
 switch(tipo){
+
+/* ================= URL ================= */
 
 case "url":
 
@@ -473,52 +554,61 @@ html =
 campo(
 "URL",
 "url",
-"https://ejemplo.com"
+"https://ejemplo.com",
+"url"
 );
 
 break;
 
 
+/* ================= TEXTO ================= */
+
 case "texto":
 
-html = `
-<label>Texto</label>
+html=`
+
+<label for="texto">
+Texto
+</label>
 
 <textarea
 id="texto"
-placeholder="Escribí el texto">
-</textarea>
+placeholder="Escribí el texto que querés convertir en QR"></textarea>
 
 `;
 
 break;
 
+
+/* ================= WIFI ================= */
+
 case "wifi":
 
 html =
 campo(
-"Nombre WiFi",
+"Nombre de la red WiFi",
 "ssid",
 "MiWiFi"
-)
+);
 
-*
-
+html +=
 campo(
 "Contraseña",
-"password",
+"wifiPassword",
 "Contraseña",
 "password"
-)
+);
 
-*
+html += `
 
-` <label>Seguridad</label>
+<label for="seguridad">
+Seguridad
+</label>
 
 <select id="seguridad">
 
 <option value="WPA">
-WPA/WPA2
+WPA / WPA2
 </option>
 
 <option value="WEP">
@@ -530,9 +620,13 @@ Sin contraseña
 </option>
 
 </select>
+
 `;
 
 break;
+
+
+/* ================= WHATSAPP ================= */
 
 case "whatsapp":
 
@@ -541,20 +635,24 @@ campo(
 "Número con código de país",
 "numero",
 "5491122334455"
-)
+);
 
-*
+html += `
 
-` <label>Mensaje</label>
+<label for="mensaje">
+Mensaje
+</label>
 
 <textarea
 id="mensaje"
-placeholder="Mensaje opcional">
-</textarea>
+placeholder="Mensaje opcional"></textarea>
 
 `;
 
 break;
+
+
+/* ================= EMAIL ================= */
 
 case "email":
 
@@ -562,29 +660,33 @@ html =
 campo(
 "Email",
 "email",
-"[correo@ejemplo.com](mailto:correo@ejemplo.com)",
+"correo@ejemplo.com",
 "email"
-)
+);
 
-*
-
+html +=
 campo(
 "Asunto",
-"asunto"
-)
+"asunto",
+"Asunto del correo"
+);
 
-*
+html += `
 
-` <label>Mensaje</label>
+<label for="mensaje">
+Mensaje
+</label>
 
 <textarea
 id="mensaje"
-placeholder="Escribí el mensaje">
-</textarea>
+placeholder="Escribí el mensaje"></textarea>
 
 `;
 
 break;
+
+
+/* ================= TELEFONO ================= */
 
 case "telefono":
 
@@ -597,6 +699,9 @@ campo(
 
 break;
 
+
+/* ================= SMS ================= */
+
 case "sms":
 
 html =
@@ -604,16 +709,24 @@ campo(
 "Número",
 "numero",
 "+549..."
-)
-
-*
-
-campo(
-"Mensaje",
-"mensaje"
 );
 
+html += `
+
+<label for="mensaje">
+Mensaje
+</label>
+
+<textarea
+id="mensaje"
+placeholder="Escribí el mensaje"></textarea>
+
+`;
+
 break;
+
+
+/* ================= UBICACION ================= */
 
 case "ubicacion":
 
@@ -622,10 +735,9 @@ campo(
 "Latitud",
 "lat",
 "-27.78"
-)
+);
 
-*
-
+html +=
 campo(
 "Longitud",
 "lon",
@@ -634,190 +746,253 @@ campo(
 
 break;
 
+
+/* ================= CONTACTO ================= */
+
 case "contacto":
 
 html =
 campo(
 "Nombre",
-"nombre"
-)
+"nombre",
+"Juan Pérez"
+);
 
-*
-
+html +=
 campo(
 "Teléfono",
-"telefono"
-)
+"telefono",
+"+549..."
+);
 
-*
-
+html +=
 campo(
 "Email",
+"email",
+"correo@ejemplo.com",
 "email"
-)
+);
 
-*
-
+html +=
 campo(
 "Empresa",
-"empresa"
-)
+"empresa",
+"Mi empresa"
+);
 
-*
-
+html +=
 campo(
 "Sitio web",
-"web"
+"web",
+"https://ejemplo.com",
+"url"
 );
 
 break;
+
+
+/* ================= EVENTO ================= */
 
 case "evento":
 
 html =
 campo(
 "Título",
-"titulo"
-)
+"titulo",
+"Mi evento"
+);
 
-*
-
+html +=
 campo(
 "Lugar",
-"lugar"
-)
+"lugar",
+"Ubicación"
+);
 
-*
-
+html +=
 campo(
-"Fecha inicio",
+"Fecha y hora de inicio",
 "inicio",
-"20260828T120000"
-)
+"",
+"datetime-local"
+);
 
-*
-
+html +=
 campo(
-"Fecha fin",
+"Fecha y hora de finalización",
 "fin",
-"20260828T130000"
+"",
+"datetime-local"
 );
 
 break;
+
+
+/* ================= BITCOIN ================= */
 
 case "bitcoin":
 
 html =
 campo(
 "Dirección Bitcoin",
-"direccion"
-)
+"direccion",
+"bc1..."
+);
 
-*
-
+html +=
 campo(
 "Monto BTC (opcional)",
-"monto"
+"monto",
+"0.001",
+"number"
 );
 
 break;
+
+
+/* ================= ETHEREUM ================= */
 
 case "ethereum":
 
 html =
 campo(
 "Dirección Ethereum",
-"direccion"
-)
+"direccion",
+"0x..."
+);
 
-*
-
+html +=
 campo(
 "Monto ETH (opcional)",
-"monto"
+"monto",
+"0.01",
+"number"
 );
 
 break;
 
 }
 
+
 document.getElementById("formulario").innerHTML =
 html;
 
 }
 
-/* =========================
-GENERAR QR
-========================= */
+
+/* =====================================================
+   GENERAR QR
+===================================================== */
 
 function generar(){
 
 const tipo =
 document.getElementById("tipo").value;
 
-let data = "";
+let data="";
 
-/* URL */
+ocultarMensaje();
 
-if(tipo === "url"){
+
+/* ================= URL ================= */
+
+if(tipo==="url"){
 
 data =
 document.getElementById("url").value.trim();
 
-}
-
-/* TEXTO */
-
-if(tipo === "texto"){
+if(data && !/^https?:\/\//i.test(data)){
 
 data =
-document.getElementById("texto").value;
+"https://" + data;
 
 }
 
-/* WIFI */
+}
 
-if(tipo === "wifi"){
+
+/* ================= TEXTO ================= */
+
+if(tipo==="texto"){
+
+data =
+document.getElementById("texto").value.trim();
+
+}
+
+
+/* ================= WIFI ================= */
+
+if(tipo==="wifi"){
 
 const ssid =
 document.getElementById("ssid").value;
 
-const pass =
-document.getElementById("password").value;
+const password =
+document.getElementById("wifiPassword").value;
 
-const security =
+const seguridad =
 document.getElementById("seguridad").value;
 
 data =
-`WIFI:T:${security};S:${escapeQR(ssid)};P:${escapeQR(pass)};;`;
+"WIFI:T:" +
+seguridad +
+";S:" +
+escapeQR(ssid) +
+";P:" +
+escapeQR(password) +
+";;";
 
 }
 
-/* WHATSAPP */
 
-if(tipo === "whatsapp"){
+/* ================= WHATSAPP ================= */
+
+if(tipo==="whatsapp"){
 
 const numero =
-document.getElementById("numero").value
+document
+.getElementById("numero")
+.value
 .replace(/\D/g,"");
 
 const mensaje =
-document.getElementById("mensaje").value;
+document
+.getElementById("mensaje")
+.value;
+
+if(!numero){
+
+mostrarMensaje(
+"Ingresá un número de WhatsApp.",
+"error"
+);
+
+return;
+
+}
 
 data =
 "https://wa.me/" +
-numero +
+numero;
+
+if(mensaje.trim()){
+
+data +=
 "?text=" +
 encodeURIComponent(mensaje);
 
 }
 
-/* EMAIL */
+}
 
-if(tipo === "email"){
+
+/* ================= EMAIL ================= */
+
+if(tipo==="email"){
 
 const email =
-document.getElementById("email").value;
+document.getElementById("email").value.trim();
 
 const asunto =
 document.getElementById("asunto").value;
@@ -825,42 +1000,105 @@ document.getElementById("asunto").value;
 const mensaje =
 document.getElementById("mensaje").value;
 
-data =
-`mailto:${email}?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(mensaje)}`;
+if(!email){
+
+mostrarMensaje(
+"Ingresá una dirección de email.",
+"error"
+);
+
+return;
 
 }
 
-/* TELÉFONO */
+data =
+"mailto:" +
+email;
 
-if(tipo === "telefono"){
+const parametros=[];
+
+if(asunto){
+
+parametros.push(
+"subject="+
+encodeURIComponent(asunto)
+);
+
+}
+
+if(mensaje){
+
+parametros.push(
+"body="+
+encodeURIComponent(mensaje)
+);
+
+}
+
+if(parametros.length){
+
+data +=
+"?" +
+parametros.join("&");
+
+}
+
+}
+
+
+/* ================= TELEFONO ================= */
+
+if(tipo==="telefono"){
+
+const numero =
+document.getElementById("numero").value.trim();
 
 data =
 "tel:" +
-document.getElementById("numero").value;
+numero;
 
 }
 
-/* SMS */
 
-if(tipo === "sms"){
+/* ================= SMS ================= */
+
+if(tipo==="sms"){
+
+const numero =
+document.getElementById("numero").value.trim();
+
+const mensaje =
+document.getElementById("mensaje").value;
 
 data =
 "SMSTO:" +
-document.getElementById("numero").value +
+numero +
 ":" +
-document.getElementById("mensaje").value;
+mensaje;
 
 }
 
-/* UBICACIÓN */
 
-if(tipo === "ubicacion"){
+/* ================= UBICACION ================= */
+
+if(tipo==="ubicacion"){
 
 const lat =
-document.getElementById("lat").value;
+document.getElementById("lat").value.trim();
 
 const lon =
-document.getElementById("lon").value;
+document.getElementById("lon").value.trim();
+
+if(!lat || !lon){
+
+mostrarMensaje(
+"Completá la latitud y longitud.",
+"error"
+);
+
+return;
+
+}
 
 data =
 "geo:" +
@@ -870,45 +1108,102 @@ lon;
 
 }
 
-/* CONTACTO */
 
-if(tipo === "contacto"){
+/* ================= CONTACTO ================= */
+
+if(tipo==="contacto"){
+
+const nombre =
+document.getElementById("nombre").value;
+
+const telefono =
+document.getElementById("telefono").value;
+
+const email =
+document.getElementById("email").value;
+
+const empresa =
+document.getElementById("empresa").value;
+
+const web =
+document.getElementById("web").value;
 
 data =
-`BEGIN:VCARD
-VERSION:3.0
-FN:${document.getElementById("nombre").value}
-ORG:${document.getElementById("empresa").value}
-TEL:${document.getElementById("telefono").value}
-EMAIL:${document.getElementById("email").value}
-URL:${document.getElementById("web").value}
-END:VCARD`;
+"BEGIN:VCARD\n" +
+"VERSION:3.0\n" +
+"FN:" + escaparVCF(nombre) + "\n" +
+"ORG:" + escaparVCF(empresa) + "\n" +
+"TEL:" + escaparVCF(telefono) + "\n" +
+"EMAIL:" + escaparVCF(email) + "\n" +
+"URL:" + escaparVCF(web) + "\n" +
+"END:VCARD";
 
 }
 
-/* EVENTO */
 
-if(tipo === "evento"){
+/* ================= EVENTO ================= */
 
-data =
-`BEGIN:VEVENT
-SUMMARY:${document.getElementById("titulo").value}
-LOCATION:${document.getElementById("lugar").value}
-DTSTART:${document.getElementById("inicio").value}
-DTEND:${document.getElementById("fin").value}
-END:VEVENT`;
+if(tipo==="evento"){
+
+const titulo =
+document.getElementById("titulo").value;
+
+const lugar =
+document.getElementById("lugar").value;
+
+const inicio =
+formatearFechaEvento(
+document.getElementById("inicio").value
+);
+
+const fin =
+formatearFechaEvento(
+document.getElementById("fin").value
+);
+
+if(!titulo){
+
+mostrarMensaje(
+"Ingresá el título del evento.",
+"error"
+);
+
+return;
 
 }
 
-/* BITCOIN */
+data =
+"BEGIN:VEVENT\n" +
+"VERSION:2.0\n" +
+"SUMMARY:" + escaparVCF(titulo) + "\n" +
+"LOCATION:" + escaparVCF(lugar) + "\n" +
+"DTSTART:" + inicio + "\n" +
+"DTEND:" + fin + "\n" +
+"END:VEVENT";
 
-if(tipo === "bitcoin"){
+}
+
+
+/* ================= BITCOIN ================= */
+
+if(tipo==="bitcoin"){
 
 const direccion =
-document.getElementById("direccion").value;
+document.getElementById("direccion").value.trim();
 
 const monto =
-document.getElementById("monto").value;
+document.getElementById("monto").value.trim();
+
+if(!direccion){
+
+mostrarMensaje(
+"Ingresá una dirección Bitcoin.",
+"error"
+);
+
+return;
+
+}
 
 data =
 "bitcoin:" +
@@ -924,15 +1219,27 @@ encodeURIComponent(monto);
 
 }
 
-/* ETHEREUM */
 
-if(tipo === "ethereum"){
+/* ================= ETHEREUM ================= */
+
+if(tipo==="ethereum"){
 
 const direccion =
-document.getElementById("direccion").value;
+document.getElementById("direccion").value.trim();
 
 const monto =
-document.getElementById("monto").value;
+document.getElementById("monto").value.trim();
+
+if(!direccion){
+
+mostrarMensaje(
+"Ingresá una dirección Ethereum.",
+"error"
+);
+
+return;
+
+}
 
 data =
 "ethereum:" +
@@ -948,17 +1255,22 @@ encodeURIComponent(monto);
 
 }
 
-/* VALIDAR */
+
+/* ================= VALIDACION ================= */
 
 if(!data.trim()){
 
-alert("Completá los datos.");
+mostrarMensaje(
+"Completá los datos para generar el código QR.",
+"error"
+);
 
 return;
 
 }
 
-/* GENERAR */
+
+/* ================= GENERAR ================= */
 
 const contenedor =
 document.getElementById("qrcode");
@@ -966,9 +1278,11 @@ document.getElementById("qrcode");
 const download =
 document.getElementById("download");
 
-contenedor.innerHTML = "";
+contenedor.innerHTML="";
 
-download.style.display = "none";
+download.style.display="none";
+
+try{
 
 new QRCode(
 contenedor,
@@ -980,12 +1294,27 @@ correctLevel:QRCode.CorrectLevel.H
 }
 );
 
-/* DESCARGA */
+}catch(error){
 
-setTimeout(()=>{
+mostrarMensaje(
+"No se pudo generar el código QR.",
+"error"
+);
+
+return;
+
+}
+
+
+/* ================= DESCARGA ================= */
+
+setTimeout(function(){
 
 const canvas =
 contenedor.querySelector("canvas");
+
+const imagen =
+contenedor.querySelector("img");
 
 if(canvas){
 
@@ -1000,28 +1329,118 @@ download.style.display =
 
 }
 
-},500);
+else if(imagen){
+
+download.href =
+imagen.src;
+
+download.download =
+"utilmooz-qr.png";
+
+download.style.display =
+"block";
 
 }
 
-/* =========================
-ESCAPE WIFI
-========================= */
+mostrarMensaje(
+"✓ Código QR generado correctamente.",
+"exito"
+);
+
+},300);
+
+}
+
+
+/* =====================================================
+   ESCAPAR DATOS WIFI
+===================================================== */
 
 function escapeQR(text){
 
 return String(text)
-.replace(/([\;,:"])/g,"\$1");
+.replace(/\\/g,"\\\\")
+.replace(/;/g,"\\;")
+.replace(/,/g,"\\,")
+.replace(/:/g,"\\:")
+.replace(/"/g,'\\"');
 
 }
 
-/* =========================
-INICIAR
-========================= */
+
+/* =====================================================
+   ESCAPAR VCARD
+===================================================== */
+
+function escaparVCF(text){
+
+return String(text || "")
+.replace(/\\/g,"\\\\")
+.replace(/\n/g,"\\n")
+.replace(/;/g,"\\;")
+.replace(/,/g,"\\,");
+
+}
+
+
+/* =====================================================
+   FECHA EVENTO
+===================================================== */
+
+function formatearFechaEvento(valor){
+
+if(!valor){
+
+return "";
+
+}
+
+return valor
+.replace(/[-:]/g,"")
+.replace("T","T")
+.slice(0,15);
+
+}
+
+
+/* =====================================================
+   MENSAJES
+===================================================== */
+
+function mostrarMensaje(texto,tipo){
+
+const mensaje =
+document.getElementById("mensaje");
+
+mensaje.textContent =
+texto;
+
+mensaje.className =
+"mensaje " + tipo;
+
+}
+
+function ocultarMensaje(){
+
+const mensaje =
+document.getElementById("mensaje");
+
+mensaje.textContent="";
+
+mensaje.className="mensaje";
+
+}
+
+
+/* =====================================================
+   INICIAR
+===================================================== */
 
 crearFormulario();
 
 </script>
 
 </body>
+
 </html>
+
