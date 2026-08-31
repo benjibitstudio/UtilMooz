@@ -12,27 +12,24 @@
 
 <title>UtilMooz - Herramientas online gratuitas</title>
 
-<meta name="description"
-content="UtilMooz: herramientas online gratuitas para convertir, calcular, generar, analizar y trabajar con archivos, texto, colores, criptomonedas y mucho más.">
+<meta name="description" content="UtilMooz: herramientas online gratuitas para convertir, calcular, generar, analizar y trabajar con archivos, texto, colores, criptomonedas y mucho más.">
 
 <meta name="robots" content="index, follow">
 
-<!-- =========================
-     ADSTERRA POPUNDER
-========================= -->
+<!-- ADSTERRA POPUNDER -->
 
 <script src="https://pl31074088.profitableratecpmnetwork.com/b3/e1/f2/b3e1f2f8b30c35d54a787cfe893ac42b.js"></script>
 
 <style>
 
-/* =========================
+/* =========================================================
    RESET
-========================= */
+========================================================= */
 
 *{
-    box-sizing:border-box;
     margin:0;
     padding:0;
+    box-sizing:border-box;
 }
 
 html{
@@ -40,110 +37,183 @@ html{
 }
 
 body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#f7faff;
+    font-family:Inter,Arial,Helvetica,sans-serif;
+    background:#f5f8ff;
     color:#172033;
-    line-height:1.5;
+    overflow-x:hidden;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
 }
 
 
-/* =========================
+/* =========================================================
    HEADER
-========================= */
+========================================================= */
 
 header{
-    background:rgba(255,255,255,.96);
-    border-bottom:1px solid #e3eaf5;
-    padding:17px 20px;
     position:sticky;
     top:0;
-    z-index:1000;
-    backdrop-filter:blur(12px);
+    z-index:9999;
+    background:#ffffff;
+    border-bottom:1px solid #e5ebf5;
 }
 
-.header-content{
-    max-width:1180px;
+.header-inner{
+    max-width:1200px;
+    height:72px;
     margin:auto;
+    padding:0 24px;
+
     display:flex;
     align-items:center;
     justify-content:space-between;
 }
 
 .logo{
-    font-size:29px;
+    font-size:27px;
     font-weight:800;
+    letter-spacing:-1.5px;
     color:#172033;
-    letter-spacing:-1.2px;
 }
 
 .logo span{
     color:#2563eb;
 }
 
-nav{
+.nav{
     display:flex;
     align-items:center;
-    gap:30px;
+    gap:8px;
 }
 
-nav a{
+.nav a{
+    padding:10px 16px;
+    border-radius:9px;
     color:#526174;
-    text-decoration:none;
-    font-size:15px;
+    font-size:14px;
     font-weight:600;
     transition:.2s;
 }
 
-nav a:hover{
+.nav a:hover{
     color:#2563eb;
+    background:#f1f5ff;
+}
+
+.nav .active{
+    color:#2563eb;
+    background:#eef4ff;
 }
 
 
-/* =========================
+/* =========================================================
    HERO
-========================= */
+========================================================= */
 
 .hero{
-    max-width:900px;
-    margin:72px auto 0;
-    padding:0 20px;
+    position:relative;
+    overflow:hidden;
+    background:
+        radial-gradient(circle at 50% 0%,rgba(37,99,235,.16),transparent 38%),
+        linear-gradient(180deg,#ffffff 0%,#f5f8ff 100%);
+
+    padding:82px 20px 55px;
     text-align:center;
 }
 
+.hero::before{
+    content:"";
+    position:absolute;
+    width:420px;
+    height:420px;
+    border-radius:50%;
+    background:rgba(37,99,235,.045);
+    top:-240px;
+    left:-180px;
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    width:360px;
+    height:360px;
+    border-radius:50%;
+    background:rgba(56,189,248,.045);
+    top:-210px;
+    right:-150px;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:850px;
+    margin:auto;
+}
+
+.hero-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+
+    background:#edf4ff;
+    border:1px solid #d8e6ff;
+    color:#2563eb;
+
+    padding:7px 14px;
+    border-radius:50px;
+
+    font-size:12px;
+    font-weight:700;
+
+    margin-bottom:22px;
+}
+
+.hero-badge span{
+    width:7px;
+    height:7px;
+    background:#2563eb;
+    border-radius:50%;
+}
+
 .hero h1{
-    font-size:48px;
-    line-height:1.12;
-    letter-spacing:-2px;
-    margin-bottom:20px;
+    max-width:800px;
+    margin:auto;
+
+    font-size:52px;
+    line-height:1.08;
+    letter-spacing:-2.8px;
+    font-weight:800;
+
     color:#111827;
 }
 
-.hero h1::after{
-    content:"";
-    display:block;
-    width:55px;
-    height:4px;
-    background:#2563eb;
-    border-radius:10px;
-    margin:22px auto 0;
+.hero h1 strong{
+    color:#2563eb;
 }
 
 .hero p{
-    max-width:720px;
-    margin:0 auto;
+    max-width:690px;
+    margin:22px auto 0;
+
     color:#64748b;
     font-size:17px;
-    line-height:1.75;
+    line-height:1.8;
 }
 
 
-/* =========================
+/* =========================================================
    SEARCH
-========================= */
+========================================================= */
 
-.search{
+.search-area{
+    position:relative;
+    z-index:10;
+
     max-width:760px;
-    margin:38px auto 35px;
+    margin:-1px auto 0;
     padding:0 20px;
 }
 
@@ -153,267 +223,473 @@ nav a:hover{
 
 .search-icon{
     position:absolute;
-    left:18px;
+    left:20px;
     top:50%;
     transform:translateY(-50%);
-    font-size:18px;
+
+    width:22px;
+    height:22px;
+
     color:#94a3b8;
+    font-size:19px;
+
     pointer-events:none;
 }
 
 .search input{
     width:100%;
-    height:58px;
-    padding:0 20px 0 50px;
-    border:1px solid #d8e1ef;
-    border-radius:14px;
-    font-size:16px;
-    outline:none;
+    height:62px;
+
+    padding:0 25px 0 55px;
+
     background:#ffffff;
+    border:1px solid #dce5f2;
+    border-radius:16px;
+
+    outline:none;
+
     color:#172033;
-    box-shadow:0 5px 20px rgba(37,99,235,.06);
+    font-size:16px;
+
+    box-shadow:
+        0 12px 35px rgba(37,99,235,.09),
+        0 2px 8px rgba(15,23,42,.03);
+
     transition:.2s;
 }
 
-.search input::placeholder{
-    color:#94a3b8;
-}
-
 .search input:focus{
-    border-color:#2563eb;
-    box-shadow:0 0 0 4px rgba(37,99,235,.10);
+    border-color:#70a1ff;
+
+    box-shadow:
+        0 0 0 4px rgba(37,99,235,.09),
+        0 15px 40px rgba(37,99,235,.10);
+}
+
+.search input::placeholder{
+    color:#9aa8ba;
 }
 
 
-/* =========================
-   PUBLICIDAD
-========================= */
+/* =========================================================
+   ADVERTISING
+========================================================= */
 
 .ad-container{
+    width:100%;
     max-width:1100px;
-    margin:28px auto 38px;
+
+    margin:30px auto 25px;
     padding:0 20px;
+
     text-align:center;
     overflow:hidden;
 }
 
 .ad-label{
+    margin-bottom:7px;
+
+    color:#a1adbd;
     font-size:9px;
-    color:#a0aec0;
-    margin-bottom:8px;
-    letter-spacing:1px;
+    font-weight:600;
+
+    letter-spacing:1.2px;
 }
 
 
-/* =========================
-   CONTENEDOR
-========================= */
+/* =========================================================
+   MAIN
+========================================================= */
 
-.container{
-    max-width:1180px;
+.main{
+    max-width:1200px;
     margin:auto;
-    padding:0 20px 75px;
+    padding:20px 24px 80px;
 }
 
 
-/* =========================
-   CATEGORIAS
-========================= */
+/* =========================================================
+   SECTION HEADER
+========================================================= */
 
 .category{
     margin-top:48px;
 }
 
 .category:first-child{
-    margin-top:20px;
+    margin-top:25px;
 }
 
 .category-header{
     display:flex;
     align-items:center;
-    margin-bottom:18px;
-}
-
-.section-title{
-    font-size:23px;
-    font-weight:750;
-    color:#172033;
-    white-space:nowrap;
-}
-
-.section-line{
-    flex:1;
-    height:1px;
-    background:#dfe7f2;
-    margin-left:20px;
-}
-
-
-/* =========================
-   HERRAMIENTAS
-========================= */
-
-.tools{
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(270px,1fr));
-    gap:16px;
-}
-
-.tool{
-    display:flex;
-    align-items:flex-start;
     gap:15px;
-    min-height:128px;
-    background:#ffffff;
-    padding:21px;
-    border:1px solid #e1e8f2;
-    border-radius:15px;
-    text-decoration:none;
-    color:inherit;
-    box-shadow:0 3px 12px rgba(15,23,42,.025);
-    transition:all .2s ease;
+
+    margin-bottom:20px;
 }
 
-.tool:hover{
-    border-color:#b9cdf5;
-    box-shadow:0 10px 25px rgba(37,99,235,.10);
-    transform:translateY(-3px);
-}
+.category-icon{
+    width:40px;
+    height:40px;
 
-.icon{
-    width:50px;
-    height:50px;
-    min-width:50px;
     display:flex;
     align-items:center;
     justify-content:center;
-    background:#eff5ff;
-    border:1px solid #e0eaff;
-    border-radius:13px;
-    font-size:24px;
+
+    background:#eaf2ff;
+    border:1px solid #d9e6ff;
+
+    border-radius:11px;
+
+    font-size:19px;
 }
+
+.section-title{
+    font-size:22px;
+    font-weight:800;
+    color:#172033;
+    letter-spacing:-.5px;
+}
+
+.section-subtitle{
+    color:#8794a7;
+    font-size:12px;
+    margin-top:2px;
+}
+
+.category-line{
+    flex:1;
+    height:1px;
+    background:#e0e7f1;
+}
+
+
+/* =========================================================
+   TOOLS GRID
+========================================================= */
+
+.tools{
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,minmax(0,1fr));
+
+    gap:17px;
+}
+
+
+/* =========================================================
+   TOOL CARD
+========================================================= */
+
+.tool{
+    position:relative;
+    overflow:hidden;
+
+    display:flex;
+    align-items:flex-start;
+    gap:17px;
+
+    min-height:145px;
+
+    padding:23px;
+
+    background:#ffffff;
+
+    border:1px solid #e2e8f2;
+    border-radius:17px;
+
+    box-shadow:0 4px 16px rgba(15,23,42,.025);
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        border-color .2s ease;
+}
+
+.tool::after{
+    content:"→";
+
+    position:absolute;
+    right:18px;
+    bottom:15px;
+
+    color:#c0ccdc;
+    font-size:16px;
+
+    transition:.2s;
+}
+
+.tool:hover{
+    transform:translateY(-5px);
+
+    border-color:#bdd2f8;
+
+    box-shadow:
+        0 14px 30px rgba(37,99,235,.10);
+}
+
+.tool:hover::after{
+    color:#2563eb;
+    transform:translateX(3px);
+}
+
+
+/* =========================================================
+   TOOL ICON
+========================================================= */
+
+.icon{
+    flex:none;
+
+    width:55px;
+    height:55px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:14px;
+
+    background:#eef4ff;
+    border:1px solid #dce8ff;
+
+    font-size:25px;
+
+    transition:.2s;
+}
+
+.tool:hover .icon{
+    background:#e4efff;
+    transform:scale(1.05);
+}
+
+
+/* =========================================================
+   TOOL CONTENT
+========================================================= */
 
 .tool-content{
     flex:1;
+    min-width:0;
+    padding-right:18px;
 }
 
 .tool h3{
-    margin-bottom:6px;
-    font-size:16px;
+    margin:2px 0 7px;
+
     color:#172033;
-    font-weight:700;
+
+    font-size:16px;
+    line-height:1.35;
+    font-weight:750;
 }
 
 .tool p{
-    color:#69778b;
+    color:#718096;
+
     font-size:13px;
-    line-height:1.6;
+    line-height:1.65;
 }
 
 
-/* =========================
-   FEATURED
-========================= */
+/* =========================================================
+   FEATURED STRIP
+========================================================= */
 
 .featured{
-    background:#f0f6ff;
-    border:1px solid #dce8fb;
-    border-radius:15px;
-    padding:24px;
-    margin-top:20px;
+    margin-top:45px;
+
+    padding:25px 28px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:25px;
+
+    background:
+        linear-gradient(
+            110deg,
+            #eaf2ff,
+            #f6f9ff
+        );
+
+    border:1px solid #d8e6ff;
+    border-radius:18px;
 }
 
-.featured-title{
-    font-size:18px;
-    margin-bottom:18px;
+.featured-text h2{
+    font-size:19px;
     color:#172033;
+    margin-bottom:5px;
+}
+
+.featured-text p{
+    color:#68778c;
+    font-size:13px;
+}
+
+.featured-button{
+    flex:none;
+
+    background:#2563eb;
+    color:#ffffff;
+
+    padding:11px 19px;
+    border-radius:10px;
+
+    font-size:13px;
+    font-weight:700;
+
+    transition:.2s;
+}
+
+.featured-button:hover{
+    background:#1d4ed8;
+    transform:translateY(-1px);
 }
 
 
-/* =========================
-   SIN RESULTADOS
-========================= */
+/* =========================================================
+   NO RESULTS
+========================================================= */
 
 #sinResultados{
     display:none;
-    text-align:center;
+
+    margin:40px auto 0;
+
+    max-width:600px;
+
+    padding:40px 20px;
+
     background:#ffffff;
-    border:1px solid #dfe7f2;
-    border-radius:14px;
-    padding:32px 20px;
-    color:#69778b;
-    margin-top:30px;
+
+    border:1px solid #e1e8f2;
+    border-radius:16px;
+
+    text-align:center;
+
+    color:#718096;
+}
+
+.no-icon{
+    font-size:30px;
+    margin-bottom:10px;
 }
 
 
-/* =========================
-   INFO SEO
-========================= */
+/* =========================================================
+   SEO INFORMATION
+========================================================= */
 
 .info{
-    max-width:900px;
-    margin:65px auto 0;
-    padding:42px 0 0;
-    border-top:1px solid #dfe7f2;
-    color:#64748b;
-    line-height:1.8;
+    max-width:850px;
+
+    margin:70px auto 0;
+    padding-top:45px;
+
+    border-top:1px solid #dfe6f0;
+
     text-align:center;
 }
 
 .info h2{
     color:#172033;
-    margin-bottom:15px;
-    font-size:25px;
+
+    font-size:26px;
+    font-weight:800;
+
+    margin-bottom:17px;
 }
 
 .info p{
-    margin-bottom:15px;
+    color:#68778c;
+
+    font-size:14px;
+    line-height:1.85;
+
+    margin-bottom:14px;
 }
 
 
-/* =========================
+/* =========================================================
    FOOTER
-========================= */
+========================================================= */
 
 footer{
-    background:#ffffff;
-    border-top:1px solid #dfe7f2;
-    color:#718096;
+    background:#111827;
+    color:#9aa7b8;
+
+    padding:42px 20px;
+
     text-align:center;
-    padding:36px 20px;
+}
+
+.footer-logo{
+    color:#ffffff;
+
+    font-size:22px;
+    font-weight:800;
+
+    margin-bottom:10px;
+}
+
+.footer-logo span{
+    color:#60a5fa;
 }
 
 footer p{
+    font-size:12px;
     margin:5px 0;
-    font-size:13px;
 }
 
 
-/* =========================
+/* =========================================================
    MOBILE
-========================= */
+========================================================= */
 
-@media(max-width:700px){
+@media(max-width:900px){
 
-    header{
-        position:static;
-    }
-
-    .header-content{
-        justify-content:center;
-    }
-
-    nav{
-        display:none;
-    }
-
-    .hero{
-        margin-top:48px;
+    .tools{
+        grid-template-columns:
+            repeat(2,minmax(0,1fr));
     }
 
     .hero h1{
-        font-size:34px;
-        letter-spacing:-1px;
+        font-size:44px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE SMALL
+========================================================= */
+
+@media(max-width:650px){
+
+    .header-inner{
+        height:64px;
+        padding:0 18px;
+    }
+
+    .logo{
+        font-size:24px;
+    }
+
+    .nav a{
+        padding:8px 10px;
+        font-size:13px;
+    }
+
+    .hero{
+        padding:62px 18px 50px;
+    }
+
+    .hero h1{
+        font-size:36px;
+        letter-spacing:-1.8px;
     }
 
     .hero p{
@@ -421,51 +697,99 @@ footer p{
         line-height:1.7;
     }
 
-    .search{
-        margin-top:32px;
+    .search-area{
+        padding:0 15px;
+    }
+
+    .search input{
+        height:58px;
+        border-radius:14px;
+    }
+
+    .main{
+        padding-left:15px;
+        padding-right:15px;
     }
 
     .tools{
         grid-template-columns:1fr;
+        gap:13px;
+    }
+
+    .category{
+        margin-top:38px;
+    }
+
+    .category-header{
+        gap:11px;
+    }
+
+    .category-icon{
+        width:37px;
+        height:37px;
     }
 
     .section-title{
-        font-size:21px;
+        font-size:19px;
     }
 
-    .section-line{
+    .section-subtitle{
+        display:none;
+    }
+
+    .category-line{
         display:none;
     }
 
     .tool{
-        min-height:auto;
+        min-height:120px;
         padding:19px;
+        border-radius:15px;
+    }
+
+    .featured{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .featured-button{
+        width:100%;
+        text-align:center;
     }
 
 }
 
 
-/* =========================
-   EXTRA SMALL
-========================= */
+/* =========================================================
+   VERY SMALL
+========================================================= */
 
 @media(max-width:400px){
 
-    .container{
-        padding-left:14px;
-        padding-right:14px;
+    .nav{
+        gap:0;
     }
 
-    .hero{
-        padding:0 14px;
-    }
-
-    .search{
-        padding:0 14px;
+    .nav a:first-child{
+        display:none;
     }
 
     .hero h1{
-        font-size:30px;
+        font-size:31px;
+    }
+
+    .hero p{
+        font-size:14px;
+    }
+
+    .tool{
+        padding:17px;
+    }
+
+    .icon{
+        width:48px;
+        height:48px;
+        min-width:48px;
     }
 
 }
@@ -476,21 +800,21 @@ footer p{
 
 <body>
 
-<!-- =========================
+<!-- =====================================================
      HEADER
-========================= -->
+===================================================== -->
 
 <header>
 
-<div class="header-content">
+<div class="header-inner">
 
-<div class="logo">
+<a href="./" class="logo">
 Util<span>Mooz</span>
-</div>
+</a>
 
-<nav>
+<nav class="nav">
 
-<a href="./">
+<a href="./" class="active">
 Inicio
 </a>
 
@@ -504,29 +828,39 @@ Herramientas
 
 </header>
 
-<!-- =========================
+<!-- =====================================================
      HERO
-========================= -->
+===================================================== -->
 
 <section class="hero">
 
+<div class="hero-content">
+
+<div class="hero-badge">
+<span></span>
+100% online · Gratis
+</div>
+
 <h1>
-Herramientas online gratuitas
+Todo lo que necesitás,<br>
+<strong>en un solo lugar.</strong>
 </h1>
 
 <p>
-Convertí, calculá, generá y analizá todo desde un solo lugar.
+Convertí, calculá, generá y analizá directamente desde tu navegador.
 UtilMooz reúne herramientas online rápidas, sencillas y gratuitas
-que funcionan directamente desde tu navegador.
+para tus tareas de todos los días.
 </p>
+
+</div>
 
 </section>
 
-<!-- =========================
-     BUSCADOR
-========================= -->
+<!-- =====================================================
+     SEARCH
+===================================================== -->
 
-<div class="search">
+<div class="search-area">
 
 <div class="search-box">
 
@@ -537,7 +871,7 @@ que funcionan directamente desde tu navegador.
 <input
 type="text"
 id="search"
-placeholder="Buscar una herramienta..."
+placeholder="¿Qué herramienta estás buscando?"
 autocomplete="off"
 oninput="buscarHerramientas()">
 
@@ -545,9 +879,9 @@ oninput="buscarHerramientas()">
 
 </div>
 
-<!-- =========================
+<!-- =====================================================
      ADSTERRA NATIVE
-========================= -->
+===================================================== -->
 
 <div class="ad-container">
 
@@ -565,27 +899,37 @@ src="https://pl31074091.profitableratecpmnetwork.com/0121748aaaf83f5b10d651ea8ce
 
 </div>
 
-<!-- =========================
-     HERRAMIENTAS
-========================= -->
+<!-- =====================================================
+     MAIN
+===================================================== -->
 
 <main
-class="container"
+class="main"
 id="herramientas">
 
-<!-- =========================
+<!-- =====================================================
      CALCULADORAS
-========================= -->
+===================================================== -->
 
 <section class="category">
 
 <div class="category-header">
 
+<div class="category-icon">
+🔢
+</div>
+
+<div>
 <h2 class="section-title">
-🔢 Calculadoras
+Calculadoras
 </h2>
 
-<div class="section-line"></div>
+<div class="section-subtitle">
+Cálculos rápidos y sencillos
+</div>
+</div>
+
+<div class="category-line"></div>
 
 </div>
 
@@ -636,19 +980,29 @@ Calculá exactamente años, meses y días entre dos fechas.
 
 </section>
 
-<!-- =========================
+<!-- =====================================================
      GENERADORES
-========================= -->
+===================================================== -->
 
 <section class="category">
 
 <div class="category-header">
 
+<div class="category-icon">
+⚙️
+</div>
+
+<div>
 <h2 class="section-title">
-⚙️ Generadores
+Generadores
 </h2>
 
-<div class="section-line"></div>
+<div class="section-subtitle">
+Creá contenido en segundos
+</div>
+</div>
+
+<div class="category-line"></div>
 
 </div>
 
@@ -698,19 +1052,29 @@ Creá códigos QR para URLs, WiFi, WhatsApp y más.
 
 </section>
 
-<!-- =========================
+<!-- =====================================================
      TEXTO
-========================= -->
+===================================================== -->
 
 <section class="category">
 
 <div class="category-header">
 
+<div class="category-icon">
+📝
+</div>
+
+<div>
 <h2 class="section-title">
-📝 Texto
+Texto
 </h2>
 
-<div class="section-line"></div>
+<div class="section-subtitle">
+Analizá y trabajá con textos
+</div>
+</div>
+
+<div class="category-line"></div>
 
 </div>
 
@@ -740,19 +1104,29 @@ Contá palabras, caracteres y líneas de cualquier texto.
 
 </section>
 
-<!-- =========================
+<!-- =====================================================
      CONVERSORES
-========================= -->
+===================================================== -->
 
 <section class="category">
 
 <div class="category-header">
 
+<div class="category-icon">
+🔄
+</div>
+
+<div>
 <h2 class="section-title">
-🔄 Conversores
+Conversores
 </h2>
 
-<div class="section-line"></div>
+<div class="section-subtitle">
+Convertí diferentes unidades
+</div>
+</div>
+
+<div class="category-line"></div>
 
 </div>
 
@@ -783,19 +1157,29 @@ y otras unidades.
 
 </section>
 
-<!-- =========================
+<!-- =====================================================
      COLORES
-========================= -->
+===================================================== -->
 
 <section class="category">
 
 <div class="category-header">
 
+<div class="category-icon">
+🎨
+</div>
+
+<div>
 <h2 class="section-title">
-🎨 Colores y CSS
+Colores y CSS
 </h2>
 
-<div class="section-line"></div>
+<div class="section-subtitle">
+Herramientas para diseñadores y desarrolladores
+</div>
+</div>
+
+<div class="category-line"></div>
 
 </div>
 
@@ -825,19 +1209,29 @@ HEX, RGB, HSL, contraste WCAG y herramientas para CSS.
 
 </section>
 
-<!-- =========================
+<!-- =====================================================
      TIEMPO
-========================= -->
+===================================================== -->
 
 <section class="category">
 
 <div class="category-header">
 
+<div class="category-icon">
+⏱️
+</div>
+
+<div>
 <h2 class="section-title">
-⏱️ Tiempo y productividad
+Tiempo y productividad
 </h2>
 
-<div class="section-line"></div>
+<div class="section-subtitle">
+Organizá mejor tu tiempo
+</div>
+</div>
+
+<div class="category-line"></div>
 
 </div>
 
@@ -889,19 +1283,29 @@ y mucho más.
 
 </section>
 
-<!-- =========================
+<!-- =====================================================
      RED
-========================= -->
+===================================================== -->
 
 <section class="category">
 
 <div class="category-header">
 
+<div class="category-icon">
+🌐
+</div>
+
+<div>
 <h2 class="section-title">
-🌐 Herramientas de red
+Herramientas de red
 </h2>
 
-<div class="section-line"></div>
+<div class="section-subtitle">
+Utilidades para redes y dominios
+</div>
+</div>
+
+<div class="category-line"></div>
 
 </div>
 
@@ -932,19 +1336,29 @@ URL y HTTP.
 
 </section>
 
-<!-- =========================
-     CRIPTOMONEDAS
-========================= -->
+<!-- =====================================================
+     CRYPTO
+===================================================== -->
 
 <section class="category">
 
 <div class="category-header">
 
+<div class="category-icon">
+₿
+</div>
+
+<div>
 <h2 class="section-title">
-₿ Criptomonedas
+Criptomonedas
 </h2>
 
-<div class="section-line"></div>
+<div class="section-subtitle">
+Calculá y convertí valores crypto
+</div>
+</div>
+
+<div class="category-line"></div>
 
 </div>
 
@@ -975,19 +1389,29 @@ criptomonedas.
 
 </section>
 
-<!-- =========================
+<!-- =====================================================
      ARCHIVOS
-========================= -->
+===================================================== -->
 
 <section class="category">
 
 <div class="category-header">
 
+<div class="category-icon">
+📁
+</div>
+
+<div>
 <h2 class="section-title">
-📁 Archivos
+Archivos
 </h2>
 
-<div class="section-line"></div>
+<div class="section-subtitle">
+Trabajá con tus archivos online
+</div>
+</div>
+
+<div class="category-line"></div>
 
 </div>
 
@@ -1018,9 +1442,33 @@ sin instalar programas.
 
 </section>
 
-<!-- =========================
+<!-- =====================================================
+     FEATURED
+===================================================== -->
+
+<div class="featured">
+
+<div class="featured-text">
+
+<h2>
+🚀 UtilMooz sigue creciendo
+</h2>
+
+<p>
+Nuevas herramientas gratuitas se irán incorporando próximamente.
+</p>
+
+</div>
+
+<a href="#herramientas" class="featured-button">
+Ver herramientas
+</a>
+
+</div>
+
+<!-- =====================================================
      ADSTERRA BANNER
-========================= -->
+===================================================== -->
 
 <div class="ad-container">
 
@@ -1046,19 +1494,29 @@ src="https://www.highrevenueformat.com/56c8323b8c9bd2913adcf628996d2229/invoke.j
 
 </div>
 
-<!-- =========================
-     SIN RESULTADOS
-========================= -->
+<!-- =====================================================
+     NO RESULTS
+===================================================== -->
 
 <div id="sinResultados">
 
-No encontramos ninguna herramienta con ese nombre.
+<div class="no-icon">
+🔎
+</div>
+
+<strong>
+No encontramos esa herramienta
+</strong>
+
+<p style="margin-top:6px;">
+Probá con otro término de búsqueda.
+</p>
 
 </div>
 
-<!-- =========================
-     INFORMACIÓN SEO
-========================= -->
+<!-- =====================================================
+     SEO
+===================================================== -->
 
 <div class="info">
 
@@ -1082,33 +1540,37 @@ para diferentes necesidades.
 
 </main>
 
-<!-- =========================
+<!-- =====================================================
      FOOTER
-========================= -->
+===================================================== -->
 
 <footer>
 
+<div class="footer-logo">
+Util<span>Mooz</span>
+</div>
+
 <p>
-© 2026 UtilMooz — Herramientas online gratuitas
+Herramientas online gratuitas, rápidas y sencillas.
 </p>
 
 <p>
-Todas las herramientas funcionan directamente desde tu navegador.
+© 2026 UtilMooz — Todos los derechos reservados.
 </p>
 
 </footer>
 
-<!-- =========================
+<!-- =====================================================
      ADSTERRA SOCIAL BAR
-========================= -->
+===================================================== -->
 
 <script
 src="https://pl31074089.profitableratecpmnetwork.com/b9/80/b1/b980b1630aa36c566498dbf6055d89ea.js">
 </script>
 
-<!-- =========================
-     BUSCADOR
-========================= -->
+<!-- =====================================================
+     SEARCH
+===================================================== -->
 
 <script>
 
@@ -1121,14 +1583,11 @@ function buscarHerramientas(){
         .toLowerCase()
         .trim();
 
-
     const herramientas =
         document.querySelectorAll(".tool");
 
-
     const categorias =
         document.querySelectorAll(".category");
-
 
     let encontrados = 0;
 
@@ -1137,7 +1596,6 @@ function buscarHerramientas(){
 
         const contenido =
             herramienta.innerText.toLowerCase();
-
 
         if(contenido.includes(texto)){
 
@@ -1159,9 +1617,7 @@ function buscarHerramientas(){
         const herramientasCategoria =
             categoria.querySelectorAll(".tool");
 
-
         let visibles = 0;
-
 
         herramientasCategoria.forEach(function(tool){
 
@@ -1170,7 +1626,6 @@ function buscarHerramientas(){
             }
 
         });
-
 
         if(visibles === 0){
 
