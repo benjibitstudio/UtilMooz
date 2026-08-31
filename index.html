@@ -25,6 +25,10 @@ content="UtilMooz: herramientas online gratuitas para convertir, calcular, gener
 
 <style>
 
+/* =========================
+   RESET
+========================= */
+
 *{
     box-sizing:border-box;
     margin:0;
@@ -37,22 +41,24 @@ html{
 
 body{
     font-family:Arial,Helvetica,sans-serif;
-    background:#ffffff;
-    color:#202124;
+    background:#f7faff;
+    color:#172033;
     line-height:1.5;
 }
+
 
 /* =========================
    HEADER
 ========================= */
 
 header{
-    background:#ffffff;
-    border-bottom:1px solid #e5e7eb;
-    padding:18px 20px;
+    background:rgba(255,255,255,.96);
+    border-bottom:1px solid #e3eaf5;
+    padding:17px 20px;
     position:sticky;
     top:0;
     z-index:1000;
+    backdrop-filter:blur(12px);
 }
 
 .header-content{
@@ -64,32 +70,34 @@ header{
 }
 
 .logo{
-    font-size:28px;
-    font-weight:700;
-    color:#202124;
-    letter-spacing:-1px;
+    font-size:29px;
+    font-weight:800;
+    color:#172033;
+    letter-spacing:-1.2px;
 }
 
 .logo span{
-    color:#4f8cff;
+    color:#2563eb;
 }
 
 nav{
     display:flex;
     align-items:center;
-    gap:28px;
+    gap:30px;
 }
 
 nav a{
-    color:#4b5563;
+    color:#526174;
     text-decoration:none;
     font-size:15px;
-    font-weight:500;
+    font-weight:600;
+    transition:.2s;
 }
 
 nav a:hover{
-    color:#4f8cff;
+    color:#2563eb;
 }
+
 
 /* =========================
    HERO
@@ -97,26 +105,37 @@ nav a:hover{
 
 .hero{
     max-width:900px;
-    margin:65px auto 30px;
+    margin:72px auto 0;
     padding:0 20px;
     text-align:center;
 }
 
 .hero h1{
-    font-size:44px;
-    line-height:1.15;
-    letter-spacing:-1.5px;
-    margin-bottom:18px;
-    color:#202124;
+    font-size:48px;
+    line-height:1.12;
+    letter-spacing:-2px;
+    margin-bottom:20px;
+    color:#111827;
+}
+
+.hero h1::after{
+    content:"";
+    display:block;
+    width:55px;
+    height:4px;
+    background:#2563eb;
+    border-radius:10px;
+    margin:22px auto 0;
 }
 
 .hero p{
     max-width:720px;
-    margin:auto;
-    color:#6b7280;
+    margin:0 auto;
+    color:#64748b;
     font-size:17px;
-    line-height:1.7;
+    line-height:1.75;
 }
+
 
 /* =========================
    SEARCH
@@ -124,7 +143,7 @@ nav a:hover{
 
 .search{
     max-width:760px;
-    margin:35px auto 35px;
+    margin:38px auto 35px;
     padding:0 20px;
 }
 
@@ -134,30 +153,37 @@ nav a:hover{
 
 .search-icon{
     position:absolute;
-    left:17px;
+    left:18px;
     top:50%;
     transform:translateY(-50%);
     font-size:18px;
-    color:#9ca3af;
+    color:#94a3b8;
     pointer-events:none;
 }
 
 .search input{
     width:100%;
-    height:56px;
-    padding:0 20px 0 48px;
-    border:1px solid #d9dde5;
-    border-radius:10px;
+    height:58px;
+    padding:0 20px 0 50px;
+    border:1px solid #d8e1ef;
+    border-radius:14px;
     font-size:16px;
     outline:none;
     background:#ffffff;
-    box-shadow:0 2px 8px rgba(0,0,0,.04);
+    color:#172033;
+    box-shadow:0 5px 20px rgba(37,99,235,.06);
+    transition:.2s;
+}
+
+.search input::placeholder{
+    color:#94a3b8;
 }
 
 .search input:focus{
-    border-color:#4f8cff;
-    box-shadow:0 0 0 3px rgba(79,140,255,.10);
+    border-color:#2563eb;
+    box-shadow:0 0 0 4px rgba(37,99,235,.10);
 }
+
 
 /* =========================
    PUBLICIDAD
@@ -165,18 +191,19 @@ nav a:hover{
 
 .ad-container{
     max-width:1100px;
-    margin:25px auto 35px;
+    margin:28px auto 38px;
     padding:0 20px;
     text-align:center;
     overflow:hidden;
 }
 
 .ad-label{
-    font-size:10px;
-    color:#9ca3af;
-    margin-bottom:7px;
-    letter-spacing:.5px;
+    font-size:9px;
+    color:#a0aec0;
+    margin-bottom:8px;
+    letter-spacing:1px;
 }
+
 
 /* =========================
    CONTENEDOR
@@ -185,8 +212,9 @@ nav a:hover{
 .container{
     max-width:1180px;
     margin:auto;
-    padding:0 20px 70px;
+    padding:0 20px 75px;
 }
+
 
 /* =========================
    CATEGORIAS
@@ -197,28 +225,29 @@ nav a:hover{
 }
 
 .category:first-child{
-    margin-top:15px;
+    margin-top:20px;
 }
 
 .category-header{
     display:flex;
     align-items:center;
-    justify-content:space-between;
     margin-bottom:18px;
 }
 
 .section-title{
-    font-size:24px;
-    font-weight:700;
-    color:#202124;
+    font-size:23px;
+    font-weight:750;
+    color:#172033;
+    white-space:nowrap;
 }
 
 .section-line{
     flex:1;
     height:1px;
-    background:#e5e7eb;
+    background:#dfe7f2;
     margin-left:20px;
 }
+
 
 /* =========================
    HERRAMIENTAS
@@ -226,40 +255,41 @@ nav a:hover{
 
 .tools{
     display:grid;
-    grid-template-columns:
-    repeat(auto-fill,minmax(250px,1fr));
-    gap:14px;
+    grid-template-columns:repeat(auto-fill,minmax(270px,1fr));
+    gap:16px;
 }
 
 .tool{
     display:flex;
     align-items:flex-start;
     gap:15px;
-    min-height:125px;
+    min-height:128px;
     background:#ffffff;
-    padding:20px;
-    border:1px solid #e3e6eb;
-    border-radius:10px;
+    padding:21px;
+    border:1px solid #e1e8f2;
+    border-radius:15px;
     text-decoration:none;
     color:inherit;
-    transition:.18s ease;
+    box-shadow:0 3px 12px rgba(15,23,42,.025);
+    transition:all .2s ease;
 }
 
 .tool:hover{
-    border-color:#b9c8e5;
-    box-shadow:0 5px 18px rgba(0,0,0,.07);
-    transform:translateY(-2px);
+    border-color:#b9cdf5;
+    box-shadow:0 10px 25px rgba(37,99,235,.10);
+    transform:translateY(-3px);
 }
 
 .icon{
-    width:48px;
-    height:48px;
-    min-width:48px;
+    width:50px;
+    height:50px;
+    min-width:50px;
     display:flex;
     align-items:center;
     justify-content:center;
-    background:#f1f5ff;
-    border-radius:10px;
+    background:#eff5ff;
+    border:1px solid #e0eaff;
+    border-radius:13px;
     font-size:24px;
 }
 
@@ -268,25 +298,27 @@ nav a:hover{
 }
 
 .tool h3{
-    margin-bottom:5px;
+    margin-bottom:6px;
     font-size:16px;
-    color:#202124;
+    color:#172033;
+    font-weight:700;
 }
 
 .tool p{
-    color:#6b7280;
+    color:#69778b;
     font-size:13px;
-    line-height:1.55;
+    line-height:1.6;
 }
 
+
 /* =========================
-   DESTACADAS
+   FEATURED
 ========================= */
 
 .featured{
-    background:#f8faff;
-    border:1px solid #e1e8f8;
-    border-radius:12px;
+    background:#f0f6ff;
+    border:1px solid #dce8fb;
+    border-radius:15px;
     padding:24px;
     margin-top:20px;
 }
@@ -294,8 +326,9 @@ nav a:hover{
 .featured-title{
     font-size:18px;
     margin-bottom:18px;
-    color:#202124;
+    color:#172033;
 }
+
 
 /* =========================
    SIN RESULTADOS
@@ -304,13 +337,14 @@ nav a:hover{
 #sinResultados{
     display:none;
     text-align:center;
-    background:#f8fafc;
-    border:1px solid #e5e7eb;
-    border-radius:10px;
-    padding:30px;
-    color:#6b7280;
+    background:#ffffff;
+    border:1px solid #dfe7f2;
+    border-radius:14px;
+    padding:32px 20px;
+    color:#69778b;
     margin-top:30px;
 }
+
 
 /* =========================
    INFO SEO
@@ -318,39 +352,42 @@ nav a:hover{
 
 .info{
     max-width:900px;
-    margin:60px auto 0;
-    padding-top:40px;
-    border-top:1px solid #e5e7eb;
-    color:#5f6368;
-    line-height:1.7;
+    margin:65px auto 0;
+    padding:42px 0 0;
+    border-top:1px solid #dfe7f2;
+    color:#64748b;
+    line-height:1.8;
+    text-align:center;
 }
 
 .info h2{
-    color:#202124;
-    margin-bottom:14px;
-    font-size:24px;
+    color:#172033;
+    margin-bottom:15px;
+    font-size:25px;
 }
 
 .info p{
     margin-bottom:15px;
 }
 
+
 /* =========================
    FOOTER
 ========================= */
 
 footer{
-    background:#f8f9fa;
-    border-top:1px solid #e5e7eb;
-    color:#6b7280;
+    background:#ffffff;
+    border-top:1px solid #dfe7f2;
+    color:#718096;
     text-align:center;
-    padding:35px 20px;
+    padding:36px 20px;
 }
 
 footer p{
     margin:5px 0;
     font-size:13px;
 }
+
 
 /* =========================
    MOBILE
@@ -371,15 +408,21 @@ footer p{
     }
 
     .hero{
-        margin-top:45px;
+        margin-top:48px;
     }
 
     .hero h1{
-        font-size:32px;
+        font-size:34px;
+        letter-spacing:-1px;
     }
 
     .hero p{
         font-size:15px;
+        line-height:1.7;
+    }
+
+    .search{
+        margin-top:32px;
     }
 
     .tools{
@@ -396,9 +439,11 @@ footer p{
 
     .tool{
         min-height:auto;
+        padding:19px;
     }
 
 }
+
 
 /* =========================
    EXTRA SMALL
@@ -417,6 +462,10 @@ footer p{
 
     .search{
         padding:0 14px;
+    }
+
+    .hero h1{
+        font-size:30px;
     }
 
 }
@@ -1008,7 +1057,7 @@ No encontramos ninguna herramienta con ese nombre.
 </div>
 
 <!-- =========================
-     INFORMACIÓN
+     INFORMACIÓN SEO
 ========================= -->
 
 <div class="info">
@@ -1072,11 +1121,14 @@ function buscarHerramientas(){
         .toLowerCase()
         .trim();
 
+
     const herramientas =
         document.querySelectorAll(".tool");
 
+
     const categorias =
         document.querySelectorAll(".category");
+
 
     let encontrados = 0;
 
@@ -1085,6 +1137,7 @@ function buscarHerramientas(){
 
         const contenido =
             herramienta.innerText.toLowerCase();
+
 
         if(contenido.includes(texto)){
 
@@ -1106,7 +1159,9 @@ function buscarHerramientas(){
         const herramientasCategoria =
             categoria.querySelectorAll(".tool");
 
+
         let visibles = 0;
+
 
         herramientasCategoria.forEach(function(tool){
 
@@ -1115,6 +1170,7 @@ function buscarHerramientas(){
             }
 
         });
+
 
         if(visibles === 0){
 
