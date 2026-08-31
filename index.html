@@ -1,20 +1,34 @@
-/* GOOGLE FONT */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+<!DOCTYPE html>
 
-:root{
-    --azul:#2563eb;
-    --celeste:#38bdf8;
-    --azul-osc:#1d4ed8;
-    --fondo:#f4f7fb;
-    --borde:#dbe3ef;
-    --texto:#1f2937;
-    --gris:#6b7280;
-}
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="google-site-verification" content="adQU8fNEWR7JYxVSY1G0HPv-V5ukhllJrMnWhWsC0ss">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>UtilMooz - Herramientas online gratuitas</title>
+
+<meta name="description"
+content="UtilMooz: herramientas online gratuitas para convertir, calcular, generar, analizar y trabajar con archivos, texto, colores, criptomonedas y mucho más.">
+
+<meta name="robots" content="index, follow">
+
+<!-- =========================
+     ADSTERRA POPUNDER
+========================= -->
+
+<script src="https://pl31074088.profitableratecpmnetwork.com/b3/e1/f2/b3e1f2f8b30c35d54a787cfe893ac42b.js"></script>
+
+<style>
 
 *{
+    box-sizing:border-box;
     margin:0;
     padding:0;
-    box-sizing:border-box;
 }
 
 html{
@@ -22,189 +36,95 @@ html{
 }
 
 body{
-    font-family:'Inter',sans-serif;
-    background:var(--fondo);
-    color:var(--texto);
+    font-family:Arial,Helvetica,sans-serif;
+    background:#ffffff;
+    color:#202124;
     line-height:1.5;
 }
 
-/* HEADER */
+/* =========================
+   HEADER
+========================= */
 
 header{
-    background:#fff;
-    border-bottom:1px solid #e8eef7;
-    height:72px;
+    background:#ffffff;
+    border-bottom:1px solid #e5e7eb;
+    padding:18px 20px;
     position:sticky;
     top:0;
-    z-index:100;
-    backdrop-filter:blur(8px);
+    z-index:1000;
 }
 
-.header-inner{
-    max-width:1280px;
-    height:100%;
+.header-content{
+    max-width:1180px;
     margin:auto;
     display:flex;
     align-items:center;
-}
-
-.logo-area{
-    width:260px;
-    height:100%;
-    display:flex;
-    align-items:center;
-    padding:0 22px;
-    border-right:1px solid #eef2f7;
+    justify-content:space-between;
 }
 
 .logo{
-    font-size:30px;
-    font-weight:800;
-    text-decoration:none;
+    font-size:28px;
+    font-weight:700;
+    color:#202124;
     letter-spacing:-1px;
 }
 
-.logo .black{
-    color:#111827;
+.logo span{
+    color:#4f8cff;
 }
 
-.logo .green{
-    color:var(--azul);
-}
-
-/* MENU */
-
-.main-menu{
-    display:flex;
-    height:100%;
-}
-
-.main-menu a{
-    text-decoration:none;
-    color:#374151;
+nav{
     display:flex;
     align-items:center;
-    gap:8px;
-    padding:0 22px;
-    border-right:1px solid #eef2f7;
-    transition:.25s;
+    gap:28px;
 }
 
-.main-menu a:hover{
-    background:#f8fbff;
-    color:var(--azul);
-}
-
-.menu-icon{
-    color:var(--azul);
-}
-
-/* BOTONES */
-
-.header-right{
-    margin-left:auto;
-    display:flex;
-    align-items:center;
-    height:100%;
-}
-
-.header-link{
-    padding:0 18px;
-    display:flex;
-    align-items:center;
+nav a{
+    color:#4b5563;
     text-decoration:none;
-    color:#475569;
-    border-left:1px solid #eef2f7;
+    font-size:15px;
+    font-weight:500;
 }
 
-.header-link:hover{
-    color:var(--azul);
+nav a:hover{
+    color:#4f8cff;
 }
 
-.header-button{
-    margin:0 10px;
-    padding:11px 18px;
-    border-radius:8px;
-    border:2px solid var(--azul);
-    color:var(--azul);
-    font-weight:700;
-    text-decoration:none;
-    transition:.25s;
-}
-
-.header-button:hover{
-    background:var(--azul);
-    color:#fff;
-}
-
-/* HERO */
+/* =========================
+   HERO
+========================= */
 
 .hero{
-    background:linear-gradient(135deg,#2563eb 0%,#38bdf8 100%);
-    color:#fff;
-    overflow:hidden;
-    position:relative;
-}
-
-.hero:before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:
-    radial-gradient(circle at 20% 20%,rgba(255,255,255,.18),transparent 35%),
-    radial-gradient(circle at 80% 30%,rgba(255,255,255,.12),transparent 30%);
-}
-
-.hero-inner{
-    position:relative;
-    z-index:2;
-    max-width:1200px;
-    margin:auto;
-    padding:55px 24px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    gap:40px;
+    max-width:900px;
+    margin:65px auto 30px;
+    padding:0 20px;
+    text-align:center;
 }
 
 .hero h1{
-    font-size:48px;
-    line-height:1.1;
-    margin-bottom:16px;
+    font-size:44px;
+    line-height:1.15;
+    letter-spacing:-1.5px;
+    margin-bottom:18px;
+    color:#202124;
 }
 
 .hero p{
-    font-size:18px;
-    opacity:.95;
-    max-width:560px;
+    max-width:720px;
+    margin:auto;
+    color:#6b7280;
+    font-size:17px;
+    line-height:1.7;
 }
 
-.hero-tool{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    font-size:28px;
-    font-weight:700;
-}
+/* =========================
+   SEARCH
+========================= */
 
-.hero-select{
-    background:#fff;
-    color:#111827;
-    height:48px;
-    padding:0 18px;
-    border-radius:10px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    min-width:150px;
-    box-shadow:0 10px 25px rgba(0,0,0,.15);
-}
-
-/* BUSCADOR */
-
-.search-area{
-    max-width:1100px;
-    margin:28px auto;
+.search{
+    max-width:760px;
+    margin:35px auto 35px;
     padding:0 20px;
 }
 
@@ -214,216 +134,1018 @@ header{
 
 .search-icon{
     position:absolute;
-    left:18px;
+    left:17px;
     top:50%;
     transform:translateY(-50%);
-    color:#64748b;
+    font-size:18px;
+    color:#9ca3af;
+    pointer-events:none;
 }
 
-.search-input{
+.search input{
     width:100%;
     height:56px;
-    border-radius:12px;
-    border:1px solid var(--borde);
-    background:#fff;
-    padding-left:48px;
+    padding:0 20px 0 48px;
+    border:1px solid #d9dde5;
+    border-radius:10px;
     font-size:16px;
     outline:none;
-    transition:.2s;
+    background:#ffffff;
+    box-shadow:0 2px 8px rgba(0,0,0,.04);
 }
 
-.search-input:focus{
-    border-color:var(--celeste);
-    box-shadow:0 0 0 4px rgba(56,189,248,.15);
+.search input:focus{
+    border-color:#4f8cff;
+    box-shadow:0 0 0 3px rgba(79,140,255,.10);
 }
 
-/* TITULOS */
+/* =========================
+   PUBLICIDAD
+========================= */
 
-.section-heading h2{
-    font-size:28px;
-    margin-bottom:8px;
-    color:#111827;
+.ad-container{
+    max-width:1100px;
+    margin:25px auto 35px;
+    padding:0 20px;
+    text-align:center;
+    overflow:hidden;
 }
 
-/* GRID */
-
-.tools-grid{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:18px;
+.ad-label{
+    font-size:10px;
+    color:#9ca3af;
+    margin-bottom:7px;
+    letter-spacing:.5px;
 }
 
-/* TARJETAS */
+/* =========================
+   CONTENEDOR
+========================= */
 
-.tool-card{
-    background:#fff;
-    border:1px solid #e5edf7;
-    border-left:5px solid var(--azul);
-    border-radius:14px;
-    padding:22px;
+.container{
+    max-width:1180px;
+    margin:auto;
+    padding:0 20px 70px;
+}
+
+/* =========================
+   CATEGORIAS
+========================= */
+
+.category{
+    margin-top:48px;
+}
+
+.category:first-child{
+    margin-top:15px;
+}
+
+.category-header{
     display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:18px;
+}
+
+.section-title{
+    font-size:24px;
+    font-weight:700;
+    color:#202124;
+}
+
+.section-line{
+    flex:1;
+    height:1px;
+    background:#e5e7eb;
+    margin-left:20px;
+}
+
+/* =========================
+   HERRAMIENTAS
+========================= */
+
+.tools{
+    display:grid;
+    grid-template-columns:
+    repeat(auto-fill,minmax(250px,1fr));
+    gap:14px;
+}
+
+.tool{
+    display:flex;
+    align-items:flex-start;
+    gap:15px;
+    min-height:125px;
+    background:#ffffff;
+    padding:20px;
+    border:1px solid #e3e6eb;
+    border-radius:10px;
     text-decoration:none;
     color:inherit;
-    transition:.25s;
-    min-height:155px;
+    transition:.18s ease;
 }
 
-.tool-card:hover{
-    transform:translateY(-4px);
-    box-shadow:0 12px 28px rgba(37,99,235,.12);
-    border-left-color:var(--celeste);
+.tool:hover{
+    border-color:#b9c8e5;
+    box-shadow:0 5px 18px rgba(0,0,0,.07);
+    transform:translateY(-2px);
 }
 
-.tool-icon{
-    width:64px;
-    min-width:64px;
-    height:64px;
-    border-radius:14px;
-    background:linear-gradient(135deg,#dbeafe,#eff6ff);
-    color:var(--azul);
+.icon{
+    width:48px;
+    height:48px;
+    min-width:48px;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:34px;
-    margin-right:18px;
+    background:#f1f5ff;
+    border-radius:10px;
+    font-size:24px;
 }
 
 .tool-content{
     flex:1;
 }
 
-.tool-content h3{
-    font-size:21px;
-    font-weight:600;
-    margin-bottom:6px;
+.tool h3{
+    margin-bottom:5px;
+    font-size:16px;
+    color:#202124;
 }
 
-.tool-content p{
-    color:var(--gris);
-    font-size:14px;
-    margin-bottom:14px;
+.tool p{
+    color:#6b7280;
+    font-size:13px;
+    line-height:1.55;
 }
 
-.tool-select{
-    height:40px;
-    border:1px solid #d8e6fb;
-    border-radius:8px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    padding:0 12px;
-    color:#2563eb;
-    background:#f8fbff;
-    font-size:14px;
+/* =========================
+   DESTACADAS
+========================= */
+
+.featured{
+    background:#f8faff;
+    border:1px solid #e1e8f8;
+    border-radius:12px;
+    padding:24px;
+    margin-top:20px;
 }
 
-.card-arrow{
-    align-self:center;
-    font-size:24px;
-    color:#94a3b8;
+.featured-title{
+    font-size:18px;
+    margin-bottom:18px;
+    color:#202124;
 }
 
-/* ADS */
+/* =========================
+   SIN RESULTADOS
+========================= */
 
-.ad-container{
-    max-width:1100px;
-    margin:24px auto;
-    padding:0 20px;
+#sinResultados{
+    display:none;
     text-align:center;
+    background:#f8fafc;
+    border:1px solid #e5e7eb;
+    border-radius:10px;
+    padding:30px;
+    color:#6b7280;
+    margin-top:30px;
 }
 
-.ad-label{
-    color:#94a3b8;
-    font-size:11px;
-    letter-spacing:1px;
-    margin-bottom:8px;
-}
-
-/* INFO */
+/* =========================
+   INFO SEO
+========================= */
 
 .info{
-    max-width:950px;
+    max-width:900px;
     margin:60px auto 0;
-    border-top:1px solid #e5edf7;
-    padding-top:35px;
+    padding-top:40px;
+    border-top:1px solid #e5e7eb;
+    color:#5f6368;
+    line-height:1.7;
 }
 
 .info h2{
-    font-size:28px;
+    color:#202124;
     margin-bottom:14px;
+    font-size:24px;
 }
 
 .info p{
-    color:#64748b;
-    margin-bottom:14px;
+    margin-bottom:15px;
 }
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
 footer{
-    background:#0f172a;
-    color:#cbd5e1;
+    background:#f8f9fa;
+    border-top:1px solid #e5e7eb;
+    color:#6b7280;
     text-align:center;
     padding:35px 20px;
 }
 
-#sinResultados{
-    background:#fff;
-    border:1px solid #e5edf7;
-    border-radius:12px;
-    padding:28px;
-    color:#64748b;
+footer p{
+    margin:5px 0;
+    font-size:13px;
 }
 
-/* RESPONSIVE */
+/* =========================
+   MOBILE
+========================= */
 
-@media(max-width:900px){
+@media(max-width:700px){
 
-.main-menu,
-.header-right{
-display:none;
-}
+    header{
+        position:static;
+    }
 
-.logo-area{
-width:auto;
-border:none;
-}
+    .header-content{
+        justify-content:center;
+    }
 
-.hero-inner{
-flex-direction:column;
-align-items:flex-start;
-}
+    nav{
+        display:none;
+    }
 
-.tools-grid{
-grid-template-columns:1fr;
-}
+    .hero{
+        margin-top:45px;
+    }
 
-.hero h1{
-font-size:38px;
-}
+    .hero h1{
+        font-size:32px;
+    }
 
-}
+    .hero p{
+        font-size:15px;
+    }
 
-@media(max-width:600px){
+    .tools{
+        grid-template-columns:1fr;
+    }
 
-.hero h1{
-font-size:32px;
-}
+    .section-title{
+        font-size:21px;
+    }
 
-.hero-tool{
-font-size:22px;
-flex-wrap:wrap;
-}
+    .section-line{
+        display:none;
+    }
 
-.tool-card{
-padding:18px;
-}
-
-.tool-icon{
-width:54px;
-height:54px;
-min-width:54px;
-font-size:28px;
-}
+    .tool{
+        min-height:auto;
+    }
 
 }
+
+/* =========================
+   EXTRA SMALL
+========================= */
+
+@media(max-width:400px){
+
+    .container{
+        padding-left:14px;
+        padding-right:14px;
+    }
+
+    .hero{
+        padding:0 14px;
+    }
+
+    .search{
+        padding:0 14px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+<div class="header-content">
+
+<div class="logo">
+Util<span>Mooz</span>
+</div>
+
+<nav>
+
+<a href="./">
+Inicio
+</a>
+
+<a href="#herramientas">
+Herramientas
+</a>
+
+</nav>
+
+</div>
+
+</header>
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+<h1>
+Herramientas online gratuitas
+</h1>
+
+<p>
+Convertí, calculá, generá y analizá todo desde un solo lugar.
+UtilMooz reúne herramientas online rápidas, sencillas y gratuitas
+que funcionan directamente desde tu navegador.
+</p>
+
+</section>
+
+<!-- =========================
+     BUSCADOR
+========================= -->
+
+<div class="search">
+
+<div class="search-box">
+
+<div class="search-icon">
+🔎
+</div>
+
+<input
+type="text"
+id="search"
+placeholder="Buscar una herramienta..."
+autocomplete="off"
+oninput="buscarHerramientas()">
+
+</div>
+
+</div>
+
+<!-- =========================
+     ADSTERRA NATIVE
+========================= -->
+
+<div class="ad-container">
+
+<div class="ad-label">
+PUBLICIDAD
+</div>
+
+<script
+async="async"
+data-cfasync="false"
+src="https://pl31074091.profitableratecpmnetwork.com/0121748aaaf83f5b10d651ea8ce56b39/invoke.js">
+</script>
+
+<div id="container-0121748aaaf83f5b10d651ea8ce56b39"></div>
+
+</div>
+
+<!-- =========================
+     HERRAMIENTAS
+========================= -->
+
+<main
+class="container"
+id="herramientas">
+
+<!-- =========================
+     CALCULADORAS
+========================= -->
+
+<section class="category">
+
+<div class="category-header">
+
+<h2 class="section-title">
+🔢 Calculadoras
+</h2>
+
+<div class="section-line"></div>
+
+</div>
+
+<div class="tools">
+
+<a class="tool" href="porcentaje.html">
+
+<div class="icon">
+🔢
+</div>
+
+<div class="tool-content">
+
+<h3>
+Calculadora de porcentaje
+</h3>
+
+<p>
+Calculá porcentajes, aumentos, descuentos y diferencias
+de forma rápida.
+</p>
+
+</div>
+
+</a>
+
+<a class="tool" href="edad.html">
+
+<div class="icon">
+🎂
+</div>
+
+<div class="tool-content">
+
+<h3>
+Calculadora de edad
+</h3>
+
+<p>
+Calculá exactamente años, meses y días entre dos fechas.
+</p>
+
+</div>
+
+</a>
+
+</div>
+
+</section>
+
+<!-- =========================
+     GENERADORES
+========================= -->
+
+<section class="category">
+
+<div class="category-header">
+
+<h2 class="section-title">
+⚙️ Generadores
+</h2>
+
+<div class="section-line"></div>
+
+</div>
+
+<div class="tools">
+
+<a class="tool" href="password.html">
+
+<div class="icon">
+🔐
+</div>
+
+<div class="tool-content">
+
+<h3>
+Generador de contraseñas
+</h3>
+
+<p>
+Generá contraseñas seguras y aleatorias para tus cuentas.
+</p>
+
+</div>
+
+</a>
+
+<a class="tool" href="qr.html">
+
+<div class="icon">
+📱
+</div>
+
+<div class="tool-content">
+
+<h3>
+Generador QR
+</h3>
+
+<p>
+Creá códigos QR para URLs, WiFi, WhatsApp y más.
+</p>
+
+</div>
+
+</a>
+
+</div>
+
+</section>
+
+<!-- =========================
+     TEXTO
+========================= -->
+
+<section class="category">
+
+<div class="category-header">
+
+<h2 class="section-title">
+📝 Texto
+</h2>
+
+<div class="section-line"></div>
+
+</div>
+
+<div class="tools">
+
+<a class="tool" href="contador.html">
+
+<div class="icon">
+📝
+</div>
+
+<div class="tool-content">
+
+<h3>
+Contador de palabras
+</h3>
+
+<p>
+Contá palabras, caracteres y líneas de cualquier texto.
+</p>
+
+</div>
+
+</a>
+
+</div>
+
+</section>
+
+<!-- =========================
+     CONVERSORES
+========================= -->
+
+<section class="category">
+
+<div class="category-header">
+
+<h2 class="section-title">
+🔄 Conversores
+</h2>
+
+<div class="section-line"></div>
+
+</div>
+
+<div class="tools">
+
+<a class="tool" href="unidades.html">
+
+<div class="icon">
+📏
+</div>
+
+<div class="tool-content">
+
+<h3>
+Conversor de unidades
+</h3>
+
+<p>
+Convertí kilómetros, metros, centímetros, kilos, libras
+y otras unidades.
+</p>
+
+</div>
+
+</a>
+
+</div>
+
+</section>
+
+<!-- =========================
+     COLORES
+========================= -->
+
+<section class="category">
+
+<div class="category-header">
+
+<h2 class="section-title">
+🎨 Colores y CSS
+</h2>
+
+<div class="section-line"></div>
+
+</div>
+
+<div class="tools">
+
+<a class="tool" href="colores.html">
+
+<div class="icon">
+🎨
+</div>
+
+<div class="tool-content">
+
+<h3>
+Herramientas de colores
+</h3>
+
+<p>
+HEX, RGB, HSL, contraste WCAG y herramientas para CSS.
+</p>
+
+</div>
+
+</a>
+
+</div>
+
+</section>
+
+<!-- =========================
+     TIEMPO
+========================= -->
+
+<section class="category">
+
+<div class="category-header">
+
+<h2 class="section-title">
+⏱️ Tiempo y productividad
+</h2>
+
+<div class="section-line"></div>
+
+</div>
+
+<div class="tools">
+
+<a class="tool" href="cronometro.html">
+
+<div class="icon">
+⏱️
+</div>
+
+<div class="tool-content">
+
+<h3>
+Cronómetro online
+</h3>
+
+<p>
+Medí el tiempo y registrá vueltas directamente desde
+tu navegador.
+</p>
+
+</div>
+
+</a>
+
+<a class="tool" href="utilidades.html">
+
+<div class="icon">
+🛠️
+</div>
+
+<div class="tool-content">
+
+<h3>
+Utilidades rápidas
+</h3>
+
+<p>
+UUID, PIN, Base64, SHA-256, timestamps, Pomodoro
+y mucho más.
+</p>
+
+</div>
+
+</a>
+
+</div>
+
+</section>
+
+<!-- =========================
+     RED
+========================= -->
+
+<section class="category">
+
+<div class="category-header">
+
+<h2 class="section-title">
+🌐 Herramientas de red
+</h2>
+
+<div class="section-line"></div>
+
+</div>
+
+<div class="tools">
+
+<a class="tool" href="red.html">
+
+<div class="icon">
+🌐
+</div>
+
+<div class="tool-content">
+
+<h3>
+Herramientas de red
+</h3>
+
+<p>
+IP, IPv4, subnet, CIDR, DNS, MX, SPF, DMARC,
+URL y HTTP.
+</p>
+
+</div>
+
+</a>
+
+</div>
+
+</section>
+
+<!-- =========================
+     CRIPTOMONEDAS
+========================= -->
+
+<section class="category">
+
+<div class="category-header">
+
+<h2 class="section-title">
+₿ Criptomonedas
+</h2>
+
+<div class="section-line"></div>
+
+</div>
+
+<div class="tools">
+
+<a class="tool" href="crypto.html">
+
+<div class="icon">
+₿
+</div>
+
+<div class="tool-content">
+
+<h3>
+Calculadora de criptomonedas
+</h3>
+
+<p>
+Convertí Bitcoin, Ethereum, Solana, XRP y otras
+criptomonedas.
+</p>
+
+</div>
+
+</a>
+
+</div>
+
+</section>
+
+<!-- =========================
+     ARCHIVOS
+========================= -->
+
+<section class="category">
+
+<div class="category-header">
+
+<h2 class="section-title">
+📁 Archivos
+</h2>
+
+<div class="section-line"></div>
+
+</div>
+
+<div class="tools">
+
+<a class="tool" href="archivos.html">
+
+<div class="icon">
+📁
+</div>
+
+<div class="tool-content">
+
+<h3>
+Herramientas de archivos
+</h3>
+
+<p>
+Trabajá con archivos directamente desde tu navegador
+sin instalar programas.
+</p>
+
+</div>
+
+</a>
+
+</div>
+
+</section>
+
+<!-- =========================
+     ADSTERRA BANNER
+========================= -->
+
+<div class="ad-container">
+
+<div class="ad-label">
+PUBLICIDAD
+</div>
+
+<script>
+
+atOptions = {
+    'key' : '56c8323b8c9bd2913adcf628996d2229',
+    'format' : 'iframe',
+    'height' : 60,
+    'width' : 468,
+    'params' : {}
+};
+
+</script>
+
+<script
+src="https://www.highrevenueformat.com/56c8323b8c9bd2913adcf628996d2229/invoke.js">
+</script>
+
+</div>
+
+<!-- =========================
+     SIN RESULTADOS
+========================= -->
+
+<div id="sinResultados">
+
+No encontramos ninguna herramienta con ese nombre.
+
+</div>
+
+<!-- =========================
+     INFORMACIÓN
+========================= -->
+
+<div class="info">
+
+<h2>
+Herramientas online gratuitas
+</h2>
+
+<p>
+UtilMooz reúne diferentes herramientas gratuitas para realizar
+tareas habituales directamente desde el navegador, sin necesidad
+de instalar programas.
+</p>
+
+<p>
+Encontrá calculadoras, conversores, generadores, herramientas
+de texto, colores, red, criptomonedas, archivos y utilidades
+para diferentes necesidades.
+</p>
+
+</div>
+
+</main>
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+<p>
+© 2026 UtilMooz — Herramientas online gratuitas
+</p>
+
+<p>
+Todas las herramientas funcionan directamente desde tu navegador.
+</p>
+
+</footer>
+
+<!-- =========================
+     ADSTERRA SOCIAL BAR
+========================= -->
+
+<script
+src="https://pl31074089.profitableratecpmnetwork.com/b9/80/b1/b980b1630aa36c566498dbf6055d89ea.js">
+</script>
+
+<!-- =========================
+     BUSCADOR
+========================= -->
+
+<script>
+
+function buscarHerramientas(){
+
+    const texto =
+        document
+        .getElementById("search")
+        .value
+        .toLowerCase()
+        .trim();
+
+    const herramientas =
+        document.querySelectorAll(".tool");
+
+    const categorias =
+        document.querySelectorAll(".category");
+
+    let encontrados = 0;
+
+
+    herramientas.forEach(function(herramienta){
+
+        const contenido =
+            herramienta.innerText.toLowerCase();
+
+        if(contenido.includes(texto)){
+
+            herramienta.style.display = "flex";
+
+            encontrados++;
+
+        }else{
+
+            herramienta.style.display = "none";
+
+        }
+
+    });
+
+
+    categorias.forEach(function(categoria){
+
+        const herramientasCategoria =
+            categoria.querySelectorAll(".tool");
+
+        let visibles = 0;
+
+        herramientasCategoria.forEach(function(tool){
+
+            if(tool.style.display !== "none"){
+                visibles++;
+            }
+
+        });
+
+        if(visibles === 0){
+
+            categoria.style.display = "none";
+
+        }else{
+
+            categoria.style.display = "";
+
+        }
+
+    });
+
+
+    const mensaje =
+        document.getElementById("sinResultados");
+
+
+    if(texto !== "" && encontrados === 0){
+
+        mensaje.style.display = "block";
+
+    }else{
+
+        mensaje.style.display = "none";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>
