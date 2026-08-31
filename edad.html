@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-
 <html lang="es">
+
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculadora de Edad Online | Utilmooz</title>
+<title>Calculadora de Edad Online | UtilMooz</title>
 
 <meta name="description"
 content="Calculadora de edad online gratis. Calculá tu edad exacta en años, meses y días de forma rápida y sencilla.">
+
+<meta name="robots" content="index, follow">
 
 <!-- ================= ADSTERRA POPUNDER ================= -->
 
@@ -17,61 +19,79 @@ content="Calculadora de edad online gratis. Calculá tu edad exacta en años, me
 
 <style>
 
+/* =========================
+   GENERAL
+========================= */
+
 *{
-box-sizing:border-box;
-margin:0;
-padding:0;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 body{
-font-family:Arial,sans-serif;
-background:#f5f7fb;
-color:#172033;
+    font-family:Arial,sans-serif;
+    background:#f5f7fb;
+    color:#172033;
+    line-height:1.5;
 }
 
+/* =========================
+   HEADER
+========================= */
+
 header{
-background:#111827;
-color:white;
-padding:22px 20px;
+    background:#111827;
+    color:white;
+    padding:22px 20px;
 }
 
 .header-content{
-max-width:900px;
-margin:auto;
-display:flex;
-justify-content:space-between;
-align-items:center;
+    max-width:900px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
 .logo{
-font-size:26px;
-font-weight:bold;
+    font-size:26px;
+    font-weight:bold;
 }
 
 .logo span{
-color:#4f8cff;
+    color:#4f8cff;
 }
 
 nav a{
-color:#ddd;
-text-decoration:none;
+    color:#ddd;
+    text-decoration:none;
+    font-size:15px;
 }
 
+nav a:hover{
+    color:white;
+}
+
+/* =========================
+   CONTENIDO
+========================= */
+
 .container{
-max-width:700px;
-margin:50px auto;
-padding:0 20px 60px;
+    max-width:700px;
+    margin:50px auto;
+    padding:0 20px 60px;
 }
 
 h1{
-font-size:36px;
-margin-bottom:15px;
+    font-size:36px;
+    margin-bottom:15px;
 }
 
 .description{
-color:#667085;
-margin-bottom:30px;
-line-height:1.6;
+    color:#667085;
+    margin-bottom:30px;
+    line-height:1.7;
 }
 
 /* =========================
@@ -79,28 +99,41 @@ line-height:1.6;
 ========================= */
 
 .ad-container{
-width:100%;
-min-height:90px;
-margin:25px 0;
-display:flex;
-justify-content:center;
-align-items:center;
-overflow:hidden;
+    width:100%;
+    min-height:90px;
+    margin:30px auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    overflow:hidden;
+}
+
+.ad-wrapper{
+    width:100%;
 }
 
 .ad-label{
-font-size:11px;
-color:#98a2b3;
-text-align:center;
-margin-bottom:7px;
+    font-size:11px;
+    color:#98a2b3;
+    margin-bottom:7px;
 }
 
 .ad-box{
-width:100%;
-min-height:90px;
-display:flex;
-justify-content:center;
-align-items:center;
+    width:100%;
+    min-height:70px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
+
+.banner-ad{
+    width:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
 }
 
 /* =========================
@@ -108,74 +141,104 @@ align-items:center;
 ========================= */
 
 .calculator{
-background:white;
-padding:30px;
-border-radius:16px;
-border:1px solid #e6e8ee;
-box-shadow:0 5px 20px rgba(0,0,0,.05);
+    background:white;
+    padding:30px;
+    border-radius:16px;
+    border:1px solid #e6e8ee;
+    box-shadow:0 5px 20px rgba(0,0,0,.05);
 }
 
 label{
-display:block;
-margin-bottom:8px;
-font-weight:bold;
+    display:block;
+    margin-bottom:8px;
+    font-weight:bold;
 }
 
-input{
-width:100%;
-padding:14px;
-margin-bottom:20px;
-border:1px solid #d9dde5;
-border-radius:8px;
-font-size:16px;
+input[type="date"]{
+    width:100%;
+    padding:14px;
+    margin-bottom:20px;
+    border:1px solid #d9dde5;
+    border-radius:8px;
+    font-size:16px;
+    outline:none;
+    background:white;
 }
+
+input[type="date"]:focus{
+    border-color:#4f8cff;
+    box-shadow:0 0 0 3px rgba(79,140,255,.10);
+}
+
+/* =========================
+   BOTON
+========================= */
 
 button{
-width:100%;
-padding:15px;
-border:none;
-border-radius:8px;
-background:#4f8cff;
-color:white;
-font-size:17px;
-cursor:pointer;
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:8px;
+    background:#4f8cff;
+    color:white;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+    transition:.2s;
 }
 
 button:hover{
-background:#3978e8;
+    background:#3978e8;
 }
 
+button:active{
+    transform:scale(.99);
+}
+
+/* =========================
+   RESULTADO
+========================= */
+
 .resultado{
-margin-top:25px;
-padding:20px;
-background:#f5f7fb;
-border-radius:10px;
-text-align:center;
-font-size:20px;
-font-weight:bold;
-line-height:1.7;
+    margin-top:25px;
+    padding:22px;
+    background:#f5f7fb;
+    border-radius:10px;
+    text-align:center;
+    font-size:20px;
+    line-height:1.7;
+    min-height:70px;
+}
+
+.resultado strong{
+    color:#4f8cff;
 }
 
 .resultado small{
-display:block;
-font-size:14px;
-font-weight:normal;
-color:#667085;
-margin-top:8px;
+    display:block;
+    font-size:14px;
+    color:#667085;
+    margin-top:8px;
 }
 
+/* =========================
+   INFO SEO
+========================= */
+
 .info{
-margin-top:35px;
-line-height:1.7;
-color:#4b5563;
+    margin-top:35px;
+    color:#4b5563;
+    line-height:1.7;
 }
 
 .info h2{
-margin-bottom:10px;
+    color:#172033;
+    margin-bottom:10px;
+    font-size:24px;
 }
 
 .info p{
-margin-bottom:12px;
+    margin-bottom:16px;
 }
 
 /* =========================
@@ -183,11 +246,11 @@ margin-bottom:12px;
 ========================= */
 
 footer{
-margin-top:60px;
-background:#111827;
-color:#aaa;
-text-align:center;
-padding:30px;
+    margin-top:30px;
+    background:#111827;
+    color:#aaa;
+    text-align:center;
+    padding:30px;
 }
 
 /* =========================
@@ -196,17 +259,25 @@ padding:30px;
 
 @media(max-width:600px){
 
-h1{
-font-size:30px;
-}
+    h1{
+        font-size:30px;
+    }
 
-.calculator{
-padding:22px;
-}
+    .container{
+        margin:35px auto;
+    }
 
-.ad-container{
-min-height:70px;
-}
+    .calculator{
+        padding:22px;
+    }
+
+    .resultado{
+        font-size:18px;
+    }
+
+    .ad-container{
+        min-height:70px;
+    }
 
 }
 
@@ -214,14 +285,19 @@ min-height:70px;
 
 </head>
 
+
 <body>
+
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
 <div class="header-content">
 
 <div class="logo">
-Util<span>mooz</span>
+Util<span>Mooz</span>
 </div>
 
 <nav>
@@ -232,6 +308,11 @@ Util<span>mooz</span>
 
 </header>
 
+
+<!-- =========================
+     CONTENIDO
+========================= -->
+
 <main class="container">
 
 <h1>Calculadora de edad</h1>
@@ -241,13 +322,14 @@ Calculá tu edad exacta en años, meses y días utilizando nuestra
 calculadora de edad online gratuita.
 </p>
 
+
 <!-- =========================
-     ANUNCIO 1
+     ANUNCIO 1 - NATIVE
 ========================= -->
 
 <div class="ad-container">
 
-<div style="width:100%;">
+<div class="ad-wrapper">
 
 <div class="ad-label">
 PUBLICIDAD
@@ -255,7 +337,8 @@ PUBLICIDAD
 
 <div class="ad-box">
 
-<script async="async"
+<script
+async="async"
 data-cfasync="false"
 src="https://pl31074091.profitableratecpmnetwork.com/0121748aaaf83f5b10d651ea8ce56b39/invoke.js">
 </script>
@@ -267,6 +350,7 @@ src="https://pl31074091.profitableratecpmnetwork.com/0121748aaaf83f5b10d651ea8ce
 </div>
 
 </div>
+
 
 <!-- =========================
      CALCULADORA
@@ -281,12 +365,16 @@ Fecha de nacimiento
 <input
 type="date"
 id="fecha"
-
 >
 
-<button onclick="calcularEdad()">
+<button
+type="button"
+onclick="calcularEdad()">
+
 Calcular edad
+
 </button>
+
 
 <div
 class="resultado"
@@ -298,28 +386,29 @@ Resultado: -
 
 </div>
 
+
 <!-- =========================
-     ANUNCIO 2
+     ANUNCIO 2 - BANNER
 ========================= -->
 
 <div class="ad-container">
 
-<div style="width:100%;">
+<div class="ad-wrapper">
 
 <div class="ad-label">
 PUBLICIDAD
 </div>
 
-<div class="ad-box">
+<div class="banner-ad">
 
 <script>
 
 atOptions = {
-'key' : '56c8323b8c9bd2913adcf628996d2229',
-'format' : 'iframe',
-'height' : 60,
-'width' : 468,
-'params' : {}
+    'key' : '56c8323b8c9bd2913adcf628996d2229',
+    'format' : 'iframe',
+    'height' : 60,
+    'width' : 468,
+    'params' : {}
 };
 
 </script>
@@ -332,8 +421,9 @@ atOptions = {
 
 </div>
 
+
 <!-- =========================
-     INFORMACIÓN SEO
+     INFORMACION SEO
 ========================= -->
 
 <div class="info">
@@ -346,41 +436,53 @@ automáticamente cuántos años, meses y días tenés.
 </p>
 
 <p>
-Esta calculadora de edad funciona directamente desde tu navegador
-y no requiere instalar ningún programa.
+La herramienta funciona directamente desde tu navegador,
+por lo que no necesitás instalar ningún programa ni aplicación.
 </p>
+
 
 <h2>Calculadora de edad exacta</h2>
 
 <p>
-Podés utilizar esta herramienta para calcular tu edad exacta
-a partir de tu fecha de nacimiento.
+Esta calculadora permite conocer la edad exacta a partir de
+la fecha de nacimiento, teniendo en cuenta los diferentes días
+que tiene cada mes y los años bisiestos.
+</p>
+
+
+<h2>¿Para qué sirve una calculadora de edad?</h2>
+
+<p>
+Podés utilizarla para calcular tu edad actual, conocer cuántos
+años tenés para completar formularios o simplemente saber
+exactamente cuánto tiempo pasó desde tu fecha de nacimiento.
 </p>
 
 </div>
 
+
 <!-- =========================
-     ANUNCIO 3
+     ANUNCIO 3 - BANNER
 ========================= -->
 
 <div class="ad-container">
 
-<div style="width:100%;">
+<div class="ad-wrapper">
 
 <div class="ad-label">
 PUBLICIDAD
 </div>
 
-<div class="ad-box">
+<div class="banner-ad">
 
 <script>
 
 atOptions = {
-'key' : '56c8323b8c9bd2913adcf628996d2229',
-'format' : 'iframe',
-'height' : 60,
-'width' : 468,
-'params' : {}
+    'key' : '56c8323b8c9bd2913adcf628996d2229',
+    'format' : 'iframe',
+    'height' : 60,
+    'width' : 468,
+    'params' : {}
 };
 
 </script>
@@ -395,11 +497,17 @@ atOptions = {
 
 </main>
 
+
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
 
-© 2026 Utilmooz — Herramientas online gratuitas
+© 2026 UtilMooz — Herramientas online gratuitas
 
 </footer>
+
 
 <!-- =========================
      ADSTERRA SOCIAL BAR
@@ -407,119 +515,226 @@ atOptions = {
 
 <script src="https://pl31074089.profitableratecpmnetwork.com/b9/80/b1/b980b1630aa36c566498dbf6055d89ea.js"></script>
 
+
 <script>
 
-/* =========================
-   CALCULADORA DE EDAD
-========================= */
+/* =====================================================
+   FECHA ACTUAL
+===================================================== */
+
+function obtenerFechaActual(){
+
+    const ahora = new Date();
+
+    return new Date(
+        ahora.getFullYear(),
+        ahora.getMonth(),
+        ahora.getDate()
+    );
+
+}
+
+
+/* =====================================================
+   CALCULAR EDAD
+===================================================== */
 
 function calcularEdad(){
 
-const fecha=
-document.getElementById("fecha").value;
+    const input =
+        document.getElementById("fecha");
 
-const resultado=
-document.getElementById("resultado");
+    const resultado =
+        document.getElementById("resultado");
+
+    const valor =
+        input.value;
 
 
-if(!fecha){
+    /* -------------------------
+       Validar fecha
+    ------------------------- */
 
-resultado.textContent=
-"Seleccioná tu fecha de nacimiento.";
+    if(!valor){
 
-return;
+        resultado.innerHTML =
+        "Seleccioná tu fecha de nacimiento.";
+
+        return;
+
+    }
+
+
+    /*
+       Separar manualmente la fecha
+       para evitar problemas de zona horaria.
+    */
+
+    const partes =
+        valor.split("-");
+
+
+    const añoNacimiento =
+        Number(partes[0]);
+
+    const mesNacimiento =
+        Number(partes[1]) - 1;
+
+    const diaNacimiento =
+        Number(partes[2]);
+
+
+    const nacimiento =
+        new Date(
+            añoNacimiento,
+            mesNacimiento,
+            diaNacimiento
+        );
+
+
+    const hoy =
+        obtenerFechaActual();
+
+
+    /* -------------------------
+       Fecha futura
+    ------------------------- */
+
+    if(nacimiento > hoy){
+
+        resultado.innerHTML =
+        "La fecha de nacimiento no puede ser futura.";
+
+        return;
+
+    }
+
+
+    /* -------------------------
+       Calcular años
+    ------------------------- */
+
+    let años =
+        hoy.getFullYear() -
+        nacimiento.getFullYear();
+
+
+    let meses =
+        hoy.getMonth() -
+        nacimiento.getMonth();
+
+
+    let dias =
+        hoy.getDate() -
+        nacimiento.getDate();
+
+
+    /* -------------------------
+       Ajustar días
+    ------------------------- */
+
+    if(dias < 0){
+
+        meses--;
+
+        const diasMesAnterior =
+            new Date(
+                hoy.getFullYear(),
+                hoy.getMonth(),
+                0
+            ).getDate();
+
+        dias += diasMesAnterior;
+
+    }
+
+
+    /* -------------------------
+       Ajustar meses
+    ------------------------- */
+
+    if(meses < 0){
+
+        años--;
+
+        meses += 12;
+
+    }
+
+
+    /* -------------------------
+       Resultado
+    ------------------------- */
+
+    resultado.innerHTML =
+
+    "Tenés <strong>" +
+    años +
+    " años, " +
+    meses +
+    " meses y " +
+    dias +
+    " días</strong>." +
+
+    "<small>" +
+    "Edad calculada a partir de tu fecha de nacimiento." +
+    "</small>";
 
 }
 
 
-const nacimiento=
-new Date(fecha+"T00:00:00");
+/* =====================================================
+   ESTABLECER FECHA MAXIMA
+===================================================== */
 
-const hoy=
-new Date();
-
-
-if(nacimiento>hoy){
-
-resultado.textContent=
-"La fecha no puede ser futura.";
-
-return;
-
-}
+const fechaInput =
+    document.getElementById("fecha");
 
 
-let años=
-hoy.getFullYear()-
-nacimiento.getFullYear();
-
-let meses=
-hoy.getMonth()-
-nacimiento.getMonth();
-
-let dias=
-hoy.getDate()-
-nacimiento.getDate();
+const hoy =
+    new Date();
 
 
-if(dias<0){
-
-meses--;
-
-const diasMesAnterior=
-new Date(
-hoy.getFullYear(),
-hoy.getMonth(),
-0
-).getDate();
-
-dias+=diasMesAnterior;
-
-}
+const añoActual =
+    hoy.getFullYear();
 
 
-if(meses<0){
-
-años--;
-
-meses+=12;
-
-}
+const mesActual =
+    String(
+        hoy.getMonth() + 1
+    ).padStart(2,"0");
 
 
-resultado.innerHTML=
-"Tenés <strong>"+
-años+
-" años, "+
-meses+
-" meses y "+
-dias+
-" días</strong>.";
-
-}
+const diaActual =
+    String(
+        hoy.getDate()
+    ).padStart(2,"0");
 
 
-/* =========================
-   FECHA MÁXIMA
-========================= */
+fechaInput.max =
+    añoActual +
+    "-" +
+    mesActual +
+    "-" +
+    diaActual;
 
-const fechaInput=
-document.getElementById("fecha");
 
-const hoy=
-new Date();
+/* =====================================================
+   ENTER PARA CALCULAR
+===================================================== */
 
-const año=
-hoy.getFullYear();
+fechaInput.addEventListener(
+    "keydown",
+    function(event){
 
-const mes=
-String(hoy.getMonth()+1).padStart(2,"0");
+        if(event.key === "Enter"){
 
-const dia=
-String(hoy.getDate()).padStart(2,"0");
+            calcularEdad();
 
-fechaInput.max=
-año+"-"+mes+"-"+dia;
+        }
+
+    }
+);
 
 </script>
 
