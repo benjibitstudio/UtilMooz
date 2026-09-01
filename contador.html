@@ -39,6 +39,7 @@ margin:auto;
 display:flex;
 justify-content:space-between;
 align-items:center;
+gap:20px;
 }
 
 .logo{
@@ -50,9 +51,25 @@ font-weight:bold;
 color:#4f8cff;
 }
 
-nav a{
-color:#ddd;
+/* BOTÓN INICIO */
+
+.home-btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+background:#4f8cff;
+color:#fff;
 text-decoration:none;
+padding:10px 18px;
+border-radius:8px;
+font-size:15px;
+font-weight:bold;
+transition:.2s;
+}
+
+.home-btn:hover{
+background:#3978e8;
+transform:translateY(-1px);
 }
 
 .container{
@@ -154,6 +171,19 @@ padding:30px;
 
 @media(max-width:600px){
 
+.header-content{
+gap:12px;
+}
+
+.logo{
+font-size:24px;
+}
+
+.home-btn{
+padding:9px 13px;
+font-size:14px;
+}
+
 .stats{
 grid-template-columns:1fr;
 }
@@ -180,9 +210,9 @@ padding:20px;
 Util<span>Mooz</span>
 </div>
 
-<nav>
-<a href="index.html">Inicio</a>
-</nav>
+<a href="index.html" class="home-btn">
+🏠 Inicio
+</a>
 
 </div>
 </header>
