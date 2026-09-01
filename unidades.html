@@ -21,407 +21,481 @@ content="Conversor de unidades online gratis. Convertí longitud, peso, temperat
 
 <style>
 
-/* =========================
+/* =====================================================
    GENERAL
-========================= */
+===================================================== */
 
 *{
-box-sizing:border-box;
-margin:0;
-padding:0;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
 html{
-scroll-behavior:smooth;
+    scroll-behavior:smooth;
 }
 
 body{
-font-family:Arial,sans-serif;
-background:#f5f7fb;
-color:#172033;
-min-height:100vh;
-line-height:1.5;
+    font-family:Arial,sans-serif;
+    background:#f5f7fb;
+    color:#172033;
+    min-height:100vh;
+    line-height:1.5;
 }
 
 
-/* =========================
+/* =====================================================
    HEADER
-========================= */
+===================================================== */
 
 header{
-background:#111827;
-color:white;
-padding:22px 20px;
+    background:#111827;
+    color:#ffffff;
+    padding:22px 20px;
 }
 
 .header-content{
-max-width:900px;
-margin:auto;
-display:flex;
-justify-content:space-between;
-align-items:center;
+    max-width:900px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
 }
 
 .logo{
-font-size:26px;
-font-weight:bold;
+    font-size:26px;
+    font-weight:bold;
 }
 
 .logo span{
-color:#4f8cff;
+    color:#4f8cff;
 }
 
 
-/* =========================
+/* =====================================================
    BOTÓN INICIO
-========================= */
+===================================================== */
 
-nav{
-display:flex;
-align-items:center;
+.inicio-btn{
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+
+    gap:6px;
+
+    padding:10px 18px !important;
+
+    background:linear-gradient(
+        135deg,
+        #4f8cff 0%,
+        #2563eb 100%
+    ) !important;
+
+    color:#ffffff !important;
+
+    text-decoration:none !important;
+
+    font-family:Arial,sans-serif !important;
+    font-size:14px !important;
+    font-weight:700 !important;
+
+    border-radius:9px !important;
+
+    border:1px solid rgba(255,255,255,.10) !important;
+
+    box-shadow:
+        0 4px 10px rgba(37,99,235,.25),
+        inset 0 1px 0 rgba(255,255,255,.20);
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
 }
 
-nav a.inicio-btn{
-display:inline-flex;
-align-items:center;
-justify-content:center;
-gap:6px;
-padding:9px 17px;
-background:#4f8cff;
-color:#ffffff;
-text-decoration:none;
-font-size:14px;
-font-weight:bold;
-border-radius:8px;
-border:1px solid rgba(255,255,255,.08);
-transition:
-background .2s ease,
-transform .2s ease,
-box-shadow .2s ease;
+.inicio-btn:hover{
+    background:linear-gradient(
+        135deg,
+        #5d96ff 0%,
+        #1d4ed8 100%
+    ) !important;
+
+    color:#ffffff !important;
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 7px 16px rgba(37,99,235,.35),
+        inset 0 1px 0 rgba(255,255,255,.20);
 }
 
-nav a.inicio-btn:hover{
-background:#3978e8;
-color:#ffffff;
-transform:translateY(-1px);
-box-shadow:0 4px 12px rgba(79,140,255,.30);
-}
+.inicio-btn:active{
+    transform:translateY(0);
 
-nav a.inicio-btn:active{
-transform:translateY(0);
-box-shadow:0 2px 6px rgba(79,140,255,.20);
+    box-shadow:
+        0 3px 7px rgba(37,99,235,.22);
 }
 
 
-/* =========================
+/* =====================================================
    CONTENIDO
-========================= */
+===================================================== */
 
 .container{
-max-width:700px;
-margin:50px auto;
-padding:0 20px 60px;
+    max-width:700px;
+    margin:50px auto;
+    padding:0 20px 60px;
 }
 
 h1{
-font-size:36px;
-margin-bottom:15px;
-line-height:1.2;
+    font-size:36px;
+    margin-bottom:15px;
+    line-height:1.2;
 }
 
 .description{
-color:#667085;
-margin-bottom:30px;
-line-height:1.7;
+    color:#667085;
+    margin-bottom:30px;
+    line-height:1.7;
 }
 
 
-/* =========================
+/* =====================================================
    ANUNCIOS
-========================= */
+===================================================== */
 
 .ad-container{
-width:100%;
-min-height:90px;
-margin:25px 0;
-display:flex;
-justify-content:center;
-align-items:center;
-overflow:hidden;
+    width:100%;
+    min-height:90px;
+    margin:25px 0;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
 }
 
 .ad-label{
-font-size:11px;
-color:#98a2b3;
-text-align:center;
-margin-bottom:5px;
+    font-size:11px;
+    color:#98a2b3;
+    text-align:center;
+    margin-bottom:5px;
 }
 
 .ad-box{
-width:100%;
-min-height:90px;
-display:flex;
-justify-content:center;
-align-items:center;
-overflow:hidden;
+    width:100%;
+    min-height:90px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
 }
 
 
-/* =========================
+/* =====================================================
    CALCULADORA
-========================= */
+===================================================== */
 
 .calculator{
-background:white;
-padding:30px;
-border-radius:16px;
-border:1px solid #e6e8ee;
-box-shadow:0 5px 20px rgba(0,0,0,.05);
+    background:#ffffff;
+
+    padding:30px;
+
+    border-radius:16px;
+
+    border:1px solid #e6e8ee;
+
+    box-shadow:
+        0 5px 20px rgba(0,0,0,.05);
 }
 
 label{
-display:block;
-margin-bottom:8px;
-font-weight:bold;
-color:#172033;
+    display:block;
+
+    margin-bottom:8px;
+
+    font-weight:bold;
+
+    color:#172033;
 }
 
 select,
 input{
-width:100%;
-padding:14px;
-margin-bottom:18px;
-border:1px solid #d9dde5;
-border-radius:9px;
-font-size:16px;
-background:white;
-color:#172033;
-outline:none;
-transition:
-border-color .2s ease,
-box-shadow .2s ease;
+    width:100%;
+
+    padding:14px;
+
+    margin-bottom:18px;
+
+    border:1px solid #d9dde5;
+
+    border-radius:9px;
+
+    font-size:16px;
+
+    background:#ffffff;
+
+    color:#172033;
+
+    outline:none;
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease;
 }
 
 select{
-cursor:pointer;
+    cursor:pointer;
 }
 
 select:focus,
 input:focus{
-border-color:#4f8cff;
-box-shadow:0 0 0 3px rgba(79,140,255,.12);
+    border-color:#4f8cff;
+
+    box-shadow:
+        0 0 0 3px rgba(79,140,255,.12);
 }
 
 
-/* =========================
+/* =====================================================
    BOTÓN CONVERTIR
-========================= */
+===================================================== */
 
-.convert-button{
-width:100%;
-min-height:52px;
-padding:14px 22px;
-margin-top:3px;
-border:none;
-border-radius:10px;
+#convertirBtn{
 
-background:linear-gradient(
-135deg,
-#4f8cff 0%,
-#2563eb 100%
-);
+    width:100% !important;
 
-color:#ffffff;
-font-family:Arial,sans-serif;
-font-size:16px;
-font-weight:700;
-letter-spacing:.2px;
+    min-height:54px !important;
 
-cursor:pointer;
+    padding:15px 22px !important;
 
-display:flex;
-align-items:center;
-justify-content:center;
-gap:8px;
+    margin-top:2px !important;
 
-box-shadow:
-0 5px 12px rgba(37,99,235,.25),
-inset 0 1px 0 rgba(255,255,255,.18);
+    border:none !important;
 
-transition:
-transform .2s ease,
-box-shadow .2s ease,
-background .2s ease;
+    border-radius:10px !important;
+
+    background:linear-gradient(
+        135deg,
+        #4f8cff 0%,
+        #2563eb 100%
+    ) !important;
+
+    color:#ffffff !important;
+
+    font-family:Arial,sans-serif !important;
+
+    font-size:17px !important;
+
+    font-weight:700 !important;
+
+    letter-spacing:.2px;
+
+    cursor:pointer;
+
+    display:flex !important;
+
+    align-items:center !important;
+
+    justify-content:center !important;
+
+    gap:9px;
+
+    box-shadow:
+        0 5px 12px rgba(37,99,235,.28),
+        inset 0 1px 0 rgba(255,255,255,.20);
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
 }
 
-.convert-button::before{
-content:"⇄";
-font-size:20px;
-line-height:1;
-font-weight:bold;
+#convertirBtn:hover{
+
+    background:linear-gradient(
+        135deg,
+        #5d96ff 0%,
+        #1d4ed8 100%
+    ) !important;
+
+    transform:translateY(-2px);
+
+    box-shadow:
+        0 8px 18px rgba(37,99,235,.35),
+        inset 0 1px 0 rgba(255,255,255,.22);
 }
 
-.convert-button:hover{
-background:linear-gradient(
-135deg,
-#5d96ff 0%,
-#1d4ed8 100%
-);
+#convertirBtn:active{
 
-transform:translateY(-2px);
+    transform:translateY(0);
 
-box-shadow:
-0 8px 18px rgba(37,99,235,.32),
-inset 0 1px 0 rgba(255,255,255,.20);
+    box-shadow:
+        0 3px 7px rgba(37,99,235,.22);
 }
 
-.convert-button:active{
-transform:translateY(0);
+#convertirBtn:focus-visible{
 
-box-shadow:
-0 3px 7px rgba(37,99,235,.22);
-}
+    outline:none;
 
-.convert-button:focus-visible{
-outline:none;
-
-box-shadow:
-0 0 0 4px rgba(79,140,255,.20),
-0 5px 12px rgba(37,99,235,.25);
+    box-shadow:
+        0 0 0 4px rgba(79,140,255,.20),
+        0 5px 12px rgba(37,99,235,.28);
 }
 
 
-/* =========================
+/* =====================================================
    RESULTADO
-========================= */
+===================================================== */
 
 .resultado{
-margin-top:25px;
-padding:22px;
 
-background:#f5f7fb;
+    margin-top:25px;
 
-border:1px solid #e6e8ee;
-border-radius:12px;
+    padding:22px;
 
-text-align:center;
+    background:#f5f7fb;
 
-font-size:21px;
-font-weight:bold;
+    border:1px solid #e6e8ee;
 
-line-height:1.7;
+    border-radius:12px;
 
-word-break:break-word;
+    text-align:center;
 
-color:#172033;
+    font-size:21px;
+
+    font-weight:bold;
+
+    line-height:1.7;
+
+    word-break:break-word;
+
+    color:#172033;
 }
 
 .resultado strong{
-color:#2563eb;
+    color:#2563eb;
 }
 
 
-/* =========================
+/* =====================================================
    INFORMACIÓN SEO
-========================= */
+===================================================== */
 
 .info{
-margin-top:35px;
-line-height:1.7;
-color:#4b5563;
+    margin-top:35px;
+
+    line-height:1.7;
+
+    color:#4b5563;
 }
 
 .info h2{
-margin-bottom:10px;
-margin-top:25px;
-color:#172033;
-font-size:24px;
-line-height:1.3;
+
+    margin-bottom:10px;
+
+    margin-top:25px;
+
+    color:#172033;
+
+    font-size:24px;
+
+    line-height:1.3;
 }
 
 .info p{
-margin-bottom:16px;
+    margin-bottom:16px;
 }
 
 
-/* =========================
+/* =====================================================
    FOOTER
-========================= */
+===================================================== */
 
 footer{
-margin-top:60px;
-background:#111827;
-color:#aaa;
-text-align:center;
-padding:30px;
+
+    margin-top:60px;
+
+    background:#111827;
+
+    color:#aaa;
+
+    text-align:center;
+
+    padding:30px;
 }
 
 
-/* =========================
-   MOVIL
-========================= */
+/* =====================================================
+   MÓVIL
+===================================================== */
 
 @media(max-width:600px){
 
-header{
-padding:18px 15px;
-}
+    header{
+        padding:18px 15px;
+    }
 
-.header-content{
-max-width:100%;
-}
+    .header-content{
+        max-width:100%;
+    }
 
-.logo{
-font-size:23px;
-}
+    .logo{
+        font-size:23px;
+    }
 
-nav a.inicio-btn{
-padding:8px 14px;
-font-size:14px;
-}
+    .inicio-btn{
+        padding:9px 14px !important;
+        font-size:14px !important;
+    }
 
-h1{
-font-size:30px;
-}
+    h1{
+        font-size:30px;
+    }
 
-.container{
-margin:35px auto;
-padding:0 15px 50px;
-}
+    .container{
+        margin:35px auto;
 
-.calculator{
-padding:22px;
-}
+        padding:
+            0 15px 50px;
+    }
 
-select,
-input{
-padding:13px;
-font-size:16px;
-}
+    .calculator{
+        padding:22px;
+    }
 
-.convert-button{
-min-height:50px;
-padding:13px 18px;
-font-size:15px;
-border-radius:9px;
-}
+    select,
+    input{
+        padding:13px;
+        font-size:16px;
+    }
 
-.resultado{
-font-size:19px;
-padding:18px 12px;
-}
+    #convertirBtn{
+        min-height:52px !important;
+        padding:14px 18px !important;
+        font-size:16px !important;
+        border-radius:9px !important;
+    }
 
-.info h2{
-font-size:21px;
-}
+    .resultado{
+        font-size:19px;
+        padding:18px 12px;
+    }
 
-.ad-container{
-min-height:70px;
-}
+    .info h2{
+        font-size:21px;
+    }
 
-.ad-box{
-min-height:70px;
-}
+    .ad-container{
+        min-height:70px;
+    }
+
+    .ad-box{
+        min-height:70px;
+    }
 
 }
 
@@ -433,9 +507,9 @@ min-height:70px;
 <body>
 
 
-<!-- =========================
+<!-- =====================================================
      HEADER
-========================= -->
+===================================================== -->
 
 <header>
 
@@ -447,7 +521,10 @@ Util<span>Mooz</span>
 
 <nav>
 
-<a href="index.html" class="inicio-btn">
+<a
+href="index.html"
+class="inicio-btn"
+>
 🏠 Inicio
 </a>
 
@@ -458,14 +535,17 @@ Util<span>Mooz</span>
 </header>
 
 
-<!-- =========================
+<!-- =====================================================
      CONTENIDO
-========================= -->
+===================================================== -->
 
 <main class="container">
 
 
-<h1>Conversor de unidades</h1>
+<h1>
+Conversor de unidades
+</h1>
+
 
 <p class="description">
 
@@ -476,9 +556,9 @@ presión y fuerza con este conversor online gratuito.
 </p>
 
 
-<!-- =========================
+<!-- =====================================================
      ANUNCIO 1
-========================= -->
+===================================================== -->
 
 <div class="ad-container">
 
@@ -505,9 +585,9 @@ src="https://pl31074091.profitableratecpmnetwork.com/0121748aaaf83f5b10d651ea8ce
 </div>
 
 
-<!-- =========================
+<!-- =====================================================
      CALCULADORA
-========================= -->
+===================================================== -->
 
 <div class="calculator">
 
@@ -515,6 +595,7 @@ src="https://pl31074091.profitableratecpmnetwork.com/0121748aaaf83f5b10d651ea8ce
 <label for="tipo">
 Tipo de conversión
 </label>
+
 
 <select
 id="tipo"
@@ -572,6 +653,7 @@ onchange="cambiarUnidades()"
 Valor
 </label>
 
+
 <input
 type="number"
 id="valor"
@@ -585,6 +667,7 @@ autocomplete="off"
 Desde
 </label>
 
+
 <select id="desde"></select>
 
 
@@ -592,17 +675,16 @@ Desde
 Hasta
 </label>
 
+
 <select id="hasta"></select>
 
 
 <button
 type="button"
-class="convert-button"
+id="convertirBtn"
 onclick="convertir()"
 >
-
-Convertir
-
+⇄ Convertir
 </button>
 
 
@@ -611,18 +693,16 @@ class="resultado"
 id="resultado"
 aria-live="polite"
 >
-
 Resultado: -
-
 </div>
 
 
 </div>
 
 
-<!-- =========================
+<!-- =====================================================
      ANUNCIO 2
-========================= -->
+===================================================== -->
 
 <div class="ad-container">
 
@@ -637,16 +717,30 @@ PUBLICIDAD
 <script>
 
 atOptions = {
-'key' : '56c8323b8c9bd2913adcf628996d2229',
-'format' : 'iframe',
-'height' : 60,
-'width' : 468,
-'params' : {}
+
+'key' :
+'56c8323b8c9bd2913adcf628996d2229',
+
+'format' :
+'iframe',
+
+'height' :
+60,
+
+'width' :
+468,
+
+'params' :
+{}
+
 };
 
 </script>
 
-<script src="https://www.highrevenueformat.com/56c8323b8c9bd2913adcf628996d2229/invoke.js"></script>
+
+<script
+src="https://www.highrevenueformat.com/56c8323b8c9bd2913adcf628996d2229/invoke.js">
+</script>
 
 </div>
 
@@ -655,14 +749,17 @@ atOptions = {
 </div>
 
 
-<!-- =========================
+<!-- =====================================================
      INFORMACIÓN SEO
-========================= -->
+===================================================== -->
 
 <div class="info">
 
 
-<h2>Conversor de unidades online</h2>
+<h2>
+Conversor de unidades online
+</h2>
+
 
 <p>
 
@@ -673,7 +770,10 @@ sin necesidad de instalar ningún programa.
 </p>
 
 
-<h2>Conversor de longitud</h2>
+<h2>
+Conversor de longitud
+</h2>
+
 
 <p>
 
@@ -683,7 +783,10 @@ pulgadas, pies, yardas, millas y millas náuticas.
 </p>
 
 
-<h2>Conversor de peso y masa</h2>
+<h2>
+Conversor de peso y masa
+</h2>
+
 
 <p>
 
@@ -693,7 +796,10 @@ libras, onzas y stone.
 </p>
 
 
-<h2>Conversor de temperatura</h2>
+<h2>
+Conversor de temperatura
+</h2>
+
 
 <p>
 
@@ -702,7 +808,10 @@ Convertí entre Celsius, Fahrenheit y Kelvin.
 </p>
 
 
-<h2>Conversor de volumen</h2>
+<h2>
+Conversor de volumen
+</h2>
+
 
 <p>
 
@@ -712,7 +821,10 @@ metros cúbicos, galones, cuartos, pintas y tazas.
 </p>
 
 
-<h2>Conversor de área</h2>
+<h2>
+Conversor de área
+</h2>
+
 
 <p>
 
@@ -723,7 +835,10 @@ acres y pies cuadrados.
 </p>
 
 
-<h2>Conversor de velocidad</h2>
+<h2>
+Conversor de velocidad
+</h2>
+
 
 <p>
 
@@ -733,7 +848,10 @@ millas por hora y nudos.
 </p>
 
 
-<h2>Conversor de tiempo</h2>
+<h2>
+Conversor de tiempo
+</h2>
+
 
 <p>
 
@@ -743,7 +861,10 @@ días y semanas.
 </p>
 
 
-<h2>Conversor de datos digitales</h2>
+<h2>
+Conversor de datos digitales
+</h2>
+
 
 <p>
 
@@ -753,7 +874,10 @@ gigabytes y terabytes.
 </p>
 
 
-<h2>Conversor de presión</h2>
+<h2>
+Conversor de presión
+</h2>
+
 
 <p>
 
@@ -763,7 +887,10 @@ atmósferas y PSI.
 </p>
 
 
-<h2>Conversor de energía</h2>
+<h2>
+Conversor de energía
+</h2>
+
 
 <p>
 
@@ -773,7 +900,10 @@ kilovatios-hora y calorías.
 </p>
 
 
-<h2>Conversor de fuerza</h2>
+<h2>
+Conversor de fuerza
+</h2>
+
 
 <p>
 
@@ -786,9 +916,9 @@ y libras-fuerza.
 </div>
 
 
-<!-- =========================
+<!-- =====================================================
      ANUNCIO 3
-========================= -->
+===================================================== -->
 
 <div class="ad-container">
 
@@ -818,9 +948,9 @@ src="https://pl31074091.profitableratecpmnetwork.com/0121748aaaf83f5b10d651ea8ce
 </main>
 
 
-<!-- =========================
+<!-- =====================================================
      FOOTER
-========================= -->
+===================================================== -->
 
 <footer>
 
@@ -829,9 +959,9 @@ src="https://pl31074091.profitableratecpmnetwork.com/0121748aaaf83f5b10d651ea8ce
 </footer>
 
 
-<!-- =========================
+<!-- =====================================================
      ADSTERRA SOCIAL BAR
-========================= -->
+===================================================== -->
 
 <script src="https://pl31074089.profitableratecpmnetwork.com/b9/80/b1/b980b1630aa36c566498dbf6055d89ea.js"></script>
 
@@ -1011,11 +1141,6 @@ hasta.appendChild(optionHasta);
 });
 
 
-/*
-   Primera unidad como origen,
-   segunda unidad como destino.
-*/
-
 if(hasta.options.length>1){
 
 hasta.selectedIndex=1;
@@ -1023,8 +1148,9 @@ hasta.selectedIndex=1;
 }
 
 
-document.getElementById("resultado").textContent =
-"Resultado: -";
+document
+.getElementById("resultado")
+.textContent="Resultado: -";
 
 }
 
@@ -1130,48 +1256,48 @@ let celsius;
 
 if(desde === "C"){
 
-celsius = valor;
+celsius=valor;
 
 }
 
 else if(desde === "F"){
 
-celsius =
-(valor - 32) * 5 / 9;
+celsius=
+(valor-32)*5/9;
 
 }
 
 else if(desde === "K"){
 
-celsius =
-valor - 273.15;
+celsius=
+valor-273.15;
 
 }
 
 else{
 
-resultado = NaN;
+resultado=NaN;
 
 }
 
 
 if(hasta === "C"){
 
-resultado = celsius;
+resultado=celsius;
 
 }
 
 else if(hasta === "F"){
 
-resultado =
-(celsius * 9 / 5) + 32;
+resultado=
+(celsius*9/5)+32;
 
 }
 
 else if(hasta === "K"){
 
-resultado =
-celsius + 273.15;
+resultado=
+celsius+273.15;
 
 }
 
@@ -1377,7 +1503,7 @@ unidadesBase[hasta];
 
 
 /* =====================================================
-   VALIDACIÓN FINAL
+   VALIDACIÓN
 ===================================================== */
 
 if(!Number.isFinite(resultado)){
@@ -1391,7 +1517,7 @@ return;
 
 
 /* =====================================================
-   MOSTRAR RESULTADO
+   RESULTADO
 ===================================================== */
 
 resultadoElemento.textContent =
@@ -1402,7 +1528,7 @@ formatearNumero(resultado);
 
 
 /* =====================================================
-   FORMATEAR NÚMEROS
+   FORMATEAR NÚMERO
 ===================================================== */
 
 function formatearNumero(numero){
@@ -1424,7 +1550,7 @@ maximumFractionDigits:10
 
 
 /* =====================================================
-   ENTER PARA CONVERTIR
+   ENTER
 ===================================================== */
 
 document
@@ -1433,7 +1559,7 @@ document
 "keydown",
 function(event){
 
-if(event.key === "Enter"){
+if(event.key==="Enter"){
 
 event.preventDefault();
 
