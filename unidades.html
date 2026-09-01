@@ -27,10 +27,15 @@ margin:0;
 padding:0;
 }
 
+html{
+scroll-behavior:smooth;
+}
+
 body{
 font-family:Arial,sans-serif;
 background:#f5f7fb;
 color:#172033;
+min-height:100vh;
 }
 
 header{
@@ -59,6 +64,11 @@ color:#4f8cff;
 nav a{
 color:#ddd;
 text-decoration:none;
+font-size:15px;
+}
+
+nav a:hover{
+color:white;
 }
 
 .container{
@@ -106,6 +116,7 @@ min-height:90px;
 display:flex;
 justify-content:center;
 align-items:center;
+overflow:hidden;
 }
 
 
@@ -125,6 +136,7 @@ label{
 display:block;
 margin-bottom:8px;
 font-weight:bold;
+color:#172033;
 }
 
 select,
@@ -136,6 +148,14 @@ border:1px solid #d9dde5;
 border-radius:8px;
 font-size:16px;
 background:white;
+color:#172033;
+outline:none;
+}
+
+select:focus,
+input:focus{
+border-color:#4f8cff;
+box-shadow:0 0 0 3px rgba(79,140,255,.12);
 }
 
 button{
@@ -146,11 +166,17 @@ border-radius:8px;
 background:#4f8cff;
 color:white;
 font-size:17px;
+font-weight:bold;
 cursor:pointer;
+transition:.2s;
 }
 
 button:hover{
 background:#3978e8;
+}
+
+button:active{
+transform:scale(.99);
 }
 
 .resultado{
@@ -180,6 +206,7 @@ color:#4b5563;
 margin-bottom:10px;
 margin-top:25px;
 color:#172033;
+font-size:24px;
 }
 
 .info p{
@@ -206,8 +233,21 @@ padding:30px;
 
 @media(max-width:600px){
 
+header{
+padding:18px 15px;
+}
+
+.logo{
+font-size:23px;
+}
+
 h1{
 font-size:30px;
+}
+
+.container{
+margin:35px auto;
+padding:0 15px 50px;
 }
 
 .calculator{
@@ -218,8 +258,17 @@ padding:22px;
 min-height:70px;
 }
 
+.ad-box{
+min-height:70px;
+}
+
 .resultado{
 font-size:19px;
+padding:18px 12px;
+}
+
+.info h2{
+font-size:21px;
 }
 
 }
@@ -298,10 +347,9 @@ src="https://pl31074091.profitableratecpmnetwork.com/0121748aaaf83f5b10d651ea8ce
 <div class="calculator">
 
 
-<label>
+<label for="tipo">
 Tipo de conversión
 </label>
-
 
 <select
 id="tipo"
@@ -355,7 +403,7 @@ onchange="cambiarUnidades()"
 </select>
 
 
-<label>
+<label for="valor">
 Valor
 </label>
 
@@ -364,24 +412,28 @@ type="number"
 id="valor"
 placeholder="Ingresá un valor"
 step="any"
+autocomplete="off"
 >
 
 
-<label>
+<label for="desde">
 Desde
 </label>
 
 <select id="desde"></select>
 
 
-<label>
+<label for="hasta">
 Hasta
 </label>
 
 <select id="hasta"></select>
 
 
-<button onclick="convertir()">
+<button
+type="button"
+onclick="convertir()"
+>
 Convertir
 </button>
 
@@ -389,10 +441,9 @@ Convertir
 <div
 class="resultado"
 id="resultado"
+aria-live="polite"
 >
-
 Resultado: -
-
 </div>
 
 
@@ -618,11 +669,6 @@ src="https://pl31074091.profitableratecpmnetwork.com/0121748aaaf83f5b10d651ea8ce
 
 const unidades = {
 
-
-/* =========================
-   LONGITUD
-========================= */
-
 longitud: [
 
 ["Milímetros","mm"],
@@ -637,11 +683,6 @@ longitud: [
 
 ],
 
-
-/* =========================
-   PESO
-========================= */
-
 peso: [
 
 ["Miligramos","mg"],
@@ -654,11 +695,6 @@ peso: [
 
 ],
 
-
-/* =========================
-   TEMPERATURA
-========================= */
-
 temperatura: [
 
 ["Celsius","C"],
@@ -666,11 +702,6 @@ temperatura: [
 ["Kelvin","K"]
 
 ],
-
-
-/* =========================
-   VOLUMEN
-========================= */
 
 volumen: [
 
@@ -686,11 +717,6 @@ volumen: [
 
 ],
 
-
-/* =========================
-   ÁREA
-========================= */
-
 area: [
 
 ["Milímetros cuadrados","mm2"],
@@ -703,11 +729,6 @@ area: [
 
 ],
 
-
-/* =========================
-   VELOCIDAD
-========================= */
-
 velocidad: [
 
 ["Metros por segundo","ms"],
@@ -717,26 +738,16 @@ velocidad: [
 
 ],
 
-
-/* =========================
-   TIEMPO
-========================= */
-
 tiempo: [
 
-["Milisegundos","ms"],
-["Segundos","s"],
-["Minutos","min"],
-["Horas","h"],
+["Milisegundos","millisecond"],
+["Segundos","second"],
+["Minutos","minute"],
+["Horas","hour"],
 ["Días","day"],
 ["Semanas","week"]
 
 ],
-
-
-/* =========================
-   DATOS
-========================= */
 
 datos: [
 
@@ -749,11 +760,6 @@ datos: [
 
 ],
 
-
-/* =========================
-   PRESIÓN
-========================= */
-
 presion: [
 
 ["Pascales","Pa"],
@@ -764,11 +770,6 @@ presion: [
 
 ],
 
-
-/* =========================
-   ENERGÍA
-========================= */
-
 energia: [
 
 ["Julios","J"],
@@ -778,11 +779,6 @@ energia: [
 ["Calorías","cal"]
 
 ],
-
-
-/* =========================
-   FUERZA
-========================= */
 
 fuerza: [
 
@@ -814,16 +810,34 @@ document.getElementById("hasta");
 desde.innerHTML="";
 hasta.innerHTML="";
 
-
 unidades[tipo].forEach(function(u){
 
-desde.innerHTML +=
-`<option value="${u[1]}">${u[0]}</option>`;
+const optionDesde =
+document.createElement("option");
 
-hasta.innerHTML +=
-`<option value="${u[1]}">${u[0]}</option>`;
+optionDesde.value=u[1];
+optionDesde.textContent=u[0];
+
+const optionHasta =
+document.createElement("option");
+
+optionHasta.value=u[1];
+optionHasta.textContent=u[0];
+
+desde.appendChild(optionDesde);
+hasta.appendChild(optionHasta);
 
 });
+
+/* Primera unidad como origen,
+   segunda unidad como destino */
+
+if(hasta.options.length>1){
+hasta.selectedIndex=1;
+}
+
+document.getElementById("resultado").textContent=
+"Resultado: -";
 
 }
 
@@ -852,10 +866,10 @@ const resultadoElemento =
 document.getElementById("resultado");
 
 
-if(isNaN(valor)){
+if(!Number.isFinite(valor)){
 
 resultadoElemento.textContent =
-"Ingresá un valor.";
+"Ingresá un valor válido.";
 
 return;
 
@@ -897,7 +911,7 @@ unidadesBase[hasta];
    PESO
 ===================================================== */
 
-if(tipo === "peso"){
+else if(tipo === "peso"){
 
 const unidadesBase = {
 
@@ -923,29 +937,37 @@ unidadesBase[hasta];
    TEMPERATURA
 ===================================================== */
 
-if(tipo === "temperatura"){
+else if(tipo === "temperatura"){
 
 let celsius;
 
-
-if(desde === "C")
+if(desde === "C"){
 celsius = valor;
+}
 
-else if(desde === "F")
+else if(desde === "F"){
 celsius = (valor - 32) * 5 / 9;
+}
 
-else if(desde === "K")
+else if(desde === "K"){
 celsius = valor - 273.15;
+}
 
+else{
+resultado = NaN;
+}
 
-if(hasta === "C")
+if(hasta === "C"){
 resultado = celsius;
+}
 
-else if(hasta === "F")
+else if(hasta === "F"){
 resultado = (celsius * 9 / 5) + 32;
+}
 
-else if(hasta === "K")
+else if(hasta === "K"){
 resultado = celsius + 273.15;
+}
 
 }
 
@@ -954,7 +976,7 @@ resultado = celsius + 273.15;
    VOLUMEN
 ===================================================== */
 
-if(tipo === "volumen"){
+else if(tipo === "volumen"){
 
 const unidadesBase = {
 
@@ -982,7 +1004,7 @@ unidadesBase[hasta];
    ÁREA
 ===================================================== */
 
-if(tipo === "area"){
+else if(tipo === "area"){
 
 const unidadesBase = {
 
@@ -1008,14 +1030,14 @@ unidadesBase[hasta];
    VELOCIDAD
 ===================================================== */
 
-if(tipo === "velocidad"){
+else if(tipo === "velocidad"){
 
 const unidadesBase = {
 
 ms:1,
-kmh:0.2777777778,
+kmh:0.2777777777777778,
 mph:0.44704,
-kn:0.5144444444
+kn:0.5144444444444445
 
 };
 
@@ -1031,14 +1053,14 @@ unidadesBase[hasta];
    TIEMPO
 ===================================================== */
 
-if(tipo === "tiempo"){
+else if(tipo === "tiempo"){
 
 const unidadesBase = {
 
-ms:0.001,
-s:1,
-min:60,
-h:3600,
+millisecond:0.001,
+second:1,
+minute:60,
+hour:3600,
 day:86400,
 week:604800
 
@@ -1056,7 +1078,7 @@ unidadesBase[hasta];
    DATOS DIGITALES
 ===================================================== */
 
-if(tipo === "datos"){
+else if(tipo === "datos"){
 
 const unidadesBase = {
 
@@ -1081,7 +1103,7 @@ unidadesBase[hasta];
    PRESIÓN
 ===================================================== */
 
-if(tipo === "presion"){
+else if(tipo === "presion"){
 
 const unidadesBase = {
 
@@ -1089,7 +1111,7 @@ Pa:1,
 kPa:1000,
 bar:100000,
 atm:101325,
-psi:6894.757293
+psi:6894.757293168
 
 };
 
@@ -1105,7 +1127,7 @@ unidadesBase[hasta];
    ENERGÍA
 ===================================================== */
 
-if(tipo === "energia"){
+else if(tipo === "energia"){
 
 const unidadesBase = {
 
@@ -1129,7 +1151,7 @@ unidadesBase[hasta];
    FUERZA
 ===================================================== */
 
-if(tipo === "fuerza"){
+else if(tipo === "fuerza"){
 
 const unidadesBase = {
 
@@ -1149,12 +1171,41 @@ unidadesBase[hasta];
 
 
 /* =====================================================
+   VALIDACIÓN FINAL
+===================================================== */
+
+if(!Number.isFinite(resultado)){
+
+resultadoElemento.textContent =
+"No se pudo realizar la conversión.";
+
+return;
+
+}
+
+
+/* =====================================================
    MOSTRAR RESULTADO
 ===================================================== */
 
 resultadoElemento.textContent =
 "Resultado: " +
-resultado.toLocaleString(
+formatearNumero(resultado);
+
+}
+
+
+/* =====================================================
+   FORMATEAR NÚMEROS
+===================================================== */
+
+function formatearNumero(numero){
+
+if(Object.is(numero,-0)){
+numero=0;
+}
+
+return numero.toLocaleString(
 "es-AR",
 {
 maximumFractionDigits:10
@@ -1175,6 +1226,8 @@ document
 function(event){
 
 if(event.key === "Enter"){
+
+event.preventDefault();
 
 convertir();
 
