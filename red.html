@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="es">
 
 <head>
@@ -56,13 +55,36 @@ font-weight:bold;
 color:#4f8cff;
 }
 
-nav a{
-color:#ddd;
-text-decoration:none;
+nav{
+display:flex;
+align-items:center;
 }
 
-nav a:hover{
-color:white;
+.home-btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+gap:7px;
+background:#2563eb;
+color:white !important;
+text-decoration:none;
+padding:9px 16px;
+border-radius:8px;
+font-size:14px;
+font-weight:700;
+transition:.2s;
+box-shadow:0 2px 6px rgba(37,99,235,.25);
+}
+
+.home-btn:hover{
+background:#1d4ed8;
+transform:translateY(-1px);
+box-shadow:0 4px 10px rgba(37,99,235,.35);
+}
+
+.home-icon{
+font-size:16px;
+line-height:1;
 }
 
 /* =====================================================
@@ -321,6 +343,15 @@ flex-direction:row;
 font-size:23px;
 }
 
+.home-btn{
+padding:8px 13px;
+font-size:13px;
+}
+
+.home-icon{
+font-size:15px;
+}
+
 h1{
 font-size:30px;
 }
@@ -381,7 +412,15 @@ grid-template-columns:1fr;
 font-size:21px;
 }
 
+.home-btn{
+padding:8px 11px;
 }
+
+}
+
+/* =====================================================
+   FIN CSS
+===================================================== */
 
 </style>
 
@@ -402,7 +441,12 @@ Util<span>Mooz</span>
 </div>
 
 <nav>
-<a href="index.html">Inicio</a>
+
+<a href="index.html" class="home-btn">
+<span class="home-icon">🏠</span>
+<span>Inicio</span>
+</a>
+
 </nav>
 
 </div>
@@ -1172,7 +1216,7 @@ elemento.value.trim();
 if(!validarIP(ip)){
 
 mostrar(
-"❌ IPv4 inválida. Ejemplo válido: 192.168.1.1"
+"❌ IPv4 inválida. Ejemplo: 192.168.1.1"
 );
 
 return;
@@ -2022,15 +2066,6 @@ mostrar(
 );
 
 estado("");
-
-/*
-   IMPORTANTE:
-
-   Los navegadores bloquean muchas consultas
-   cross-origin mediante CORS.
-
-   Primero intentamos HEAD.
-*/
 
 try{
 
