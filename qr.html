@@ -12,6 +12,8 @@
 <meta name="description"
 content="Generador QR online gratis. Creá códigos QR para URLs, WiFi, WhatsApp, email, teléfono, Bitcoin, Ethereum y más.">
 
+<meta name="robots" content="index, follow">
+
 <!-- =====================================================
      ADSTERRA POPUNDER
 ===================================================== -->
@@ -36,6 +38,10 @@ content="Generador QR online gratis. Creá códigos QR para URLs, WiFi, WhatsApp
     padding:0;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 
 /* =====================================================
    BODY
@@ -45,6 +51,7 @@ body{
     font-family:Arial,sans-serif;
     background:#f5f7fb;
     color:#172033;
+    line-height:1.5;
 }
 
 
@@ -78,14 +85,59 @@ header{
     color:#4f8cff;
 }
 
-nav a{
-    color:#ddd;
+
+/* =====================================================
+   BOTON INICIO
+===================================================== */
+
+.inicio-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+    justify-content:center;
+
+    gap:7px;
+
+    padding:10px 17px;
+
+    background:#4f8cff;
+
+    color:white !important;
+
     text-decoration:none;
-    font-size:15px;
+
+    font-size:14px;
+    font-weight:bold;
+
+    border-radius:8px;
+
+    border:1px solid rgba(255,255,255,.12);
+
+    box-shadow:0 3px 10px rgba(0,0,0,.18);
+
+    transition:
+        background .2s ease,
+        transform .2s ease,
+        box-shadow .2s ease;
 }
 
-nav a:hover{
-    color:white;
+.inicio-btn:hover{
+
+    background:#3978e8;
+
+    color:white !important;
+
+    transform:translateY(-1px);
+
+    box-shadow:0 5px 14px rgba(0,0,0,.25);
+}
+
+.inicio-btn:active{
+
+    transform:translateY(0);
+
+    box-shadow:0 2px 7px rgba(0,0,0,.18);
 }
 
 
@@ -217,7 +269,7 @@ textarea:focus{
 
 
 /* =====================================================
-   BOTON
+   BOTON GENERAR
 ===================================================== */
 
 .generate-button{
@@ -241,6 +293,8 @@ textarea:focus{
     cursor:pointer;
 
     transition:.2s;
+
+    box-shadow:0 3px 8px rgba(79,140,255,.20);
 }
 
 .generate-button:hover{
@@ -248,11 +302,15 @@ textarea:focus{
     background:#3978e8;
 
     transform:translateY(-1px);
+
+    box-shadow:0 5px 12px rgba(79,140,255,.25);
 }
 
 .generate-button:active{
 
     transform:translateY(0);
+
+    box-shadow:0 2px 6px rgba(79,140,255,.18);
 }
 
 
@@ -277,7 +335,6 @@ textarea:focus{
     background:white;
 
     border-radius:10px;
-
 }
 
 #qrcode canvas,
@@ -314,6 +371,8 @@ textarea:focus{
     font-weight:bold;
 
     transition:.2s;
+
+    box-shadow:0 3px 8px rgba(22,163,74,.18);
 }
 
 .download:hover{
@@ -321,6 +380,8 @@ textarea:focus{
     background:#15803d;
 
     transform:translateY(-1px);
+
+    box-shadow:0 5px 12px rgba(22,163,74,.22);
 }
 
 
@@ -352,7 +413,6 @@ textarea:focus{
     background:#fee2e2;
 
     color:#b91c1c;
-
 }
 
 .mensaje.exito{
@@ -362,7 +422,6 @@ textarea:focus{
     background:#dcfce7;
 
     color:#15803d;
-
 }
 
 
@@ -420,6 +479,10 @@ footer{
 
 @media(max-width:600px){
 
+    header{
+        padding:18px 15px;
+    }
+
     .header-content{
         gap:10px;
     }
@@ -428,8 +491,13 @@ footer{
         font-size:24px;
     }
 
-    nav a{
-        font-size:14px;
+    .inicio-btn{
+
+        padding:9px 13px;
+
+        font-size:13px;
+
+        border-radius:7px;
     }
 
     h1{
@@ -438,6 +506,8 @@ footer{
 
     .container{
         margin:35px auto;
+        padding-left:15px;
+        padding-right:15px;
     }
 
     .panel{
@@ -480,7 +550,15 @@ Util<span>Mooz</span>
 </div>
 
 <nav>
-<a href="index.html">🏠 Inicio</a>
+
+<a
+href="index.html"
+class="inicio-btn">
+
+🏠 Inicio
+
+</a>
+
 </nav>
 
 </div>
@@ -546,7 +624,9 @@ teléfonos, ubicaciones, contactos, eventos y criptomonedas.
 Tipo de QR
 </label>
 
-<select id="tipo" onchange="crearFormulario()">
+<select
+id="tipo"
+onchange="crearFormulario()">
 
 <option value="url">
 🌐 URL
@@ -853,10 +933,6 @@ function crearFormulario(){
     let html = "";
 
 
-    /* =================================================
-       URL
-    ================================================= */
-
     if(tipo === "url"){
 
         html = campo(
@@ -868,10 +944,6 @@ function crearFormulario(){
 
     }
 
-
-    /* =================================================
-       TEXTO
-    ================================================= */
 
     else if(tipo === "texto"){
 
@@ -890,14 +962,9 @@ function crearFormulario(){
 }
 
 
-/* =================================================
-   WIFI
-================================================= */
-
 else if(tipo === "wifi"){
 
     html =
-
     campo(
         "Nombre de la red WiFi",
         "ssid",
@@ -905,7 +972,6 @@ else if(tipo === "wifi"){
     );
 
     html +=
-
     campo(
         "Contraseña",
         "wifiPassword",
@@ -940,14 +1006,9 @@ else if(tipo === "wifi"){
 }
 
 
-/* =================================================
-   WHATSAPP
-================================================= */
-
 else if(tipo === "whatsapp"){
 
     html =
-
     campo(
         "Número con código de país",
         "numero",
@@ -969,14 +1030,9 @@ else if(tipo === "whatsapp"){
 }
 
 
-/* =================================================
-   EMAIL
-================================================= */
-
 else if(tipo === "email"){
 
     html =
-
     campo(
         "Email",
         "email",
@@ -985,7 +1041,6 @@ else if(tipo === "email"){
     );
 
     html +=
-
     campo(
         "Asunto",
         "asunto",
@@ -1007,14 +1062,9 @@ else if(tipo === "email"){
 }
 
 
-/* =================================================
-   TELEFONO
-================================================= */
-
 else if(tipo === "telefono"){
 
     html =
-
     campo(
         "Número de teléfono",
         "numero",
@@ -1024,14 +1074,9 @@ else if(tipo === "telefono"){
 }
 
 
-/* =================================================
-   SMS
-================================================= */
-
 else if(tipo === "sms"){
 
     html =
-
     campo(
         "Número",
         "numero",
@@ -1053,14 +1098,9 @@ else if(tipo === "sms"){
 }
 
 
-/* =================================================
-   UBICACION
-================================================= */
-
 else if(tipo === "ubicacion"){
 
     html =
-
     campo(
         "Latitud",
         "lat",
@@ -1068,7 +1108,6 @@ else if(tipo === "ubicacion"){
     );
 
     html +=
-
     campo(
         "Longitud",
         "lon",
@@ -1078,14 +1117,9 @@ else if(tipo === "ubicacion"){
 }
 
 
-/* =================================================
-   CONTACTO
-================================================= */
-
 else if(tipo === "contacto"){
 
     html =
-
     campo(
         "Nombre",
         "nombre",
@@ -1093,7 +1127,6 @@ else if(tipo === "contacto"){
     );
 
     html +=
-
     campo(
         "Teléfono",
         "telefono",
@@ -1101,7 +1134,6 @@ else if(tipo === "contacto"){
     );
 
     html +=
-
     campo(
         "Email",
         "emailContacto",
@@ -1110,7 +1142,6 @@ else if(tipo === "contacto"){
     );
 
     html +=
-
     campo(
         "Empresa",
         "empresa",
@@ -1118,7 +1149,6 @@ else if(tipo === "contacto"){
     );
 
     html +=
-
     campo(
         "Sitio web",
         "web",
@@ -1129,14 +1159,9 @@ else if(tipo === "contacto"){
 }
 
 
-/* =================================================
-   EVENTO
-================================================= */
-
 else if(tipo === "evento"){
 
     html =
-
     campo(
         "Título",
         "titulo",
@@ -1144,7 +1169,6 @@ else if(tipo === "evento"){
     );
 
     html +=
-
     campo(
         "Lugar",
         "lugar",
@@ -1152,7 +1176,6 @@ else if(tipo === "evento"){
     );
 
     html +=
-
     campo(
         "Fecha y hora de inicio",
         "inicio",
@@ -1161,7 +1184,6 @@ else if(tipo === "evento"){
     );
 
     html +=
-
     campo(
         "Fecha y hora de finalización",
         "fin",
@@ -1172,14 +1194,9 @@ else if(tipo === "evento"){
 }
 
 
-/* =================================================
-   BITCOIN
-================================================= */
-
 else if(tipo === "bitcoin"){
 
     html =
-
     campo(
         "Dirección Bitcoin",
         "direccionBitcoin",
@@ -1187,7 +1204,6 @@ else if(tipo === "bitcoin"){
     );
 
     html +=
-
     campo(
         "Monto BTC (opcional)",
         "montoBitcoin",
@@ -1198,14 +1214,9 @@ else if(tipo === "bitcoin"){
 }
 
 
-/* =================================================
-   ETHEREUM
-================================================= */
-
 else if(tipo === "ethereum"){
 
     html =
-
     campo(
         "Dirección Ethereum",
         "direccionEthereum",
@@ -1213,7 +1224,6 @@ else if(tipo === "ethereum"){
     );
 
     html +=
-
     campo(
         "Monto ETH (opcional)",
         "montoEthereum",
@@ -1243,25 +1253,10 @@ let data = "";
 ocultarMensaje();
 
 
-/* =================================================
-   URL
-================================================= */
-
 if(tipo === "url"){
 
     const campoURL =
     document.getElementById("url");
-
-    if(!campoURL){
-
-        mostrarMensaje(
-            "Ingresá una URL.",
-            "error"
-        );
-
-        return;
-
-    }
 
     let url =
     campoURL.value.trim();
@@ -1279,9 +1274,7 @@ if(tipo === "url"){
 
     }
 
-    if(
-        !/^https?:\/\//i.test(url)
-    ){
+    if(!/^https?:\/\//i.test(url)){
 
         url =
         "https://" + url;
@@ -1292,10 +1285,6 @@ if(tipo === "url"){
 
 }
 
-
-/* =================================================
-   TEXTO
-================================================= */
 
 else if(tipo === "texto"){
 
@@ -1317,10 +1306,6 @@ else if(tipo === "texto"){
 
 }
 
-
-/* =================================================
-   WIFI
-================================================= */
 
 else if(tipo === "wifi"){
 
@@ -1355,10 +1340,6 @@ else if(tipo === "wifi"){
 
 }
 
-
-/* =================================================
-   WHATSAPP
-================================================= */
 
 else if(tipo === "whatsapp"){
 
@@ -1411,10 +1392,6 @@ else if(tipo === "whatsapp"){
 }
 
 
-/* =================================================
-   EMAIL
-================================================= */
-
 else if(tipo === "email"){
 
     const email =
@@ -1463,7 +1440,6 @@ else if(tipo === "email"){
 
     const parametros = [];
 
-
     if(asunto){
 
         parametros.push(
@@ -1473,7 +1449,6 @@ else if(tipo === "email"){
 
     }
 
-
     if(texto){
 
         parametros.push(
@@ -1482,7 +1457,6 @@ else if(tipo === "email"){
         );
 
     }
-
 
     if(parametros.length){
 
@@ -1494,10 +1468,6 @@ else if(tipo === "email"){
 
 }
 
-
-/* =================================================
-   TELEFONO
-================================================= */
 
 else if(tipo === "telefono"){
 
@@ -1524,10 +1494,6 @@ else if(tipo === "telefono"){
 
 }
 
-
-/* =================================================
-   SMS
-================================================= */
 
 else if(tipo === "sms"){
 
@@ -1562,10 +1528,6 @@ else if(tipo === "sms"){
 
 }
 
-
-/* =================================================
-   UBICACION
-================================================= */
 
 else if(tipo === "ubicacion"){
 
@@ -1637,10 +1599,6 @@ else if(tipo === "ubicacion"){
 }
 
 
-/* =================================================
-   CONTACTO
-================================================= */
-
 else if(tipo === "contacto"){
 
     const nombre =
@@ -1673,7 +1631,6 @@ else if(tipo === "contacto"){
     .value
     .trim();
 
-
     if(!nombre){
 
         mostrarMensaje(
@@ -1685,14 +1642,12 @@ else if(tipo === "contacto"){
 
     }
 
-
     data =
     "BEGIN:VCARD\n" +
     "VERSION:3.0\n" +
     "FN:" +
     escaparVCF(nombre) +
     "\n";
-
 
     if(empresa){
 
@@ -1703,7 +1658,6 @@ else if(tipo === "contacto"){
 
     }
 
-
     if(telefono){
 
         data +=
@@ -1712,7 +1666,6 @@ else if(tipo === "contacto"){
         "\n";
 
     }
-
 
     if(email){
 
@@ -1723,7 +1676,6 @@ else if(tipo === "contacto"){
 
     }
 
-
     if(web){
 
         data +=
@@ -1733,16 +1685,11 @@ else if(tipo === "contacto"){
 
     }
 
-
     data +=
     "END:VCARD";
 
 }
 
-
-/* =================================================
-   EVENTO
-================================================= */
 
 else if(tipo === "evento"){
 
@@ -1768,7 +1715,6 @@ else if(tipo === "evento"){
     .getElementById("fin")
     .value;
 
-
     if(!titulo){
 
         mostrarMensaje(
@@ -1779,7 +1725,6 @@ else if(tipo === "evento"){
         return;
 
     }
-
 
     if(!inicioValor){
 
@@ -1792,7 +1737,6 @@ else if(tipo === "evento"){
 
     }
 
-
     const inicio =
     formatearFechaEvento(inicioValor);
 
@@ -1801,14 +1745,12 @@ else if(tipo === "evento"){
     ? formatearFechaEvento(finValor)
     : "";
 
-
     data =
     "BEGIN:VEVENT\n" +
     "VERSION:2.0\n" +
     "SUMMARY:" +
     escaparVCF(titulo) +
     "\n";
-
 
     if(lugar){
 
@@ -1819,12 +1761,10 @@ else if(tipo === "evento"){
 
     }
 
-
     data +=
     "DTSTART:" +
     inicio +
     "\n";
-
 
     if(fin){
 
@@ -1835,16 +1775,11 @@ else if(tipo === "evento"){
 
     }
 
-
     data +=
     "END:VEVENT";
 
 }
 
-
-/* =================================================
-   BITCOIN
-================================================= */
 
 else if(tipo === "bitcoin"){
 
@@ -1860,7 +1795,6 @@ else if(tipo === "bitcoin"){
     .value
     .trim();
 
-
     if(!direccion){
 
         mostrarMensaje(
@@ -1872,17 +1806,14 @@ else if(tipo === "bitcoin"){
 
     }
 
-
     data =
     "bitcoin:" +
     direccion;
-
 
     if(monto){
 
         const cantidadBTC =
         Number(monto);
-
 
         if(
             !Number.isFinite(cantidadBTC) ||
@@ -1898,7 +1829,6 @@ else if(tipo === "bitcoin"){
 
         }
 
-
         data +=
         "?amount=" +
         encodeURIComponent(cantidadBTC);
@@ -1907,10 +1837,6 @@ else if(tipo === "bitcoin"){
 
 }
 
-
-/* =================================================
-   ETHEREUM
-================================================= */
 
 else if(tipo === "ethereum"){
 
@@ -1926,7 +1852,6 @@ else if(tipo === "ethereum"){
     .value
     .trim();
 
-
     if(!direccion){
 
         mostrarMensaje(
@@ -1937,7 +1862,6 @@ else if(tipo === "ethereum"){
         return;
 
     }
-
 
     if(
         !/^0x[a-fA-F0-9]{40}$/.test(direccion)
@@ -1952,17 +1876,14 @@ else if(tipo === "ethereum"){
 
     }
 
-
     data =
     "ethereum:" +
     direccion;
-
 
     if(monto){
 
         const cantidadETH =
         Number(monto);
-
 
         if(
             !Number.isFinite(cantidadETH) ||
@@ -1978,19 +1899,12 @@ else if(tipo === "ethereum"){
 
         }
 
-
-        /*
-         * Ethereum utiliza wei en el parámetro value.
-         * 1 ETH = 10^18 wei.
-         */
-
         const wei =
         BigInt(
             Math.round(
                 cantidadETH * 1e18
             )
         );
-
 
         data +=
         "?value=" +
@@ -2000,10 +1914,6 @@ else if(tipo === "ethereum"){
 
 }
 
-
-/* =================================================
-   VALIDACION FINAL
-================================================= */
 
 if(!data.trim()){
 
@@ -2017,18 +1927,10 @@ if(!data.trim()){
 }
 
 
-/* =================================================
-   LIMPIAR QR ANTERIOR
-================================================= */
-
 qrcode.innerHTML = "";
 
 download.style.display = "none";
 
-
-/* =================================================
-   GENERAR QR
-================================================= */
 
 try{
 
@@ -2064,10 +1966,6 @@ catch(error){
 
 }
 
-
-/* =================================================
-   PREPARAR DESCARGA
-================================================= */
 
 setTimeout(
 function(){
@@ -2130,11 +2028,6 @@ function(){
         "exito"
     );
 
-
-    /*
-     * Desplazar suavemente hacia el QR
-     * en dispositivos pequeños.
-     */
 
     if(window.innerWidth <= 600){
 
@@ -2236,18 +2129,8 @@ if(!valor){
 
 }
 
-
-/*
- * datetime-local:
- * 2026-09-01T14:30
- *
- * Resultado:
- * 20260901T143000
- */
-
 const fecha =
 new Date(valor);
-
 
 if(
     Number.isNaN(
@@ -2259,34 +2142,28 @@ if(
 
 }
 
-
 const año =
 fecha.getFullYear();
-
 
 const mes =
 String(
     fecha.getMonth() + 1
 ).padStart(2,"0");
 
-
 const dia =
 String(
     fecha.getDate()
 ).padStart(2,"0");
-
 
 const horas =
 String(
     fecha.getHours()
 ).padStart(2,"0");
 
-
 const minutos =
 String(
     fecha.getMinutes()
 ).padStart(2,"0");
-
 
 return (
     año +
@@ -2340,19 +2217,17 @@ document.addEventListener(
 "keydown",
 function(event){
 
-    if(
-        event.key === "Enter" &&
-        event.target.tagName !== "TEXTAREA" &&
-        event.target.tagName !== "SELECT"
-    ){
+if(
+    event.key === "Enter" &&
+    event.target.tagName !== "TEXTAREA" &&
+    event.target.tagName !== "SELECT"
+){
 
-        generar();
-
-    }
+    generar();
 
 }
 
-);
+});
 
 /* =====================================================
 INICIAR
