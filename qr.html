@@ -264,53 +264,115 @@ textarea:focus{
     border-color:#4f8cff;
 
     box-shadow:
-    0 0 0 3px rgba(79,140,255,.10);
+        0 0 0 3px rgba(79,140,255,.10);
 }
 
 
 /* =====================================================
-   BOTON GENERAR
+   BOTON GENERAR QR
 ===================================================== */
 
 .generate-button{
 
     width:100%;
 
-    padding:15px;
+    min-height:52px;
 
-    border:0;
+    padding:14px 22px;
 
-    border-radius:8px;
+    margin-top:5px;
 
-    background:#4f8cff;
+    border:none;
 
-    color:white;
+    border-radius:10px;
+
+    background:linear-gradient(
+        135deg,
+        #4f8cff 0%,
+        #2563eb 100%
+    );
+
+    color:#ffffff;
+
+    font-family:Arial,sans-serif;
 
     font-size:16px;
 
-    font-weight:bold;
+    font-weight:700;
+
+    letter-spacing:.2px;
 
     cursor:pointer;
 
-    transition:.2s;
+    display:flex;
 
-    box-shadow:0 3px 8px rgba(79,140,255,.20);
+    align-items:center;
+
+    justify-content:center;
+
+    gap:8px;
+
+    box-shadow:
+        0 5px 12px rgba(37,99,235,.25),
+        inset 0 1px 0 rgba(255,255,255,.18);
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
 }
+
+
+/* ICONO */
+
+.generate-button::before{
+
+    content:"▣";
+
+    font-size:19px;
+
+    line-height:1;
+}
+
+
+/* HOVER */
 
 .generate-button:hover{
 
-    background:#3978e8;
+    background:linear-gradient(
+        135deg,
+        #5d96ff 0%,
+        #1d4ed8 100%
+    );
 
-    transform:translateY(-1px);
+    transform:translateY(-2px);
 
-    box-shadow:0 5px 12px rgba(79,140,255,.25);
+    box-shadow:
+        0 8px 18px rgba(37,99,235,.32),
+        inset 0 1px 0 rgba(255,255,255,.20);
 }
+
+
+/* CLICK */
 
 .generate-button:active{
 
     transform:translateY(0);
 
-    box-shadow:0 2px 6px rgba(79,140,255,.18);
+    box-shadow:
+        0 3px 7px rgba(37,99,235,.22);
+}
+
+
+/* FOCUS */
+
+.generate-button:focus-visible{
+
+    outline:none;
+
+    box-shadow:
+        0 0 0 4px rgba(79,140,255,.20),
+        0 5px 12px rgba(37,99,235,.25);
 }
 
 
@@ -505,7 +567,9 @@ footer{
     }
 
     .container{
+
         margin:35px auto;
+
         padding-left:15px;
         padding-right:15px;
     }
@@ -518,14 +582,28 @@ footer{
         min-height:70px;
     }
 
+    .generate-button{
+
+        min-height:50px;
+
+        padding:13px 18px;
+
+        font-size:15px;
+
+        border-radius:9px;
+    }
+
     #qrcode{
         padding:15px;
     }
 
     #qrcode canvas,
     #qrcode img{
+
         width:100%;
+
         max-width:300px;
+
         height:auto;
     }
 
@@ -933,6 +1011,8 @@ function crearFormulario(){
     let html = "";
 
 
+    /* URL */
+
     if(tipo === "url"){
 
         html = campo(
@@ -944,6 +1024,8 @@ function crearFormulario(){
 
     }
 
+
+    /* TEXTO */
 
     else if(tipo === "texto"){
 
@@ -961,6 +1043,8 @@ function crearFormulario(){
 
 }
 
+
+/* WIFI */
 
 else if(tipo === "wifi"){
 
@@ -1006,6 +1090,8 @@ else if(tipo === "wifi"){
 }
 
 
+/* WHATSAPP */
+
 else if(tipo === "whatsapp"){
 
     html =
@@ -1029,6 +1115,8 @@ else if(tipo === "whatsapp"){
 
 }
 
+
+/* EMAIL */
 
 else if(tipo === "email"){
 
@@ -1062,6 +1150,8 @@ else if(tipo === "email"){
 }
 
 
+/* TELEFONO */
+
 else if(tipo === "telefono"){
 
     html =
@@ -1073,6 +1163,8 @@ else if(tipo === "telefono"){
 
 }
 
+
+/* SMS */
 
 else if(tipo === "sms"){
 
@@ -1098,6 +1190,8 @@ else if(tipo === "sms"){
 }
 
 
+/* UBICACION */
+
 else if(tipo === "ubicacion"){
 
     html =
@@ -1116,6 +1210,8 @@ else if(tipo === "ubicacion"){
 
 }
 
+
+/* CONTACTO */
 
 else if(tipo === "contacto"){
 
@@ -1159,6 +1255,8 @@ else if(tipo === "contacto"){
 }
 
 
+/* EVENTO */
+
 else if(tipo === "evento"){
 
     html =
@@ -1194,6 +1292,8 @@ else if(tipo === "evento"){
 }
 
 
+/* BITCOIN */
+
 else if(tipo === "bitcoin"){
 
     html =
@@ -1213,6 +1313,8 @@ else if(tipo === "bitcoin"){
 
 }
 
+
+/* ETHEREUM */
 
 else if(tipo === "ethereum"){
 
@@ -1253,6 +1355,8 @@ let data = "";
 ocultarMensaje();
 
 
+/* URL */
+
 if(tipo === "url"){
 
     const campoURL =
@@ -1286,10 +1390,15 @@ if(tipo === "url"){
 }
 
 
+/* TEXTO */
+
 else if(tipo === "texto"){
 
     const texto =
-    document.getElementById("texto").value.trim();
+    document
+    .getElementById("texto")
+    .value
+    .trim();
 
     if(!texto){
 
@@ -1307,16 +1416,24 @@ else if(tipo === "texto"){
 }
 
 
+/* WIFI */
+
 else if(tipo === "wifi"){
 
     const ssid =
-    document.getElementById("ssid").value;
+    document
+    .getElementById("ssid")
+    .value;
 
     const password =
-    document.getElementById("wifiPassword").value;
+    document
+    .getElementById("wifiPassword")
+    .value;
 
     const seguridad =
-    document.getElementById("seguridad").value;
+    document
+    .getElementById("seguridad")
+    .value;
 
     if(!ssid.trim()){
 
@@ -1340,6 +1457,8 @@ else if(tipo === "wifi"){
 
 }
 
+
+/* WHATSAPP */
 
 else if(tipo === "whatsapp"){
 
@@ -1392,6 +1511,8 @@ else if(tipo === "whatsapp"){
 }
 
 
+/* EMAIL */
+
 else if(tipo === "email"){
 
     const email =
@@ -1440,6 +1561,7 @@ else if(tipo === "email"){
 
     const parametros = [];
 
+
     if(asunto){
 
         parametros.push(
@@ -1449,6 +1571,7 @@ else if(tipo === "email"){
 
     }
 
+
     if(texto){
 
         parametros.push(
@@ -1457,6 +1580,7 @@ else if(tipo === "email"){
         );
 
     }
+
 
     if(parametros.length){
 
@@ -1468,6 +1592,8 @@ else if(tipo === "email"){
 
 }
 
+
+/* TELEFONO */
 
 else if(tipo === "telefono"){
 
@@ -1494,6 +1620,8 @@ else if(tipo === "telefono"){
 
 }
 
+
+/* SMS */
 
 else if(tipo === "sms"){
 
@@ -1529,6 +1657,8 @@ else if(tipo === "sms"){
 }
 
 
+/* UBICACION */
+
 else if(tipo === "ubicacion"){
 
     const lat =
@@ -1560,6 +1690,7 @@ else if(tipo === "ubicacion"){
     const longitud =
     Number(lon);
 
+
     if(
         !Number.isFinite(latitud) ||
         latitud < -90 ||
@@ -1574,6 +1705,7 @@ else if(tipo === "ubicacion"){
         return;
 
     }
+
 
     if(
         !Number.isFinite(longitud) ||
@@ -1598,6 +1730,8 @@ else if(tipo === "ubicacion"){
 
 }
 
+
+/* CONTACTO */
 
 else if(tipo === "contacto"){
 
@@ -1631,6 +1765,7 @@ else if(tipo === "contacto"){
     .value
     .trim();
 
+
     if(!nombre){
 
         mostrarMensaje(
@@ -1642,12 +1777,14 @@ else if(tipo === "contacto"){
 
     }
 
+
     data =
     "BEGIN:VCARD\n" +
     "VERSION:3.0\n" +
     "FN:" +
     escaparVCF(nombre) +
     "\n";
+
 
     if(empresa){
 
@@ -1658,6 +1795,7 @@ else if(tipo === "contacto"){
 
     }
 
+
     if(telefono){
 
         data +=
@@ -1666,6 +1804,7 @@ else if(tipo === "contacto"){
         "\n";
 
     }
+
 
     if(email){
 
@@ -1676,6 +1815,7 @@ else if(tipo === "contacto"){
 
     }
 
+
     if(web){
 
         data +=
@@ -1685,11 +1825,14 @@ else if(tipo === "contacto"){
 
     }
 
+
     data +=
     "END:VCARD";
 
 }
 
+
+/* EVENTO */
 
 else if(tipo === "evento"){
 
@@ -1715,6 +1858,7 @@ else if(tipo === "evento"){
     .getElementById("fin")
     .value;
 
+
     if(!titulo){
 
         mostrarMensaje(
@@ -1725,6 +1869,7 @@ else if(tipo === "evento"){
         return;
 
     }
+
 
     if(!inicioValor){
 
@@ -1737,6 +1882,7 @@ else if(tipo === "evento"){
 
     }
 
+
     const inicio =
     formatearFechaEvento(inicioValor);
 
@@ -1745,12 +1891,14 @@ else if(tipo === "evento"){
     ? formatearFechaEvento(finValor)
     : "";
 
+
     data =
     "BEGIN:VEVENT\n" +
     "VERSION:2.0\n" +
     "SUMMARY:" +
     escaparVCF(titulo) +
     "\n";
+
 
     if(lugar){
 
@@ -1761,10 +1909,12 @@ else if(tipo === "evento"){
 
     }
 
+
     data +=
     "DTSTART:" +
     inicio +
     "\n";
+
 
     if(fin){
 
@@ -1775,11 +1925,14 @@ else if(tipo === "evento"){
 
     }
 
+
     data +=
     "END:VEVENT";
 
 }
 
+
+/* BITCOIN */
 
 else if(tipo === "bitcoin"){
 
@@ -1795,6 +1948,7 @@ else if(tipo === "bitcoin"){
     .value
     .trim();
 
+
     if(!direccion){
 
         mostrarMensaje(
@@ -1806,14 +1960,17 @@ else if(tipo === "bitcoin"){
 
     }
 
+
     data =
     "bitcoin:" +
     direccion;
+
 
     if(monto){
 
         const cantidadBTC =
         Number(monto);
+
 
         if(
             !Number.isFinite(cantidadBTC) ||
@@ -1829,6 +1986,7 @@ else if(tipo === "bitcoin"){
 
         }
 
+
         data +=
         "?amount=" +
         encodeURIComponent(cantidadBTC);
@@ -1837,6 +1995,8 @@ else if(tipo === "bitcoin"){
 
 }
 
+
+/* ETHEREUM */
 
 else if(tipo === "ethereum"){
 
@@ -1852,6 +2012,7 @@ else if(tipo === "ethereum"){
     .value
     .trim();
 
+
     if(!direccion){
 
         mostrarMensaje(
@@ -1862,6 +2023,7 @@ else if(tipo === "ethereum"){
         return;
 
     }
+
 
     if(
         !/^0x[a-fA-F0-9]{40}$/.test(direccion)
@@ -1876,14 +2038,17 @@ else if(tipo === "ethereum"){
 
     }
 
+
     data =
     "ethereum:" +
     direccion;
+
 
     if(monto){
 
         const cantidadETH =
         Number(monto);
+
 
         if(
             !Number.isFinite(cantidadETH) ||
@@ -1899,12 +2064,14 @@ else if(tipo === "ethereum"){
 
         }
 
+
         const wei =
         BigInt(
             Math.round(
                 cantidadETH * 1e18
             )
         );
+
 
         data +=
         "?value=" +
@@ -1914,6 +2081,10 @@ else if(tipo === "ethereum"){
 
 }
 
+
+/* =================================================
+   VALIDACION FINAL
+================================================= */
 
 if(!data.trim()){
 
@@ -1927,10 +2098,16 @@ if(!data.trim()){
 }
 
 
+/* LIMPIAR QR */
+
 qrcode.innerHTML = "";
 
 download.style.display = "none";
 
+
+/* =================================================
+   GENERAR QR
+================================================= */
 
 try{
 
@@ -1966,6 +2143,10 @@ catch(error){
 
 }
 
+
+/* =================================================
+   PREPARAR DESCARGA
+================================================= */
 
 setTimeout(
 function(){
@@ -2035,8 +2216,11 @@ function(){
         function(){
 
             qrcode.scrollIntoView({
+
                 behavior:"smooth",
+
                 block:"center"
+
             });
 
         },100);
@@ -2118,7 +2302,7 @@ return String(text || "")
 }
 
 /* =====================================================
-FORMATEAR FECHA PARA EVENTO
+FORMATEAR FECHA
 ===================================================== */
 
 function formatearFechaEvento(valor){
@@ -2129,8 +2313,10 @@ if(!valor){
 
 }
 
+
 const fecha =
 new Date(valor);
+
 
 if(
     Number.isNaN(
@@ -2142,28 +2328,34 @@ if(
 
 }
 
+
 const año =
 fecha.getFullYear();
+
 
 const mes =
 String(
     fecha.getMonth() + 1
 ).padStart(2,"0");
 
+
 const dia =
 String(
     fecha.getDate()
 ).padStart(2,"0");
+
 
 const horas =
 String(
     fecha.getHours()
 ).padStart(2,"0");
 
+
 const minutos =
 String(
     fecha.getMinutes()
 ).padStart(2,"0");
+
 
 return (
     año +
@@ -2238,5 +2430,4 @@ crearFormulario();
 </script>
 
 </body>
-
 </html>
