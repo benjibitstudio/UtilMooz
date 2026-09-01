@@ -1,311 +1,330 @@
 <!DOCTYPE html>
 
 <html lang="es">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Convertir archivos online gratis | UtilMooz</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
 
-<meta name="description"
-content="Convertí, comprimí y modificá imágenes y archivos PDF online gratis con UtilMooz.">
+<title>UtilMooz - Herramientas de Colores</title>
+
+<meta name="description" content="Color Picker, conversor HEX RGB HSL, contraste WCAG, gradientes y generadores CSS gratis.">
 
 <style>
 
 *{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+box-sizing:border-box;
+margin:0;
+padding:0;
 }
 
 body{
-    font-family:Arial,sans-serif;
-    background:#f5f7fb;
-    color:#172033;
+font-family:Arial,sans-serif;
+background:#f5f7fb;
+color:#172033;
+}
+
+header,
+footer{
+background:#111827;
+color:#fff;
 }
 
 header{
-    background:#111827;
-    color:white;
-    padding:22px 20px;
-}
-
-.header-content{
-    max-width:1100px;
-    margin:auto;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.logo{
-    font-size:26px;
-    font-weight:bold;
-}
-
-.logo span{
-    color:#4f8cff;
-}
-
-nav a{
-    color:#ddd;
-    text-decoration:none;
-}
-
-.container{
-    max-width:1000px;
-    margin:45px auto;
-    padding:0 20px 60px;
-}
-
-h1{
-    font-size:38px;
-    margin-bottom:12px;
-}
-
-.description{
-    color:#667085;
-    line-height:1.6;
-    margin-bottom:30px;
-}
-
-.categories{
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-    margin-bottom:25px;
-}
-
-.category{
-    border:1px solid #d9dde5;
-    background:white;
-    padding:11px 18px;
-    border-radius:8px;
-    cursor:pointer;
-    font-size:15px;
-}
-
-.category.active,
-.category:hover{
-    background:#4f8cff;
-    color:white;
-    border-color:#4f8cff;
-}
-
-.tools{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-    gap:12px;
-    margin-bottom:30px;
-}
-
-.tool{
-    background:white;
-    border:1px solid #e6e8ee;
-    border-radius:10px;
-    padding:15px;
-    cursor:pointer;
-    transition:.2s;
-}
-
-.tool:hover{
-    transform:translateY(-2px);
-    box-shadow:0 5px 15px rgba(0,0,0,.07);
-}
-
-.tool.active{
-    border:2px solid #4f8cff;
-}
-
-.tool-title{
-    font-weight:bold;
-}
-
-.tool-description{
-    color:#667085;
-    font-size:13px;
-    margin-top:5px;
-}
-
-.panel{
-    background:white;
-    border:1px solid #e6e8ee;
-    border-radius:16px;
-    padding:30px;
-    box-shadow:0 5px 20px rgba(0,0,0,.05);
-}
-
-.panel h2{
-    margin-bottom:10px;
-}
-
-.panel-description{
-    color:#667085;
-    margin-bottom:25px;
-    line-height:1.5;
-}
-
-.file-input{
-    width:100%;
-    padding:18px;
-    border:2px dashed #cbd1dc;
-    border-radius:10px;
-    margin-bottom:20px;
-    background:#fafbfc;
-}
-
-.controls{
-    margin-top:20px;
-}
-
-.controls label{
-    display:block;
-    font-weight:bold;
-    margin-bottom:8px;
-}
-
-.controls input,
-.controls select{
-    width:100%;
-    padding:12px;
-    border:1px solid #d9dde5;
-    border-radius:8px;
-    font-size:15px;
-    margin-bottom:15px;
-}
-
-.row{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:15px;
-}
-
-button{
-    width:100%;
-    padding:15px;
-    border:none;
-    border-radius:8px;
-    background:#4f8cff;
-    color:white;
-    font-size:16px;
-    cursor:pointer;
-    margin-top:10px;
-}
-
-button:hover{
-    background:#3978e8;
-}
-
-button.secondary{
-    background:#111827;
-}
-
-button.success{
-    background:#16a34a;
-}
-
-.preview{
-    margin-top:25px;
-    text-align:center;
-}
-
-.preview img{
-    max-width:100%;
-    max-height:400px;
-    border-radius:8px;
-}
-
-.download{
-    display:none;
-    margin-top:20px;
-    padding:15px;
-    background:#16a34a;
-    color:white;
-    text-decoration:none;
-    text-align:center;
-    border-radius:8px;
-    font-weight:bold;
-}
-
-.status{
-    margin-top:20px;
-    padding:15px;
-    background:#f5f7fb;
-    border-radius:8px;
-    text-align:center;
-    color:#4b5563;
-}
-
-.hidden{
-    display:none!important;
-}
-
-.info{
-    margin-top:35px;
-    line-height:1.7;
-    color:#4b5563;
-}
-
-.info h2{
-    margin-bottom:10px;
-}
-
-/* PUBLICIDAD */
-
-.ad-container{
-    width:100%;
-    margin:25px auto 30px;
-    text-align:center;
-    overflow:hidden;
-}
-
-.ad-label{
-    font-size:11px;
-    color:#98a2b3;
-    margin-bottom:7px;
+padding:20px;
 }
 
 footer{
-    background:#111827;
-    color:#aaa;
-    text-align:center;
-    padding:30px;
+padding:25px;
+text-align:center;
+color:#aaa;
 }
+
+.wrap{
+max-width:1100px;
+margin:auto;
+}
+
+/* ================================
+   ENCABEZADO
+================================ */
+
+.header-content{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px;
+}
+
+.logo{
+font-size:28px;
+font-weight:bold;
+}
+
+.logo span{
+color:#4f8cff;
+}
+
+/* BOTÓN INICIO */
+
+.home-btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+background:#4f8cff;
+color:#fff;
+text-decoration:none;
+padding:10px 18px;
+border-radius:8px;
+font-size:15px;
+font-weight:bold;
+transition:.2s;
+}
+
+.home-btn:hover{
+background:#3978e8;
+transform:translateY(-1px);
+}
+
+/* ================================
+   CONTENIDO
+================================ */
+
+main{
+max-width:1000px;
+margin:40px auto;
+padding:0 20px;
+}
+
+h1{
+font-size:36px;
+margin-bottom:10px;
+}
+
+.desc{
+color:#667085;
+margin-bottom:25px;
+line-height:1.6;
+}
+
+/* ================================
+   ANUNCIOS
+================================ */
+
+.ad-container{
+width:100%;
+margin:25px auto;
+background:#fff;
+border:1px solid #e1e5ec;
+border-radius:10px;
+padding:10px;
+text-align:center;
+overflow:hidden;
+}
+
+.ad-title{
+font-size:10px;
+color:#98a2b3;
+margin-bottom:6px;
+text-transform:uppercase;
+letter-spacing:.5px;
+}
+
+.ad-native{
+min-height:100px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+}
+
+.ad-banner{
+min-height:80px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+}
+
+.banner-wrapper{
+width:100%;
+display:flex;
+justify-content:center;
+align-items:center;
+overflow:hidden;
+}
+
+/* ================================
+   HERRAMIENTAS
+================================ */
+
+.tools{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:12px;
+margin-bottom:25px;
+}
+
+.tool{
+background:#fff;
+border:1px solid #ddd;
+border-radius:10px;
+padding:14px;
+cursor:pointer;
+transition:.2s;
+}
+
+.tool:hover{
+box-shadow:0 4px 10px rgba(0,0,0,.08);
+}
+
+.tool.active{
+border:2px solid #4f8cff;
+}
+
+.panel{
+background:#fff;
+border:1px solid #ddd;
+border-radius:14px;
+padding:25px;
+box-shadow:0 8px 20px rgba(0,0,0,.05);
+}
+
+.panel h2{
+margin-bottom:8px;
+}
+
+.panel p{
+color:#667085;
+margin-bottom:15px;
+}
+
+input,
+button{
+width:100%;
+padding:12px;
+border-radius:8px;
+font-size:15px;
+margin:8px 0;
+}
+
+input{
+border:1px solid #d6dbe6;
+}
+
+input[type=color]{
+height:60px;
+padding:4px;
+}
+
+input[type=range]{
+padding:0;
+}
+
+button{
+background:#4f8cff;
+color:#fff;
+border:none;
+cursor:pointer;
+}
+
+button:hover{
+background:#3978e8;
+}
+
+.result{
+background:#eef3ff;
+padding:18px;
+border-radius:10px;
+margin-top:15px;
+}
+
+.color-box{
+height:120px;
+border-radius:10px;
+border:1px solid #ccc;
+margin:12px 0;
+}
+
+.code{
+background:#111827;
+color:#fff;
+padding:12px;
+border-radius:8px;
+font-family:monospace;
+white-space:pre-wrap;
+margin:10px 0;
+}
+
+.range{
+text-align:center;
+color:#4f8cff;
+font-weight:bold;
+margin-top:-5px;
+}
+
+.big{
+font-size:42px;
+font-weight:bold;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
 
 @media(max-width:600px){
 
-    h1{
-        font-size:30px;
-    }
+header{
+padding:16px;
+}
 
-    .panel{
-        padding:20px;
-    }
+.header-content{
+gap:12px;
+}
 
-    .row{
-        grid-template-columns:1fr;
-    }
+.logo{
+font-size:24px;
+}
+
+.home-btn{
+padding:9px 13px;
+font-size:14px;
+}
+
+h1{
+font-size:30px;
+}
+
+main{
+margin:25px auto;
+padding:0 15px;
+}
+
+.panel{
+padding:18px;
+}
+
+.ad-container{
+margin:20px auto;
+}
+
+}
+
+/* Banner 468x60 adaptado para pantallas pequeñas */
+
+@media(max-width:500px){
+
+.banner-wrapper{
+transform:scale(.72);
+transform-origin:center;
+height:55px;
+}
 
 }
 
 </style>
-
-<!-- ================= ADSTERRA POPUNDER ================= -->
-
-<script src="https://pl31111967.profitableratecpmnetwork.com/b9/74/38/b97438afaf5c6103e9df4f63f6aaa099.js"></script>
-
-<!-- PDF-LIB -->
-
-<script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
-
-<!-- PDF.JS -->
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.min.mjs"
-        type="module"></script>
-
-<!-- HEIC -->
-
-<script src="https://cdn.jsdelivr.net/npm/heic2any@0.0.4/dist/heic2any.min.js"></script>
 
 </head>
 
@@ -313,1378 +332,1226 @@ footer{
 
 <header>
 
-<div class="header-content">
+<div class="wrap header-content">
 
 <div class="logo">
 Util<span>Mooz</span>
 </div>
 
-<nav>
-<a href="./">Inicio</a>
-</nav>
+<a href="index.html" class="home-btn">
+🏠 Inicio
+</a>
 
 </div>
 
 </header>
 
-<main class="container">
+<main>
 
-<h1>Convertir archivos online</h1>
+<h1>
+Herramientas de Colores
+</h1>
 
-<p class="description">
-Convertí, comprimí y modificá imágenes y documentos PDF de forma gratuita.
+<p class="desc">
+12 herramientas gratuitas para diseñadores y desarrolladores. Convertí colores, comprobá contraste y generá código CSS al instante.
 </p>
 
-<!-- ================= ADSTERRA NATIVE BANNER ================= -->
+<!-- =========================================
+     ANUNCIO NATIVO
+========================================= -->
 
-<div class="ad-container">
+<div class="ad-container ad-native">
 
-<div class="ad-label">
-PUBLICIDAD
+<div class="ad-title">
+Publicidad
 </div>
 
-<script async="async"
-data-cfasync="false"
-src="https://pl31111968.profitableratecpmnetwork.com/602ece9ec60ac6af897e5d7b5c27586a/invoke.js">
-</script>
+<script async="async" data-cfasync="false" src="https://pl31111968.profitableratecpmnetwork.com/602ece9ec60ac6af897e5d7b5c27586a/invoke.js"></script>
 
 <div id="container-602ece9ec60ac6af897e5d7b5c27586a"></div>
 
 </div>
 
-<div class="categories">
+<!-- =========================================
+     LISTA DE HERRAMIENTAS
+========================================= -->
 
-<button class="category active" onclick="mostrarCategoria('imagenes',this)">
-🖼️ Imágenes
-</button>
+<div class="tools" id="tools"></div>
 
-<button class="category" onclick="mostrarCategoria('pdf',this)">
-📄 PDF
-</button>
-
-</div>
-
-<!-- ================= IMAGENES ================= -->
-
-<div id="categoria-imagenes">
-
-<div class="tools">
-
-<div class="tool active" onclick="seleccionar('jpg-png',this)">
-<div class="tool-title">JPG → PNG</div>
-<div class="tool-description">Convertir JPG a PNG</div>
-</div>
-
-<div class="tool" onclick="seleccionar('png-jpg',this)">
-<div class="tool-title">PNG → JPG</div>
-<div class="tool-description">Convertir PNG a JPG</div>
-</div>
-
-<div class="tool" onclick="seleccionar('jpg-webp',this)">
-<div class="tool-title">JPG → WEBP</div>
-<div class="tool-description">Convertir JPG a WEBP</div>
-</div>
-
-<div class="tool" onclick="seleccionar('webp-jpg',this)">
-<div class="tool-title">WEBP → JPG</div>
-<div class="tool-description">Convertir WEBP a JPG</div>
-</div>
-
-<div class="tool" onclick="seleccionar('png-webp',this)">
-<div class="tool-title">PNG → WEBP</div>
-<div class="tool-description">Convertir PNG a WEBP</div>
-</div>
-
-<div class="tool" onclick="seleccionar('webp-png',this)">
-<div class="tool-title">WEBP → PNG</div>
-<div class="tool-description">Convertir WEBP a PNG</div>
-</div>
-
-<div class="tool" onclick="seleccionar('heic-jpg',this)">
-<div class="tool-title">HEIC → JPG</div>
-<div class="tool-description">Convertir fotos HEIC</div>
-</div>
-
-<div class="tool" onclick="seleccionar('comprimir',this)">
-<div class="tool-title">Comprimir imagen</div>
-<div class="tool-description">Reducir tamaño del archivo</div>
-</div>
-
-<div class="tool" onclick="seleccionar('redimensionar',this)">
-<div class="tool-title">Redimensionar</div>
-<div class="tool-description">Cambiar dimensiones</div>
-</div>
-
-<div class="tool" onclick="seleccionar('recortar',this)">
-<div class="tool-title">Recortar imagen</div>
-<div class="tool-description">Recortar una imagen</div>
-</div>
-
-</div>
-
-</div>
-
-<!-- ================= PDF ================= -->
-
-<div id="categoria-pdf" class="hidden">
-
-<div class="tools">
-
-<div class="tool" onclick="seleccionar('jpg-pdf',this)">
-<div class="tool-title">JPG → PDF</div>
-<div class="tool-description">Convertir JPG a PDF</div>
-</div>
-
-<div class="tool" onclick="seleccionar('png-pdf',this)">
-<div class="tool-title">PNG → PDF</div>
-<div class="tool-description">Convertir PNG a PDF</div>
-</div>
-
-<div class="tool" onclick="seleccionar('pdf-jpg',this)">
-<div class="tool-title">PDF → JPG</div>
-<div class="tool-description">Convertir páginas a JPG</div>
-</div>
-
-<div class="tool" onclick="seleccionar('unir-pdf',this)">
-<div class="tool-title">Unir PDF</div>
-<div class="tool-description">Combinar varios PDF</div>
-</div>
-
-<div class="tool" onclick="seleccionar('dividir-pdf',this)">
-<div class="tool-title">Dividir PDF</div>
-<div class="tool-description">Extraer páginas</div>
-</div>
-
-<div class="tool" onclick="seleccionar('rotar-pdf',this)">
-<div class="tool-title">Rotar PDF</div>
-<div class="tool-description">Rotar páginas</div>
-</div>
-
-</div>
-
-</div>
-
-<!-- ================= PANEL ================= -->
+<!-- =========================================
+     PANEL
+========================================= -->
 
 <div class="panel">
 
-<h2 id="titulo">
-JPG a PNG
+<h2 id="title">
+Color Picker
 </h2>
 
-<p class="panel-description" id="descripcion">
-Convertí una imagen JPG a PNG directamente desde tu navegador.
+<p id="description">
+Elegí un color.
 </p>
 
-<input
-type="file"
-id="archivo"
-class="file-input"
+<div id="form"></div>
 
->
-
-<div id="opciones"></div>
-
-<button onclick="procesar()">
-Procesar archivo
-</button>
-
-<div class="status" id="status">
-Esperando archivo...
+<div class="result" id="result">
+Esperando...
 </div>
-
-<div class="preview" id="preview"></div>
-
-<a
-id="download"
-class="download">
-⬇ Descargar resultado </a>
 
 </div>
 
-<!-- ================= ADSTERRA BANNER 468x60 ================= -->
+<!-- =========================================
+     BANNER 468x60
+========================================= -->
 
-<div class="ad-container">
+<div class="ad-container ad-banner">
 
-<div class="ad-label">
-PUBLICIDAD
+<div class="ad-title">
+Publicidad
 </div>
+
+<div class="banner-wrapper">
 
 <script>
+
 atOptions = {
-    'key' : 'b707b54164f1f1d456e0b2d0a974ce3f',
-    'format' : 'iframe',
-    'height' : 60,
-    'width' : 468,
-    'params' : {}
+'key' : 'b707b54164f1f1d456e0b2d0a974ce3f',
+'format' : 'iframe',
+'height' : 60,
+'width' : 468,
+'params' : {}
 };
+
 </script>
 
-<script src="https://www.highrevenueformat.com/b707b54164f1f1d456e0b2d0a974ce3f/invoke.js">
-</script>
+<script src="https://www.highrevenueformat.com/b707b54164f1f1d456e0b2d0a974ce3f/invoke.js"></script>
 
 </div>
-
-<div class="info">
-
-<h2>Convertir archivos online gratis</h2>
-
-<p>
-UtilMooz permite convertir y modificar diferentes tipos de archivos
-directamente desde el navegador. No necesitás instalar programas.
-</p>
 
 </div>
 
 </main>
 
 <footer>
-© 2026 UtilMooz — Herramientas online gratuitas
+
+© 2026 UtilMooz — Herramientas online
+
 </footer>
-
-<!-- ================= ADSTERRA SOCIAL BAR ================= -->
-
-<script src="https://pl31111969.profitableratecpmnetwork.com/86/3e/a5/863ea5ff539e50bf753f88b37ca829de.js">
-</script>
 
 <script>
 
-let herramienta="jpg-png";
+/* =========================================
+   LISTA DE HERRAMIENTAS
+========================================= */
 
-const configuraciones={
+const toolList=[
 
-"jpg-png":{
-titulo:"JPG a PNG",
-descripcion:"Convertí una imagen JPG a PNG directamente desde tu navegador.",
-accept:"image/jpeg",
-tipo:"imagen",
-extension:"png"
-},
+["picker","🎨 Color Picker"],
+["hexrgb","HEX → RGB"],
+["rgbhex","RGB → HEX"],
+["hexhsl","HEX → HSL"],
+["hslhex","HSL → HEX"],
+["contrast","⚫ Contraste"],
+["comp","🔄 Complementario"],
+["triad","🎨 Triádico"],
+["grad","🌈 Gradiente"],
+["shadow","🌑 Box Shadow"],
+["radius","⭕ Border Radius"],
+["text","✏️ Text Shadow"]
 
-"png-jpg":{
-titulo:"PNG a JPG",
-descripcion:"Convertí una imagen PNG a JPG.",
-accept:"image/png",
-tipo:"imagen",
-extension:"jpg"
-},
+];
 
-"jpg-webp":{
-titulo:"JPG a WEBP",
-descripcion:"Convertí una imagen JPG al formato WEBP.",
-accept:"image/jpeg",
-tipo:"imagen",
-extension:"webp"
-},
 
-"webp-jpg":{
-titulo:"WEBP a JPG",
-descripcion:"Convertí una imagen WEBP a JPG.",
-accept:"image/webp",
-tipo:"imagen",
-extension:"jpg"
-},
+/* =========================================
+   CONFIGURACIÓN
+========================================= */
 
-"png-webp":{
-titulo:"PNG a WEBP",
-descripcion:"Convertí una imagen PNG al formato WEBP.",
-accept:"image/png",
-tipo:"imagen",
-extension:"webp"
-},
+const configs={
 
-"webp-png":{
-titulo:"WEBP a PNG",
-descripcion:"Convertí una imagen WEBP a PNG.",
-accept:"image/webp",
-tipo:"imagen",
-extension:"png"
-},
+picker:[
 
-"heic-jpg":{
-titulo:"HEIC a JPG",
-descripcion:"Convertí fotografías HEIC a JPG.",
-accept:".heic,image/heic,image/heif",
-tipo:"heic",
-extension:"jpg"
-},
+"Elegí un color.",
 
-"comprimir":{
-titulo:"Comprimir imagen",
-descripcion:"Reducí el tamaño de una imagen ajustando su calidad.",
-accept:"image/*",
-tipo:"comprimir",
-extension:"jpg"
-},
+`<input type="color" id="color" value="#4f8cff">
 
-"redimensionar":{
-titulo:"Redimensionar imagen",
-descripcion:"Cambiá el ancho y alto de una imagen.",
-accept:"image/*",
-tipo:"redimensionar",
-extension:"png"
-},
+<button onclick="picker()">
+Analizar color
+</button>`
 
-"recortar":{
-titulo:"Recortar imagen",
-descripcion:"Recortá una imagen utilizando coordenadas.",
-accept:"image/*",
-tipo:"recortar",
-extension:"png"
-},
+],
 
-"jpg-pdf":{
-titulo:"JPG a PDF",
-descripcion:"Convertí una o varias imágenes JPG en un documento PDF.",
-accept:"image/jpeg",
-tipo:"imagen-pdf",
-extension:"pdf"
-},
+hexrgb:[
 
-"png-pdf":{
-titulo:"PNG a PDF",
-descripcion:"Convertí una o varias imágenes PNG en un documento PDF.",
-accept:"image/png",
-tipo:"imagen-pdf",
-extension:"pdf"
-},
+"Convertí HEX a RGB.",
 
-"pdf-jpg":{
-titulo:"PDF a JPG",
-descripcion:"Convertí las páginas de un PDF en imágenes JPG.",
-accept:"application/pdf",
-tipo:"pdf-jpg",
-extension:"jpg"
-},
+`<input id="hex" placeholder="#4f8cff">
 
-"unir-pdf":{
-titulo:"Unir PDF",
-descripcion:"Combiná varios archivos PDF en un solo documento.",
-accept:"application/pdf",
-tipo:"unir-pdf",
-extension:"pdf"
-},
+<button onclick="hexRGB()">
+Convertir
+</button>`
 
-"dividir-pdf":{
-titulo:"Dividir PDF",
-descripcion:"Extraé páginas específicas de un archivo PDF.",
-accept:"application/pdf",
-tipo:"dividir-pdf",
-extension:"pdf"
-},
+],
 
-"rotar-pdf":{
-titulo:"Rotar PDF",
-descripcion:"Rotá las páginas de un PDF.",
-accept:"application/pdf",
-tipo:"rotar-pdf",
-extension:"pdf"
-}
+rgbhex:[
+
+"Convertí RGB a HEX.",
+
+`<input id="r" type="number" min="0" max="255" placeholder="Rojo">
+
+<input id="g" type="number" min="0" max="255" placeholder="Verde">
+
+<input id="b" type="number" min="0" max="255" placeholder="Azul">
+
+<button onclick="rgbHEX()">
+Convertir
+</button>`
+
+],
+
+hexhsl:[
+
+"Convertí HEX a HSL.",
+
+`<input id="hex" placeholder="#4f8cff">
+
+<button onclick="hexHSL()">
+Convertir
+</button>`
+
+],
+
+hslhex:[
+
+"Convertí HSL a HEX.",
+
+`<input id="h" type="number" min="0" max="360" placeholder="Hue">
+
+<input id="s" type="number" min="0" max="100" placeholder="Saturation">
+
+<input id="l" type="number" min="0" max="100" placeholder="Lightness">
+
+<button onclick="hslHEX()">
+Convertir
+</button>`
+
+],
+
+contrast:[
+
+"Contraste WCAG.",
+
+`<label>Color 1</label>
+
+<input type="color" id="c1" value="#000000">
+
+<label>Color 2</label>
+
+<input type="color" id="c2" value="#ffffff">
+
+<button onclick="contrast()">
+Comprobar
+</button>`
+
+],
+
+comp:[
+
+"Color complementario.",
+
+`<input type="color" id="color" value="#4f8cff">
+
+<button onclick="complementario()">
+Generar
+</button>`
+
+],
+
+triad:[
+
+"Paleta triádica.",
+
+`<input type="color" id="color" value="#4f8cff">
+
+<button onclick="triadico()">
+Generar
+</button>`
+
+],
+
+grad:[
+
+"Generador de gradientes CSS.",
+
+`<label>Color 1</label>
+
+<input type="color" id="c1" value="#4f8cff">
+
+<label>Color 2</label>
+
+<input type="color" id="c2" value="#111827">
+
+<label>Ángulo</label>
+
+<input id="ang"
+type="range"
+min="0"
+max="360"
+value="90"
+oninput="document.getElementById('av').innerText=this.value">
+
+<div class="range" id="av">
+90
+</div>
+
+<button onclick="gradiente()">
+Generar CSS
+</button>`
+
+],
+
+shadow:[
+
+"Generador Box Shadow.",
+
+`<label>X</label>
+
+<input id="x"
+type="range"
+min="-30"
+max="30"
+value="5"
+oninput="document.getElementById('vx').innerText=this.value;shadow()">
+
+<div class="range" id="vx">
+5
+</div>
+
+<label>Y</label>
+
+<input id="y"
+type="range"
+min="-30"
+max="30"
+value="5"
+oninput="document.getElementById('vy').innerText=this.value;shadow()">
+
+<div class="range" id="vy">
+5
+</div>
+
+<label>Blur</label>
+
+<input id="blur"
+type="range"
+min="0"
+max="50"
+value="15"
+oninput="document.getElementById('vb').innerText=this.value;shadow()">
+
+<div class="range" id="vb">
+15
+</div>
+
+<label>Color</label>
+
+<input type="color"
+id="sc"
+value="#000000"
+oninput="shadow()">`
+
+],
+
+radius:[
+
+"Generador Border Radius.",
+
+`<input id="rad"
+type="range"
+min="0"
+max="100"
+value="12"
+oninput="document.getElementById('vr').innerText=this.value;radius()">
+
+<div class="range" id="vr">
+12
+</div>`
+
+],
+
+text:[
+
+"Generador Text Shadow.",
+
+`<label>X</label>
+
+<input id="tx"
+type="range"
+min="-20"
+max="20"
+value="2"
+oninput="document.getElementById('tvx').innerText=this.value;textshadow()">
+
+<div class="range" id="tvx">
+2
+</div>
+
+<label>Y</label>
+
+<input id="ty"
+type="range"
+min="-20"
+max="20"
+value="2"
+oninput="document.getElementById('tvy').innerText=this.value;textshadow()">
+
+<div class="range" id="tvy">
+2
+</div>
+
+<label>Blur</label>
+
+<input id="tb"
+type="range"
+min="0"
+max="30"
+value="5"
+oninput="document.getElementById('tvb').innerText=this.value;textshadow()">
+
+<div class="range" id="tvb">
+5
+</div>
+
+<label>Color</label>
+
+<input type="color"
+id="tc"
+value="#000000"
+oninput="textshadow()">`
+
+]
 
 };
 
 
-function mostrarCategoria(categoria,boton){
+/* =========================================
+   ELEMENTOS PRINCIPALES
+========================================= */
 
-document
-.querySelectorAll(".category")
-.forEach(x=>x.classList.remove("active"));
+const tools=document.getElementById("tools");
 
-boton.classList.add("active");
+const title=document.getElementById("title");
 
-document
-.getElementById("categoria-imagenes")
-.classList.toggle("hidden",categoria!=="imagenes");
+const description=document.getElementById("description");
 
-document
-.getElementById("categoria-pdf")
-.classList.toggle("hidden",categoria!=="pdf");
+const form=document.getElementById("form");
 
-}
+const result=document.getElementById("result");
 
 
-function seleccionar(nombre,elemento){
+/* =========================================
+   CREAR BOTONES
+========================================= */
 
-herramienta=nombre;
+toolList.forEach((t,i)=>{
+
+const div=document.createElement("div");
+
+div.className="tool"+(i===0?" active":"");
+
+div.innerHTML="<b>"+t[1]+"</b>";
+
+div.onclick=()=>selectTool(t[0],div);
+
+tools.appendChild(div);
+
+});
+
+
+/* =========================================
+   CAMBIAR HERRAMIENTA
+========================================= */
+
+function selectTool(name,el){
 
 document
 .querySelectorAll(".tool")
 .forEach(x=>x.classList.remove("active"));
 
-elemento.classList.add("active");
+el.classList.add("active");
 
-const config=configuraciones[nombre];
+title.innerText=
+toolList.find(t=>t[0]===name)[1];
 
-document.getElementById("titulo").textContent=config.titulo;
+description.innerText=
+configs[name][0];
 
-document.getElementById("descripcion").textContent=config.descripcion;
+form.innerHTML=
+configs[name][1];
 
-const archivo=document.getElementById("archivo");
+result.innerHTML=
+"Esperando...";
 
-archivo.accept=config.accept;
+if(name==="picker")
+picker();
 
-archivo.multiple=
-nombre==="jpg-pdf" ||
-nombre==="png-pdf" ||
-nombre==="unir-pdf";
+if(name==="shadow")
+shadow();
 
-document.getElementById("preview").innerHTML="";
+if(name==="radius")
+radius();
 
-document.getElementById("download").style.display="none";
-
-document.getElementById("status").textContent=
-"Esperando archivo...";
-
-crearOpciones();
-
-}
-
-
-function crearOpciones(){
-
-const opciones=document.getElementById("opciones");
-
-opciones.innerHTML="";
-
-if(herramienta==="png-jpg"){
-
-opciones.innerHTML=`
-
-<div class="controls">
-
-<label>Calidad JPG</label>
-
-<input
-type="range"
-id="calidad"
-min="10"
-max="100"
-value="90"
-oninput="valorCalidad.textContent=this.value">
-
-<p>
-Calidad: <span id="valorCalidad">90</span>%
-</p>
-
-</div>`;
+if(name==="text")
+textshadow();
 
 }
 
 
-if(
-herramienta==="jpg-webp" ||
-herramienta==="webp-jpg" ||
-herramienta==="png-webp"
-){
+/* =========================================
+   HEX → RGB
+========================================= */
 
-opciones.innerHTML=`
+function hexToRGB(hex){
 
-<div class="controls">
+hex=hex.replace("#","");
 
-<label>Calidad</label>
+return{
 
-<input
-type="range"
-id="calidad"
-min="10"
-max="100"
-value="90"
-oninput="valorCalidad.textContent=this.value">
+r:parseInt(hex.substring(0,2),16),
 
-<p>
-Calidad: <span id="valorCalidad">90</span>%
-</p>
+g:parseInt(hex.substring(2,4),16),
 
-</div>`;
-
-}
-
-
-if(herramienta==="comprimir"){
-
-opciones.innerHTML=`
-
-<div class="controls">
-
-<label>Calidad</label>
-
-<input
-type="range"
-id="calidad"
-min="10"
-max="100"
-value="70"
-oninput="valorCalidad.textContent=this.value">
-
-<p>
-Calidad: <span id="valorCalidad">70</span>%
-</p>
-
-</div>`;
-
-}
-
-
-if(herramienta==="redimensionar"){
-
-opciones.innerHTML=`
-
-<div class="controls">
-
-<div class="row">
-
-<div>
-<label>Ancho (px)</label>
-<input type="number" id="ancho" placeholder="Ej: 1200">
-</div>
-
-<div>
-<label>Alto (px)</label>
-<input type="number" id="alto" placeholder="Ej: 800">
-</div>
-
-</div>
-
-<label>
-<input type="checkbox" id="proporcion" checked>
- Mantener proporción
-</label>
-
-</div>`;
-
-}
-
-
-if(herramienta==="recortar"){
-
-opciones.innerHTML=`
-
-<div class="controls">
-
-<div class="row">
-
-<div>
-<label>X</label>
-<input type="number" id="cropX" value="0">
-</div>
-
-<div>
-<label>Y</label>
-<input type="number" id="cropY" value="0">
-</div>
-
-<div>
-<label>Ancho</label>
-<input type="number" id="cropW" placeholder="Ancho">
-</div>
-
-<div>
-<label>Alto</label>
-<input type="number" id="cropH" placeholder="Alto">
-</div>
-
-</div>
-
-</div>`;
-
-}
-
-
-if(herramienta==="dividir-pdf"){
-
-opciones.innerHTML=`
-
-<div class="controls">
-
-<label>Páginas</label>
-
-<input
-type="text"
-id="paginas"
-placeholder="Ejemplo: 1,3,5-7">
-
-</div>`;
-
-}
-
-
-if(herramienta==="rotar-pdf"){
-
-opciones.innerHTML=`
-
-<div class="controls">
-
-<label>Rotación</label>
-
-<select id="rotacion">
-
-<option value="90">90°</option>
-<option value="180">180°</option>
-<option value="270">270°</option>
-
-</select>
-
-</div>`;
-
-}
-
-}
-
-
-async function procesar(){
-
-const archivo=
-document.getElementById("archivo").files;
-
-const status=
-document.getElementById("status");
-
-const preview=
-document.getElementById("preview");
-
-const download=
-document.getElementById("download");
-
-
-if(!archivo.length){
-
-status.textContent=
-"Seleccioná uno o más archivos.";
-
-return;
-
-}
-
-preview.innerHTML="";
-
-download.style.display="none";
-
-status.textContent=
-"Procesando...";
-
-
-try{
-
-switch(herramienta){
-
-case"jpg-png":
-case"png-jpg":
-case"jpg-webp":
-case"webp-jpg":
-case"png-webp":
-case"webp-png":
-case"comprimir":
-await convertirImagen(archivo[0]);
-break;
-
-case"redimensionar":
-await redimensionar(archivo[0]);
-break;
-
-case"recortar":
-await recortar(archivo[0]);
-break;
-
-case"heic-jpg":
-await convertirHEIC(archivo[0]);
-break;
-
-case"jpg-pdf":
-case"png-pdf":
-await imagenesAPDF(archivo);
-break;
-
-case"pdf-jpg":
-await pdfAJPG(archivo[0]);
-break;
-
-case"unir-pdf":
-await unirPDF(archivo);
-break;
-
-case"dividir-pdf":
-await dividirPDF(archivo[0]);
-break;
-
-case"rotar-pdf":
-await rotarPDF(archivo[0]);
-break;
-
-}
-
-status.textContent=
-"Proceso terminado correctamente.";
-
-}catch(error){
-
-console.error(error);
-
-status.textContent=
-"Se produjo un error al procesar el archivo.";
-
-}
-
-}
-
-
-function cargarImagen(file){
-
-return new Promise((resolve,reject)=>{
-
-const reader=new FileReader();
-
-reader.onload=e=>{
-
-const img=new Image();
-
-img.onload=()=>resolve(img);
-
-img.onerror=reject;
-
-img.src=e.target.result;
+b:parseInt(hex.substring(4,6),16)
 
 };
 
-reader.onerror=reject;
+}
 
-reader.readAsDataURL(file);
+
+/* =========================================
+   RGB → HSL
+========================================= */
+
+function rgbToHSL(r,g,b){
+
+r/=255;
+g/=255;
+b/=255;
+
+const max=Math.max(r,g,b);
+
+const min=Math.min(r,g,b);
+
+let h=0;
+let s=0;
+
+const l=(max+min)/2;
+
+if(max!==min){
+
+const d=max-min;
+
+s=l>0.5
+?d/(2-max-min)
+:d/(max+min);
+
+switch(max){
+
+case r:
+h=(g-b)/d+(g<b?6:0);
+break;
+
+case g:
+h=(b-r)/d+2;
+break;
+
+case b:
+h=(r-g)/d+4;
+break;
+
+}
+
+h/=6;
+
+}
+
+return[
+
+Math.round(h*360),
+Math.round(s*100),
+Math.round(l*100)
+
+];
+
+}
+
+
+/* =========================================
+   HSL → RGB
+========================================= */
+
+function hslToRGB(h,s,l){
+
+s/=100;
+l/=100;
+
+const c=
+(1-Math.abs(2*l-1))*s;
+
+const x=
+c*(1-Math.abs((h/60)%2-1));
+
+const m=
+l-c/2;
+
+let r=0,
+g=0,
+b=0;
+
+if(h<60){
+
+r=c;
+g=x;
+
+}
+
+else if(h<120){
+
+r=x;
+g=c;
+
+}
+
+else if(h<180){
+
+g=c;
+b=x;
+
+}
+
+else if(h<240){
+
+g=x;
+b=c;
+
+}
+
+else if(h<300){
+
+r=x;
+b=c;
+
+}
+
+else{
+
+r=c;
+b=x;
+
+}
+
+return{
+
+r:Math.round((r+m)*255),
+g:Math.round((g+m)*255),
+b:Math.round((b+m)*255)
+
+};
+
+}
+
+
+/* =========================================
+   MOSTRAR RESULTADO
+========================================= */
+
+function mostrar(txt){
+
+result.innerHTML=txt;
+
+}
+
+
+/* =========================================
+   COPIAR CSS
+========================================= */
+
+function copiar(txt){
+
+navigator.clipboard.writeText(txt)
+.then(()=>alert("CSS copiado"))
+.catch(()=>alert("No se pudo copiar automáticamente."));
+
+}
+
+
+/* =========================================
+   COLOR PICKER
+========================================= */
+
+function picker(){
+
+const color=
+document.getElementById("color").value;
+
+const rgb=
+hexToRGB(color);
+
+const hsl=
+rgbToHSL(
+rgb.r,
+rgb.g,
+rgb.b
+);
+
+mostrar(`
+
+<div class="color-box"
+style="background:${color}">
+</div>
+
+<b>HEX:</b>
+${color}
+
+<br>
+
+<b>RGB:</b>
+rgb(${rgb.r}, ${rgb.g}, ${rgb.b})
+
+<br>
+
+<b>HSL:</b>
+hsl(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%)
+
+`);
+
+}
+
+
+/* =========================================
+   HEX → RGB
+========================================= */
+
+function hexRGB(){
+
+const input=
+document.getElementById("hex");
+
+const value=
+input.value.replace("#","");
+
+if(!/^[0-9A-Fa-f]{6}$/.test(value)){
+
+return mostrar("HEX inválido.");
+
+}
+
+const c=
+hexToRGB(value);
+
+mostrar(`
+
+<b>RGB:</b>
+
+rgb(${c.r}, ${c.g}, ${c.b})
+
+`);
+
+}
+
+
+/* =========================================
+   RGB → HEX
+========================================= */
+
+function rgbHEX(){
+
+const R=
+Number(document.getElementById("r").value);
+
+const G=
+Number(document.getElementById("g").value);
+
+const B=
+Number(document.getElementById("b").value);
+
+if(
+
+[R,G,B].some(
+v=>isNaN(v)||v<0||v>255
+)
+
+){
+
+return mostrar("RGB inválido.");
+
+}
+
+const hexValue=
+
+"#"+
+[R,G,B]
+.map(
+v=>v.toString(16).padStart(2,"0")
+)
+.join("")
+.toUpperCase();
+
+mostrar(`
+
+<b>HEX:</b>
+${hexValue}
+
+`);
+
+}
+
+
+/* =========================================
+   HEX → HSL
+========================================= */
+
+function hexHSL(){
+
+const value=
+document.getElementById("hex").value;
+
+if(!/^#?[0-9A-Fa-f]{6}$/.test(value)){
+
+return mostrar("HEX inválido.");
+
+}
+
+const c=
+hexToRGB(value);
+
+const o=
+rgbToHSL(
+c.r,
+c.g,
+c.b
+);
+
+mostrar(`
+
+<b>HSL:</b>
+
+hsl(${o[0]}, ${o[1]}%, ${o[2]}%)
+
+`);
+
+}
+
+
+/* =========================================
+   HSL → HEX
+========================================= */
+
+function hslHEX(){
+
+const h=
+Number(document.getElementById("h").value);
+
+const s=
+Number(document.getElementById("s").value);
+
+const l=
+Number(document.getElementById("l").value);
+
+if(
+
+isNaN(h)||
+isNaN(s)||
+isNaN(l)||
+h<0||
+h>360||
+s<0||
+s>100||
+l<0||
+l>100
+
+){
+
+return mostrar("Valores HSL inválidos.");
+
+}
+
+const c=
+hslToRGB(h,s,l);
+
+const hexValue=
+
+"#"+
+[c.r,c.g,c.b]
+.map(
+v=>v.toString(16).padStart(2,"0")
+)
+.join("")
+.toUpperCase();
+
+mostrar(`
+
+<b>HEX:</b>
+${hexValue}
+
+`);
+
+}
+
+
+/* =========================================
+   LUMINANCIA
+========================================= */
+
+function luminancia(hexValue){
+
+const c=
+hexToRGB(hexValue);
+
+const v=
+[c.r,c.g,c.b].map(x=>{
+
+x/=255;
+
+return x<=0.03928
+
+?x/12.92
+
+:Math.pow(
+(x+0.055)/1.055,
+2.4
+);
 
 });
 
+return
+
+0.2126*v[0]+
+0.7152*v[1]+
+0.0722*v[2];
+
 }
 
 
-async function convertirImagen(file){
+/* =========================================
+   CONTRASTE WCAG
+========================================= */
 
-const img=
-await cargarImagen(file);
+function contrast(){
 
-const canvas=
-document.createElement("canvas");
+const color1=
+document.getElementById("c1").value;
 
-canvas.width=img.width;
-canvas.height=img.height;
+const color2=
+document.getElementById("c2").value;
 
-const ctx=
-canvas.getContext("2d");
+const ratio=
 
-if(
-herramienta==="png-jpg" ||
-herramienta==="webp-jpg" ||
-herramienta==="comprimir"
-){
+(
 
-ctx.fillStyle="#ffffff";
+(
 
-ctx.fillRect(
-0,
-0,
-canvas.width,
-canvas.height
+Math.max(
+luminancia(color1),
+luminancia(color2)
+)+0.05
+
+)
+
+/
+
+(
+
+Math.min(
+luminancia(color1),
+luminancia(color2)
+)+0.05
+
+)
+
+).toFixed(2);
+
+mostrar(`
+
+<b>Contraste: ${ratio}:1</b>
+
+<br><br>
+
+AA:
+
+${ratio>=4.5
+?"✅ Cumple"
+:"❌ No cumple"}
+
+<br>
+
+AAA:
+
+${ratio>=7
+?"✅ Cumple"
+:"❌ No cumple"}
+
+`);
+
+}
+
+
+/* =========================================
+   COMPLEMENTARIO
+========================================= */
+
+function complementario(){
+
+const color=
+document.getElementById("color").value;
+
+const c=
+hexToRGB(color);
+
+const comp=
+
+"#"+
+[
+255-c.r,
+255-c.g,
+255-c.b
+]
+.map(
+v=>v.toString(16).padStart(2,"0")
+)
+.join("")
+.toUpperCase();
+
+mostrar(`
+
+<div class="color-box"
+style="background:${comp}">
+</div>
+
+<b>${comp}</b>
+
+`);
+
+}
+
+
+/* =========================================
+   TRIÁDICO
+========================================= */
+
+function triadico(){
+
+const color=
+document.getElementById("color").value;
+
+const c=
+hexToRGB(color);
+
+const hsl=
+rgbToHSL(
+c.r,
+c.g,
+c.b
 );
-
-}
-
-ctx.drawImage(img,0,0);
-
-let mime="image/png";
-
-if(
-herramienta==="png-jpg" ||
-herramienta==="webp-jpg" ||
-herramienta==="comprimir"
-){
-
-mime="image/jpeg";
-
-}
-
-if(
-herramienta==="jpg-webp" ||
-herramienta==="png-webp"
-){
-
-mime="image/webp";
-
-}
-
-let calidad=1;
-
-const slider=document.getElementById("calidad");
-
-if(slider){
-calidad=parseInt(slider.value)/100;
-}
-
-const resultado=
-canvas.toDataURL(mime,calidad);
-
-mostrarImagen(resultado);
-
-const extension=
-mime==="image/png"?"png":
-mime==="image/webp"?"webp":"jpg";
-
-descargar(
-resultado,
-"utilmooz-convertido."+extension
-);
-
-}
-
-
-function mostrarImagen(src){
-
-document.getElementById("preview").innerHTML=
-`<img src="${src}" alt="Resultado">`;
-
-}
-
-
-function descargar(data,nombre){
-
-const link=
-document.getElementById("download");
-
-link.href=data;
-
-link.download=nombre;
-
-link.textContent=
-"⬇ Descargar "+nombre;
-
-link.style.display="block";
-
-}
-
-
-async function convertirHEIC(file){
-
-if(typeof heic2any==="undefined"){
-
-throw new Error("HEIC no disponible");
-
-}
-
-const resultado=
-await heic2any({
-blob:file,
-toType:"image/jpeg",
-quality:.9
-});
-
-const blob=
-Array.isArray(resultado)
-?resultado[0]
-:resultado;
-
-const url=
-URL.createObjectURL(blob);
-
-mostrarImagen(url);
-
-descargar(
-url,
-"utilmooz-convertido.jpg"
-);
-
-}
-
-
-async function redimensionar(file){
-
-const img=
-await cargarImagen(file);
-
-let ancho=
-parseInt(document.getElementById("ancho").value);
-
-let alto=
-parseInt(document.getElementById("alto").value);
-
-if(!ancho && !alto){
-
-ancho=img.width;
-alto=img.height;
-
-}
-
-if(
-document.getElementById("proporcion").checked
-){
-
-if(ancho && !alto){
-
-alto=
-Math.round(
-img.height*(ancho/img.width)
-);
-
-}
-
-else if(alto && !ancho){
-
-ancho=
-Math.round(
-img.width*(alto/img.height)
-);
-
-}
-
-}
-
-const canvas=
-document.createElement("canvas");
-
-canvas.width=ancho;
-canvas.height=alto;
-
-canvas
-.getContext("2d")
-.drawImage(
-img,
-0,
-0,
-ancho,
-alto
-);
-
-const resultado=
-canvas.toDataURL("image/png");
-
-mostrarImagen(resultado);
-
-descargar(
-resultado,
-"utilmooz-redimensionada.png"
-);
-
-}
-
-
-async function recortar(file){
-
-const img=
-await cargarImagen(file);
-
-let x=
-parseInt(document.getElementById("cropX").value)||0;
-
-let y=
-parseInt(document.getElementById("cropY").value)||0;
-
-let w=
-parseInt(document.getElementById("cropW").value);
-
-let h=
-parseInt(document.getElementById("cropH").value);
-
-if(!w)w=img.width-x;
-
-if(!h)h=img.height-y;
-
-const canvas=
-document.createElement("canvas");
-
-canvas.width=w;
-canvas.height=h;
-
-canvas
-.getContext("2d")
-.drawImage(
-img,
-x,
-y,
-w,
-h,
-0,
-0,
-w,
-h
-);
-
-const resultado=
-canvas.toDataURL("image/png");
-
-mostrarImagen(resultado);
-
-descargar(
-resultado,
-"utilmooz-recortada.png"
-);
-
-}
-
-
-async function imagenesAPDF(files){
-
-const {PDFDocument}=PDFLib;
-
-const pdfDoc=
-await PDFDocument.create();
-
-for(const file of files){
-
-const bytes=
-await file.arrayBuffer();
-
-let image;
-
-if(file.type==="image/jpeg"){
-
-image=
-await pdfDoc.embedJpg(bytes);
-
-}else{
-
-image=
-await pdfDoc.embedPng(bytes);
-
-}
-
-const page=
-pdfDoc.addPage([
-image.width,
-image.height
-]);
-
-page.drawImage(image,{
-x:0,
-y:0,
-width:image.width,
-height:image.height
-});
-
-}
-
-const pdfBytes=
-await pdfDoc.save();
-
-const blob=
-new Blob(
-[pdfBytes],
-{type:"application/pdf"}
-);
-
-const url=
-URL.createObjectURL(blob);
-
-descargar(
-url,
-"utilmooz-documento.pdf"
-);
-
-}
-
-
-async function pdfAJPG(file){
-
-const arrayBuffer=
-await file.arrayBuffer();
-
-const pdf=
-await pdfjsLib.getDocument({
-data:arrayBuffer
-}).promise;
-
-const zipImages=[];
-
-for(let i=1;i<=pdf.numPages;i++){
-
-const page=
-await pdf.getPage(i);
-
-const viewport=
-page.getViewport({
-scale:1.5
-});
-
-const canvas=
-document.createElement("canvas");
-
-canvas.width=
-viewport.width;
-
-canvas.height=
-viewport.height;
-
-const ctx=
-canvas.getContext("2d");
-
-await page.render({
-canvasContext:ctx,
-viewport:viewport
-}).promise;
-
-const data=
-canvas.toDataURL(
-"image/jpeg",
-.90
-);
-
-zipImages.push(data);
-
-if(i===1){
-
-mostrarImagen(data);
-
-}
-
-}
-
-if(zipImages.length===1){
-
-descargar(
-zipImages[0],
-"utilmooz-pagina-1.jpg"
-);
-
-}else{
 
 let html="";
 
-zipImages.forEach((img,i)=>{
+[0,120,240].forEach(off=>{
 
-html+=
-`<p style="margin-top:15px">
-Página ${i+1}
-</p>
-<img src="${img}"
-style="max-width:100%;margin:10px">
+const n=
+hslToRGB(
+(hsl[0]+off)%360,
+hsl[1],
+hsl[2]
+);
 
-<a href="${img}"
-download="pagina-${i+1}.jpg"
-style="display:block;margin:10px;padding:10px;background:#16a34a;color:white;text-decoration:none;border-radius:6px">
-Descargar página ${i+1}
-</a>`;
+const hexValue=
+
+"#"+
+[n.r,n.g,n.b]
+.map(
+v=>v.toString(16).padStart(2,"0")
+)
+.join("")
+.toUpperCase();
+
+html+=`
+
+<div class="color-box"
+style="background:${hexValue}">
+</div>
+
+<b>${hexValue}</b>
+
+<br>
+
+`;
 
 });
 
-document.getElementById("preview").innerHTML=html;
-
-}
-
-}
-
-
-async function unirPDF(files){
-
-const {PDFDocument}=PDFLib;
-
-const nuevo=
-await PDFDocument.create();
-
-for(const file of files){
-
-const bytes=
-await file.arrayBuffer();
-
-const pdf=
-await PDFDocument.load(bytes);
-
-const pages=
-await nuevo.copyPages(
-pdf,
-pdf.getPageIndices()
-);
-
-pages.forEach(page=>{
-nuevo.addPage(page);
-});
-
-}
-
-const bytes=
-await nuevo.save();
-
-const blob=
-new Blob(
-[bytes],
-{type:"application/pdf"}
-);
-
-const url=
-URL.createObjectURL(blob);
-
-descargar(
-url,
-"utilmooz-pdf-unido.pdf"
-);
+mostrar(html);
 
 }
 
 
-function obtenerPaginas(texto,total){
+/* =========================================
+   GRADIENTE
+========================================= */
 
-const resultado=
-new Set();
+function gradiente(){
 
-const partes=
-texto.split(",");
+const angle=
+document.getElementById("ang").value;
 
-for(const parte of partes){
+const color1=
+document.getElementById("c1").value;
 
-if(parte.includes("-")){
+const color2=
+document.getElementById("c2").value;
 
-const [inicio,fin]=
-parte.split("-").map(Number);
+const css=
 
-for(
-let i=inicio;
-i<=fin && i<=total;
-i++
-){
+`background: linear-gradient(${angle}deg, ${color1}, ${color2});`;
 
-if(i>=1)
-resultado.add(i-1);
+mostrar(`
 
-}
+<div class="color-box"
+style="${css}">
+</div>
 
-}else{
+<div class="code">
+${css}
+</div>
 
-const numero=
-parseInt(parte);
+<button onclick="copiar('${css}')">
+📋 Copiar CSS
+</button>
 
-if(numero>=1 && numero<=total)
-resultado.add(numero-1);
-
-}
-
-}
-
-return [...resultado].sort(
-(a,b)=>a-b
-);
+`);
 
 }
 
 
-async function dividirPDF(file){
+/* =========================================
+   BOX SHADOW
+========================================= */
 
-const {PDFDocument}=PDFLib;
+function shadow(){
 
-const bytes=
-await file.arrayBuffer();
+const x=
+document.getElementById("x").value;
 
-const original=
-await PDFDocument.load(bytes);
+const y=
+document.getElementById("y").value;
 
-const texto=
-document.getElementById("paginas").value.trim();
+const blur=
+document.getElementById("blur").value;
 
-if(!texto){
+const color=
+document.getElementById("sc").value;
 
-throw new Error("Faltan páginas");
+const css=
 
-}
+`box-shadow:${x}px ${y}px ${blur}px ${color};`;
 
-const indices=
-obtenerPaginas(
-texto,
-original.getPageCount()
-);
+mostrar(`
 
-if(!indices.length){
+<div class="color-box"
+style="background:#fff;${css}">
+</div>
 
-throw new Error("Páginas inválidas");
+<div class="code">
+${css}
+</div>
 
-}
+<button onclick="copiar('${css}')">
+📋 Copiar CSS
+</button>
 
-const nuevo=
-await PDFDocument.create();
-
-const pages=
-await nuevo.copyPages(
-original,
-indices
-);
-
-pages.forEach(page=>{
-nuevo.addPage(page);
-});
-
-const resultado=
-await nuevo.save();
-
-const blob=
-new Blob(
-[resultado],
-{type:"application/pdf"}
-);
-
-const url=
-URL.createObjectURL(blob);
-
-descargar(
-url,
-"utilmooz-paginas-extraidas.pdf"
-);
+`);
 
 }
 
 
-async function rotarPDF(file){
+/* =========================================
+   BORDER RADIUS
+========================================= */
 
-const {PDFDocument,degrees}=PDFLib;
+function radius(){
 
-const bytes=
-await file.arrayBuffer();
+const value=
+document.getElementById("rad").value;
 
-const pdf=
-await PDFDocument.load(bytes);
+const css=
+`border-radius:${value}px;`;
 
-const rotacion=
-parseInt(
-document.getElementById("rotacion").value
-);
+mostrar(`
 
-pdf.getPages().forEach(page=>{
+<div class="color-box"
+style="background:#4f8cff;${css}">
+</div>
 
-const actual=
-page.getRotation().angle;
+<div class="code">
+${css}
+</div>
 
-page.setRotation(
-degrees(actual+rotacion)
-);
+<button onclick="copiar('${css}')">
+📋 Copiar CSS
+</button>
 
-});
-
-const resultado=
-await pdf.save();
-
-const blob=
-new Blob(
-[resultado],
-{type:"application/pdf"}
-);
-
-const url=
-URL.createObjectURL(blob);
-
-descargar(
-url,
-"utilmooz-pdf-rotado.pdf"
-);
+`);
 
 }
 
 
-crearOpciones();
+/* =========================================
+   TEXT SHADOW
+========================================= */
 
-</script>
+function textshadow(){
 
-<!-- PDF.JS MODULE -->
+const x=
+document.getElementById("tx").value;
 
-<script type="module">
+const y=
+document.getElementById("ty").value;
 
-import * as pdfjsLibModule from
-"https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.min.mjs";
+const blur=
+document.getElementById("tb").value;
 
-pdfjsLibModule.GlobalWorkerOptions.workerSrc=
-"https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.worker.min.mjs";
+const color=
+document.getElementById("tc").value;
 
-window.pdfjsLib=
-pdfjsLibModule;
+const css=
+`text-shadow:${x}px ${y}px ${blur}px ${color};`;
+
+mostrar(`
+
+<div class="big"
+style="${css}">
+UtilMooz
+</div>
+
+<div class="code">
+${css}
+</div>
+
+<button onclick="copiar('${css}')">
+📋 Copiar CSS
+</button>
+
+`);
+
+}
+
+
+/* =========================================
+   INICIAR
+========================================= */
+
+selectTool(
+"picker",
+document.querySelector(".tool")
+);
 
 </script>
 
