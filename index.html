@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 
 <meta name="google-site-verification" content="adQU8fNEWRJ7YxVSY1G0HPv-V5ukhllJrMnWhWsC0ss">
-     
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>UtilMooz - Herramientas online gratuitas</title>
@@ -193,7 +193,9 @@ nav a:hover{
 }
 
 .hero-inner{
+
     width:100%;
+
     max-width:1280px;
 
     margin:auto;
@@ -204,7 +206,9 @@ nav a:hover{
 
     align-items:center;
 
-    justify-content:center;
+    justify-content:space-between;
+
+    gap:50px;
 
     position:relative;
 
@@ -217,16 +221,18 @@ nav a:hover{
 ===================================================== */
 
 .hero-text{
-    width:100%;
+
+    flex:1;
 
     max-width:800px;
 
-    margin:0 auto;
+    margin:0;
 
-    text-align:center;
+    text-align:left;
 }
 
 .hero h1{
+
     font-size:44px;
 
     line-height:1.15;
@@ -239,11 +245,86 @@ nav a:hover{
 }
 
 .hero p{
+
     font-size:17px;
 
     line-height:1.7;
 
     color:#e9f5e9;
+}
+
+
+/* =====================================================
+   BOTONES PDF / DOCS
+===================================================== */
+
+.hero-tools{
+
+    width:220px;
+
+    flex-shrink:0;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+}
+
+.hero-tool-btn{
+
+    width:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    padding:15px 20px;
+
+    background:#ffffff;
+
+    color:#2f7d32;
+
+    border:1px solid rgba(255,255,255,.8);
+
+    border-radius:8px;
+
+    text-decoration:none;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    box-shadow:
+    0 4px 12px rgba(0,0,0,.14);
+
+    transition:
+    transform .18s ease,
+    box-shadow .18s ease,
+    background .18s ease;
+}
+
+.hero-tool-btn:hover{
+
+    background:#f2f8f2;
+
+    color:#27692a;
+
+    transform:translateY(-2px);
+
+    box-shadow:
+    0 7px 20px rgba(0,0,0,.20);
+}
+
+.hero-tool-icon{
+
+    font-size:20px;
+
+    line-height:1;
 }
 
 
@@ -290,6 +371,7 @@ nav a:hover{
 }
 
 .search-box input{
+
     width:100%;
 
     height:52px;
@@ -310,6 +392,7 @@ nav a:hover{
 }
 
 .search-box input:focus{
+
     border-color:#2f7d32;
 
     box-shadow:
@@ -317,6 +400,7 @@ nav a:hover{
 }
 
 .search-box input::placeholder{
+
     color:#888;
 }
 
@@ -326,6 +410,7 @@ nav a:hover{
 ===================================================== */
 
 .ad-container{
+
     width:100%;
 
     max-width:1100px;
@@ -344,6 +429,7 @@ nav a:hover{
 }
 
 .ad-label{
+
     font-size:10px;
 
     color:#999;
@@ -359,6 +445,7 @@ nav a:hover{
 ===================================================== */
 
 .container{
+
     width:100%;
 
     max-width:1280px;
@@ -374,6 +461,7 @@ nav a:hover{
 ===================================================== */
 
 .tools{
+
     width:100%;
 
     display:grid;
@@ -390,6 +478,7 @@ nav a:hover{
 ===================================================== */
 
 .tool{
+
     position:relative;
 
     display:flex;
@@ -419,6 +508,7 @@ nav a:hover{
 }
 
 .tool:after{
+
     content:"›";
 
     position:absolute;
@@ -437,6 +527,7 @@ nav a:hover{
 }
 
 .tool:hover{
+
     transform:translateY(-2px);
 
     border-color:#b9cdbb;
@@ -446,6 +537,7 @@ nav a:hover{
 }
 
 .tool:hover:after{
+
     color:#2f7d32;
 }
 
@@ -455,6 +547,7 @@ nav a:hover{
 ===================================================== */
 
 .icon{
+
     width:58px;
     height:58px;
 
@@ -463,6 +556,7 @@ nav a:hover{
     display:flex;
 
     align-items:center;
+
     justify-content:center;
 
     margin-right:17px;
@@ -473,6 +567,7 @@ nav a:hover{
 }
 
 .icon svg{
+
     width:31px;
     height:31px;
 
@@ -485,12 +580,14 @@ nav a:hover{
 ===================================================== */
 
 .tool-content{
+
     padding-right:30px;
 
     min-width:0;
 }
 
 .tool h3{
+
     color:#252525;
 
     font-size:17px;
@@ -501,6 +598,7 @@ nav a:hover{
 }
 
 .tool p{
+
     color:#6b6b6b;
 
     font-size:13px;
@@ -514,6 +612,7 @@ nav a:hover{
 ===================================================== */
 
 #sinResultados{
+
     display:none;
 
     text-align:center;
@@ -539,6 +638,7 @@ nav a:hover{
 ===================================================== */
 
 .info{
+
     max-width:900px;
 
     margin:60px auto 0;
@@ -553,6 +653,7 @@ nav a:hover{
 }
 
 .info h2{
+
     color:#333;
 
     margin-bottom:14px;
@@ -561,6 +662,7 @@ nav a:hover{
 }
 
 .info p{
+
     margin-bottom:15px;
 }
 
@@ -570,6 +672,7 @@ nav a:hover{
 ===================================================== */
 
 footer{
+
     background:#ffffff;
 
     border-top:1px solid #ddd;
@@ -582,6 +685,7 @@ footer{
 }
 
 footer p{
+
     margin:5px 0;
 
     font-size:13px;
@@ -589,43 +693,122 @@ footer p{
 
 
 /* =====================================================
-   TABLET / MÓVIL
+   TABLET
+===================================================== */
+
+@media(max-width:950px){
+
+    .hero-inner{
+
+        gap:30px;
+    }
+
+    .hero h1{
+
+        font-size:38px;
+    }
+
+    .hero p{
+
+        font-size:16px;
+    }
+
+    .hero-tools{
+
+        width:195px;
+    }
+
+}
+
+
+/* =====================================================
+   MÓVIL
 ===================================================== */
 
 @media(max-width:850px){
 
     header{
+
         height:68px;
     }
 
     .header-content{
+
         height:68px;
 
         padding:0 18px;
     }
 
     nav{
+
         display:none;
     }
 
     .hero-inner{
-        padding:38px 20px;
+
+        flex-direction:column;
+
+        align-items:center;
+
+        justify-content:center;
+
+        text-align:center;
+
+        gap:25px;
+
+        padding:38px 20px 42px;
+    }
+
+    .hero-text{
+
+        width:100%;
+
+        max-width:800px;
+
+        text-align:center;
     }
 
     .hero h1{
+
         font-size:34px;
     }
 
     .hero p{
+
         font-size:15px;
     }
 
+    .hero-tools{
+
+        width:100%;
+
+        max-width:430px;
+
+        flex-direction:row;
+
+        justify-content:center;
+
+        gap:12px;
+    }
+
+    .hero-tool-btn{
+
+        flex:1;
+
+        min-width:0;
+
+        padding:13px 15px;
+    }
+
     .tools{
+
         grid-template-columns:1fr;
     }
 
     .container{
+
         padding-left:15px;
+
         padding-right:15px;
     }
 
@@ -639,30 +822,54 @@ footer p{
 @media(max-width:500px){
 
     .logo{
+
         font-size:24px;
     }
 
     .logo-mark{
+
         width:34px;
+
         height:34px;
     }
 
     .hero h1{
+
         font-size:30px;
     }
 
     .hero-inner{
-        padding:32px 16px;
+
+        padding:32px 16px 38px;
+    }
+
+    .hero-tools{
+
+        flex-direction:column;
+
+        max-width:280px;
+
+        gap:10px;
+    }
+
+    .hero-tool-btn{
+
+        width:100%;
+
+        flex:none;
     }
 
     .tool{
+
         min-height:115px;
 
         padding:16px 14px;
     }
 
     .icon{
+
         width:50px;
+
         height:50px;
 
         min-width:50px;
@@ -671,15 +878,19 @@ footer p{
     }
 
     .icon svg{
+
         width:27px;
+
         height:27px;
     }
 
     .tool h3{
+
         font-size:15px;
     }
 
     .tool p{
+
         font-size:12px;
     }
 
@@ -693,21 +904,26 @@ footer p{
 @media(max-width:360px){
 
     .tool{
+
         padding:14px 10px;
     }
 
     .tool-content{
+
         padding-right:22px;
     }
 
     .icon{
+
         width:45px;
+
         height:45px;
 
         min-width:45px;
     }
 
     .tool h3{
+
         font-size:14px;
     }
 
@@ -718,7 +934,6 @@ footer p{
 </head>
 
 <body>
-
 
 <!-- =====================================================
      HEADER
@@ -744,7 +959,6 @@ Util<span>Mooz</span>
 
 </div>
 
-
 <nav>
 
 <a href="./">
@@ -761,7 +975,6 @@ Herramientas
 
 </header>
 
-
 <!-- =====================================================
      HERO
 ===================================================== -->
@@ -769,6 +982,8 @@ Herramientas
 <section class="hero">
 
 <div class="hero-inner">
+
+<!-- TEXTO -->
 
 <div class="hero-text">
 
@@ -784,10 +999,43 @@ que funcionan directamente desde tu navegador.
 
 </div>
 
+<!-- BOTONES -->
+
+<div class="hero-tools">
+
+<a
+href="editor-pdf.html"
+class="hero-tool-btn">
+
+<span class="hero-tool-icon">
+📄
+</span>
+
+<span>
+Editar PDF
+</span>
+
+</a>
+
+<a
+href="editor-word.html"
+class="hero-tool-btn">
+
+<span class="hero-tool-icon">
+📝
+</span>
+
+<span>
+Editar DOCS
+</span>
+
+</a>
+
+</div>
+
 </div>
 
 </section>
-
 
 <!-- =====================================================
      BUSCADOR
@@ -803,7 +1051,6 @@ que funcionan directamente desde tu navegador.
 
 </svg>
 
-
 <input
 type="text"
 id="search"
@@ -814,7 +1061,6 @@ oninput="buscarHerramientas()">
 </div>
 
 </div>
-
 
 <!-- =====================================================
      PUBLICIDAD NATIVE
@@ -836,7 +1082,6 @@ src="https://pl31074091.profitableratecpmnetwork.com/0121748aaaf83f5b10d651ea8ce
 
 </div>
 
-
 <!-- =====================================================
      HERRAMIENTAS
 ===================================================== -->
@@ -844,7 +1089,6 @@ src="https://pl31074091.profitableratecpmnetwork.com/0121748aaaf83f5b10d651ea8ce
 <main class="container" id="herramientas">
 
 <div class="tools">
-
 
 <!-- =====================================================
      1. PORCENTAJE
@@ -856,7 +1100,7 @@ src="https://pl31074091.profitableratecpmnetwork.com/0121748aaaf83f5b10d651ea8ce
 
 <svg viewBox="0 0 24 24">
 
-<path d="M7 3a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm0 2a2 2 0 1 1 0 0 4 2 2 0 0 1 0-4zm10 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm0 2a2 2 0 1 1 0 0 4 2 0 0 1 0-4zM18.7 4.3l-1-1-12.4 16.4 1 1 12.4-16.4z"/>
+<path d="M7 3a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm0 2a2 2 0 1 1 0 0 4 4 0 0 1 0-4zm10 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zm0 2a2 2 0 1 1 0 0 4 4 0 0 1 0-4zM18.7 4.3l-1-1-12.4 16.4 1 1 12.4-16.4z"/>
 
 </svg>
 
@@ -873,7 +1117,6 @@ Calculá porcentajes, aumentos, descuentos y diferencias de forma rápida.
 </div>
 
 </a>
-
 
 <!-- =====================================================
      2. EDAD
@@ -903,7 +1146,6 @@ Calculá exactamente años, meses y días entre dos fechas.
 
 </a>
 
-
 <!-- =====================================================
      3. CONTRASEÑAS
 ===================================================== -->
@@ -931,7 +1173,6 @@ Generá contraseñas seguras y aleatorias para tus cuentas.
 </div>
 
 </a>
-
 
 <!-- =====================================================
      4. QR
@@ -961,7 +1202,6 @@ Creá códigos QR para URLs, WiFi, WhatsApp y mucho más.
 
 </a>
 
-
 <!-- =====================================================
      5. CONTADOR
 ===================================================== -->
@@ -989,7 +1229,6 @@ Contá palabras, caracteres y líneas de cualquier texto.
 </div>
 
 </a>
-
 
 <!-- =====================================================
      6. UNIDADES
@@ -1019,7 +1258,6 @@ Convertí kilómetros, metros, centímetros, kilos, libras y otras unidades.
 
 </a>
 
-
 <!-- =====================================================
      7. COLORES
 ===================================================== -->
@@ -1047,7 +1285,6 @@ HEX, RGB, HSL, contraste WCAG y herramientas para CSS.
 </div>
 
 </a>
-
 
 <!-- =====================================================
      8. CRONÓMETRO
@@ -1077,9 +1314,8 @@ Medí el tiempo y registrá vueltas directamente desde tu navegador.
 
 </a>
 
-
 <!-- =====================================================
-     9. CONVERSOR DE LIBROS ELECTRÓNICOS
+     9. EBOOKS
 ===================================================== -->
 
 <a class="tool" href="ebooks.html">
@@ -1106,7 +1342,6 @@ Convertí libros electrónicos entre diferentes formatos directamente desde tu n
 
 </a>
 
-
 <!-- =====================================================
      10. RED
 ===================================================== -->
@@ -1117,7 +1352,7 @@ Convertí libros electrónicos entre diferentes formatos directamente desde tu n
 
 <svg viewBox="0 0 24 24">
 
-<path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm6.9 9h-3.1a15.7 15.7 0 0 0-1.3-5A8 8 0 0 1 18.9 11zM12 4c.9 1.3 1.6 3.8 1.8 7h-3.6c.2-3.2.9-5.7 1.8-7zM9.5 6a15.7 15.7 0 0 0-1.3 5H5.1A8 8 0 0 1 9.5 6zM5.1 13h3.1a15.7 15.7 0 0 0 1.3 5A8 8 0 0 1 5.1 13zM12 20c-.9-1.3-1.6-3.8-1.8-7h3.6c-.2 3.2-.9 5.7-1.8 7zm2.5-2a15.7 15.7 0 0 0 1.3-5h3.1a8 8 0 0 1-4.4 5z"/>
+<path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm6.9 9h-3.1a15.7 15.7 0 0 0-1.3-5A8 8 0 0 1 18.9 11zM12 4c.9 1.3 1.6 3.8 1.8 7h-3.6c.2-3.2.9-5.7-1.8-7zM9.5 6a15.7 15.7 0 0 0-1.3 5H5.1A8 8 0 0 1 9.5 6zM5.1 13h3.1a15.7 15.7 0 0 0 1.3 5A8 8 0 0 1 5.1 13zM12 20c-.9-1.3-1.6-3.8-1.8-7h3.6c.2 3.2.9 5.7 1.8 7zm2.5-2a15.7 15.7 0 0 0 1.3-5h3.1a8 8 0 0 1-4.4 5z"/>
 
 </svg>
 
@@ -1134,7 +1369,6 @@ IP, IPv4, subnet, CIDR, DNS, MX, SPF, DMARC, URL y HTTP.
 </div>
 
 </a>
-
 
 <!-- =====================================================
      11. CRIPTOMONEDAS
@@ -1164,7 +1398,6 @@ Convertí Bitcoin, Ethereum, Solana, XRP y otras criptomonedas.
 
 </a>
 
-
 <!-- =====================================================
      12. ARCHIVOS
 ===================================================== -->
@@ -1193,9 +1426,7 @@ Trabajá con archivos directamente desde tu navegador sin instalar programas.
 
 </a>
 
-
 </div>
-
 
 <!-- =====================================================
      PUBLICIDAD BANNER
@@ -1210,11 +1441,17 @@ PUBLICIDAD
 <script>
 
 atOptions = {
+
     'key' : '56c8323b8c9bd2913adcf628996d2229',
+
     'format' : 'iframe',
+
     'height' : 60,
+
     'width' : 468,
+
     'params' : {}
+
 };
 
 </script>
@@ -1225,7 +1462,6 @@ src="https://www.highrevenueformat.com/56c8323b8c9bd2913adcf628996d2229/invoke.j
 
 </div>
 
-
 <!-- =====================================================
      SIN RESULTADOS
 ===================================================== -->
@@ -1235,7 +1471,6 @@ src="https://www.highrevenueformat.com/56c8323b8c9bd2913adcf628996d2229/invoke.j
 No encontramos ninguna herramienta con ese nombre.
 
 </div>
-
 
 <!-- =====================================================
      INFORMACIÓN SEO
@@ -1263,7 +1498,6 @@ para diferentes necesidades.
 
 </main>
 
-
 <!-- =====================================================
      FOOTER
 ===================================================== -->
@@ -1280,7 +1514,6 @@ Todas las herramientas funcionan directamente desde tu navegador.
 
 </footer>
 
-
 <!-- =====================================================
      ADSTERRA SOCIAL BAR
 ===================================================== -->
@@ -1288,7 +1521,6 @@ Todas las herramientas funcionan directamente desde tu navegador.
 <script
 src="https://pl31074089.profitableratecpmnetwork.com/b9/80/b1/b980b1630aa36c566498dbf6055d89ea.js">
 </script>
-
 
 <!-- =====================================================
      BUSCADOR
@@ -1351,7 +1583,6 @@ function buscarHerramientas(){
 }
 
 </script>
-
 
 </body>
 
