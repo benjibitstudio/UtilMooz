@@ -78,27 +78,58 @@ nav{
 }
 
 nav a.inicio-btn{
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
-    padding:9px 17px;
-    background:#4f8cff;
-    color:#ffffff;
-    text-decoration:none;
-    font-size:14px;
-    font-weight:bold;
-    border-radius:8px;
-    border:1px solid rgba(255,255,255,.08);
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:7px !important;
+
+    padding:9px 17px !important;
+
+    background:#4f8cff !important;
+    color:#ffffff !important;
+
+    text-decoration:none !important;
+
+    font-family:Arial,sans-serif !important;
+    font-size:14px !important;
+    font-weight:bold !important;
+
+    line-height:1 !important;
+
+    border-radius:8px !important;
+    border:1px solid rgba(255,255,255,.08) !important;
+
     transition:
         background .2s ease,
         transform .2s ease,
         box-shadow .2s ease;
 }
 
+nav a.inicio-btn .home-emoji{
+    display:inline-block !important;
+
+    font-family:
+        "Segoe UI Emoji",
+        "Apple Color Emoji",
+        "Noto Color Emoji",
+        sans-serif !important;
+
+    font-size:17px !important;
+    line-height:1 !important;
+
+    width:19px !important;
+    height:19px !important;
+
+    text-align:center !important;
+    vertical-align:middle !important;
+}
+
 nav a.inicio-btn:hover{
-    background:#3978e8;
-    color:#ffffff;
+    background:#3978e8 !important;
+    color:#ffffff !important;
+
     transform:translateY(-1px);
+
     box-shadow:0 4px 12px rgba(79,140,255,.30);
 }
 
@@ -135,9 +166,11 @@ h1{
     width:100%;
     min-height:90px;
     margin:30px auto;
+
     display:flex;
     justify-content:center;
     align-items:center;
+
     text-align:center;
     overflow:hidden;
 }
@@ -155,17 +188,21 @@ h1{
 .ad-box{
     width:100%;
     min-height:70px;
+
     display:flex;
     justify-content:center;
     align-items:center;
+
     overflow:hidden;
 }
 
 .banner-ad{
     width:100%;
+
     display:flex;
     justify-content:center;
     align-items:center;
+
     overflow:hidden;
 }
 
@@ -175,49 +212,73 @@ h1{
 
 .calculator{
     background:white;
+
     padding:30px;
+
     border-radius:16px;
+
     border:1px solid #e6e8ee;
+
     box-shadow:0 5px 20px rgba(0,0,0,.05);
 }
 
 label{
     display:block;
+
     margin-bottom:8px;
+
     font-weight:bold;
 }
 
 input[type="date"]{
     width:100%;
+
     padding:14px;
+
     margin-bottom:20px;
+
     border:1px solid #d9dde5;
+
     border-radius:8px;
+
     font-size:16px;
+
     outline:none;
+
     background:white;
     color:#172033;
 }
 
 input[type="date"]:focus{
     border-color:#4f8cff;
-    box-shadow:0 0 0 3px rgba(79,140,255,.10);
+
+    box-shadow:
+        0 0 0 3px rgba(79,140,255,.10);
 }
 
 /* =========================
-   BOTON CALCULAR
+   BOTÓN CALCULAR
 ========================= */
 
 button{
     width:100%;
+
     padding:15px;
+
     border:none;
+
     border-radius:8px;
+
     background:#4f8cff;
+
     color:white;
+
     font-size:17px;
+
     font-weight:bold;
+
     cursor:pointer;
+
     transition:.2s;
 }
 
@@ -235,13 +296,21 @@ button:active{
 
 .resultado{
     margin-top:25px;
+
     padding:22px;
+
     background:#f5f7fb;
+
     border-radius:10px;
+
     text-align:center;
+
     font-size:20px;
+
     line-height:1.7;
+
     min-height:70px;
+
     word-break:break-word;
 }
 
@@ -251,8 +320,11 @@ button:active{
 
 .resultado small{
     display:block;
+
     font-size:14px;
+
     color:#667085;
+
     margin-top:8px;
 }
 
@@ -262,14 +334,19 @@ button:active{
 
 .info{
     margin-top:35px;
+
     color:#4b5563;
+
     line-height:1.7;
 }
 
 .info h2{
     color:#172033;
+
     margin-bottom:10px;
+
     margin-top:25px;
+
     font-size:24px;
 }
 
@@ -283,9 +360,13 @@ button:active{
 
 footer{
     margin-top:30px;
+
     background:#111827;
+
     color:#aaa;
+
     text-align:center;
+
     padding:30px;
 }
 
@@ -308,8 +389,14 @@ footer{
     }
 
     nav a.inicio-btn{
-        padding:8px 14px;
-        font-size:14px;
+        padding:8px 14px !important;
+        font-size:14px !important;
+    }
+
+    nav a.inicio-btn .home-emoji{
+        font-size:16px !important;
+        width:18px !important;
+        height:18px !important;
     }
 
     h1{
@@ -318,6 +405,7 @@ footer{
 
     .container{
         margin:35px auto;
+
         padding-left:15px;
         padding-right:15px;
     }
@@ -328,6 +416,7 @@ footer{
 
     .resultado{
         font-size:18px;
+
         padding:18px 12px;
     }
 
@@ -356,7 +445,15 @@ Util<span>Mooz</span>
 </div>
 
 <nav>
-<a href="index.html" class="inicio-btn">🏠​ Inicio</a>
+
+<a href="index.html" class="inicio-btn">
+
+<span class="home-emoji">🏠</span>
+
+<span>Inicio</span>
+
+</a>
+
 </nav>
 
 </div>
@@ -372,12 +469,14 @@ Util<span>Mooz</span>
 <h1>Calculadora de edad</h1>
 
 <p class="description">
+
 Calculá tu edad exacta en años, meses y días utilizando nuestra
 calculadora de edad online gratuita.
+
 </p>
 
 <!-- =========================
-     ANUNCIO 1 - NATIVE
+     ANUNCIO 1
 ========================= -->
 
 <div class="ad-container">
@@ -441,7 +540,7 @@ Resultado: -
 </div>
 
 <!-- =========================
-     ANUNCIO 2 - BANNER
+     ANUNCIO 2
 ========================= -->
 
 <div class="ad-container">
@@ -475,7 +574,7 @@ atOptions = {
 </div>
 
 <!-- =========================
-     INFORMACION SEO
+     INFORMACIÓN SEO
 ========================= -->
 
 <div class="info">
@@ -483,35 +582,43 @@ atOptions = {
 <h2>¿Cómo calcular la edad?</h2>
 
 <p>
+
 Ingresá tu fecha de nacimiento y la calculadora determinará
 automáticamente cuántos años, meses y días tenés.
+
 </p>
 
 <p>
+
 La herramienta funciona directamente desde tu navegador,
 por lo que no necesitás instalar ningún programa ni aplicación.
+
 </p>
 
 <h2>Calculadora de edad exacta</h2>
 
 <p>
+
 Esta calculadora permite conocer la edad exacta a partir de
 la fecha de nacimiento, teniendo en cuenta los diferentes días
 que tiene cada mes y los años bisiestos.
+
 </p>
 
 <h2>¿Para qué sirve una calculadora de edad?</h2>
 
 <p>
+
 Podés utilizarla para calcular tu edad actual, conocer cuántos
 años tenés para completar formularios o simplemente saber
 exactamente cuánto tiempo pasó desde tu fecha de nacimiento.
+
 </p>
 
 </div>
 
 <!-- =========================
-     ANUNCIO 3 - BANNER
+     ANUNCIO 3
 ========================= -->
 
 <div class="ad-container">
@@ -565,7 +672,7 @@ atOptions = {
 <script>
 
 /* =====================================================
-   OBTENER FECHA ACTUAL SIN PROBLEMAS DE ZONA HORARIA
+   OBTENER FECHA ACTUAL
 ===================================================== */
 
 function obtenerHoy(){
