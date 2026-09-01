@@ -8,7 +8,11 @@
 <meta name="description" content="Color Picker, conversor HEX RGB HSL, contraste WCAG, gradientes y generadores CSS gratis.">
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
 
 body{
 font-family:Arial,sans-serif;
@@ -16,7 +20,8 @@ background:#f5f7fb;
 color:#172033;
 }
 
-header,footer{
+header,
+footer{
 background:#111827;
 color:#fff;
 }
@@ -36,6 +41,17 @@ max-width:1100px;
 margin:auto;
 }
 
+/* ================================
+   ENCABEZADO
+================================ */
+
+.header-content{
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:20px;
+}
+
 .logo{
 font-size:28px;
 font-weight:bold;
@@ -44,6 +60,29 @@ font-weight:bold;
 .logo span{
 color:#4f8cff;
 }
+
+.home-btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+background:#4f8cff;
+color:#fff;
+text-decoration:none;
+padding:10px 18px;
+border-radius:8px;
+font-size:15px;
+font-weight:bold;
+transition:.2s;
+}
+
+.home-btn:hover{
+background:#3978e8;
+transform:translateY(-1px);
+}
+
+/* ================================
+   CONTENIDO
+================================ */
 
 main{
 max-width:1000px;
@@ -154,7 +193,8 @@ color:#667085;
 margin-bottom:15px;
 }
 
-input,button{
+input,
+button{
 width:100%;
 padding:12px;
 border-radius:8px;
@@ -228,6 +268,23 @@ font-weight:bold;
 
 @media(max-width:600px){
 
+header{
+padding:16px;
+}
+
+.header-content{
+gap:12px;
+}
+
+.logo{
+font-size:24px;
+}
+
+.home-btn{
+padding:9px 13px;
+font-size:14px;
+}
+
 h1{
 font-size:30px;
 }
@@ -247,7 +304,8 @@ margin:20px auto;
 
 }
 
-/* Evita que el banner de 468px rompa el móvil */
+/* Banner 468x60 adaptado para pantallas pequeñas */
+
 @media(max-width:500px){
 
 .banner-wrapper{
@@ -264,27 +322,42 @@ height:55px;
 <body>
 
 <header>
-<div class="wrap">
-<div class="logo">Util<span>Mooz</span></div>
+
+<div class="wrap header-content">
+
+<div class="logo">
+Util<span>Mooz</span>
 </div>
+
+<a href="index.html" class="home-btn">
+🏠 Inicio
+</a>
+
+</div>
+
 </header>
 
 <main>
 
-<h1>Herramientas de Colores</h1>
+<h1>
+Herramientas de Colores
+</h1>
 
 <p class="desc">
 12 herramientas gratuitas para diseñadores y desarrolladores. Convertí colores, comprobá contraste y generá código CSS al instante.
 </p>
 
 <!-- =========================================
-     ANUNCIO FIJO / NATIVE BANNER
-     NO POPUNDER
+     NATIVE BANNER
+     ANUNCIO FIJO / DENTRO DE LA PÁGINA
+     SIN POPUNDER
 ========================================= -->
 
 <div class="ad-container ad-native">
 
-<div class="ad-title">Publicidad</div>
+<div class="ad-title">
+Publicidad
+</div>
 
 <script async="async" data-cfasync="false" src="https://pl31111968.profitableratecpmnetwork.com/602ece9ec60ac6af897e5d7b5c27586a/invoke.js"></script>
 
@@ -292,11 +365,21 @@ height:55px;
 
 </div>
 
+<!-- =========================================
+     LISTA DE HERRAMIENTAS
+========================================= -->
+
 <div class="tools" id="tools"></div>
+
+<!-- =========================================
+     PANEL DE LA HERRAMIENTA
+========================================= -->
 
 <div class="panel">
 
-<h2 id="title">Color Picker</h2>
+<h2 id="title">
+Color Picker
+</h2>
 
 <p id="description">
 Elegí un color.
@@ -311,13 +394,16 @@ Esperando...
 </div>
 
 <!-- =========================================
-     ANUNCIO FIJO / BANNER 468x60
-     NO POPUNDER
+     BANNER 468x60
+     ANUNCIO FIJO / DENTRO DE LA PÁGINA
+     SIN POPUNDER
 ========================================= -->
 
 <div class="ad-container ad-banner">
 
-<div class="ad-title">Publicidad</div>
+<div class="ad-title">
+Publicidad
+</div>
 
 <div class="banner-wrapper">
 
@@ -345,162 +431,328 @@ atOptions = {
 
 <script>
 
+/* =========================================
+   LISTA DE HERRAMIENTAS
+========================================= */
+
 const toolList=[
+
 ["picker","🎨 Color Picker"],
+
 ["hexrgb","HEX → RGB"],
+
 ["rgbhex","RGB → HEX"],
+
 ["hexhsl","HEX → HSL"],
+
 ["hslhex","HSL → HEX"],
+
 ["contrast","⚫ Contraste"],
+
 ["comp","🔄 Complementario"],
+
 ["triad","🎨 Triádico"],
+
 ["grad","🌈 Gradiente"],
+
 ["shadow","🌑 Box Shadow"],
+
 ["radius","⭕ Border Radius"],
+
 ["text","✏️ Text Shadow"]
+
 ];
 
+
+/* =========================================
+   CONFIGURACIÓN
+========================================= */
 
 const configs={
 
 picker:[
+
 "Elegí un color.",
-`<input type=color id=color value="#4f8cff">
-<button onclick="picker()">Analizar color</button>`
+
+`<input type="color" id="color" value="#4f8cff">
+
+<button onclick="picker()">
+Analizar color
+</button>`
+
 ],
 
 hexrgb:[
+
 "Convertí HEX a RGB.",
-`<input id=hex placeholder="#4f8cff">
-<button onclick="hexRGB()">Convertir</button>`
+
+`<input id="hex" placeholder="#4f8cff">
+
+<button onclick="hexRGB()">
+Convertir
+</button>`
+
 ],
 
 rgbhex:[
+
 "Convertí RGB a HEX.",
-`<input id=r type=number placeholder="Rojo">
-<input id=g type=number placeholder="Verde">
-<input id=b type=number placeholder="Azul">
-<button onclick="rgbHEX()">Convertir</button>`
+
+`<input id="r" type="number" min="0" max="255" placeholder="Rojo">
+
+<input id="g" type="number" min="0" max="255" placeholder="Verde">
+
+<input id="b" type="number" min="0" max="255" placeholder="Azul">
+
+<button onclick="rgbHEX()">
+Convertir
+</button>`
+
 ],
 
 hexhsl:[
+
 "Convertí HEX a HSL.",
-`<input id=hex placeholder="#4f8cff">
-<button onclick="hexHSL()">Convertir</button>`
+
+`<input id="hex" placeholder="#4f8cff">
+
+<button onclick="hexHSL()">
+Convertir
+</button>`
+
 ],
 
 hslhex:[
+
 "Convertí HSL a HEX.",
-`<input id=h type=number placeholder="Hue">
-<input id=s type=number placeholder="Saturation">
-<input id=l type=number placeholder="Lightness">
-<button onclick="hslHEX()">Convertir</button>`
+
+`<input id="h" type="number" min="0" max="360" placeholder="Hue">
+
+<input id="s" type="number" min="0" max="100" placeholder="Saturation">
+
+<input id="l" type="number" min="0" max="100" placeholder="Lightness">
+
+<button onclick="hslHEX()">
+Convertir
+</button>`
+
 ],
 
 contrast:[
+
 "Contraste WCAG.",
+
 `<label>Color 1</label>
-<input type=color id=c1 value="#000000">
+
+<input type="color" id="c1" value="#000000">
 
 <label>Color 2</label>
-<input type=color id=c2 value="#ffffff">
 
-<button onclick="contrast()">Comprobar</button>`
+<input type="color" id="c2" value="#ffffff">
+
+<button onclick="contrast()">
+Comprobar
+</button>`
+
 ],
 
 comp:[
+
 "Color complementario.",
-`<input type=color id=color value="#4f8cff">
-<button onclick="complementario()">Generar</button>`
+
+`<input type="color" id="color" value="#4f8cff">
+
+<button onclick="complementario()">
+Generar
+</button>`
+
 ],
 
 triad:[
+
 "Paleta triádica.",
-`<input type=color id=color value="#4f8cff">
-<button onclick="triadico()">Generar</button>`
+
+`<input type="color" id="color" value="#4f8cff">
+
+<button onclick="triadico()">
+Generar
+</button>`
+
 ],
 
 grad:[
+
 "Generador de gradientes CSS.",
+
 `<label>Color 1</label>
-<input type=color id=c1 value="#4f8cff">
+
+<input type="color" id="c1" value="#4f8cff">
 
 <label>Color 2</label>
-<input type=color id=c2 value="#111827">
+
+<input type="color" id="c2" value="#111827">
 
 <label>Ángulo</label>
 
-<input id=ang type=range min=0 max=360 value=90 oninput="av.innerText=this.value">
+<input id="ang"
+type="range"
+min="0"
+max="360"
+value="90"
+oninput="document.getElementById('av').innerText=this.value">
 
-<div class=range id=av>90</div>
+<div class="range" id="av">
+90
+</div>
 
-<button onclick="gradiente()">Generar CSS</button>`
+<button onclick="gradiente()">
+Generar CSS
+</button>`
+
 ],
 
 shadow:[
+
 "Generador Box Shadow.",
+
 `<label>X</label>
 
-<input id=x type=range min=-30 max=30 value=5 oninput="vx.innerText=this.value;shadow()">
+<input id="x"
+type="range"
+min="-30"
+max="30"
+value="5"
+oninput="document.getElementById('vx').innerText=this.value;shadow()">
 
-<div class=range id=vx>5</div>
+<div class="range" id="vx">
+5
+</div>
 
 <label>Y</label>
 
-<input id=y type=range min=-30 max=30 value=5 oninput="vy.innerText=this.value;shadow()">
+<input id="y"
+type="range"
+min="-30"
+max="30"
+value="5"
+oninput="document.getElementById('vy').innerText=this.value;shadow()">
 
-<div class=range id=vy>5</div>
+<div class="range" id="vy">
+5
+</div>
 
 <label>Blur</label>
 
-<input id=blur type=range min=0 max=50 value=15 oninput="vb.innerText=this.value;shadow()">
+<input id="blur"
+type="range"
+min="0"
+max="50"
+value="15"
+oninput="document.getElementById('vb').innerText=this.value;shadow()">
 
-<div class=range id=vb>15</div>
+<div class="range" id="vb">
+15
+</div>
 
 <label>Color</label>
 
-<input type=color id=sc value="#000000" oninput="shadow()">`
+<input type="color"
+id="sc"
+value="#000000"
+oninput="shadow()">`
+
 ],
 
 radius:[
+
 "Generador Border Radius.",
 
-`<input id=rad type=range min=0 max=100 value=12 oninput="vr.innerText=this.value;radius()">
+`<input id="rad"
+type="range"
+min="0"
+max="100"
+value="12"
+oninput="document.getElementById('vr').innerText=this.value;radius()">
 
-<div class=range id=vr>12</div>`
+<div class="range" id="vr">
+12
+</div>`
+
 ],
 
 text:[
+
 "Generador Text Shadow.",
 
 `<label>X</label>
 
-<input id=tx type=range min=-20 max=20 value=2 oninput="tvx.innerText=this.value;textshadow()">
+<input id="tx"
+type="range"
+min="-20"
+max="20"
+value="2"
+oninput="document.getElementById('tvx').innerText=this.value;textshadow()">
 
-<div class=range id=tvx>2</div>
+<div class="range" id="tvx">
+2
+</div>
 
 <label>Y</label>
 
-<input id=ty type=range min=-20 max=20 value=2 oninput="tvy.innerText=this.value;textshadow()">
+<input id="ty"
+type="range"
+min="-20"
+max="20"
+value="2"
+oninput="document.getElementById('tvy').innerText=this.value;textshadow()">
 
-<div class=range id=tvy>2</div>
+<div class="range" id="tvy">
+2
+</div>
 
 <label>Blur</label>
 
-<input id=tb type=range min=0 max=30 value=5 oninput="tvb.innerText=this.value;textshadow()">
+<input id="tb"
+type="range"
+min="0"
+max="30"
+value="5"
+oninput="document.getElementById('tvb').innerText=this.value;textshadow()">
 
-<div class=range id=tvb>5</div>
+<div class="range" id="tvb">
+5
+</div>
 
 <label>Color</label>
 
-<input type=color id=tc value="#000000" oninput="textshadow()">`
+<input type="color"
+id="tc"
+value="#000000"
+oninput="textshadow()">`
+
 ]
 
 };
 
 
+/* =========================================
+   ELEMENTOS PRINCIPALES
+========================================= */
+
 const tools=document.getElementById("tools");
 
+const title=document.getElementById("title");
+
+const description=document.getElementById("description");
+
+const form=document.getElementById("form");
+
+const result=document.getElementById("result");
+
+
+/* =========================================
+   CREAR BOTONES DE HERRAMIENTAS
+========================================= */
 
 toolList.forEach((t,i)=>{
 
@@ -517,9 +769,14 @@ tools.appendChild(div);
 });
 
 
+/* =========================================
+   CAMBIAR HERRAMIENTA
+========================================= */
+
 function selectTool(name,el){
 
-document.querySelectorAll(".tool")
+document
+.querySelectorAll(".tool")
 .forEach(x=>x.classList.remove("active"));
 
 el.classList.add("active");
@@ -533,18 +790,27 @@ configs[name][0];
 form.innerHTML=
 configs[name][1];
 
-result.innerHTML="Esperando...";
+result.innerHTML=
+"Esperando...";
 
-if(name==="picker")picker();
+if(name==="picker")
+picker();
 
-if(name==="shadow")shadow();
+if(name==="shadow")
+shadow();
 
-if(name==="radius")radius();
+if(name==="radius")
+radius();
 
-if(name==="text")textshadow();
+if(name==="text")
+textshadow();
 
 }
 
+
+/* =========================================
+   HEX → RGB
+========================================= */
 
 function hexToRGB(hex){
 
@@ -563,16 +829,22 @@ b:parseInt(hex.substring(4,6),16)
 }
 
 
+/* =========================================
+   RGB → HSL
+========================================= */
+
 function rgbToHSL(r,g,b){
 
 r/=255;
 g/=255;
 b/=255;
 
-const max=Math.max(r,g,b),
-min=Math.min(r,g,b);
+const max=Math.max(r,g,b);
 
-let h=0,s=0;
+const min=Math.min(r,g,b);
+
+let h=0;
+let s=0;
 
 const l=(max+min)/2;
 
@@ -580,22 +852,28 @@ if(max!==min){
 
 const d=max-min;
 
-s=l>0.5?
-d/(2-max-min):
-d/(max+min);
+s=l>0.5
+?d/(2-max-min)
+:d/(max+min);
 
 switch(max){
 
 case r:
+
 h=(g-b)/d+(g<b?6:0);
+
 break;
 
 case g:
+
 h=(b-r)/d+2;
+
 break;
 
 case b:
+
 h=(r-g)/d+4;
+
 break;
 
 }
@@ -605,24 +883,35 @@ h/=6;
 }
 
 return[
+
 Math.round(h*360),
+
 Math.round(s*100),
+
 Math.round(l*100)
+
 ];
 
 }
 
+
+/* =========================================
+   HSL → RGB
+========================================= */
 
 function hslToRGB(h,s,l){
 
 s/=100;
 l/=100;
 
-const c=(1-Math.abs(2*l-1))*s;
+const c=
+(1-Math.abs(2*l-1))*s;
 
-const x=c*(1-Math.abs((h/60)%2-1));
+const x=
+c*(1-Math.abs((h/60)%2-1));
 
-const m=l-c/2;
+const m=
+l-c/2;
 
 let r=0,
 g=0,
@@ -683,6 +972,10 @@ b:Math.round((b+m)*255)
 }
 
 
+/* =========================================
+   MOSTRAR RESULTADO
+========================================= */
+
 function mostrar(txt){
 
 result.innerHTML=txt;
@@ -690,14 +983,22 @@ result.innerHTML=txt;
 }
 
 
+/* =========================================
+   COPIAR CSS
+========================================= */
+
 function copiar(txt){
 
-navigator.clipboard.writeText(txt);
-
-alert("CSS copiado");
+navigator.clipboard.writeText(txt)
+.then(()=>alert("CSS copiado"))
+.catch(()=>alert("No se pudo copiar automáticamente."));
 
 }
 
+
+/* =========================================
+   COLOR PICKER
+========================================= */
 
 function picker(){
 
@@ -708,16 +1009,27 @@ const rgb=
 hexToRGB(color);
 
 const hsl=
-rgbToHSL(rgb.r,rgb.g,rgb.b);
+rgbToHSL(
+rgb.r,
+rgb.g,
+rgb.b
+);
 
 mostrar(`
 
-<div class=color-box style="background:${color}"></div>
+<div class="color-box"
+style="background:${color}">
+</div>
 
-<b>HEX:</b> ${color}<br>
+<b>HEX:</b>
+${color}
+
+<br>
 
 <b>RGB:</b>
-rgb(${rgb.r}, ${rgb.g}, ${rgb.b})<br>
+rgb(${rgb.r}, ${rgb.g}, ${rgb.b})
+
+<br>
 
 <b>HSL:</b>
 hsl(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%)
@@ -727,101 +1039,180 @@ hsl(${hsl[0]}, ${hsl[1]}%, ${hsl[2]}%)
 }
 
 
+/* =========================================
+   HEX → RGB
+========================================= */
+
 function hexRGB(){
 
-const h=
-hex.value.replace("#","");
+const input=
+document.getElementById("hex");
 
-if(!/^[0-9A-Fa-f]{6}$/.test(h))
+const value=
+input.value.replace("#","");
+
+if(!/^[0-9A-Fa-f]{6}$/.test(value)){
+
 return mostrar("HEX inválido.");
-
-const c=
-hexToRGB(h);
-
-mostrar(
-`<b>RGB:</b>
-rgb(${c.r}, ${c.g}, ${c.b})`
-);
 
 }
 
+const c=
+hexToRGB(value);
+
+mostrar(`
+
+<b>RGB:</b>
+
+rgb(${c.r}, ${c.g}, ${c.b})
+
+`);
+
+}
+
+
+/* =========================================
+   RGB → HEX
+========================================= */
 
 function rgbHEX(){
 
-const R=+r.value,
-G=+g.value,
-B=+b.value;
+const R=
+Number(document.getElementById("r").value);
+
+const G=
+Number(document.getElementById("g").value);
+
+const B=
+Number(document.getElementById("b").value);
 
 if(
+
 [R,G,B].some(
 v=>isNaN(v)||v<0||v>255
 )
-)
+
+){
+
 return mostrar("RGB inválido.");
 
+}
+
 const hexValue=
+
 "#"+
 [R,G,B]
 .map(
-v=>v.toString(16)
-.padStart(2,"0")
+v=>v.toString(16).padStart(2,"0")
 )
 .join("")
 .toUpperCase();
 
-mostrar(
-`<b>HEX:</b> ${hexValue}`
-);
+mostrar(`
+
+<b>HEX:</b>
+${hexValue}
+
+`);
 
 }
 
+
+/* =========================================
+   HEX → HSL
+========================================= */
 
 function hexHSL(){
 
-const hValue=hex.value;
+const value=
+document.getElementById("hex").value;
 
-if(!/^#?[0-9A-Fa-f]{6}$/.test(hValue))
+if(!/^#?[0-9A-Fa-f]{6}$/.test(value)){
+
 return mostrar("HEX inválido.");
 
+}
+
 const c=
-hexToRGB(hValue);
+hexToRGB(value);
 
 const o=
-rgbToHSL(c.r,c.g,c.b);
-
-mostrar(
-`<b>HSL:</b>
-hsl(${o[0]}, ${o[1]}%, ${o[2]}%)`
+rgbToHSL(
+c.r,
+c.g,
+c.b
 );
+
+mostrar(`
+
+<b>HSL:</b>
+
+hsl(${o[0]}, ${o[1]}%, ${o[2]}%)
+
+`);
 
 }
 
 
+/* =========================================
+   HSL → HEX
+========================================= */
+
 function hslHEX(){
 
+const h=
+Number(document.getElementById("h").value);
+
+const s=
+Number(document.getElementById("s").value);
+
+const l=
+Number(document.getElementById("l").value);
+
+if(
+
+isNaN(h)||
+isNaN(s)||
+isNaN(l)||
+h<0||
+h>360||
+s<0||
+s>100||
+l<0||
+l>100
+
+){
+
+return mostrar("Valores HSL inválidos.");
+
+}
+
 const c=
-hslToRGB(
-+h.value,
-+s.value,
-+l.value
-);
+hslToRGB(h,s,l);
 
 const hexValue=
+
 "#"+
 [c.r,c.g,c.b]
 .map(
-v=>v.toString(16)
-.padStart(2,"0")
+v=>v.toString(16).padStart(2,"0")
 )
 .join("")
 .toUpperCase();
 
-mostrar(
-`<b>HEX:</b> ${hexValue}`
-);
+mostrar(`
+
+<b>HEX:</b>
+${hexValue}
+
+`);
 
 }
 
+
+/* =========================================
+   LUMINANCIA
+========================================= */
 
 function luminancia(hexValue){
 
@@ -834,7 +1225,9 @@ const v=
 x/=255;
 
 return x<=0.03928
+
 ?x/12.92
+
 :Math.pow(
 (x+0.055)/1.055,
 2.4
@@ -843,6 +1236,7 @@ return x<=0.03928
 });
 
 return
+
 0.2126*v[0]+
 0.7152*v[1]+
 0.0722*v[2];
@@ -850,24 +1244,38 @@ return
 }
 
 
+/* =========================================
+   CONTRASTE WCAG
+========================================= */
+
 function contrast(){
+
+const color1=
+document.getElementById("c1").value;
+
+const color2=
+document.getElementById("c2").value;
 
 const ratio=
 
 (
+
 (
 Math.max(
-luminancia(c1.value),
-luminancia(c2.value)
+luminancia(color1),
+luminancia(color2)
 )+0.05
 )
+
 /
+
 (
 Math.min(
-luminancia(c1.value),
-luminancia(c2.value)
+luminancia(color1),
+luminancia(color2)
 )+0.05
 )
+
 ).toFixed(2);
 
 mostrar(`
@@ -877,6 +1285,7 @@ mostrar(`
 <br><br>
 
 AA:
+
 ${ratio>=4.5
 ?"✅ Cumple"
 :"❌ No cumple"}
@@ -884,6 +1293,7 @@ ${ratio>=4.5
 <br>
 
 AAA:
+
 ${ratio>=7
 ?"✅ Cumple"
 :"❌ No cumple"}
@@ -893,12 +1303,20 @@ ${ratio>=7
 }
 
 
+/* =========================================
+   COMPLEMENTARIO
+========================================= */
+
 function complementario(){
 
+const color=
+document.getElementById("color").value;
+
 const c=
-hexToRGB(color.value);
+hexToRGB(color);
 
 const comp=
+
 "#"+
 [
 255-c.r,
@@ -906,15 +1324,14 @@ const comp=
 255-c.b
 ]
 .map(
-v=>v.toString(16)
-.padStart(2,"0")
+v=>v.toString(16).padStart(2,"0")
 )
 .join("")
 .toUpperCase();
 
 mostrar(`
 
-<div class=color-box
+<div class="color-box"
 style="background:${comp}">
 </div>
 
@@ -925,10 +1342,17 @@ style="background:${comp}">
 }
 
 
+/* =========================================
+   TRIÁDICO
+========================================= */
+
 function triadico(){
 
+const color=
+document.getElementById("color").value;
+
 const c=
-hexToRGB(color.value);
+hexToRGB(color);
 
 const hsl=
 rgbToHSL(
@@ -949,22 +1373,23 @@ hsl[2]
 );
 
 const hexValue=
+
 "#"+
 [n.r,n.g,n.b]
 .map(
-v=>v.toString(16)
-.padStart(2,"0")
+v=>v.toString(16).padStart(2,"0")
 )
 .join("")
 .toUpperCase();
 
 html+=`
 
-<div class=color-box
+<div class="color-box"
 style="background:${hexValue}">
 </div>
 
 <b>${hexValue}</b>
+
 <br>
 
 `;
@@ -976,18 +1401,32 @@ mostrar(html);
 }
 
 
+/* =========================================
+   GRADIENTE
+========================================= */
+
 function gradiente(){
 
+const angle=
+document.getElementById("ang").value;
+
+const color1=
+document.getElementById("c1").value;
+
+const color2=
+document.getElementById("c2").value;
+
 const css=
-`background: linear-gradient(${ang.value}deg, ${c1.value}, ${c2.value});`;
+
+`background: linear-gradient(${angle}deg, ${color1}, ${color2});`;
 
 mostrar(`
 
-<div class=color-box
+<div class="color-box"
 style="${css}">
 </div>
 
-<div class=code>
+<div class="code">
 ${css}
 </div>
 
@@ -999,19 +1438,36 @@ ${css}
 
 }
 
+
+/* =========================================
+   BOX SHADOW
+========================================= */
 
 function shadow(){
 
+const x=
+document.getElementById("x").value;
+
+const y=
+document.getElementById("y").value;
+
+const blur=
+document.getElementById("blur").value;
+
+const color=
+document.getElementById("sc").value;
+
 const css=
-`box-shadow:${x.value}px ${y.value}px ${blur.value}px ${sc.value};`;
+
+`box-shadow:${x}px ${y}px ${blur}px ${color};`;
 
 mostrar(`
 
-<div class=color-box
+<div class="color-box"
 style="background:#fff;${css}">
 </div>
 
-<div class=code>
+<div class="code">
 ${css}
 </div>
 
@@ -1023,19 +1479,26 @@ ${css}
 
 }
 
+
+/* =========================================
+   BORDER RADIUS
+========================================= */
 
 function radius(){
 
+const value=
+document.getElementById("rad").value;
+
 const css=
-`border-radius:${rad.value}px;`;
+`border-radius:${value}px;`;
 
 mostrar(`
 
-<div class=color-box
+<div class="color-box"
 style="background:#4f8cff;${css}">
 </div>
 
-<div class=code>
+<div class="code">
 ${css}
 </div>
 
@@ -1048,10 +1511,26 @@ ${css}
 }
 
 
+/* =========================================
+   TEXT SHADOW
+========================================= */
+
 function textshadow(){
 
+const x=
+document.getElementById("tx").value;
+
+const y=
+document.getElementById("ty").value;
+
+const blur=
+document.getElementById("tb").value;
+
+const color=
+document.getElementById("tc").value;
+
 const css=
-`text-shadow:${tx.value}px ${ty.value}px ${tb.value}px ${tc.value};`;
+`text-shadow:${x}px ${y}px ${blur}px ${color};`;
 
 mostrar(`
 
@@ -1060,7 +1539,7 @@ style="${css}">
 UtilMooz
 </div>
 
-<div class=code>
+<div class="code">
 ${css}
 </div>
 
@@ -1072,6 +1551,10 @@ ${css}
 
 }
 
+
+/* =========================================
+   INICIAR
+========================================= */
 
 selectTool(
 "picker",
