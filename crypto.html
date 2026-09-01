@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="es">
 <head>
 
@@ -40,6 +41,7 @@ header{
     display:flex;
     justify-content:space-between;
     align-items:center;
+    gap:20px;
 }
 
 .logo{
@@ -51,15 +53,28 @@ header{
     color:#4f8cff;
 }
 
-nav a{
-    color:#ddd;
+/* ================= BOTON INICIO ================= */
+
+.home-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    background:#4f8cff;
+    color:#fff;
     text-decoration:none;
+    padding:10px 18px;
+    border-radius:8px;
     font-size:15px;
+    font-weight:bold;
+    transition:.2s;
 }
 
-nav a:hover{
-    color:white;
+.home-btn:hover{
+    background:#3978e8;
+    transform:translateY(-1px);
 }
+
+/* ================= CALCULADORA ================= */
 
 .container{
     max-width:800px;
@@ -77,8 +92,6 @@ h1{
     margin-bottom:30px;
     line-height:1.7;
 }
-
-/* ================= CALCULADORA ================= */
 
 .calculator{
     background:white;
@@ -279,7 +292,16 @@ footer{
 @media(max-width:600px){
 
     .header-content{
-        gap:20px;
+        gap:12px;
+    }
+
+    .logo{
+        font-size:24px;
+    }
+
+    .home-btn{
+        padding:9px 13px;
+        font-size:14px;
     }
 
     h1{
@@ -322,14 +344,13 @@ footer{
 Util<span>Mooz</span>
 </div>
 
-<nav>
-<a href="index.html">Inicio</a>
-</nav>
+<a href="index.html" class="home-btn">
+🏠 Inicio
+</a>
 
 </div>
 
 </header>
-
 
 <!-- ================= CONTENIDO ================= -->
 
@@ -342,7 +363,6 @@ Convertí criptomonedas a dólares, euros, pesos argentinos y otras monedas.
 Buscá entre miles de criptomonedas disponibles y obtené una conversión
 actualizada.
 </p>
-
 
 <!-- ================= CALCULADORA ================= -->
 
@@ -359,8 +379,8 @@ placeholder="Ejemplo: 0.5"
 min="0"
 step="any"
 inputmode="decimal"
->
 
+>
 
 <label for="busqueda">
 Criptomoneda
@@ -373,6 +393,7 @@ type="text"
 id="busqueda"
 placeholder="🔎 Buscar Bitcoin, Ethereum, PEPE..."
 autocomplete="off"
+
 >
 
 <div
@@ -382,12 +403,10 @@ class="coin-list">
 
 </div>
 
-
 <div
 id="selectedCoin"
 class="selected">
 </div>
-
 
 <label for="moneda">
 Convertir a
@@ -437,7 +456,6 @@ Yenes japoneses (JPY)
 
 </select>
 
-
 <button
 id="calcularBtn"
 onclick="calcularCrypto()"
@@ -447,7 +465,6 @@ Seleccioná una criptomoneda
 
 </button>
 
-
 <div
 class="resultado"
 id="resultado">
@@ -455,7 +472,6 @@ id="resultado">
 Resultado: -
 
 </div>
-
 
 <div
 class="estado"
@@ -466,7 +482,6 @@ Cargando lista de criptomonedas...
 </div>
 
 </div>
-
 
 <!-- ================= ADSTERRA NATIVE ================= -->
 
@@ -485,7 +500,6 @@ src="https://pl31074091.profitableratecpmnetwork.com/0121748aaaf83f5b10d651ea8ce
 <div id="container-0121748aaaf83f5b10d651ea8ce56b39"></div>
 
 </div>
-
 
 <!-- ================= INFORMACION ================= -->
 
@@ -510,7 +524,6 @@ por lo que el resultado debe considerarse aproximado.
 </p>
 
 </div>
-
 
 <!-- ================= ADSTERRA BANNER ================= -->
 
@@ -542,7 +555,6 @@ atOptions = {
 
 </main>
 
-
 <!-- ================= FOOTER ================= -->
 
 <footer>
@@ -551,11 +563,9 @@ atOptions = {
 
 </footer>
 
-
 <!-- ================= ADSTERRA SOCIAL BAR ================= -->
 
 <script src="https://pl31074089.profitableratecpmnetwork.com/b9/80/b1/b980b1630aa36c566498dbf6055d89ea.js"></script>
-
 
 <script>
 
@@ -653,10 +663,6 @@ function(){
 
     coinList.innerHTML = "";
 
-    /*
-    Si no hay texto suficiente
-    */
-
     if(texto.length < 2){
 
         coinList.style.display =
@@ -665,11 +671,6 @@ function(){
         return;
 
     }
-
-
-    /*
-    Buscar coincidencias
-    */
 
     const resultados =
     monedas
@@ -699,11 +700,6 @@ function(){
     })
     .slice(0,50);
 
-
-    /*
-    Sin resultados
-    */
-
     if(resultados.length === 0){
 
         coinList.innerHTML =
@@ -715,11 +711,6 @@ function(){
         return;
 
     }
-
-
-    /*
-    Crear resultados
-    */
 
     resultados.forEach(
     function(moneda){
@@ -742,7 +733,6 @@ function(){
         ) +
         "</small>";
 
-
         elemento.onclick =
         function(){
 
@@ -750,11 +740,9 @@ function(){
 
         };
 
-
         coinList.appendChild(elemento);
 
     });
-
 
     coinList.style.display =
     "block";
@@ -771,17 +759,14 @@ function seleccionarMoneda(moneda){
     monedaSeleccionada =
     moneda;
 
-
     busqueda.value =
     moneda.name +
     " (" +
     moneda.symbol.toUpperCase() +
     ")";
 
-
     coinList.style.display =
     "none";
-
 
     selectedCoin.innerHTML =
 
@@ -793,18 +778,14 @@ function seleccionarMoneda(moneda){
     ) +
     ")";
 
-
     selectedCoin.style.display =
     "block";
-
 
     calcularBtn.disabled =
     false;
 
-
     calcularBtn.textContent =
     "Calcular valor";
-
 
     resultado.innerHTML =
     "Resultado: -";
@@ -818,10 +799,6 @@ function seleccionarMoneda(moneda){
 
 async function calcularCrypto(){
 
-    /*
-    Verificar moneda
-    */
-
     if(!monedaSeleccionada){
 
         resultado.textContent =
@@ -831,14 +808,8 @@ async function calcularCrypto(){
 
     }
 
-
-    /*
-    Obtener cantidad
-    */
-
     const valorCantidad =
     parseFloat(cantidad.value);
-
 
     if(
         !Number.isFinite(valorCantidad) ||
@@ -854,31 +825,19 @@ async function calcularCrypto(){
 
     }
 
-
-    /*
-    Evitar doble consulta
-    */
-
     calcularBtn.disabled =
     true;
 
     calcularBtn.textContent =
     "Consultando precio...";
 
-
     resultado.innerHTML =
     "Consultando precio actual...";
 
-
     try{
-
-        /*
-        API CoinGecko
-        */
 
         const monedaDestino =
         moneda.value;
-
 
         const url =
         "https://api.coingecko.com/api/v3/simple/price" +
@@ -893,10 +852,8 @@ async function calcularCrypto(){
             monedaDestino
         );
 
-
         const respuesta =
         await fetch(url);
-
 
         if(!respuesta.ok){
 
@@ -906,14 +863,8 @@ async function calcularCrypto(){
 
         }
 
-
         const datos =
         await respuesta.json();
-
-
-        /*
-        Verificar precio
-        */
 
         if(
             !datos[
@@ -931,7 +882,6 @@ async function calcularCrypto(){
 
         }
 
-
         const precio =
         Number(
             datos[
@@ -939,18 +889,8 @@ async function calcularCrypto(){
             ][monedaDestino]
         );
 
-
-        /*
-        Calcular total
-        */
-
         const total =
         valorCantidad * precio;
-
-
-        /*
-        Mostrar
-        */
 
         resultado.innerHTML =
 
@@ -975,7 +915,6 @@ async function calcularCrypto(){
         monedaDestino
         .toUpperCase();
 
-
         estado.textContent =
         "Precio consultado mediante CoinGecko.";
 
@@ -990,11 +929,6 @@ async function calcularCrypto(){
         "<small>Intentá nuevamente en unos segundos.</small>";
 
     }
-
-
-    /*
-    Reactivar botón
-    */
 
     calcularBtn.disabled =
     false;
@@ -1029,11 +963,6 @@ function formatMoney(numero,codigo){
 
     let decimales = 2;
 
-
-    /*
-    Para criptomonedas o valores muy pequeños
-    */
-
     if(
         numero !== 0 &&
         Math.abs(numero) < 0.01
@@ -1042,7 +971,6 @@ function formatMoney(numero,codigo){
         decimales = 8;
 
     }
-
 
     return new Intl.NumberFormat(
         "es-AR",
