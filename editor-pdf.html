@@ -9,13 +9,14 @@
 
 <title>Editor de PDF Online Gratis | UtilMooz</title>
 
-<meta name="description"
-content="Editá PDF online gratis. Modificá textos, agregá texto, imágenes, firmas y dibujos directamente desde tu navegador con UtilMooz.">
+<meta name="description" content="Editá PDF online gratis. Modificá textos, agregá texto, imágenes, firmas y dibujos directamente desde tu navegador con UtilMooz.">
 
 <meta name="robots" content="index, follow">
 
+<!-- PDF.JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 
+<!-- PDF-LIB -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
 
 <style>
@@ -30,15 +31,17 @@ content="Editá PDF online gratis. Modificá textos, agregá texto, imágenes, f
     padding:0;
 }
 
-html{
-    scroll-behavior:smooth;
-}
-
 body{
     font-family:Arial,Helvetica,sans-serif;
     background:#f5f7fb;
     color:#172033;
     line-height:1.5;
+}
+
+button,
+input,
+select{
+    font-family:inherit;
 }
 
 
@@ -70,16 +73,6 @@ header{
     color:#4f8cff;
 }
 
-
-/* =====================================================
-   INICIO
-===================================================== */
-
-nav{
-    display:flex;
-    align-items:center;
-}
-
 .inicio-btn{
     display:inline-flex;
     align-items:center;
@@ -103,8 +96,6 @@ nav{
 
 .inicio-btn:hover{
     background:#3978e8;
-    transform:translateY(-1px);
-    box-shadow:0 4px 12px rgba(79,140,255,.3);
 }
 
 
@@ -135,21 +126,16 @@ h1{
 
 .upload-box{
     background:white;
-
     border:2px dashed #cbd5e1;
-
     border-radius:16px;
-
     padding:60px 25px;
-
     text-align:center;
-
     cursor:pointer;
-
     transition:.2s;
 }
 
-.upload-box:hover{
+.upload-box:hover,
+.upload-box.dragging{
     border-color:#4f8cff;
     background:#f8fbff;
 }
@@ -171,7 +157,6 @@ h1{
 
 .upload-button{
     display:inline-flex;
-
     align-items:center;
     justify-content:center;
 
@@ -193,6 +178,31 @@ h1{
 
 #fileInput{
     display:none;
+}
+
+
+/* =====================================================
+   ERROR DE CARGA
+===================================================== */
+
+.load-error{
+    display:none;
+
+    margin-top:15px;
+
+    padding:14px;
+
+    background:#fef2f2;
+
+    border:1px solid #fecaca;
+
+    color:#b91c1c;
+
+    border-radius:9px;
+
+    text-align:center;
+
+    font-size:14px;
 }
 
 
@@ -260,8 +270,7 @@ h1{
 .tool-button.active{
     background:#4f8cff;
 
-    box-shadow:
-    0 0 0 2px rgba(79,140,255,.25);
+    box-shadow:0 0 0 2px rgba(79,140,255,.25);
 }
 
 .tool-button.danger:hover{
@@ -270,11 +279,8 @@ h1{
 
 .tool-separator{
     width:1px;
-
     height:30px;
-
     background:#374151;
-
     margin:0 3px;
 }
 
@@ -285,9 +291,7 @@ h1{
 
 .editor-body{
     display:flex;
-
     min-height:700px;
-
     background:#e5e7eb;
 }
 
@@ -340,9 +344,6 @@ h1{
 
 .thumbnail.active{
     border-color:#4f8cff;
-
-    box-shadow:
-    0 0 0 2px rgba(79,140,255,.12);
 }
 
 .thumbnail canvas{
@@ -384,7 +385,7 @@ h1{
 
 
 /* =====================================================
-   CONTROL DE PÁGINA
+   CONTROLES DE PÁGINA
 ===================================================== */
 
 .page-controls{
@@ -451,14 +452,7 @@ h1{
     z-index:5;
 
     touch-action:none;
-
-    cursor:default;
 }
-
-
-/* =====================================================
-   CAPA DE TEXTO
-===================================================== */
 
 #textLayer{
     position:absolute;
@@ -469,7 +463,7 @@ h1{
     width:100%;
     height:100%;
 
-    z-index:8;
+    z-index:10;
 
     pointer-events:none;
 }
@@ -477,40 +471,34 @@ h1{
 .text-hit{
     position:absolute;
 
-    cursor:pointer;
-
-    border:1px solid transparent;
-
-    line-height:1;
-
-    pointer-events:auto;
-
     color:transparent;
 
     background:transparent;
+
+    border:1px solid transparent;
+
+    cursor:pointer;
 
     overflow:hidden;
 
     white-space:nowrap;
 
     user-select:none;
+
+    line-height:1;
+
+    pointer-events:auto;
 }
 
 .text-hit:hover{
-    background:rgba(79,140,255,.13);
+    background:rgba(79,140,255,.15);
 
     border:1px dashed #4f8cff;
 }
 
-.text-hit.selected{
-    background:rgba(79,140,255,.18);
-
-    border:2px solid #4f8cff;
-}
-
 
 /* =====================================================
-   BARRA INFERIOR
+   BOTTOM
 ===================================================== */
 
 .bottom-toolbar{
@@ -621,7 +609,7 @@ h1{
 
 
 /* =====================================================
-   ESTADO
+   STATUS
 ===================================================== */
 
 .status{
@@ -646,7 +634,7 @@ h1{
 
 
 /* =====================================================
-   MODAL
+   MODALES
 ===================================================== */
 
 .modal{
@@ -720,6 +708,8 @@ h1{
     gap:10px;
 
     margin-top:10px;
+
+    flex-wrap:wrap;
 }
 
 .modal-buttons button{
@@ -876,13 +866,8 @@ footer{
 
 </head>
 
-
 <body>
 
-
-<!-- =====================================================
-     HEADER
-===================================================== -->
 
 <header>
 
@@ -892,11 +877,7 @@ footer{
 Util<span>Mooz</span>
 </div>
 
-<nav>
-
-<a
-href="index.html"
-class="inicio-btn">
+<a href="index.html" class="inicio-btn">
 
 <svg
 width="18"
@@ -909,9 +890,7 @@ stroke-linecap="round"
 stroke-linejoin="round">
 
 <path d="M3 10.5L12 3l9 7.5"></path>
-
 <path d="M5.5 9.5V21h13V9.5"></path>
-
 <path d="M9.5 21v-6h5v6"></path>
 
 </svg>
@@ -920,16 +899,10 @@ Inicio
 
 </a>
 
-</nav>
-
 </div>
 
 </header>
 
-
-<!-- =====================================================
-     CONTENIDO
-===================================================== -->
 
 <main class="container">
 
@@ -944,7 +917,7 @@ Podés modificar texto, agregar contenido, imágenes, firmas y dibujos.
 
 
 <!-- =====================================================
-     UPLOAD
+     CARGADOR
 ===================================================== -->
 
 <div
@@ -974,8 +947,14 @@ class="upload-button">
 <input
 type="file"
 id="fileInput"
-accept="application/pdf">
+accept=".pdf,application/pdf">
 
+</div>
+
+
+<div
+class="load-error"
+id="loadError">
 </div>
 
 
@@ -988,10 +967,6 @@ class="editor"
 id="editor">
 
 
-<!-- =====================================================
-     TOOLBAR
-===================================================== -->
-
 <div class="toolbar">
 
 <button
@@ -1003,7 +978,6 @@ onclick="activarSeleccionTexto()">
 
 </button>
 
-
 <button
 class="tool-button"
 id="textTool"
@@ -1012,7 +986,6 @@ onclick="activarTexto()">
 ✏️ Agregar texto
 
 </button>
-
 
 <button
 class="tool-button"
@@ -1023,7 +996,6 @@ onclick="activarDibujo()">
 
 </button>
 
-
 <button
 class="tool-button"
 onclick="agregarImagen()">
@@ -1031,7 +1003,6 @@ onclick="agregarImagen()">
 🖼️ Imagen
 
 </button>
-
 
 <button
 class="tool-button"
@@ -1041,9 +1012,7 @@ onclick="abrirFirma()">
 
 </button>
 
-
 <div class="tool-separator"></div>
-
 
 <button
 class="tool-button"
@@ -1053,7 +1022,6 @@ onclick="rotarPagina()">
 
 </button>
 
-
 <button
 class="tool-button"
 onclick="moverPagina(-1)">
@@ -1061,7 +1029,6 @@ onclick="moverPagina(-1)">
 ⬆️ Subir
 
 </button>
-
 
 <button
 class="tool-button"
@@ -1071,7 +1038,6 @@ onclick="moverPagina(1)">
 
 </button>
 
-
 <button
 class="tool-button danger"
 onclick="eliminarPagina()">
@@ -1080,9 +1046,7 @@ onclick="eliminarPagina()">
 
 </button>
 
-
 <div class="tool-separator"></div>
-
 
 <button
 class="tool-button"
@@ -1095,14 +1059,8 @@ onclick="limpiarEdicion()">
 </div>
 
 
-<!-- =====================================================
-     CUERPO
-===================================================== -->
-
 <div class="editor-body">
 
-
-<!-- SIDEBAR -->
 
 <aside class="sidebar">
 
@@ -1114,8 +1072,6 @@ PÁGINAS
 
 </aside>
 
-
-<!-- WORKSPACE -->
 
 <section class="workspace">
 
@@ -1129,9 +1085,7 @@ PÁGINAS
 <div
 class="page-info"
 id="pageInfo">
-
 Página 1 de 1
-
 </div>
 
 <button onclick="paginaSiguiente()">
@@ -1140,8 +1094,6 @@ Página 1 de 1
 
 </div>
 
-
-<!-- PDF -->
 
 <div
 class="pdf-stage"
@@ -1164,15 +1116,13 @@ id="textLayer">
 
 <div class="help-box">
 
-💡 Activá <b>Editar texto</b> una sola vez.
-Después simplemente hacé clic sobre cada palabra que quieras modificar.
-El modo permanecerá activo hasta que elijas otra herramienta.
+💡 <b>Editar texto:</b> activá la herramienta y hacé clic sobre el texto del PDF.
+Podés reemplazarlo o eliminarlo.
 
 </div>
 
 
 <div class="bottom-toolbar">
-
 
 <div class="zoom-control">
 
@@ -1189,7 +1139,6 @@ El modo permanecerá activo hasta que elijas otra herramienta.
 </button>
 
 </div>
-
 
 <button
 class="download-button"
@@ -1210,17 +1159,12 @@ Listo.
 
 </div>
 
-
 </section>
 
 </div>
 
 </div>
 
-
-<!-- =====================================================
-     INFORMACIÓN
-===================================================== -->
 
 <section class="info">
 
@@ -1230,40 +1174,34 @@ Editor de PDF online gratis
 
 <p>
 UtilMooz permite trabajar con documentos PDF directamente desde
-el navegador. No necesitás instalar programas adicionales.
+el navegador sin necesidad de instalar programas.
 </p>
 
-
 <h2>
-Editar texto de un PDF
+Modificar texto de un PDF
 </h2>
 
 <p>
-Activá la herramienta "Editar texto" y seleccioná cualquier texto
-existente dentro del documento. Podés reemplazarlo o eliminarlo.
-La herramienta permanece activa para que puedas modificar
-varios textos consecutivamente.
+La herramienta detecta el texto existente en el documento.
+Al seleccionar una palabra o frase podés reemplazarla o eliminarla.
 </p>
-
 
 <h2>
 Agregar contenido
 </h2>
 
 <p>
-También podés agregar texto nuevo, imágenes, dibujos y firmas,
-además de rotar, eliminar y reorganizar páginas.
+También podés agregar texto, imágenes, dibujos y firmas,
+además de reorganizar, rotar y eliminar páginas.
 </p>
-
 
 <h2>
 Privacidad
 </h2>
 
 <p>
-El procesamiento principal se realiza directamente en tu navegador.
-El PDF seleccionado no necesita ser enviado a un servidor para
-utilizar las funciones principales de esta herramienta.
+El procesamiento se realiza directamente en el navegador.
+El archivo PDF no necesita ser enviado a un servidor.
 </p>
 
 </section>
@@ -1272,7 +1210,7 @@ utilizar las funciones principales de esta herramienta.
 
 
 <!-- =====================================================
-     MODAL TEXTO
+     MODAL AGREGAR TEXTO
 ===================================================== -->
 
 <div
@@ -1291,25 +1229,23 @@ id="textInput"
 placeholder="Escribí el texto..."
 maxlength="1000">
 
-
 <label>
-Tamaño del texto
+Tamaño
 </label>
 
 <select id="textSize">
 
-<option value="10">10 px</option>
-<option value="12">12 px</option>
-<option value="14">14 px</option>
-<option value="16" selected>16 px</option>
-<option value="18">18 px</option>
-<option value="20">20 px</option>
-<option value="24">24 px</option>
-<option value="30">30 px</option>
-<option value="40">40 px</option>
+<option value="10">10</option>
+<option value="12">12</option>
+<option value="14">14</option>
+<option value="16" selected>16</option>
+<option value="18">18</option>
+<option value="20">20</option>
+<option value="24">24</option>
+<option value="30">30</option>
+<option value="40">40</option>
 
 </select>
-
 
 <label>
 Color
@@ -1320,23 +1256,18 @@ type="color"
 id="textColor"
 value="#111827">
 
-
 <div class="modal-buttons">
 
 <button
 class="cancel-btn"
 onclick="cerrarModalTexto()">
-
 Cancelar
-
 </button>
 
 <button
 class="confirm-btn"
 onclick="confirmarTexto()">
-
 Guardar
-
 </button>
 
 </div>
@@ -1365,13 +1296,11 @@ id="originalText"
 style="font-size:13px;color:#667085;margin-bottom:12px;">
 </p>
 
-
 <input
 type="text"
 id="replacementText"
 placeholder="Nuevo texto..."
 maxlength="1000">
-
 
 <label>
 Tamaño
@@ -1379,44 +1308,35 @@ Tamaño
 
 <select id="replacementSize">
 
-<option value="10">10 px</option>
-<option value="12">12 px</option>
-<option value="14">14 px</option>
-<option value="16" selected>16 px</option>
-<option value="18">18 px</option>
-<option value="20">20 px</option>
-<option value="24">24 px</option>
-<option value="30">30 px</option>
+<option value="10">10</option>
+<option value="12">12</option>
+<option value="14">14</option>
+<option value="16" selected>16</option>
+<option value="18">18</option>
+<option value="20">20</option>
+<option value="24">24</option>
+<option value="30">30</option>
 
 </select>
-
 
 <div class="modal-buttons">
 
 <button
 class="cancel-btn"
 onclick="cerrarEditarTexto()">
-
 Cancelar
-
 </button>
-
 
 <button
 class="delete-btn"
 onclick="eliminarTextoSeleccionado()">
-
 Eliminar
-
 </button>
-
 
 <button
 class="confirm-btn"
 onclick="guardarTextoEditado()">
-
 Reemplazar
-
 </button>
 
 </div>
@@ -1440,37 +1360,27 @@ id="signatureModal">
 Crear firma
 </h3>
 
-<p
-style="font-size:13px;color:#667085;margin-bottom:10px;">
-
+<p style="font-size:13px;color:#667085;margin-bottom:10px;">
 Dibujá tu firma dentro del cuadro.
-
 </p>
-
 
 <canvas
 id="signatureCanvas"
 class="signature-canvas">
 </canvas>
 
-
 <div class="modal-buttons">
 
 <button
 class="cancel-btn"
 onclick="limpiarFirma()">
-
 Limpiar
-
 </button>
-
 
 <button
 class="confirm-btn"
 onclick="confirmarFirma()">
-
 Usar firma
-
 </button>
 
 </div>
@@ -1479,10 +1389,6 @@ Usar firma
 
 </div>
 
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
 
 <footer>
 
@@ -1494,11 +1400,36 @@ Usar firma
 <script>
 
 /* =====================================================
-   PDF.JS
+   COMPROBAR LIBRERÍAS
 ===================================================== */
 
-pdfjsLib.GlobalWorkerOptions.workerSrc =
-"https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+if(typeof pdfjsLib === "undefined"){
+
+    mostrarErrorCarga(
+        "No se pudo cargar el motor PDF. Verificá tu conexión a Internet."
+    );
+
+}
+
+if(typeof PDFLib === "undefined"){
+
+    console.error(
+        "PDF-LIB no pudo cargarse."
+    );
+
+}
+
+
+/* =====================================================
+   CONFIGURACIÓN PDF.JS
+===================================================== */
+
+if(typeof pdfjsLib !== "undefined"){
+
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+    "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+}
 
 
 /* =====================================================
@@ -1559,6 +1490,24 @@ document.getElementById("thumbnails");
 const statusBox =
 document.getElementById("status");
 
+const loadError =
+document.getElementById("loadError");
+
+
+/* =====================================================
+   ERROR
+===================================================== */
+
+function mostrarErrorCarga(mensaje){
+
+    loadError.textContent =
+    mensaje;
+
+    loadError.style.display =
+    "block";
+
+}
+
 
 /* =====================================================
    NUEVA PÁGINA
@@ -1588,18 +1537,26 @@ function nuevaPaginaData(originalIndex){
 
 
 /* =====================================================
-   CARGAR ARCHIVO
+   FILE INPUT
 ===================================================== */
 
 fileInput.addEventListener(
 "change",
-function(){
+async function(){
 
-    if(this.files.length){
+    const archivo =
+    this.files &&
+    this.files[0];
 
-        cargarPDF(this.files[0]);
+    if(!archivo){
+
+        return;
 
     }
+
+    await cargarPDF(archivo);
+
+    this.value = "";
 
 });
 
@@ -1614,8 +1571,9 @@ function(event){
 
     event.preventDefault();
 
-    uploadBox.style.borderColor =
-    "#4f8cff";
+    uploadBox.classList.add(
+        "dragging"
+    );
 
 });
 
@@ -1624,32 +1582,52 @@ uploadBox.addEventListener(
 "dragleave",
 function(){
 
-    uploadBox.style.borderColor =
-    "#cbd5e1";
+    uploadBox.classList.remove(
+        "dragging"
+    );
 
 });
 
 
 uploadBox.addEventListener(
 "drop",
-function(event){
+async function(event){
 
     event.preventDefault();
 
-    uploadBox.style.borderColor =
-    "#cbd5e1";
+    uploadBox.classList.remove(
+        "dragging"
+    );
 
-    const archivo =
-    event.dataTransfer.files[0];
+    const archivos =
+    event.dataTransfer.files;
 
     if(
-        archivo &&
-        archivo.type === "application/pdf"
+        !archivos ||
+        !archivos.length
     ){
 
-        cargarPDF(archivo);
+        return;
 
     }
+
+    const archivo =
+    archivos[0];
+
+    if(
+        archivo.type !== "application/pdf" &&
+        !archivo.name.toLowerCase().endsWith(".pdf")
+    ){
+
+        mostrarErrorCarga(
+            "El archivo seleccionado no es un PDF."
+        );
+
+        return;
+
+    }
+
+    await cargarPDF(archivo);
 
 });
 
@@ -1662,23 +1640,106 @@ async function cargarPDF(archivo){
 
     try{
 
+        loadError.style.display =
+        "none";
+
         mostrarEstado(
-            "Cargando documento..."
+            "Leyendo archivo PDF..."
         );
+
+
+        if(
+            typeof pdfjsLib === "undefined"
+        ){
+
+            throw new Error(
+                "PDF.js no está disponible."
+            );
+
+        }
+
+
+        if(
+            typeof PDFLib === "undefined"
+        ){
+
+            throw new Error(
+                "PDF-LIB no está disponible."
+            );
+
+        }
+
+
+        if(
+            archivo.size === 0
+        ){
+
+            throw new Error(
+                "El archivo está vacío."
+            );
+
+        }
+
+
+        if(
+            archivo.size >
+            100 * 1024 * 1024
+        ){
+
+            throw new Error(
+                "El archivo supera los 100 MB."
+            );
+
+        }
 
 
         const buffer =
         await archivo.arrayBuffer();
 
 
+        /*
+           IMPORTANTE:
+           Creamos una copia nueva para
+           evitar problemas de memoria
+           con PDF.js.
+        */
+
         pdfBytes =
-        new Uint8Array(buffer);
+        new Uint8Array(
+            buffer.slice(0)
+        );
+
+
+        mostrarEstado(
+            "Abriendo PDF..."
+        );
+
+
+        const loadingTask =
+        pdfjsLib.getDocument({
+
+            data:
+            pdfBytes.slice(0),
+
+            verbosity:0
+
+        });
 
 
         pdfOriginal =
-        await pdfjsLib.getDocument({
-            data:pdfBytes
-        }).promise;
+        await loadingTask.promise;
+
+
+        if(
+            !pdfOriginal ||
+            !pdfOriginal.numPages
+        ){
+
+            throw new Error(
+                "PDF.js no encontró páginas."
+            );
+
+        }
 
 
         paginas = [];
@@ -1703,6 +1764,8 @@ async function cargarPDF(archivo){
 
         herramienta = null;
 
+        textoSeleccionado = null;
+
 
         uploadBox.style.display =
         "none";
@@ -1712,22 +1775,66 @@ async function cargarPDF(archivo){
         "block";
 
 
+        mostrarEstado(
+            "Preparando páginas..."
+        );
+
+
         await crearMiniaturas();
+
 
         await renderizarPagina();
 
 
         mostrarEstado(
-            "Documento cargado correctamente."
+            "✅ PDF cargado correctamente."
         );
 
 
     }catch(error){
 
-        console.error(error);
+        console.error(
+            "ERROR AL CARGAR PDF:",
+            error
+        );
 
-        alert(
-            "No se pudo abrir el PDF."
+
+        pdfOriginal = null;
+
+        paginas = [];
+
+
+        editor.style.display =
+        "none";
+
+
+        uploadBox.style.display =
+        "block";
+
+
+        let mensaje =
+        "No se pudo cargar el PDF.";
+
+
+        if(
+            error &&
+            error.message
+        ){
+
+            mensaje +=
+            " " +
+            error.message;
+
+        }
+
+
+        mostrarErrorCarga(
+            mensaje
+        );
+
+
+        mostrarEstado(
+            "Error al cargar el documento."
         );
 
     }
@@ -1744,6 +1851,16 @@ async function crearMiniaturas(){
     thumbnails.innerHTML = "";
 
 
+    if(
+        !pdfOriginal ||
+        !paginas.length
+    ){
+
+        return;
+
+    }
+
+
     for(
         let i = 0;
         i < paginas.length;
@@ -1755,16 +1872,22 @@ async function crearMiniaturas(){
 
 
         const div =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
 
         div.className =
         "thumbnail";
 
 
-        if(i === paginaActual){
+        if(
+            i === paginaActual
+        ){
 
-            div.classList.add("active");
+            div.classList.add(
+                "active"
+            );
 
         }
 
@@ -1774,14 +1897,20 @@ async function crearMiniaturas(){
 
 
         const canvas =
-        document.createElement("canvas");
+        document.createElement(
+            "canvas"
+        );
 
 
-        div.appendChild(canvas);
+        div.appendChild(
+            canvas
+        );
 
 
         const numero =
-        document.createElement("div");
+        document.createElement(
+            "div"
+        );
 
 
         numero.className =
@@ -1789,10 +1918,13 @@ async function crearMiniaturas(){
 
 
         numero.textContent =
-        "Página " + (i + 1);
+        "Página " +
+        (i + 1);
 
 
-        div.appendChild(numero);
+        div.appendChild(
+            numero
+        );
 
 
         div.onclick =
@@ -1803,41 +1935,57 @@ async function crearMiniaturas(){
         };
 
 
-        thumbnails.appendChild(div);
-
-
-        const page =
-        await pdfOriginal.getPage(
-            datos.originalIndex + 1
+        thumbnails.appendChild(
+            div
         );
 
 
-        const viewport =
-        page.getViewport({
+        try{
 
-            scale:.22,
-
-            rotation:datos.rotation
-
-        });
+            const page =
+            await pdfOriginal.getPage(
+                datos.originalIndex + 1
+            );
 
 
-        canvas.width =
-        viewport.width;
+            const viewport =
+            page.getViewport({
+
+                scale:.22,
+
+                rotation:
+                datos.rotation
+
+            });
 
 
-        canvas.height =
-        viewport.height;
+            canvas.width =
+            viewport.width;
 
 
-        await page.render({
+            canvas.height =
+            viewport.height;
 
-            canvasContext:
-            canvas.getContext("2d"),
 
-            viewport:viewport
+            await page.render({
 
-        }).promise;
+                canvasContext:
+                canvas.getContext("2d"),
+
+                viewport:
+                viewport
+
+            }).promise;
+
+
+        }catch(error){
+
+            console.error(
+                "Error miniatura:",
+                error
+            );
+
+        }
 
     }
 
@@ -1911,12 +2059,15 @@ function actualizarMiniaturas(){
 
 
 /* =====================================================
-   RENDERIZAR PÁGINA
+   RENDERIZAR
 ===================================================== */
 
 async function renderizarPagina(){
 
-    if(!pdfOriginal){
+    if(
+        !pdfOriginal ||
+        !paginas.length
+    ){
 
         return;
 
@@ -1933,11 +2084,15 @@ async function renderizarPagina(){
     );
 
 
+    const escala =
+    1.25 * zoom;
+
+
     const viewport =
     page.getViewport({
 
         scale:
-        1.25 * zoom,
+        escala,
 
         rotation:
         datos.rotation
@@ -1946,19 +2101,27 @@ async function renderizarPagina(){
 
 
     pdfCanvas.width =
-    viewport.width;
+    Math.ceil(
+        viewport.width
+    );
 
 
     pdfCanvas.height =
-    viewport.height;
+    Math.ceil(
+        viewport.height
+    );
 
 
     overlayCanvas.width =
-    viewport.width;
+    Math.ceil(
+        viewport.width
+    );
 
 
     overlayCanvas.height =
-    viewport.height;
+    Math.ceil(
+        viewport.height
+    );
 
 
     pdfStage.style.width =
@@ -1977,17 +2140,29 @@ async function renderizarPagina(){
     viewport.height + "px";
 
 
+    const ctx =
+    pdfCanvas.getContext("2d");
+
+
+    ctx.clearRect(
+        0,
+        0,
+        pdfCanvas.width,
+        pdfCanvas.height
+    );
+
+
     await page.render({
 
-        canvasContext:
-        pdfCanvas.getContext("2d"),
+        canvasContext:ctx,
 
         viewport:viewport
 
     }).promise;
 
 
-    limpiarTextosDetectables();
+    textLayer.innerHTML =
+    "";
 
 
     if(
@@ -2018,24 +2193,15 @@ async function renderizarPagina(){
     document.getElementById(
         "zoomValue"
     ).textContent =
-    Math.round(zoom * 100) + "%";
+    Math.round(
+        zoom * 100
+    ) + "%";
 
 }
 
 
 /* =====================================================
-   LIMPIAR TEXTOS DETECTABLES
-===================================================== */
-
-function limpiarTextosDetectables(){
-
-    textLayer.innerHTML = "";
-
-}
-
-
-/* =====================================================
-   CREAR TEXTO DETECTABLE
+   DETECTAR TEXTO
 ===================================================== */
 
 async function crearTextosDetectables(
@@ -2044,26 +2210,11 @@ async function crearTextosDetectables(
 ){
 
     if(
-        herramienta !==
-        "seleccionarTexto"
-    ){
-
-        return;
-
-    }
-
-
-    /*
-       La selección de texto funciona
-       mejor sobre páginas sin rotación.
-    */
-
-    if(
         paginas[paginaActual].rotation !== 0
     ){
 
         mostrarEstado(
-            "Para editar texto de esta página, dejala en rotación normal."
+            "Para editar texto existente, poné la página en rotación normal."
         );
 
         return;
@@ -2113,8 +2264,10 @@ async function crearTextosDetectables(
             const ancho =
             Math.max(
                 5,
-                item.width *
-                viewport.scale
+                Math.abs(
+                    item.width *
+                    viewport.scale
+                )
             );
 
 
@@ -2148,39 +2301,11 @@ async function crearTextosDetectables(
 
 
             hit.style.height =
-            Math.max(
-                10,
-                altura
-            ) + "px";
+            altura + "px";
 
 
             hit.title =
             "Editar: " +
-            item.str;
-
-
-            /*
-               Guardamos coordenadas
-               en píxeles de la vista actual.
-            */
-
-            hit.dataset.x =
-            x;
-
-
-            hit.dataset.y =
-            baseline;
-
-
-            hit.dataset.width =
-            ancho;
-
-
-            hit.dataset.height =
-            altura;
-
-
-            hit.dataset.text =
             item.str;
 
 
@@ -2194,15 +2319,20 @@ async function crearTextosDetectables(
 
                 seleccionarTextoPDF({
 
-                    text:item.str,
+                    text:
+                    item.str,
 
-                    x:x,
+                    x:
+                    x / viewport.scale,
 
-                    y:baseline,
+                    y:
+                    baseline / viewport.scale,
 
-                    width:ancho,
+                    width:
+                    ancho / viewport.scale,
 
-                    height:altura
+                    height:
+                    altura / viewport.scale
 
                 });
 
@@ -2220,40 +2350,28 @@ async function crearTextosDetectables(
 
 
 /* =====================================================
-   ACTIVAR SELECCIÓN DE TEXTO
+   EDITAR TEXTO
 ===================================================== */
 
 async function activarSeleccionTexto(){
-
-    /*
-       IMPORTANTE:
-       Este modo queda activo.
-       No se desactiva después de editar.
-    */
 
     herramienta =
     "seleccionarTexto";
 
 
-    document
-    .getElementById(
+    document.getElementById(
         "selectTextTool"
-    )
-    .classList.add("active");
+    ).classList.add("active");
 
 
-    document
-    .getElementById(
+    document.getElementById(
         "textTool"
-    )
-    .classList.remove("active");
+    ).classList.remove("active");
 
 
-    document
-    .getElementById(
+    document.getElementById(
         "drawTool"
-    )
-    .classList.remove("active");
+    ).classList.remove("active");
 
 
     overlayCanvas.style.cursor =
@@ -2268,7 +2386,7 @@ async function activarSeleccionTexto(){
 
 
     mostrarEstado(
-        "Modo edición activo. Hacé clic sobre cualquier palabra para modificarla."
+        "🖱️ Modo editar activo. Hacé clic sobre cualquier texto."
     );
 
 }
@@ -2287,7 +2405,7 @@ function seleccionarTextoPDF(info){
     document.getElementById(
         "originalText"
     ).textContent =
-    "Texto seleccionado: " +
+    "Texto original: " +
     info.text;
 
 
@@ -2297,17 +2415,14 @@ function seleccionarTextoPDF(info){
     info.text;
 
 
-    /*
-       Tamaño aproximado automático.
-    */
-
-    const tamañoAprox =
+    const tamaño =
     Math.max(
         10,
         Math.min(
             30,
             Math.round(
-                info.height * .85
+                info.height *
+                .85
             )
         )
     );
@@ -2316,7 +2431,7 @@ function seleccionarTextoPDF(info){
     document.getElementById(
         "replacementSize"
     ).value =
-    tamañoAprox;
+    tamaño;
 
 
     document.getElementById(
@@ -2328,13 +2443,14 @@ function seleccionarTextoPDF(info){
     setTimeout(
         function(){
 
+            const campo =
             document.getElementById(
                 "replacementText"
-            ).focus();
+            );
 
-            document.getElementById(
-                "replacementText"
-            ).select();
+            campo.focus();
+
+            campo.select();
 
         },
         50
@@ -2344,25 +2460,27 @@ function seleccionarTextoPDF(info){
 
 
 /* =====================================================
-   GUARDAR TEXTO EDITADO
+   GUARDAR REEMPLAZO
 ===================================================== */
 
 function guardarTextoEditado(){
 
-    if(!textoSeleccionado){
+    if(
+        !textoSeleccionado
+    ){
 
         return;
 
     }
 
 
-    const nuevoTexto =
+    const nuevo =
     document.getElementById(
         "replacementText"
     ).value.trim();
 
 
-    if(!nuevoTexto){
+    if(!nuevo){
 
         alert(
             "Escribí el nuevo texto."
@@ -2385,11 +2503,6 @@ function guardarTextoEditado(){
     paginas[paginaActual];
 
 
-    /*
-       Evitamos acumular varias veces
-       exactamente la misma edición.
-    */
-
     const existente =
     datos.replacements.find(
         function(item){
@@ -2400,11 +2513,11 @@ function guardarTextoEditado(){
                 Math.abs(
                     item.x -
                     textoSeleccionado.x
-                ) < 2 &&
+                ) < 1 &&
                 Math.abs(
                     item.y -
                     textoSeleccionado.y
-                ) < 2
+                ) < 1
             );
 
         }
@@ -2417,7 +2530,7 @@ function guardarTextoEditado(){
         textoSeleccionado.text,
 
         newText:
-        nuevoTexto,
+        nuevo,
 
         x:
         textoSeleccionado.x,
@@ -2456,12 +2569,6 @@ function guardarTextoEditado(){
     cerrarEditarTexto();
 
 
-    /*
-       MUY IMPORTANTE:
-       NO ponemos herramienta = null.
-       El modo editar texto permanece activo.
-    */
-
     herramienta =
     "seleccionarTexto";
 
@@ -2470,65 +2577,11 @@ function guardarTextoEditado(){
     "auto";
 
 
-    limpiarTextosDetectables();
-
-
-    redibujarOverlay();
-
-
-    /*
-       Volvemos a crear las zonas
-       de selección inmediatamente.
-    */
-
-    const page =
-    awaitPageActual();
-
-
-    if(page){
-
-        const viewport =
-        page.getViewport({
-
-            scale:
-            1.25 * zoom,
-
-            rotation:
-            datos.rotation
-
-        });
-
-
-        await crearTextosDetectables(
-            page,
-            viewport
-        );
-
-    }
+    renderizarPagina();
 
 
     mostrarEstado(
-        "Texto reemplazado. Podés hacer clic en otra palabra."
-    );
-
-}
-
-
-/* =====================================================
-   OBTENER PÁGINA ACTUAL
-===================================================== */
-
-async function awaitPageActual(){
-
-    if(!pdfOriginal){
-
-        return null;
-
-    }
-
-
-    return await pdfOriginal.getPage(
-        paginas[paginaActual].originalIndex + 1
+        "✅ Texto reemplazado correctamente."
     );
 
 }
@@ -2540,7 +2593,9 @@ async function awaitPageActual(){
 
 function eliminarTextoSeleccionado(){
 
-    if(!textoSeleccionado){
+    if(
+        !textoSeleccionado
+    ){
 
         return;
 
@@ -2551,7 +2606,28 @@ function eliminarTextoSeleccionado(){
     paginas[paginaActual];
 
 
-    const reemplazo = {
+    const existente =
+    datos.replacements.find(
+        function(item){
+
+            return (
+                item.original ===
+                textoSeleccionado.text &&
+                Math.abs(
+                    item.x -
+                    textoSeleccionado.x
+                ) < 1 &&
+                Math.abs(
+                    item.y -
+                    textoSeleccionado.y
+                ) < 1
+            );
+
+        }
+    );
+
+
+    const eliminacion = {
 
         original:
         textoSeleccionado.text,
@@ -2576,38 +2652,17 @@ function eliminarTextoSeleccionado(){
     };
 
 
-    const existente =
-    datos.replacements.find(
-        function(item){
-
-            return (
-                item.original ===
-                reemplazo.original &&
-                Math.abs(
-                    item.x -
-                    reemplazo.x
-                ) < 2 &&
-                Math.abs(
-                    item.y -
-                    reemplazo.y
-                ) < 2
-            );
-
-        }
-    );
-
-
     if(existente){
 
         Object.assign(
             existente,
-            reemplazo
+            eliminacion
         );
 
     }else{
 
         datos.replacements.push(
-            reemplazo
+            eliminacion
         );
 
     }
@@ -2615,10 +2670,6 @@ function eliminarTextoSeleccionado(){
 
     cerrarEditarTexto();
 
-
-    /*
-       El modo permanece activo.
-    */
 
     herramienta =
     "seleccionarTexto";
@@ -2628,55 +2679,18 @@ function eliminarTextoSeleccionado(){
     "auto";
 
 
-    limpiarTextosDetectables();
-
-
-    redibujarOverlay();
+    renderizarPagina();
 
 
     mostrarEstado(
-        "Texto eliminado. Podés seleccionar otra palabra."
-    );
-
-
-    setTimeout(
-        async function(){
-
-            const page =
-            await awaitPageActual();
-
-
-            if(page){
-
-                const viewport =
-                page.getViewport({
-
-                    scale:
-                    1.25 * zoom,
-
-                    rotation:
-                    paginas[paginaActual]
-                    .rotation
-
-                });
-
-
-                await crearTextosDetectables(
-                    page,
-                    viewport
-                );
-
-            }
-
-        },
-        30
+        "🗑️ Texto eliminado."
     );
 
 }
 
 
 /* =====================================================
-   CERRAR EDITAR TEXTO
+   CERRAR MODAL EDITAR
 ===================================================== */
 
 function cerrarEditarTexto(){
@@ -2711,39 +2725,34 @@ function activarTexto(){
     "none";
 
 
-    document
-    .getElementById(
+    document.getElementById(
         "textTool"
-    )
-    .classList.add("active");
+    ).classList.add("active");
 
 
-    document
-    .getElementById(
+    document.getElementById(
         "drawTool"
-    )
-    .classList.remove("active");
+    ).classList.remove("active");
 
 
-    document
-    .getElementById(
+    document.getElementById(
         "selectTextTool"
-    )
-    .classList.remove("active");
+    ).classList.remove("active");
 
 
-    limpiarTextosDetectables();
+    textLayer.innerHTML =
+    "";
 
 
     mostrarEstado(
-        "Hacé clic donde quieras agregar el texto."
+        "✏️ Hacé clic donde quieras agregar texto."
     );
 
 }
 
 
 /* =====================================================
-   CLICK OVERLAY
+   CLICK PARA NUEVO TEXTO
 ===================================================== */
 
 overlayCanvas.addEventListener(
@@ -2765,13 +2774,8 @@ function(event){
     );
 
 
-    posicionTexto = {
-
-        x:punto.x,
-
-        y:punto.y
-
-    };
+    posicionTexto =
+    punto;
 
 
     document.getElementById(
@@ -2780,9 +2784,16 @@ function(event){
     "flex";
 
 
-    document.getElementById(
-        "textInput"
-    ).focus();
+    setTimeout(
+        function(){
+
+            document.getElementById(
+                "textInput"
+            ).focus();
+
+        },
+        50
+    );
 
 });
 
@@ -2797,7 +2808,7 @@ function obtenerCoordenadasPDF(event){
     overlayCanvas.getBoundingClientRect();
 
 
-    const screenX =
+    const px =
     (
         event.clientX -
         rect.left
@@ -2808,7 +2819,7 @@ function obtenerCoordenadasPDF(event){
     );
 
 
-    const screenY =
+    const py =
     (
         event.clientY -
         rect.top
@@ -2826,13 +2837,13 @@ function obtenerCoordenadasPDF(event){
     return {
 
         x:
-        screenX /
+        px /
         escala,
 
         y:
         (
             overlayCanvas.height -
-            screenY
+            py
         ) /
         escala
 
@@ -2842,7 +2853,7 @@ function obtenerCoordenadasPDF(event){
 
 
 /* =====================================================
-   CONFIRMAR TEXTO
+   CONFIRMAR NUEVO TEXTO
 ===================================================== */
 
 function confirmarTexto(){
@@ -2854,6 +2865,10 @@ function confirmarTexto(){
 
 
     if(!texto){
+
+        alert(
+            "Escribí un texto."
+        );
 
         return;
 
@@ -2874,11 +2889,10 @@ function confirmarTexto(){
     ).value;
 
 
-    paginas[paginaActual]
-    .texts
-    .push({
+    paginas[paginaActual].texts.push({
 
-        text:texto,
+        text:
+        texto,
 
         x:
         posicionTexto.x,
@@ -2886,9 +2900,11 @@ function confirmarTexto(){
         y:
         posicionTexto.y,
 
-        size:tamaño,
+        size:
+        tamaño,
 
-        color:color
+        color:
+        color
 
     });
 
@@ -2906,15 +2922,11 @@ function confirmarTexto(){
 
 
     mostrarEstado(
-        "Texto agregado."
+        "✏️ Texto agregado."
     );
 
 }
 
-
-/* =====================================================
-   CERRAR TEXTO
-===================================================== */
 
 function cerrarModalTexto(){
 
@@ -2944,39 +2956,34 @@ function activarDibujo(){
     "none";
 
 
-    document
-    .getElementById(
+    document.getElementById(
         "drawTool"
-    )
-    .classList.add("active");
+    ).classList.add("active");
 
 
-    document
-    .getElementById(
+    document.getElementById(
         "textTool"
-    )
-    .classList.remove("active");
+    ).classList.remove("active");
 
 
-    document
-    .getElementById(
+    document.getElementById(
         "selectTextTool"
-    )
-    .classList.remove("active");
+    ).classList.remove("active");
 
 
-    limpiarTextosDetectables();
+    textLayer.innerHTML =
+    "";
 
 
     mostrarEstado(
-        "Mantené presionado el mouse y dibujá."
+        "🖊️ Mantené presionado y dibujá sobre el PDF."
     );
 
 }
 
 
 /* =====================================================
-   POINTER DOWN
+   DIBUJO POINTER DOWN
 ===================================================== */
 
 overlayCanvas.addEventListener(
@@ -2992,7 +2999,8 @@ function(event){
     }
 
 
-    dibujando = true;
+    dibujando =
+    true;
 
 
     const punto =
@@ -3017,7 +3025,7 @@ function(event){
 
 
 /* =====================================================
-   POINTER MOVE
+   DIBUJO POINTER MOVE
 ===================================================== */
 
 overlayCanvas.addEventListener(
@@ -3072,10 +3080,6 @@ function(event){
 });
 
 
-/* =====================================================
-   POINTER UP
-===================================================== */
-
 overlayCanvas.addEventListener(
 "pointerup",
 function(){
@@ -3097,7 +3101,7 @@ function(){
 
 
 /* =====================================================
-   CONVERTIR PDF A PANTALLA
+   PDF → PANTALLA
 ===================================================== */
 
 function pdfToScreen(x,y){
@@ -3114,7 +3118,8 @@ function pdfToScreen(x,y){
         y:
         overlayCanvas.height -
         (
-            y * escala
+            y *
+            escala
         )
 
     };
@@ -3129,7 +3134,9 @@ function pdfToScreen(x,y){
 function redibujarOverlay(){
 
     const ctx =
-    overlayCanvas.getContext("2d");
+    overlayCanvas.getContext(
+        "2d"
+    );
 
 
     ctx.clearRect(
@@ -3140,7 +3147,9 @@ function redibujarOverlay(){
     );
 
 
-    if(!paginas[paginaActual]){
+    if(
+        !paginas[paginaActual]
+    ){
 
         return;
 
@@ -3151,17 +3160,19 @@ function redibujarOverlay(){
     paginas[paginaActual];
 
 
-    /*
+    const escala =
+    1.25 * zoom;
+
+
+    /* ==========================
        DIBUJOS
-    */
+    ========================== */
 
     ctx.strokeStyle =
     "#ef4444";
 
-
     ctx.lineWidth =
     3;
-
 
     ctx.lineCap =
     "round";
@@ -3186,18 +3197,15 @@ function redibujarOverlay(){
 
             ctx.beginPath();
 
-
             ctx.moveTo(
                 inicio.x,
                 inicio.y
             );
 
-
             ctx.lineTo(
                 fin.x,
                 fin.y
             );
-
 
             ctx.stroke();
 
@@ -3205,9 +3213,9 @@ function redibujarOverlay(){
     );
 
 
-    /*
+    /* ==========================
        TEXTOS NUEVOS
-    */
+    ========================== */
 
     datos.texts.forEach(
         function(texto){
@@ -3228,42 +3236,34 @@ function redibujarOverlay(){
             "bold " +
             (
                 texto.size *
-                1.25 *
-                zoom
+                escala
             ) +
             "px Arial";
 
 
             ctx.fillText(
-
                 texto.text,
-
                 punto.x,
-
                 punto.y
-
             );
 
         }
     );
 
 
-    /*
+    /* ==========================
        REEMPLAZOS
-    */
+    ========================== */
 
     datos.replacements.forEach(
         function(item){
 
-            const escala =
-            1.25 * zoom;
-
-
             const x =
-            item.x * escala;
+            item.x *
+            escala;
 
 
-            const y =
+            const baseline =
             overlayCanvas.height -
             (
                 item.y *
@@ -3272,7 +3272,8 @@ function redibujarOverlay(){
 
 
             const width =
-            item.width;
+            item.width *
+            escala;
 
 
             const height =
@@ -3281,7 +3282,7 @@ function redibujarOverlay(){
 
 
             /*
-               Cubrir texto original.
+               TAPAR ORIGINAL
             */
 
             ctx.fillStyle =
@@ -3292,28 +3293,24 @@ function redibujarOverlay(){
 
                 x - 3,
 
-                y -
+                baseline -
                 height -
                 3,
 
-                (
-                    width +
-                    8
-                ),
+                width + 8,
 
-                (
-                    height +
-                    8
-                )
+                height + 8
 
             );
 
 
             /*
-               Nuevo texto.
+               TEXTO NUEVO
             */
 
-            if(item.newText){
+            if(
+                item.newText
+            ){
 
                 ctx.fillStyle =
                 "#111827";
@@ -3334,7 +3331,7 @@ function redibujarOverlay(){
 
                     x,
 
-                    y
+                    baseline
 
                 );
 
@@ -3344,9 +3341,9 @@ function redibujarOverlay(){
     );
 
 
-    /*
+    /* ==========================
        IMÁGENES
-    */
+    ========================== */
 
     datos.images.forEach(
         function(item){
@@ -3361,12 +3358,9 @@ function redibujarOverlay(){
             }
 
 
-            const escala =
-            1.25 * zoom;
-
-
             const x =
-            item.x * escala;
+            item.x *
+            escala;
 
 
             const y =
@@ -3403,13 +3397,15 @@ function redibujarOverlay(){
 
 
 /* =====================================================
-   IMAGEN
+   AGREGAR IMAGEN
 ===================================================== */
 
 function agregarImagen(){
 
     const input =
-    document.createElement("input");
+    document.createElement(
+        "input"
+    );
 
 
     input.type =
@@ -3417,7 +3413,7 @@ function agregarImagen(){
 
 
     input.accept =
-    "image/*";
+    "image/png,image/jpeg,image/jpg";
 
 
     input.onchange =
@@ -3430,10 +3426,6 @@ function agregarImagen(){
             return;
 
         }
-
-
-        const archivo =
-        this.files[0];
 
 
         const reader =
@@ -3454,17 +3446,25 @@ function agregarImagen(){
                 1.25 * zoom;
 
 
-                const anchoMax =
-                (
-                    overlayCanvas.width /
-                    escala
-                ) * .45;
+                const pageWidth =
+                overlayCanvas.width /
+                escala;
+
+
+                const pageHeight =
+                overlayCanvas.height /
+                escala;
+
+
+                const maxWidth =
+                pageWidth *
+                .45;
 
 
                 const ratio =
                 Math.min(
                     1,
-                    anchoMax /
+                    maxWidth /
                     imagen.width
                 );
 
@@ -3479,19 +3479,8 @@ function agregarImagen(){
                 ratio;
 
 
-                const pageWidth =
-                overlayCanvas.width /
-                escala;
-
-
-                const pageHeight =
-                overlayCanvas.height /
-                escala;
-
-
                 paginas[paginaActual]
-                .images
-                .push({
+                .images.push({
 
                     image:
                     imagen,
@@ -3524,7 +3513,7 @@ function agregarImagen(){
 
 
                 mostrarEstado(
-                    "Imagen agregada."
+                    "🖼️ Imagen agregada."
                 );
 
             };
@@ -3537,7 +3526,7 @@ function agregarImagen(){
 
 
         reader.readAsDataURL(
-            archivo
+            this.files[0]
         );
 
     };
@@ -3557,11 +3546,16 @@ document.getElementById(
     "signatureCanvas"
 );
 
-
 const signatureCtx =
 signatureCanvas.getContext(
     "2d"
 );
+
+let firmando = false;
+
+let firmaX = 0;
+
+let firmaY = 0;
 
 
 function prepararFirma(){
@@ -3576,11 +3570,13 @@ function prepararFirma(){
 
 
     signatureCanvas.width =
-    rect.width * ratio;
+    rect.width *
+    ratio;
 
 
     signatureCanvas.height =
-    rect.height * ratio;
+    rect.height *
+    ratio;
 
 
     signatureCtx.setTransform(
@@ -3623,13 +3619,6 @@ function abrirFirma(){
 }
 
 
-let firmando = false;
-
-let firmaX = 0;
-
-let firmaY = 0;
-
-
 signatureCanvas.addEventListener(
 "pointerdown",
 function(event){
@@ -3648,7 +3637,8 @@ function(event){
     rect.top;
 
 
-    firmando = true;
+    firmando =
+    true;
 
 
     signatureCanvas.setPointerCapture(
@@ -3715,7 +3705,8 @@ signatureCanvas.addEventListener(
 "pointerup",
 function(){
 
-    firmando = false;
+    firmando =
+    false;
 
 });
 
@@ -3724,7 +3715,8 @@ signatureCanvas.addEventListener(
 "pointercancel",
 function(){
 
-    firmando = false;
+    firmando =
+    false;
 
 });
 
@@ -3764,30 +3756,6 @@ function confirmarFirma(){
         1.25 * zoom;
 
 
-        const maxWidth =
-        (
-            overlayCanvas.width /
-            escala
-        ) * .45;
-
-
-        const ancho =
-        Math.min(
-            imagen.width,
-            maxWidth
-        );
-
-
-        const ratio =
-        ancho /
-        imagen.width;
-
-
-        const alto =
-        imagen.height *
-        ratio;
-
-
         const pageWidth =
         overlayCanvas.width /
         escala;
@@ -3798,9 +3766,31 @@ function confirmarFirma(){
         escala;
 
 
+        const maxWidth =
+        pageWidth *
+        .45;
+
+
+        const ratio =
+        Math.min(
+            1,
+            maxWidth /
+            imagen.width
+        );
+
+
+        const width =
+        imagen.width *
+        ratio;
+
+
+        const height =
+        imagen.height *
+        ratio;
+
+
         paginas[paginaActual]
-        .images
-        .push({
+        .images.push({
 
             image:
             imagen,
@@ -3811,20 +3801,20 @@ function confirmarFirma(){
             x:
             (
                 pageWidth -
-                ancho
+                width
             ) / 2,
 
             y:
             (
                 pageHeight -
-                alto
+                height
             ) / 2,
 
             width:
-            ancho,
+            width,
 
             height:
-            alto
+            height
 
         });
 
@@ -3836,7 +3826,7 @@ function confirmarFirma(){
 
 
         mostrarEstado(
-            "Firma agregada."
+            "✍️ Firma agregada."
         );
 
     };
@@ -3864,11 +3854,19 @@ function cerrarFirma(){
 
 async function rotarPagina(){
 
-    paginas[paginaActual]
-    .rotation =
+    if(
+        !paginas[paginaActual]
+    ){
+
+        return;
+
+    }
+
+
+    paginas[paginaActual].rotation =
     (
-        paginas[paginaActual]
-        .rotation + 90
+        paginas[paginaActual].rotation +
+        90
     ) % 360;
 
 
@@ -3878,7 +3876,7 @@ async function rotarPagina(){
 
 
     mostrarEstado(
-        "Página rotada."
+        "🔄 Página rotada."
     );
 
 }
@@ -3891,7 +3889,8 @@ async function rotarPagina(){
 async function moverPagina(direccion){
 
     const nuevoIndice =
-    paginaActual + direccion;
+    paginaActual +
+    direccion;
 
 
     if(
@@ -3904,7 +3903,7 @@ async function moverPagina(direccion){
     }
 
 
-    const temp =
+    const temporal =
     paginas[paginaActual];
 
 
@@ -3913,7 +3912,7 @@ async function moverPagina(direccion){
 
 
     paginas[nuevoIndice] =
-    temp;
+    temporal;
 
 
     paginaActual =
@@ -3926,7 +3925,7 @@ async function moverPagina(direccion){
 
 
     mostrarEstado(
-        "Orden de páginas actualizado."
+        "↕️ Orden de páginas actualizado."
     );
 
 }
@@ -3985,7 +3984,7 @@ async function eliminarPagina(){
 
 
     mostrarEstado(
-        "Página eliminada."
+        "🗑️ Página eliminada."
     );
 
 }
@@ -3995,7 +3994,16 @@ async function eliminarPagina(){
    LIMPIAR EDICIÓN
 ===================================================== */
 
-function limpiarEdicion(){
+async function limpiarEdicion(){
+
+    if(
+        !paginas[paginaActual]
+    ){
+
+        return;
+
+    }
+
 
     if(
         !confirm(
@@ -4008,37 +4016,20 @@ function limpiarEdicion(){
     }
 
 
-    paginas[paginaActual]
-    .drawings = [];
+    paginas[paginaActual].drawings = [];
+
+    paginas[paginaActual].texts = [];
+
+    paginas[paginaActual].images = [];
+
+    paginas[paginaActual].replacements = [];
 
 
-    paginas[paginaActual]
-    .texts = [];
-
-
-    paginas[paginaActual]
-    .images = [];
-
-
-    paginas[paginaActual]
-    .replacements = [];
-
-
-    redibujarOverlay();
-
-
-    if(
-        herramienta ===
-        "seleccionarTexto"
-    ){
-
-        renderizarPagina();
-
-    }
+    await renderizarPagina();
 
 
     mostrarEstado(
-        "Modificaciones eliminadas."
+        "🧹 Modificaciones eliminadas."
     );
 
 }
@@ -4077,7 +4068,7 @@ async function cambiarZoom(valor){
 
 
 /* =====================================================
-   PÁGINA ANTERIOR
+   ANTERIOR
 ===================================================== */
 
 function paginaAnterior(){
@@ -4096,7 +4087,7 @@ function paginaAnterior(){
 
 
 /* =====================================================
-   PÁGINA SIGUIENTE
+   SIGUIENTE
 ===================================================== */
 
 function paginaSiguiente(){
@@ -4116,7 +4107,7 @@ function paginaSiguiente(){
 
 
 /* =====================================================
-   HEX → RGB
+   HEX RGB
 ===================================================== */
 
 function hexToRgb(hex){
@@ -4128,14 +4119,18 @@ function hexToRgb(hex){
     );
 
 
-    if(hex.length === 3){
+    if(
+        hex.length === 3
+    ){
 
         hex =
         hex
         .split("")
         .map(
             function(c){
+
                 return c + c;
+
             }
         )
         .join("");
@@ -4169,12 +4164,20 @@ function hexToRgb(hex){
 
 
 /* =====================================================
-   EXPORTAR PDF
+   DESCARGAR PDF
 ===================================================== */
 
 async function descargarPDF(){
 
-    if(!pdfOriginal){
+    if(
+        !pdfOriginal ||
+        !pdfBytes ||
+        !paginas.length
+    ){
+
+        alert(
+            "Primero cargá un PDF."
+        );
 
         return;
 
@@ -4184,12 +4187,19 @@ async function descargarPDF(){
     try{
 
         mostrarEstado(
-            "Generando PDF editado..."
+            "⏳ Generando PDF editado..."
         );
 
 
-        const PDFLib =
-        window.PDFLib;
+        if(
+            typeof PDFLib === "undefined"
+        ){
+
+            throw new Error(
+                "PDF-LIB no está disponible."
+            );
+
+        }
 
 
         const documento =
@@ -4209,37 +4219,40 @@ async function descargarPDF(){
 
 
         /*
-           Recorremos las páginas
-           en el orden actual.
+           Las páginas se copian utilizando
+           originalIndex.
+           Esto evita errores al mover/eliminar.
         */
 
         for(
-            let orden = 0;
-            orden < paginas.length;
-            orden++
+            let i = 0;
+            i < paginas.length;
+            i++
         ){
 
             const datos =
-            paginas[orden];
+            paginas[i];
 
 
-            const indiceOriginal =
-            datos.originalIndex;
-
-
-            const [paginaCopiada] =
+            const paginasCopiadas =
             await nuevoPDF.copyPages(
                 documento,
-                [indiceOriginal]
-            );
-
-
-            nuevoPDF.addPage(
-                paginaCopiada
+                [
+                    datos.originalIndex
+                ]
             );
 
 
             const paginaPDF =
+            paginasCopiadas[0];
+
+
+            nuevoPDF.addPage(
+                paginaPDF
+            );
+
+
+            const page =
             nuevoPDF.getPage(
                 nuevoPDF.getPageCount() - 1
             );
@@ -4253,7 +4266,7 @@ async function descargarPDF(){
                 datos.rotation
             ){
 
-                paginaPDF.setRotation(
+                page.setRotation(
                     PDFLib.degrees(
                         datos.rotation
                     )
@@ -4262,194 +4275,167 @@ async function descargarPDF(){
             }
 
 
-            const pageWidth =
-            paginaPDF.getWidth();
-
-
-            const pageHeight =
-            paginaPDF.getHeight();
-
-
-            /*
-               FACTOR DE CONVERSIÓN
-               desde las coordenadas
-               que usamos en pantalla
-               a puntos PDF.
-            */
-
-            const escalaPantalla =
-            1.25 * zoom;
-
-
-            /*
+            /* =========================
                DIBUJOS
-            */
+            ========================= */
 
-            datos.drawings.forEach(
-                function(linea){
+            for(
+                const linea
+                of datos.drawings
+            ){
 
-                    paginaPDF.drawLine({
+                page.drawLine({
 
-                        start:{
+                    start:{
+                        x:linea.x1,
+                        y:linea.y1
+                    },
 
-                            x:
-                            linea.x1,
+                    end:{
+                        x:linea.x2,
+                        y:linea.y2
+                    },
 
-                            y:
-                            linea.y1
+                    thickness:2,
 
-                        },
+                    color:
+                    PDFLib.rgb(
+                        0.94,
+                        0.26,
+                        0.26
+                    )
 
-                        end:{
+                });
 
-                            x:
-                            linea.x2,
+            }
 
-                            y:
-                            linea.y2
 
-                        },
+            /* =========================
+               TEXTOS NUEVOS
+            ========================= */
 
-                        thickness:2,
+            for(
+                const texto
+                of datos.texts
+            ){
+
+                const rgb =
+                hexToRgb(
+                    texto.color ||
+                    "#111827"
+                );
+
+
+                page.drawText(
+                    texto.text,
+                    {
+
+                        x:
+                        texto.x,
+
+                        y:
+                        texto.y,
+
+                        size:
+                        texto.size,
+
+                        font:
+                        fuente,
 
                         color:
                         PDFLib.rgb(
-                            0.94,
-                            0.26,
-                            0.26
+                            rgb.r,
+                            rgb.g,
+                            rgb.b
                         )
 
-                    });
+                    }
+                );
 
-                }
-            );
-
-
-            /*
-               TEXTOS NUEVOS
-            */
-
-            datos.texts.forEach(
-                function(texto){
-
-                    const rgb =
-                    hexToRgb(
-                        texto.color ||
-                        "#111827"
-                    );
+            }
 
 
-                    paginaPDF.drawText(
-                        texto.text,
+            /* =========================
+               REEMPLAZOS
+            ========================= */
+
+            for(
+                const item
+                of datos.replacements
+            ){
+
+                /*
+                   Cubrir texto original.
+                */
+
+                page.drawRectangle({
+
+                    x:
+                    item.x - 2,
+
+                    y:
+                    item.y -
+                    item.height -
+                    2,
+
+                    width:
+                    item.width + 8,
+
+                    height:
+                    item.height + 8,
+
+                    color:
+                    PDFLib.rgb(
+                        1,
+                        1,
+                        1
+                    )
+
+                });
+
+
+                /*
+                   Escribir reemplazo.
+                */
+
+                if(
+                    item.newText
+                ){
+
+                    page.drawText(
+                        item.newText,
                         {
 
                             x:
-                            texto.x,
+                            item.x,
 
                             y:
-                            texto.y,
+                            item.y,
 
                             size:
-                            texto.size,
+                            item.size,
 
                             font:
                             fuente,
 
                             color:
                             PDFLib.rgb(
-                                rgb.r,
-                                rgb.g,
-                                rgb.b
+                                .07,
+                                .09,
+                                .13
                             )
 
                         }
                     );
 
                 }
-            );
+
+            }
 
 
-            /*
-               REEMPLAZOS DE TEXTO
-            */
-
-            datos.replacements.forEach(
-                function(item){
-
-                    /*
-                       Cubrimos el texto
-                       original.
-                    */
-
-                    paginaPDF.drawRectangle({
-
-                        x:
-                        item.x - 2,
-
-                        y:
-                        item.y -
-                        item.height -
-                        2,
-
-                        width:
-                        item.width + 8,
-
-                        height:
-                        item.height + 8,
-
-                        color:
-                        PDFLib.rgb(
-                            1,
-                            1,
-                            1
-                        )
-
-                    });
-
-
-                    /*
-                       Escribimos el nuevo texto.
-                    */
-
-                    if(
-                        item.newText
-                    ){
-
-                        paginaPDF.drawText(
-                            item.newText,
-                            {
-
-                                x:
-                                item.x,
-
-                                y:
-                                item.y,
-
-                                size:
-                                item.size,
-
-                                font:
-                                fuente,
-
-                                color:
-                                PDFLib.rgb(
-                                    0.07,
-                                    0.09,
-                                    0.13
-                                )
-
-                            }
-                        );
-
-                    }
-
-                }
-            );
-
-
-            /*
+            /* =========================
                IMÁGENES
-            */
+            ========================= */
 
             for(
                 const imagen
@@ -4496,7 +4482,7 @@ async function descargarPDF(){
                     }
 
 
-                    paginaPDF.drawImage(
+                    page.drawImage(
                         imagenPDF,
                         {
 
@@ -4518,8 +4504,8 @@ async function descargarPDF(){
 
                 }catch(error){
 
-                    console.warn(
-                        "No se pudo insertar una imagen:",
+                    console.error(
+                        "Error imagen:",
                         error
                     );
 
@@ -4530,9 +4516,10 @@ async function descargarPDF(){
         }
 
 
-        /*
-           GENERAR ARCHIVO
-        */
+        mostrarEstado(
+            "⏳ Finalizando archivo..."
+        );
+
 
         const resultado =
         await nuevoPDF.save();
@@ -4587,27 +4574,34 @@ async function descargarPDF(){
                 );
 
             },
-            1000
+            1500
         );
 
 
         mostrarEstado(
-            "PDF editado generado correctamente."
+            "✅ PDF editado generado correctamente."
         );
 
 
     }catch(error){
 
-        console.error(error);
+        console.error(
+            "ERROR AL GENERAR PDF:",
+            error
+        );
 
 
         alert(
-            "No se pudo generar el PDF. Revisá la consola del navegador."
+            "No se pudo generar el PDF. " +
+            (
+                error.message ||
+                ""
+            )
         );
 
 
         mostrarEstado(
-            "Error al generar el PDF."
+            "❌ Error al generar el PDF."
         );
 
     }
@@ -4642,7 +4636,7 @@ function mostrarEstado(texto){
             "none";
 
         },
-        4500
+        5000
     );
 
 }
