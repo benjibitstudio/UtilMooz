@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="es">
 
 <head>
@@ -67,14 +68,42 @@ header{
     color:#4f8cff;
 }
 
-nav a{
-    color:#ddd;
-    text-decoration:none;
-    font-size:15px;
+/* =========================
+   BOTÓN INICIO
+========================= */
+
+nav{
+    display:flex;
+    align-items:center;
 }
 
-nav a:hover{
-    color:white;
+nav a.inicio-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    padding:9px 17px;
+    background:#4f8cff;
+    color:#ffffff;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:bold;
+    border-radius:8px;
+    border:1px solid rgba(255,255,255,.08);
+    transition:
+        background .2s ease,
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+nav a.inicio-btn:hover{
+    background:#3978e8;
+    color:#ffffff;
+    transform:translateY(-1px);
+    box-shadow:0 4px 12px rgba(79,140,255,.30);
+}
+
+nav a.inicio-btn:active{
+    transform:translateY(0);
 }
 
 /* =========================
@@ -176,7 +205,7 @@ input[type="date"]:focus{
 }
 
 /* =========================
-   BOTON
+   BOTON CALCULAR
 ========================= */
 
 button{
@@ -270,8 +299,17 @@ footer{
         padding:18px 15px;
     }
 
+    .header-content{
+        max-width:100%;
+    }
+
     .logo{
         font-size:23px;
+    }
+
+    nav a.inicio-btn{
+        padding:8px 14px;
+        font-size:14px;
     }
 
     h1{
@@ -325,7 +363,6 @@ Util<span>Mooz</span>
 
 </header>
 
-
 <!-- =========================
      CONTENIDO
 ========================= -->
@@ -338,7 +375,6 @@ Util<span>Mooz</span>
 Calculá tu edad exacta en años, meses y días utilizando nuestra
 calculadora de edad online gratuita.
 </p>
-
 
 <!-- =========================
      ANUNCIO 1 - NATIVE
@@ -368,7 +404,6 @@ src="https://pl31074091.profitableratecpmnetwork.com/0121748aaaf83f5b10d651ea8ce
 
 </div>
 
-
 <!-- =========================
      CALCULADORA
 ========================= -->
@@ -383,6 +418,7 @@ Fecha de nacimiento
 type="date"
 id="fecha"
 autocomplete="bday"
+
 >
 
 <button
@@ -403,7 +439,6 @@ Resultado: -
 </div>
 
 </div>
-
 
 <!-- =========================
      ANUNCIO 2 - BANNER
@@ -438,7 +473,6 @@ atOptions = {
 </div>
 
 </div>
-
 
 <!-- =========================
      INFORMACION SEO
@@ -476,7 +510,6 @@ exactamente cuánto tiempo pasó desde tu fecha de nacimiento.
 
 </div>
 
-
 <!-- =========================
      ANUNCIO 3 - BANNER
 ========================= -->
@@ -513,7 +546,6 @@ atOptions = {
 
 </main>
 
-
 <!-- =========================
      FOOTER
 ========================= -->
@@ -524,13 +556,11 @@ atOptions = {
 
 </footer>
 
-
 <!-- =========================
      ADSTERRA SOCIAL BAR
 ========================= -->
 
 <script src="https://pl31074089.profitableratecpmnetwork.com/b9/80/b1/b980b1630aa36c566498dbf6055d89ea.js"></script>
-
 
 <script>
 
@@ -581,14 +611,6 @@ function fechaDesdeInput(valor){
         dia
     );
 
-    /*
-       Verificamos que JavaScript no haya corregido
-       automáticamente una fecha inexistente.
-
-       Ejemplo:
-       31/02/2025 no debe convertirse en marzo.
-    */
-
     if(
         fecha.getFullYear() !== año ||
         fecha.getMonth() !== mes - 1 ||
@@ -616,11 +638,7 @@ function agregarAños(fecha,años){
 
     /*
        Tratamiento especial para personas nacidas
-       el 29 de febrero cuando el año destino
-       no es bisiesto.
-
-       En ese caso se utiliza el 28 de febrero
-       como aniversario.
+       el 29 de febrero.
     */
 
     if(
@@ -658,11 +676,6 @@ function calcularAñosCompletos(nacimiento,hoy){
             años
         );
 
-    /*
-       Si todavía no llegó el aniversario
-       de este año, restamos un año.
-    */
-
     if(aniversario > hoy){
 
         años--;
@@ -699,10 +712,6 @@ function calcularEdad(){
         input.value.trim();
 
 
-    /* =========================
-       VALIDAR CAMPO
-    ========================= */
-
     if(!valor){
 
         resultado.innerHTML =
@@ -712,10 +721,6 @@ function calcularEdad(){
 
     }
 
-
-    /* =========================
-       CREAR FECHA DE NACIMIENTO
-    ========================= */
 
     const nacimiento =
         fechaDesdeInput(valor);
@@ -731,17 +736,9 @@ function calcularEdad(){
     }
 
 
-    /* =========================
-       FECHA ACTUAL
-    ========================= */
-
     const hoy =
         obtenerHoy();
 
-
-    /* =========================
-       FECHA FUTURA
-    ========================= */
 
     if(nacimiento > hoy){
 
@@ -753,15 +750,12 @@ function calcularEdad(){
     }
 
 
-    /* =========================
-       CALCULAR AÑOS
-    ========================= */
-
     const datos =
         calcularAñosCompletos(
             nacimiento,
             hoy
         );
+
 
     const años =
         datos.años;
@@ -770,14 +764,14 @@ function calcularEdad(){
         datos.aniversario;
 
 
-    /* =========================
-       CALCULAR MESES
-    ========================= */
+    /*
+       Calculamos meses y días utilizando
+       la fecha del último aniversario.
+    */
 
     let meses =
         hoy.getMonth() -
         aniversario.getMonth();
-
 
     if(meses < 0){
 
@@ -785,12 +779,6 @@ function calcularEdad(){
 
     }
 
-
-    /*
-       Si el día actual es anterior al día
-       del aniversario, todavía no se completó
-       el mes actual.
-    */
 
     if(
         hoy.getDate() <
@@ -802,11 +790,6 @@ function calcularEdad(){
     }
 
 
-    /*
-       El resultado nunca debe quedar
-       con meses negativos.
-    */
-
     if(meses < 0){
 
         meses = 0;
@@ -814,9 +797,10 @@ function calcularEdad(){
     }
 
 
-    /* =========================
-       CALCULAR FECHA BASE
-    ========================= */
+    /*
+       Fecha desde la cual contamos
+       los días restantes.
+    */
 
     let fechaBase =
         new Date(
@@ -827,12 +811,13 @@ function calcularEdad(){
 
 
     /*
-       Protección para aniversarios de 29 de febrero.
+       Evitar desbordamiento de fecha
+       para aniversarios de 29 de febrero.
     */
 
     if(
-        aniversario.getMonth() === 1 &&
         aniversario.getDate() === 29 &&
+        aniversario.getMonth() === 1 &&
         fechaBase.getMonth() !==
         (aniversario.getMonth() + meses) % 12
     ){
@@ -847,10 +832,6 @@ function calcularEdad(){
     }
 
 
-    /* =========================
-       CALCULAR DÍAS
-    ========================= */
-
     let dias =
         Math.floor(
             (
@@ -861,21 +842,12 @@ function calcularEdad(){
         );
 
 
-    /*
-       Protección contra cualquier resultado
-       negativo producido por fechas especiales.
-    */
-
     if(dias < 0){
 
         dias = 0;
 
     }
 
-
-    /* =========================
-       TEXTO DINÁMICO
-    ========================= */
 
     const textoAños =
         años === 1
@@ -892,10 +864,6 @@ function calcularEdad(){
         ? "día"
         : "días";
 
-
-    /* =========================
-       MOSTRAR RESULTADO
-    ========================= */
 
     resultado.innerHTML =
 
@@ -988,4 +956,3 @@ establecerFechaMaxima();
 </body>
 
 </html>
-
