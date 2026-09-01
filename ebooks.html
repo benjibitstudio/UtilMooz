@@ -151,6 +151,30 @@ color:#28732c;
 
 
 /* =========================
+   BOTÓN INICIO
+========================= */
+
+.home-btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+background:#4f8cff;
+color:#fff !important;
+text-decoration:none;
+padding:10px 18px;
+border-radius:8px;
+font-size:15px;
+font-weight:bold;
+transition:.2s;
+}
+
+.home-btn:hover{
+background:#3978e8;
+transform:translateY(-1px);
+}
+
+
+/* =========================
    CONTENEDOR
 ========================= */
 
@@ -565,6 +589,11 @@ font-size:14px;
 padding:8px;
 }
 
+.home-btn{
+padding:9px 13px;
+font-size:14px;
+}
+
 .container{
 margin-top:30px;
 }
@@ -575,10 +604,6 @@ font-size:30px;
 
 .converter{
 padding:20px;
-}
-
-.format-selector{
-grid-template-columns:1fr;
 }
 
 }
@@ -617,8 +642,8 @@ Util<span>Mooz</span>
 
 <nav>
 
-<a href="index.html">
-Inicio
+<a href="index.html" class="home-btn">
+🏠 Inicio
 </a>
 
 </nav>
