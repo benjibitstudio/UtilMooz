@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="es">
 
 <head>
@@ -28,6 +27,10 @@ content="Calculadora de edad online gratis. Calculá tu edad exacta en años, me
     box-sizing:border-box;
     margin:0;
     padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
 }
 
 body{
@@ -164,6 +167,7 @@ input[type="date"]{
     font-size:16px;
     outline:none;
     background:white;
+    color:#172033;
 }
 
 input[type="date"]:focus{
@@ -209,6 +213,7 @@ button:active{
     font-size:20px;
     line-height:1.7;
     min-height:70px;
+    word-break:break-word;
 }
 
 .resultado strong{
@@ -235,6 +240,7 @@ button:active{
 .info h2{
     color:#172033;
     margin-bottom:10px;
+    margin-top:25px;
     font-size:24px;
 }
 
@@ -260,12 +266,22 @@ footer{
 
 @media(max-width:600px){
 
+    header{
+        padding:18px 15px;
+    }
+
+    .logo{
+        font-size:23px;
+    }
+
     h1{
         font-size:30px;
     }
 
     .container{
         margin:35px auto;
+        padding-left:15px;
+        padding-right:15px;
     }
 
     .calculator{
@@ -274,6 +290,7 @@ footer{
 
     .resultado{
         font-size:18px;
+        padding:18px 12px;
     }
 
     .ad-container{
@@ -308,6 +325,7 @@ Util<span>Mooz</span>
 
 </header>
 
+
 <!-- =========================
      CONTENIDO
 ========================= -->
@@ -320,6 +338,7 @@ Util<span>Mooz</span>
 Calculá tu edad exacta en años, meses y días utilizando nuestra
 calculadora de edad online gratuita.
 </p>
+
 
 <!-- =========================
      ANUNCIO 1 - NATIVE
@@ -349,6 +368,7 @@ src="https://pl31074091.profitableratecpmnetwork.com/0121748aaaf83f5b10d651ea8ce
 
 </div>
 
+
 <!-- =========================
      CALCULADORA
 ========================= -->
@@ -362,7 +382,7 @@ Fecha de nacimiento
 <input
 type="date"
 id="fecha"
-
+autocomplete="bday"
 >
 
 <button
@@ -375,13 +395,15 @@ Calcular edad
 
 <div
 class="resultado"
-id="resultado">
+id="resultado"
+aria-live="polite">
 
 Resultado: -
 
 </div>
 
 </div>
+
 
 <!-- =========================
      ANUNCIO 2 - BANNER
@@ -416,6 +438,7 @@ atOptions = {
 </div>
 
 </div>
+
 
 <!-- =========================
      INFORMACION SEO
@@ -453,6 +476,7 @@ exactamente cuánto tiempo pasó desde tu fecha de nacimiento.
 
 </div>
 
+
 <!-- =========================
      ANUNCIO 3 - BANNER
 ========================= -->
@@ -489,6 +513,7 @@ atOptions = {
 
 </main>
 
+
 <!-- =========================
      FOOTER
 ========================= -->
@@ -499,19 +524,21 @@ atOptions = {
 
 </footer>
 
+
 <!-- =========================
      ADSTERRA SOCIAL BAR
 ========================= -->
 
 <script src="https://pl31074089.profitableratecpmnetwork.com/b9/80/b1/b980b1630aa36c566498dbf6055d89ea.js"></script>
 
+
 <script>
 
 /* =====================================================
-   FECHA ACTUAL
+   OBTENER FECHA ACTUAL SIN PROBLEMAS DE ZONA HORARIA
 ===================================================== */
 
-function obtenerFechaActual(){
+function obtenerHoy(){
 
     const ahora = new Date();
 
@@ -520,6 +547,138 @@ function obtenerFechaActual(){
         ahora.getMonth(),
         ahora.getDate()
     );
+
+}
+
+
+/* =====================================================
+   CREAR FECHA LOCAL DESDE INPUT DATE
+===================================================== */
+
+function fechaDesdeInput(valor){
+
+    const partes = valor.split("-");
+
+    if(partes.length !== 3){
+        return null;
+    }
+
+    const año = Number(partes[0]);
+    const mes = Number(partes[1]);
+    const dia = Number(partes[2]);
+
+    if(
+        !Number.isInteger(año) ||
+        !Number.isInteger(mes) ||
+        !Number.isInteger(dia)
+    ){
+        return null;
+    }
+
+    const fecha = new Date(
+        año,
+        mes - 1,
+        dia
+    );
+
+    /*
+       Verificamos que JavaScript no haya corregido
+       automáticamente una fecha inexistente.
+
+       Ejemplo:
+       31/02/2025 no debe convertirse en marzo.
+    */
+
+    if(
+        fecha.getFullYear() !== año ||
+        fecha.getMonth() !== mes - 1 ||
+        fecha.getDate() !== dia
+    ){
+        return null;
+    }
+
+    return fecha;
+
+}
+
+
+/* =====================================================
+   AÑADIR AÑOS DE FORMA SEGURA
+===================================================== */
+
+function agregarAños(fecha,años){
+
+    const nuevaFecha = new Date(
+        fecha.getFullYear() + años,
+        fecha.getMonth(),
+        fecha.getDate()
+    );
+
+    /*
+       Tratamiento especial para personas nacidas
+       el 29 de febrero cuando el año destino
+       no es bisiesto.
+
+       En ese caso se utiliza el 28 de febrero
+       como aniversario.
+    */
+
+    if(
+        fecha.getMonth() === 1 &&
+        fecha.getDate() === 29 &&
+        nuevaFecha.getMonth() !== 1
+    ){
+
+        return new Date(
+            fecha.getFullYear() + años,
+            1,
+            28
+        );
+
+    }
+
+    return nuevaFecha;
+
+}
+
+
+/* =====================================================
+   CALCULAR AÑOS COMPLETOS
+===================================================== */
+
+function calcularAñosCompletos(nacimiento,hoy){
+
+    let años =
+        hoy.getFullYear() -
+        nacimiento.getFullYear();
+
+    let aniversario =
+        agregarAños(
+            nacimiento,
+            años
+        );
+
+    /*
+       Si todavía no llegó el aniversario
+       de este año, restamos un año.
+    */
+
+    if(aniversario > hoy){
+
+        años--;
+
+        aniversario =
+            agregarAños(
+                nacimiento,
+                años
+            );
+
+    }
+
+    return {
+        años: años,
+        aniversario: aniversario
+    };
 
 }
 
@@ -537,12 +696,12 @@ function calcularEdad(){
         document.getElementById("resultado");
 
     const valor =
-        input.value;
+        input.value.trim();
 
 
-    /* -------------------------
-       Validar fecha
-    ------------------------- */
+    /* =========================
+       VALIDAR CAMPO
+    ========================= */
 
     if(!valor){
 
@@ -554,40 +713,35 @@ function calcularEdad(){
     }
 
 
-    /*
-       Separar manualmente la fecha
-       para evitar problemas de zona horaria.
-    */
-
-    const partes =
-        valor.split("-");
-
-
-    const añoNacimiento =
-        Number(partes[0]);
-
-    const mesNacimiento =
-        Number(partes[1]) - 1;
-
-    const diaNacimiento =
-        Number(partes[2]);
-
+    /* =========================
+       CREAR FECHA DE NACIMIENTO
+    ========================= */
 
     const nacimiento =
-        new Date(
-            añoNacimiento,
-            mesNacimiento,
-            diaNacimiento
-        );
+        fechaDesdeInput(valor);
 
+
+    if(!nacimiento){
+
+        resultado.innerHTML =
+        "La fecha ingresada no es válida.";
+
+        return;
+
+    }
+
+
+    /* =========================
+       FECHA ACTUAL
+    ========================= */
 
     const hoy =
-        obtenerFechaActual();
+        obtenerHoy();
 
 
-    /* -------------------------
-       Fecha futura
-    ------------------------- */
+    /* =========================
+       FECHA FUTURA
+    ========================= */
 
     if(nacimiento > hoy){
 
@@ -599,124 +753,221 @@ function calcularEdad(){
     }
 
 
-    /* -------------------------
-       Calcular años
-    ------------------------- */
+    /* =========================
+       CALCULAR AÑOS
+    ========================= */
 
-    let años =
-        hoy.getFullYear() -
-        nacimiento.getFullYear();
+    const datos =
+        calcularAñosCompletos(
+            nacimiento,
+            hoy
+        );
 
+    const años =
+        datos.años;
+
+    const aniversario =
+        datos.aniversario;
+
+
+    /* =========================
+       CALCULAR MESES
+    ========================= */
 
     let meses =
         hoy.getMonth() -
-        nacimiento.getMonth();
+        aniversario.getMonth();
 
-
-    let dias =
-        hoy.getDate() -
-        nacimiento.getDate();
-
-
-    /* -------------------------
-       Ajustar días
-    ------------------------- */
-
-    if(dias < 0){
-
-        meses--;
-
-        const diasMesAnterior =
-            new Date(
-                hoy.getFullYear(),
-                hoy.getMonth(),
-                0
-            ).getDate();
-
-        dias += diasMesAnterior;
-
-    }
-
-
-    /* -------------------------
-       Ajustar meses
-    ------------------------- */
 
     if(meses < 0){
-
-        años--;
 
         meses += 12;
 
     }
 
 
-    /* -------------------------
-       Resultado
-    ------------------------- */
+    /*
+       Si el día actual es anterior al día
+       del aniversario, todavía no se completó
+       el mes actual.
+    */
+
+    if(
+        hoy.getDate() <
+        aniversario.getDate()
+    ){
+
+        meses--;
+
+    }
+
+
+    /*
+       El resultado nunca debe quedar
+       con meses negativos.
+    */
+
+    if(meses < 0){
+
+        meses = 0;
+
+    }
+
+
+    /* =========================
+       CALCULAR FECHA BASE
+    ========================= */
+
+    let fechaBase =
+        new Date(
+            aniversario.getFullYear(),
+            aniversario.getMonth() + meses,
+            aniversario.getDate()
+        );
+
+
+    /*
+       Protección para aniversarios de 29 de febrero.
+    */
+
+    if(
+        aniversario.getMonth() === 1 &&
+        aniversario.getDate() === 29 &&
+        fechaBase.getMonth() !==
+        (aniversario.getMonth() + meses) % 12
+    ){
+
+        fechaBase =
+            new Date(
+                aniversario.getFullYear(),
+                aniversario.getMonth() + meses,
+                28
+            );
+
+    }
+
+
+    /* =========================
+       CALCULAR DÍAS
+    ========================= */
+
+    let dias =
+        Math.floor(
+            (
+                hoy.getTime() -
+                fechaBase.getTime()
+            ) /
+            86400000
+        );
+
+
+    /*
+       Protección contra cualquier resultado
+       negativo producido por fechas especiales.
+    */
+
+    if(dias < 0){
+
+        dias = 0;
+
+    }
+
+
+    /* =========================
+       TEXTO DINÁMICO
+    ========================= */
+
+    const textoAños =
+        años === 1
+        ? "año"
+        : "años";
+
+    const textoMeses =
+        meses === 1
+        ? "mes"
+        : "meses";
+
+    const textoDias =
+        dias === 1
+        ? "día"
+        : "días";
+
+
+    /* =========================
+       MOSTRAR RESULTADO
+    ========================= */
 
     resultado.innerHTML =
 
     "Tenés <strong>" +
     años +
-    " años, " +
+    " " +
+    textoAños +
+    ", " +
     meses +
-    " meses y " +
+    " " +
+    textoMeses +
+    " y " +
     dias +
-    " días</strong>." +
+    " " +
+    textoDias +
+    "</strong>." +
 
     "<small>" +
-    "Edad calculada a partir de tu fecha de nacimiento." +
+    "Edad calculada al día de hoy." +
     "</small>";
 
 }
 
 
 /* =====================================================
-   ESTABLECER FECHA MAXIMA
+   FECHA MÁXIMA PERMITIDA
 ===================================================== */
 
-const fechaInput =
-    document.getElementById("fecha");
+function establecerFechaMaxima(){
 
+    const input =
+        document.getElementById("fecha");
 
-const hoy =
-    new Date();
+    const hoy =
+        obtenerHoy();
 
+    const año =
+        hoy.getFullYear();
 
-const añoActual =
-    hoy.getFullYear();
+    const mes =
+        String(
+            hoy.getMonth() + 1
+        ).padStart(2,"0");
 
+    const dia =
+        String(
+            hoy.getDate()
+        ).padStart(2,"0");
 
-const mesActual =
-    String(
-        hoy.getMonth() + 1
-    ).padStart(2,"0");
+    input.max =
+        año +
+        "-" +
+        mes +
+        "-" +
+        dia;
 
-
-const diaActual =
-    String(
-        hoy.getDate()
-    ).padStart(2,"0");
-
-
-fechaInput.max =
-    añoActual +
-    "-" +
-    mesActual +
-    "-" +
-    diaActual;
+}
 
 
 /* =====================================================
    ENTER PARA CALCULAR
 ===================================================== */
 
-fechaInput.addEventListener(
+document
+.getElementById("fecha")
+.addEventListener(
     "keydown",
     function(event){
 
         if(event.key === "Enter"){
+
+            event.preventDefault();
 
             calcularEdad();
 
@@ -725,7 +976,16 @@ fechaInput.addEventListener(
     }
 );
 
+
+/* =====================================================
+   INICIAR
+===================================================== */
+
+establecerFechaMaxima();
+
 </script>
 
 </body>
+
 </html>
+
